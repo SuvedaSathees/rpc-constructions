@@ -34,6 +34,8 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "berger-hs-tile-bond-anti-slip-grey": {
     image: "berger-hs-tile-bond-anti-slip-grey.png",
+    backImage: "berger-hs-tile-bond-anti-slip-grey-back.png",
+    video: "berger-hs-tile-bond-anti-slip-grey.mp4",
     description: "High-performance polymer-modified cementitious tile adhesive with slip resistance (C2TE) for fixing ceramic, vitrified tiles and natural stones on interior and exterior walls and floors.",
     pdf: "Tile Bond Anti-Slip PDS.pdf",
   },
@@ -145,11 +147,14 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "fosroc-supercast-sw20": {
     image: "fosroc-supercast-sw20.png",
+    video: "fosroc-supercast-sw20.mp4",
     description: "Hydrophilic swellable waterstop designed for integral sealing of construction joints in in-situ concrete structures.",
     pdf: "TDS-Supercast-SW20-India6.pdf",
   },
   "fosroc-reebaklens": {
     image: "fosroc-reebaklens.png",
+    backImage: "fosroc-reebaklens-back.png",
+    video: "fosroc-reebaklens.mp4",
     description: "Industrial acid-based cleaner and etching agent for removal of mortar smears, concrete stains, and light rust from surfaces.",
     pdf: "TDS-Reebaklens-India4.pdf",
   },
@@ -162,16 +167,21 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "fosroc-nitobond-sbr-latex": {
     image: "fosroc-nitobond-sbr-latex.png",
     backImage: "fosroc-nitobond-sbr-latex-back.png",
+    video: "fosroc-nitobond-sbr-latex.mp4",
     description: "High performance styrene butadiene rubber latex emulsion for bonding slurry coats, waterproof renders, and repair screeds.",
     pdf: "TDS-Nitobond-SBR-Latex-India4.pdf",
   },
   "fosroc-nitobond-ar": {
     image: "fosroc-nitobond-ar.png",
+    backImage: "fosroc-nitobond-ar-back.png",
+    video: "fosroc-nitobond-ar.mp4",
     description: "Acrylic polymer bonding agent and admixture for improving adhesion, flexural strength, and durability of cement mortars.",
     pdf: "TDS-Nitobond-AR-India4.pdf",
   },
   "fosroc-nitoflor-hardtop-standard": {
     image: "fosroc-nitoflor-hardtop-standard.png",
+    backImage: "fosroc-nitoflor-hardtop-standard-back.png",
+    video: "fosroc-nitoflor-hardtop-standard.mp4",
     description: "Pre-blended non-metallic dry shake floor hardener providing high abrasion and wear resistance to monolithic concrete floors.",
     pdf: "TDS_Nitoflor-Hardtop-Standard_India-v2.pdf",
   },
@@ -250,18 +260,26 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "fosroc-rendroc-sp40": {
     image: "fosroc-rendroc-sp40.png",
+    backImage: "fosroc-rendroc-sp40-back.png",
+    video: "fosroc-rendroc-sp40.mp4",
     description: "Shrinkage-controlled, polymer-modified, fibre-reinforced cementitious repair mortar for high-performance structural concrete reinstatement.",
   },
   "fosroc-nitocote-cm210-white": {
     image: "fosroc-nitocote-cm210-white.png",
+    backImage: "fosroc-nitocote-cm210-white-back.png",
+    video: "fosroc-nitocote-cm210-white.mp4",
     description: "Two-component polymer-modified elastomeric cementitious waterproof coating for concrete and masonry surfaces.",
   },
   "fosroc-rendroc-cs-white": {
     image: "fosroc-rendroc-cs-white.png",
+    backImage: "fosroc-rendroc-cs-white-back.png",
+    video: "fosroc-rendroc-cs-white.mp4",
     description: "Single-component cementitious polymer-modified crack sealer and finishing compound for internal and external masonry and concrete cracks.",
   },
   "fosroc-rendroc-plug": {
     image: "fosroc-rendroc-plug.png",
+    backImage: "fosroc-rendroc-plug-back.png",
+    video: "fosroc-rendroc-plug.mp4",
     description: "Rapid setting cementitious mortar designed for instant plugging and stopping of active water leaks in concrete and masonry structures.",
   },
   "sika-chapdur": {
