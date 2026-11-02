@@ -23,12 +23,16 @@ export interface ProductMedia {
 /** photos are the makers' own pack shots, from their product pages (Berger, Sika India) */
 export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "berger-hs-tile-adhesive": {
-    image: "berger-hs-tile-adhesive.webp",
+    image: "berger-hs-tile-adhesive.png",
+    backImage: "berger-hs-tile-adhesive-back.png",
+    video: "berger-hs-tile-adhesive.mp4",
     description: "High-quality cementitious tile adhesive designed for fixing ceramic and mosaic tiles on interior floors and walls.",
     pdf: "Tile Adhesive PDS.pdf",
   },
   "berger-hs-tile-adhesive-plus": {
-    image: "berger-hs-tile-adhesive-plus.webp",
+    image: "berger-hs-tile-adhesive-plus.png",
+    backImage: "berger-hs-tile-adhesive-plus-back.png",
+    video: "berger-hs-tile-adhesive-plus.mp4",
     description: "Polymer-modified cementitious tile adhesive suitable for fixing vitrified tiles, porcelain, marble, and natural stones on floors and walls.",
     pdf: "Tile Adhesive Plus PDS.pdf",
   },
