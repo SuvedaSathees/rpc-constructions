@@ -367,6 +367,8 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "fosroc-brushbond-roofguard-terracotta": {
     image: "fosroc-brushbond-roofguard-terracotta.png",
+    backImage: "fosroc-brushbond-roofguard-terracotta-back.png",
+    video: "fosroc-brushbond-roofguard-terracotta.mp4",
     description: "High-build elastomeric acrylic waterproofing coating designed for roofs, terraces, parapets, and exterior surfaces.",
   },
   "fosroc-lokfix-s": {
