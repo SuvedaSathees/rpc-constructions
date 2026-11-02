@@ -363,6 +363,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
 "fosroc-brushbond-roofguard-white": {
     image: "fosroc-brushbond-roofguard-white.png",
     backImage: "fosroc-brushbond-roofguard-white-back.png",
+    video: "fosroc-brushbond-roofguard-white.mp4",
     description: "High-build elastomeric solar-reflective acrylic waterproofing coating designed for roofs, terraces, parapets, and exterior surfaces.",
   },
   "fosroc-brushbond-roofguard-terracotta": {
