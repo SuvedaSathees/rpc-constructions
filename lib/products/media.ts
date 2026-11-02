@@ -14,6 +14,7 @@
  */
 export interface ProductMedia {
   image?: string;
+  backImage?: string;
   description?: string;
   video?: string;
   pdf?: string;
@@ -36,10 +37,18 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     description: "High-performance polymer-modified cementitious tile adhesive with slip resistance (C2TE) for fixing ceramic, vitrified tiles and natural stones on interior and exterior walls and floors.",
     pdf: "Tile Bond Anti-Slip PDS.pdf",
   },
-  "sika-rustop": { image: "sika-rustop.webp" },
-  "sika-rust-off-100": { image: "sika-rust-off-100.webp" },
+  "sika-rustop": {
+    image: "sika-rustop.png",
+    backImage: "sika-rustop-back.png",
+    description: "Two-component polymer-modified cementitious coating for the corrosion protection of steel reinforcement in concrete repair.",
+  },
+  "sika-rust-off-100": {
+    image: "sika-rust-off-100.png",
+    backImage: "sika-rust-off-100-back.png",
+    description: "Single-component chemical rust remover and passivator for cleaning rusted steel reinforcement and metal surfaces prior to repair.",
+  },
   "fosroc-cebex-100": {
-    image: "fosroc-cebex-100.jpg",
+    image: "fosroc-cebex-100.png",
     description: "Expanding and plasticising admixture for cementitious grouts where a reduced water/cement ratio and positive expansions are required. Suitable for bed grouting, duct grouting, non-shrink infilling and jointing.",
     pdf: "TDS-Cebex-100-India4.pdf",
   },
@@ -64,7 +73,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     pdf: "TDS-Reebaklens-RR-India3.pdf",
   },
   "fosroc-rendroc-rg": {
-    image: "fosroc-rendroc-rg.jpg",
+    image: "fosroc-rendroc-rg.png",
     description: "General purpose, non-shrink, cementitious micro-concrete for structural concrete repair and reinstatement of large sections such as columns, beams, and slabs.",
     pdf: "TDS-Renderoc-RG_India.pdf",
   },
@@ -79,7 +88,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     pdf: "TDS-Conplast-SP430-India3.pdf",
   },
   "fosroc-concure-wb-white": {
-    image: "fosroc-concure-wb-white.jpg",
+    image: "fosroc-concure-wb-white.png",
     description: "Water-based wax emulsion curing compound that creates a temporary membrane over freshly placed concrete to prevent rapid moisture loss.",
     pdf: "TDS-Concure-WB-White-India6.pdf",
   },
@@ -89,6 +98,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     pdf: "TDS-Conplast-WL-Xtra-India4.pdf",
   },
   "fosroc-cebex-112": {
+    image: "fosroc-cebex-112.png",
     description: "Plasticising and expanding admixture for cementitious grouts to improve fluidity, reduce water-cement ratio, and compensate for plastic settlement.",
     pdf: "TDS-Cebex-112-200326.pdf",
   },
@@ -120,6 +130,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     pdf: "TDS-Auramix-400-India3.pdf",
   },
   "fosroc-auramix-300-plus": {
+    image: "fosroc-auramix-300-plus.png",
     description: "Next-generation polycarboxylate ether superplasticizer for high performance concrete with low water-binder ratio and rapid strength gain.",
     pdf: "TDS-Auramix-300-Plus-India4.pdf",
   },
@@ -128,6 +139,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     pdf: "TDS-Auramix-300-India3.pdf",
   },
   "fosroc-auracast-102": {
+    image: "fosroc-auracast-102.png",
     description: "High performance polycarboxylate ether based admixture specially formulated for precast concrete applications.",
     pdf: "TDS-Auracast-102-India4.pdf",
   },
@@ -143,11 +155,13 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "fosroc-nitobond-sbr": {
     image: "fosroc-nitobond-sbr.png",
+    backImage: "fosroc-nitobond-sbr-back.png",
     description: "Modified SBR polymer bonding aid and mortar additive to improve adhesion, tensile strength, and water resistance of cementitious mixes.",
     pdf: "TDS-Nitobond-SBR-India5.pdf",
   },
   "fosroc-nitobond-sbr-latex": {
     image: "fosroc-nitobond-sbr-latex.png",
+    backImage: "fosroc-nitobond-sbr-latex-back.png",
     description: "High performance styrene butadiene rubber latex emulsion for bonding slurry coats, waterproof renders, and repair screeds.",
     pdf: "TDS-Nitobond-SBR-Latex-India4.pdf",
   },
@@ -162,43 +176,69 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     pdf: "TDS_Nitoflor-Hardtop-Standard_India-v2.pdf",
   },
   "fosroc-reebol-emulsion-xtra": {
+    image: "fosroc-reebol-emulsion-xtra.png",
     description: "Water-dilutable shutter release agent emulsion providing clean, stain-free striking of all types of formwork and moulds.",
     pdf: "TDS-Reebol-Emulsion-Xtra-India3.pdf",
   },
   "fosroc-conplast-crystalline": {
-    image: "fosroc-conplast-crystalline.jpg",
+    image: "fosroc-conplast-crystalline.png",
     description: "Integral crystalline waterproofing admixture that reacts with cement hydration products to form insoluble crystals sealing concrete capillaries.",
     pdf: "TDS-Conplast-Crystalline-India6.pdf",
   },
   "sika-seal-550": {
     image: "sika-seal-550.png",
+    backImage: "sika-seal-550-back.png",
     description: "Two-component, acrylic polymer-modified cementitious elastomeric waterproofing and protective coating for concrete and masonry.",
     pdf: "pds-sikatop-550seal.pdf",
   },
   "sika-seal-551": {
     image: "sika-seal-551.png",
+    backImage: "sika-seal-551-back.png",
     description: "Two-part, flexible cementitious slurry coating for waterproofing structures subject to positive and negative water pressure.",
     pdf: "pds-sikatop-551seal.pdf",
   },
   "sika-emaco-s348": {
     image: "sika-emaco-s348.png",
+    backImage: "sika-emaco-s348-back.png",
     description: "High-strength, shrinkage-compensated, fiber-reinforced structural repair mortar for structural concrete reinstatement.",
     pdf: "pds-sikaemaco-s-348.pdf",
   },
   "sika-bit-w1": {
-    description: "Water-based bituminous cold-applied waterproofing membrane and protective coating for basements, foundations, and below-ground structures.",
+    image: "sika-bit-w1.png",
+    backImage: "sika-bit-w1-back.png",
+    description: "High-performance cementitious adhesive mortar specially formulated for bonding SikaBit W-15 waterproofing membrane systems.",
     pdf: "PDS_SikaBitW-1_2020.06.29.pdf",
   },
   "sika-control-777": {
     image: "sika-control-777.png",
+    backImage: "sika-control-777-back.png",
     description: "Specialized permeability-reducing and shrinkage-reducing admixture engineered to improve concrete durability and limit moisture ingress.",
     pdf: "pds-sikacontrol-777.pdf",
   },
   "sika-plast-5132-t": {
+    image: "sika-plast-5132-t.png",
+    backImage: "sika-plast-5132-t-back.png",
     description: "High performance superplasticizer and water-reducing admixture developed to provide extended slump retention and enhanced workability in concrete mixes.",
     pdf: "pds-sikaplast-5132t.pdf",
   },
+  "sika-emaco-s346": {
+    image: "sika-emaco-s346.png",
+    backImage: "sika-emaco-s346-back.png",
+    description: "High-strength, shrinkage-compensated, flowable micro-concrete and precision structural repair mortar for restoration of large-volume concrete elements.",
+  },
+  "sika-mbrace-adh-2200-part-a": {
+    image: "sika-mbrace-adh-2200-part-a.png",
+    backImage: "sika-mbrace-adh-2200-part-a-back.png",
+    description: "High-strength, non-sag epoxy structural adhesive and putty Component A, engineered for structural bonding, leveling, and composite strengthening systems.",
+  },
+  "sika-mbrace-adh-2200-part-b": {
+    image: "sika-mbrace-adh-2200-part-b.png",
+    backImage: "sika-mbrace-adh-2200-part-b-back.png",
+    description: "High-strength epoxy structural adhesive and putty Component B (hardener), designed to mix with Part A for bonding and surface sealing applications.",
+  },
   "sika-antisol-a4-white": {
+    image: "sika-antisol-a4-white.png",
+    backImage: "sika-antisol-a4-white-back.png",
     description: "Aluminate-pigmented, resin-based liquid curing compound formulated to reduce moisture loss and solar heat absorption on freshly placed concrete surfaces.",
     pdf: "sika_antisol_a-4white.pdf",
   },
@@ -224,35 +264,115 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "sika-chapdur": {
     image: "sika-chapdur.png",
+    backImage: "sika-chapdur-back.png",
     description: "Non-metallic, pre-blended dry-shake mineral floor hardener providing superior abrasion, wear, and impact resistance for monolithic concrete floors.",
   },
   "sikadur-55-lp": {
     image: "sikadur-55-lp.png",
+    backImage: "sikadur-55-lp-back.png",
     description: "Two-component, low viscosity, solvent-free epoxy resin injection adhesive for structural crack repair and bonding applications.",
   },
   "sika-grout-214": {
     image: "sika-grout-214.png",
+    backImage: "sika-grout-214-back.png",
     description: "High-performance, non-shrink cementitious expanding grout for machine foundations, stanchion bases, anchor pockets, and precast concrete assembly.",
+  },
+  "sikaproof-312-hdpe": {
+    image: "sikaproof-312-hdpe.png",
+    backImage: "sikaproof-312-hdpe-back.png",
+    description: "Pre-applied, fully bonded HDPE composite waterproofing membrane system for below-ground concrete basements and foundations.",
   },
   "sikaproof-sandwich-tape-100": {
     image: "sikaproof-sandwich-tape-100.png",
+    backImage: "sikaproof-sandwich-tape-100-back.png",
     description: "Double-sided self-adhesive tape designed for joint sealing, detailing, and bonding SikaProof membrane systems.",
   },
   "sikashield-w159": {
     image: "sikashield-w159.png",
+    backImage: "sikashield-w159-back.png",
     description: "Self-adhesive, cold-applied bituminous waterproofing membrane reinforced with polymer backing for below-ground and roofing waterproofing.",
+  },
+  "sikashield-w162": {
+    image: "sikashield-w162.png",
+    backImage: "sikashield-w162-back.png",
+    description: "1.5 mm self-adhesive, cold-applied, SBS-modified bituminous waterproofing sheet membrane with cross-laminated HDPE film and edge release strip.",
   },
   "sikaswell-a2010-bar": {
     image: "sikaswell-a2010-bar.png",
+    backImage: "sikaswell-a2010-bar-back.png",
     description: "Acrylic swellable waterstop profile that expands in contact with water to seal construction joints in concrete structures.",
   },
   "renacon-renaplast-ready-mix-plaster": {
     image: "renacon-renaplast-ready-mix-plaster.png",
+    backImage: "renacon-renaplast-ready-mix-plaster-back.png",
     description: "High-quality, factory-prepared cement-based ready mix plaster formulated with graded sand and performance additives for interior and exterior masonry plastering.",
+  },
+  "renacon-renabond-aac-joint-mortar-superior": {
+    image: "renacon-renabond-aac-joint-mortar-superior.png",
+    backImage: "renacon-renabond-aac-joint-mortar-superior-back.png",
+    description: "Factory-prepared, polymer-modified thin-bed mortar specially formulated for high bond strength, fast workability, and durable joints in AAC block masonry.",
+  },
+"renacon-aac-block-3-inch": {
+    image: "renacon-aac-block-3-inch.png",
+    description: "High-precision autoclaved aerated concrete (AAC) block (3 inch thick) for lightweight, fire-resistant, and thermally insulated partition walls.",
+  },
+  "renacon-aac-block-4-inch": {
+    image: "renacon-aac-block-4-inch.png",
+    description: "High-precision autoclaved aerated concrete (AAC) block (4 inch thick) for internal non-load bearing walls, shaft enclosures, and partition masonry.",
+  },
+  "renacon-aac-block-6-inch": {
+    image: "renacon-aac-block-6-inch.png",
+    description: "High-precision autoclaved aerated concrete (AAC) block (6 inch thick) providing structural masonry strength, sound insulation, and thermal efficiency for exterior and interior walls.",
+  },
+  "renacon-aac-block-8-inch": {
+    image: "renacon-aac-block-8-inch.png",
+    description: "High-precision autoclaved aerated concrete (AAC) block (8 inch thick) designed for external perimeter walls, load-bearing infill masonry, and maximum acoustic and thermal performance.",
+  },
+  "renacon-aac-block-9-inch": {
+    image: "renacon-aac-block-9-inch.png",
+    description: "Heavy-duty autoclaved aerated concrete (AAC) block (9 inch thick) engineered for robust external walls, industrial envelopes, and maximum energy-saving masonry.",
+  },
+"fosroc-brushbond-roofguard-white": {
+    image: "fosroc-brushbond-roofguard-white.png",
+    backImage: "fosroc-brushbond-roofguard-white-back.png",
+    description: "High-build elastomeric solar-reflective acrylic waterproofing coating designed for roofs, terraces, parapets, and exterior surfaces.",
+  },
+  "fosroc-brushbond-roofguard-terracotta": {
+    image: "fosroc-brushbond-roofguard-terracotta.png",
+    description: "High-build elastomeric acrylic waterproofing coating designed for roofs, terraces, parapets, and exterior surfaces.",
+  },
+  "fosroc-lokfix-s": {
+    image: "fosroc-lokfix-s.png",
+    description: "High strength polyester resin anchor grout for anchoring bolts, rebars, and dowels into concrete and masonry.",
+  },
+  "fosroc-lokfix-p": {
+    image: "fosroc-lokfix-p.png",
+    description: "High strength polyester resin anchor grout specially designed for horizontal and overhead anchoring applications.",
+  },
+"fosroc-auramix-200-41": {
+    image: "fosroc-auramix-200-41.png",
+    description: "High-performance water reducing admixture based on sulphonated naphthalene formaldehyde (SNF) for concrete and mortar.",
+  },
+  "fosroc-auramix-200-20": {
+    image: "fosroc-auramix-200-20.png",
+    description: "High-performance water reducing admixture based on sulphonated naphthalene formaldehyde (SNF) for concrete and mortar.",
+  },
+"fosroc-reebol-standard": {
+    image: "fosroc-reebol-standard.png",
+    description: "Ready-to-use chemical mould release agent for concrete. Forms a thin, uniform film on formwork surfaces to ensure easy and clean de-moulding.",
   },
 };
 
 export const mediaOf = (slug: string): ProductMedia => PRODUCT_MEDIA[slug] ?? {};
 export const imageSrc = (m: ProductMedia) => (m.image ? `/images/products/${m.image}` : "");
+export const backImageSrc = (m: ProductMedia) => {
+  if (m.backImage) return `/images/products/${m.backImage}`;
+  if (!m.image) return "";
+  const dot = m.image.lastIndexOf(".");
+  if (dot === -1) return "";
+  const base = m.image.slice(0, dot);
+  const ext = m.image.slice(dot);
+  return `/images/products/${base}-back${ext}`;
+};
 export const videoSrc = (m: ProductMedia) => (!m.video ? "" : /^https?:\/\//.test(m.video) ? m.video : `/videos/products/${m.video}`);
 export const pdfSrc = (m: ProductMedia) => (!m.pdf ? "" : /^https?:\/\//.test(m.pdf) ? m.pdf : `/docs/${m.pdf}`);
