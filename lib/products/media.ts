@@ -55,6 +55,8 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "fosroc-cebex-100": {
     image: "fosroc-cebex-100.png",
+    backImage: "fosroc-cebex-100-back.png",
+    video: "fosroc-cebex-100.mp4",
     description: "Expanding and plasticising admixture for cementitious grouts where a reduced water/cement ratio and positive expansions are required. Suitable for bed grouting, duct grouting, non-shrink infilling and jointing.",
     pdf: "TDS-Cebex-100-India4.pdf",
   },
@@ -84,11 +86,15 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "fosroc-rendroc-rg": {
     image: "fosroc-rendroc-rg.png",
+    backImage: "fosroc-rendroc-rg-back.png",
+    video: "fosroc-rendroc-rg.mp4",
     description: "General purpose, non-shrink, cementitious micro-concrete for structural concrete repair and reinstatement of large sections such as columns, beams, and slabs.",
     pdf: "TDS-Renderoc-RG_India.pdf",
   },
   "fosroc-nitozinc-primer": {
     image: "fosroc-nitozinc-primer.png",
+    backImage: "fosroc-nitozinc-primer-back.png",
+    video: "fosroc-nitozinc-primer.mp4",
     description: "Two-component zinc-rich epoxy primer providing active electrochemical protection to exposed steel reinforcement in concrete repair.",
     pdf: "TDS-Nitozinc-Primer-India5.pdf",
   },
