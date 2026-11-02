@@ -60,6 +60,8 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "fosroc-nitobond-ep": {
     image: "fosroc-nitobond-ep.png",
+    backImage: "fosroc-nitobond-ep-back.png",
+    video: "fosroc-nitobond-ep.mp4",
     description: "Epoxy resin concrete bonding agent for bonding fresh wet cementitious materials to existing cementitious surfaces. Suitable for horizontal surfaces, or vertical surfaces where mortar or concrete can be supported by formwork. Its long open life makes it ideal for use with formwork or where additional steel reinforcement has to be fitted.",
     pdf: "TDS_Nitobond-EP_India.pdf",
   },
