@@ -81,6 +81,8 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "fosroc-reebaklens-rr": {
     image: "fosroc-reebaklens-rr.png",
+    backImage: "fosroc-reebaklens-rr-back.png",
+    video: "fosroc-reebaklens-rr.mp4",
     description: "Cleaning and etching agent for removal of rust from steel reinforcement, concrete deposits on metal and pre-treatment of concrete surfaces.",
     pdf: "TDS-Reebaklens-RR-India3.pdf",
   },
