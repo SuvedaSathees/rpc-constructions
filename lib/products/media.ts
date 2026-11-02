@@ -65,6 +65,8 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "fosroc-brushbond-grey": {
     image: "fosroc-brushbond-grey.png",
+    backImage: "fosroc-brushbond-grey-back.png",
+    video: "fosroc-brushbond-grey.mp4",
     description: "Acrylic polymer modified elastomeric waterproofing membrane coating for concrete and masonry surfaces. Provides a seamless, durable waterproof barrier for water tanks, reservoirs, swimming pools, basements, toilets and wet areas.",
     pdf: "TDS-Brushbond-India5.pdf",
   },
