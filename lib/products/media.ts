@@ -182,6 +182,8 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "fosroc-conplast-crystalline": {
     image: "fosroc-conplast-crystalline.png",
+    backImage: "fosroc-conplast-crystalline-back.png",
+    video: "fosroc-conplast-crystalline.mp4",
     description: "Integral crystalline waterproofing admixture that reacts with cement hydration products to form insoluble crystals sealing concrete capillaries.",
     pdf: "TDS-Conplast-Crystalline-India6.pdf",
   },
