@@ -107,6 +107,8 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "fosroc-concure-wb-white": {
     image: "fosroc-concure-wb-white.png",
+    backImage: "fosroc-concure-wb-white-back.png",
+    video: "fosroc-concure-wb-white.mp4",
     description: "Water-based wax emulsion curing compound that creates a temporary membrane over freshly placed concrete to prevent rapid moisture loss.",
     pdf: "TDS-Concure-WB-White-India6.pdf",
   },
