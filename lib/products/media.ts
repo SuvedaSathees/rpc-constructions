@@ -114,6 +114,8 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "fosroc-conplast-wl-xtra": {
     image: "fosroc-conplast-wl-xtra.png",
+    backImage: "fosroc-conplast-wl-xtra-back.png",
+    video: "fosroc-conplast-wl-xtra.mp4",
     description: "Liquid integral waterproofing admixture for concrete and mortar that reduces water permeability and plastic shrinkage cracking.",
     pdf: "TDS-Conplast-WL-Xtra-India4.pdf",
   },
