@@ -17,7 +17,7 @@
  * opens, and each product keeps its own rate link.
  */
 import { BRAND_LOGOS, otherBrands } from "../methods/brand-logos";
-import { imageSrc, mediaOf, pdfSrc, videoSrc } from "../products/media";
+import { backImageSrc, imageSrc, mediaOf, pdfSrc, videoSrc } from "../products/media";
 import { FAMILIES, familyOf, type Product } from "../products";
 import { brandMark, type BrandInfo, type JobView } from "../products/brands";
 import { fullName, shortName } from "../products/compare";
@@ -58,9 +58,6 @@ const VIEWER_HTML = `<dialog class="pv" data-pv data-lenis-prevent aria-labelled
         <button type="button" class="pv-nav-arrow pv-nav-next" data-pv-next aria-label="Next view">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
-        <button type="button" class="pv-zoom-btn" data-pv-zoom aria-label="Toggle zoom">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-        </button>
         <div class="pv-stage" data-pv-stage>
           <img class="pv-main-img" data-pv-main-img src="" alt="" />
         </div>
@@ -73,14 +70,6 @@ const VIEWER_HTML = `<dialog class="pv" data-pv data-lenis-prevent aria-labelled
         <button type="button" class="pv-thumb" data-pv-view="1" aria-label="Back View">
           <span class="pv-thumb-box"><img data-pv-thumb-img="1" src="" alt="" /></span>
           <span class="pv-thumb-label">Back View</span>
-        </button>
-        <button type="button" class="pv-thumb" data-pv-view="2" aria-label="Left View">
-          <span class="pv-thumb-box"><img data-pv-thumb-img="2" src="" alt="" /></span>
-          <span class="pv-thumb-label">Left View</span>
-        </button>
-        <button type="button" class="pv-thumb" data-pv-view="3" aria-label="Right View">
-          <span class="pv-thumb-box"><img data-pv-thumb-img="3" src="" alt="" /></span>
-          <span class="pv-thumb-label">Right View</span>
         </button>
       </div>
     </div>
@@ -292,6 +281,7 @@ export function finderMarkup(bs: readonly BrandInfo[], c: ContactInfo, js: reado
             customers: p.customers,
             packs: p.packs,
             image: imageSrc(m),
+            backImage: backImageSrc(m),
             video: videoSrc(m),
             pdf: pdfSrc(m),
             pdfName: m.pdf ?? "",
@@ -647,26 +637,26 @@ html.pv-open,body.pv-open{overflow:hidden !important}
 /* hero section */
 .pv-hero{display:grid;grid-template-columns:46% minmax(0,54%);gap:1.8rem;padding:clamp(1.6rem,5vh,3rem) var(--pv-side) 1.6rem;align-items:start;background:#fff;clear:both}
 .pv-gallery{display:flex;flex-direction:column;gap:.75rem}
-.pv-stage-wrap{position:relative;width:100%;height:clamp(320px,46svh,520px);border-radius:14px;border:1px solid #e2e8f0;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.pv-stage{width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:1rem;box-sizing:border-box}
-.pv-main-img{max-width:92%;max-height:92%;object-fit:contain;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.pv-stage-wrap{position:relative;width:100%;height:clamp(360px,50svh,540px);border-radius:20px;border:1px solid #e2e8f0;background:radial-gradient(120% 90% at 50% 40%,#ffffff 55%,#f8fafc 100%);box-shadow:0 0 0 1px var(--pv-line,rgba(18,34,59,.08)),0 30px 60px -40px rgba(18,34,59,.3);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.pv-stage{width:100%;height:100%;max-width:100%;max-height:100%;min-width:0;min-height:0;display:flex;align-items:center;justify-content:center;padding:clamp(1.5rem,3.2vw,2.8rem);box-sizing:border-box}
+.pv-main-img{width:100%;height:100%;max-width:100%;max-height:100%;min-width:0;min-height:0;object-fit:contain;object-position:center;display:block;margin:auto;filter:drop-shadow(0 16px 28px rgba(14,34,61,.14));transition:opacity .2s ease}
 .pv-nav-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:5;display:grid;place-items:center;width:2.3rem;height:2.3rem;padding:0;border-radius:50%;background:#fff;border:1px solid #e2e8f0;box-shadow:0 4px 12px rgba(14,34,61,.12);color:#334155;cursor:pointer;transition:all .15s}
 .pv-nav-arrow:hover{background:#f8fafc;color:#0e223d;box-shadow:0 6px 16px rgba(14,34,61,.18)}
 .pv-nav-arrow:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .pv-nav-prev{left:.75rem}
 .pv-nav-next{right:.75rem}
-.pv-zoom-btn{position:absolute;bottom:.75rem;right:.75rem;z-index:5;display:grid;place-items:center;width:2.2rem;height:2.2rem;padding:0;border-radius:8px;background:rgba(255,255,255,.92);border:1px solid #e2e8f0;box-shadow:0 2px 8px rgba(14,34,61,.08);color:#475569;cursor:pointer;transition:all .15s}
+.pv-zoom-btn{display:none !important;position:absolute;bottom:.75rem;right:.75rem;z-index:5;display:grid;place-items:center;width:2.2rem;height:2.2rem;padding:0;border-radius:8px;background:rgba(255,255,255,.92);border:1px solid #e2e8f0;box-shadow:0 2px 8px rgba(14,34,61,.08);color:#475569;cursor:pointer;transition:all .15s}
 .pv-zoom-btn:hover{color:#0e223d;background:#fff}
 .pv-zoom-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
-.pv-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem}
-.pv-thumb{display:flex;flex-direction:column;align-items:center;gap:.35rem;border:0;background:none;padding:0;cursor:pointer}
-.pv-thumb-box{width:100%;height:68px;border-radius:8px;border:1.5px solid #e2e8f0;background:#fff;display:flex;align-items:center;justify-content:center;padding:4px;box-sizing:border-box;transition:border-color .2s,box-shadow .2s}
-.pv-thumb-box img{max-width:100%;max-height:100%;object-fit:contain}
-.pv-thumb-label{font-size:var(--fs-body,1rem);font-weight:600;color:#64748b;transition:color .2s}
-.pv-thumb.is-active .pv-thumb-box{border-color:#2756a0;box-shadow:0 0 0 1px #2756a0}
+.pv-thumbs{display:flex;justify-content:center;align-items:center;gap:1.5rem;margin-top:1.25rem}
+.pv-thumb{display:flex;flex-direction:column;align-items:center;gap:.5rem;border:0;background:none;padding:0;cursor:pointer;outline:none}
+.pv-thumb-box{width:88px;height:88px;border-radius:14px;border:2px solid #e2e8f0;background:#fff;display:flex;align-items:center;justify-content:center;padding:8px;box-sizing:border-box;box-shadow:0 2px 8px rgba(14,34,61,.06);transition:border-color .2s,box-shadow .2s,transform .2s}
+.pv-thumb:hover .pv-thumb-box{transform:translateY(-2px);border-color:#94a3b8;box-shadow:0 6px 14px rgba(14,34,61,.1)}
+.pv-thumb.is-active .pv-thumb-box{border-color:#2756a0;box-shadow:0 0 0 2px rgba(39,86,160,.2),0 6px 16px rgba(39,86,160,.18)}
+.pv-thumb-box img{width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;display:block}
+.pv-thumb-label{font-size:.875rem;font-weight:600;color:#64748b;letter-spacing:.01em;transition:color .2s}
 .pv-thumb.is-active .pv-thumb-label{color:#2756a0;font-weight:700}
-.pv-thumb:hover .pv-thumb-box{border-color:#94a3b8}
 
 /* right column */
 .pv-info{display:flex;flex-direction:column;min-width:0;padding-right:2rem}
@@ -806,22 +796,23 @@ html.pv-open,body.pv-open{overflow:hidden !important}
 
 /* the gallery: one big white stage, the four views under it as small cards */
 .pv-gallery{gap:1rem}
-.pv-stage-wrap{height:clamp(340px,52svh,560px);border:0;border-radius:var(--pv-r);background:radial-gradient(120% 90% at 50% 40%,#fff 55%,#f6f2ea 100%);box-shadow:0 0 0 1px var(--pv-line),0 40px 70px -50px rgba(18,34,59,.55)}
-.pv-stage{padding:clamp(1.4rem,3vw,2.6rem)}
-.pv-main-img{max-width:88%;max-height:88%;filter:drop-shadow(0 22px 26px rgba(18,34,59,.16))}
+.pv-stage-wrap{position:relative;width:100%;height:clamp(360px,50svh,540px);border:1px solid #e2e8f0;border-radius:var(--pv-r,20px);background:radial-gradient(120% 90% at 50% 40%,#ffffff 55%,#f8fafc 100%);box-shadow:0 0 0 1px var(--pv-line,rgba(18,34,59,.08)),0 30px 60px -40px rgba(18,34,59,.3);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.pv-stage{width:100%;height:100%;max-width:100%;max-height:100%;min-width:0;min-height:0;display:flex;align-items:center;justify-content:center;padding:clamp(1.5rem,3.2vw,2.8rem);box-sizing:border-box}
+.pv-main-img{width:100%;height:100%;max-width:100%;max-height:100%;min-width:0;min-height:0;object-fit:contain;object-position:center;display:block;margin:auto;filter:drop-shadow(0 16px 28px rgba(14,34,61,.14));transition:opacity .2s ease}
 .pv-nav-arrow{width:2.7rem;height:2.7rem;border:0;background:rgba(255,255,255,.95);color:var(--ink,#12223b);box-shadow:0 0 0 1px var(--pv-line),0 10px 20px -12px rgba(18,34,59,.5);opacity:.85;transition:opacity .2s,transform .2s,background-color .2s,color .2s}
 .pv-stage-wrap:hover .pv-nav-arrow{opacity:1}
 .pv-nav-arrow:hover{background:var(--navy,#0b2350);color:#fff}
 .pv-nav-prev{left:1rem}.pv-nav-next{right:1rem}
 .pv-zoom-btn{bottom:1rem;right:1rem;width:2.5rem;height:2.5rem;border:0;border-radius:50%;background:rgba(255,255,255,.95);color:var(--ink,#12223b);box-shadow:0 0 0 1px var(--pv-line),0 8px 18px -12px rgba(18,34,59,.5)}
 .pv-zoom-btn:hover{background:var(--navy,#0b2350);color:#fff}
-.pv-thumbs{gap:.75rem}
-.pv-thumb{gap:.5rem}
-.pv-thumb-box{height:78px;padding:6px;border:0;border-radius:14px;background:#fff;box-shadow:0 0 0 1px var(--pv-line);transition:box-shadow .2s,transform .2s}
-.pv-thumb:hover .pv-thumb-box{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(18,34,59,.2),0 10px 18px -14px rgba(18,34,59,.5)}
-.pv-thumb.is-active .pv-thumb-box{box-shadow:0 0 0 2px var(--navy,#0b2350)}
-.pv-thumb-label{font-size:var(--pv-s);font-weight:500;color:var(--mute,#5b6271)}
-.pv-thumb.is-active .pv-thumb-label{color:var(--ink,#12223b);font-weight:600}
+.pv-thumbs{display:flex;justify-content:center;align-items:center;gap:1.5rem;margin-top:1.25rem}
+.pv-thumb{display:flex;flex-direction:column;align-items:center;gap:.5rem;border:0;background:none;padding:0;cursor:pointer;outline:none}
+.pv-thumb-box{width:88px;height:88px;border-radius:14px;border:2px solid #e2e8f0;background:#fff;display:flex;align-items:center;justify-content:center;padding:8px;box-sizing:border-box;box-shadow:0 2px 8px rgba(14,34,61,.06);transition:border-color .2s,box-shadow .2s,transform .2s}
+.pv-thumb:hover .pv-thumb-box{transform:translateY(-2px);border-color:#94a3b8;box-shadow:0 6px 14px rgba(14,34,61,.1)}
+.pv-thumb.is-active .pv-thumb-box{border-color:#2756a0;box-shadow:0 0 0 2px rgba(39,86,160,.2),0 6px 16px rgba(39,86,160,.18)}
+.pv-thumb-box img{width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;display:block}
+.pv-thumb-label{font-size:.875rem;font-weight:600;color:#64748b;letter-spacing:.01em;transition:color .2s}
+.pv-thumb.is-active .pv-thumb-label{color:#2756a0;font-weight:700}
 
 /* the product: what it is, its name large, what it does, then the four strengths and how to buy it */
 .pv-info{padding:0;align-self:center}
@@ -892,7 +883,10 @@ html.pv-open,body.pv-open{overflow:hidden !important}
 @media (max-width:960px){
   .pv-hero{grid-template-columns:1fr}
   .pv-overview-grid{grid-template-columns:1fr;grid-template-areas:"desc" "props" "apps"}
-  .pv-stage-wrap{height:clamp(280px,46svh,420px)}
+  .pv-stage-wrap{height:clamp(280px,46svh,400px)}
+  .pv-thumbs{gap:1rem;margin-top:.85rem}
+  .pv-thumb-box{width:76px;height:76px;border-radius:12px;padding:6px}
+  .pv-thumb-label{font-size:.8rem}
 }
 @media (max-width:599px){
   .pv-features{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -901,7 +895,8 @@ html.pv-open,body.pv-open{overflow:hidden !important}
   .pv-enquire-btn{justify-content:center}
   .pv-tabs-bar{overflow-x:auto;scrollbar-width:none}
   .pv-tab{white-space:nowrap;padding:0 .9rem}
-  .pv-thumb-box{height:62px}
+  .pv-thumb-box{width:72px;height:72px;border-radius:10px;padding:5px}
+  .pv-thumb-label{font-size:.78rem}
   .pv-col-desc,.pv-col-apps,.pv-col-props{padding:1.2rem}
 }
 @media (prefers-reduced-motion:reduce){.pv[open]{animation:none}}

@@ -101,12 +101,12 @@ export function mountProducts(root: HTMLElement, env: PageEnv = {}): Off {
   fromHash();
   offs.push(mountEnquiry(root));
   mountViewer(root, on, env);
-  mountZoom(root, on);
   return () => offs.forEach((f) => f());
 }
 
 /** a card's picture opens larger, in a pop-up that closes with ×, Esc or a click outside */
 function mountZoom(root: HTMLElement, on: On) {
+  return;
   const pz = root.querySelector<HTMLDialogElement>("[data-pz]");
   if (!pz || typeof pz.showModal !== "function") return;
   const pic = pz.querySelector<HTMLElement>("[data-pz-pic]")!;
@@ -136,7 +136,6 @@ function mountViewer(root: HTMLElement, on: On, env?: PageEnv) {
   let from: HTMLElement | null = null;
   let currentProduct: any = null;
   let currentAngle = 0;
-  let isZoomed = false;
 
   const getCatalog = () => {
     try {
@@ -167,39 +166,39 @@ function mountViewer(root: HTMLElement, on: On, env?: PageEnv) {
   };
 
   const applyViewAngle = (pv: HTMLDialogElement, idx: number) => {
-    currentAngle = idx;
+    currentAngle = idx === 1 ? 1 : 0;
     const thumbs = Array.from(pv.querySelectorAll<HTMLButtonElement>("[data-pv-view]"));
     thumbs.forEach((th) => {
-      th.classList.toggle("is-active", Number(th.dataset.pvView) === idx);
-    });
-    const angleBtns = Array.from(pv.querySelectorAll<HTMLButtonElement>("[data-pv-set-angle]"));
-    angleBtns.forEach((ab) => {
-      ab.classList.toggle("is-active", Number(ab.dataset.pvSetAngle) === idx);
+      th.classList.toggle("is-active", Number(th.dataset.pvView) === currentAngle);
     });
 
     const mainImg = pv.querySelector<HTMLImageElement>("[data-pv-main-img]");
-    const galleryImg = pv.querySelector<HTMLImageElement>("[data-pv-gallery-img]");
+    if (mainImg && currentProduct) {
+      const frontSrc = currentProduct.image || "/icon.svg";
+      const backSrc = currentProduct.backImage || frontSrc;
+      const targetSrc = currentAngle === 1 ? backSrc : frontSrc;
 
-    let transform = "none";
-    let filter = "none";
-    if (idx === 1) {
-      transform = isZoomed ? "scale(1.4) scaleX(-1)" : "scaleX(-1)";
-      filter = "contrast(1.05) brightness(0.98)";
-    } else if (idx === 2) {
-      transform = isZoomed ? "scale(1.4) perspective(700px) rotateY(-18deg)" : "perspective(700px) rotateY(-18deg)";
-    } else if (idx === 3) {
-      transform = isZoomed ? "scale(1.4) perspective(700px) rotateY(18deg)" : "perspective(700px) rotateY(18deg)";
-    } else {
-      transform = isZoomed ? "scale(1.4)" : "none";
-    }
-
-    if (mainImg) {
-      mainImg.style.transform = transform;
-      mainImg.style.filter = filter;
-    }
-    if (galleryImg) {
-      galleryImg.style.transform = transform;
-      galleryImg.style.filter = filter;
+      if (mainImg.getAttribute("src") !== targetSrc) {
+        mainImg.style.opacity = "0.7";
+        mainImg.src = targetSrc;
+      }
+      mainImg.alt = `${currentProduct.fullName || currentProduct.name || ""} - ${currentAngle === 1 ? "Back View" : "Front View"}`;
+      mainImg.style.transform = "none";
+      mainImg.style.filter = "drop-shadow(0 16px 28px rgba(14,34,61,0.14))";
+      mainImg.style.width = "100%";
+      mainImg.style.height = "100%";
+      mainImg.style.maxWidth = "100%";
+      mainImg.style.maxHeight = "100%";
+      mainImg.style.objectFit = "contain";
+      mainImg.onload = () => {
+        mainImg.style.opacity = "1";
+      };
+      mainImg.onerror = () => {
+        if (mainImg.src !== frontSrc) {
+          mainImg.src = frontSrc;
+        }
+        mainImg.style.opacity = "1";
+      };
     }
   };
 
@@ -212,7 +211,6 @@ function mountViewer(root: HTMLElement, on: On, env?: PageEnv) {
 
     currentProduct = item;
     currentAngle = 0;
-    isZoomed = false;
     from = btn || null;
 
     // Badges & Title
@@ -231,24 +229,45 @@ function mountViewer(root: HTMLElement, on: On, env?: PageEnv) {
     const summaryEl = pv.querySelector<HTMLElement>("[data-pv-summary]");
     if (summaryEl) summaryEl.textContent = item.description || item.purpose || "";
 
-    // Main image & thumbnails
+    // Main image & front/back thumbnails
+    const frontSrc = item.image || "/icon.svg";
+    const backSrc = item.backImage || frontSrc;
+
     const mainImg = pv.querySelector<HTMLImageElement>("[data-pv-main-img]");
     if (mainImg) {
-      mainImg.src = item.image || "/icon.svg";
-      mainImg.alt = item.name || "";
+      mainImg.src = frontSrc;
+      mainImg.alt = `${item.fullName || item.name || ""} - Front View`;
       mainImg.style.transform = "none";
-      mainImg.style.filter = "none";
+      mainImg.style.filter = "drop-shadow(0 16px 28px rgba(14,34,61,0.14))";
+      mainImg.style.width = "100%";
+      mainImg.style.height = "100%";
+      mainImg.style.maxWidth = "100%";
+      mainImg.style.maxHeight = "100%";
+      mainImg.style.objectFit = "contain";
+      mainImg.style.opacity = "1";
     }
-    for (let i = 0; i < 4; i++) {
-      const thImg = pv.querySelector<HTMLImageElement>(`[data-pv-thumb-img="${i}"]`);
-      if (thImg) {
-        thImg.src = item.image || "/icon.svg";
-        thImg.alt = item.name || "";
-        if (i === 1) thImg.style.transform = "scaleX(-1)";
-        else if (i === 2) thImg.style.transform = "perspective(200px) rotateY(-18deg)";
-        else if (i === 3) thImg.style.transform = "perspective(200px) rotateY(18deg)";
-        else thImg.style.transform = "none";
-      }
+
+    const th0 = pv.querySelector<HTMLImageElement>('[data-pv-thumb-img="0"]');
+    if (th0) {
+      th0.src = frontSrc;
+      th0.alt = `${item.name || ""} - Front View`;
+      th0.style.transform = "none";
+      th0.style.width = "100%";
+      th0.style.height = "100%";
+      th0.style.objectFit = "contain";
+    }
+
+    const th1 = pv.querySelector<HTMLImageElement>('[data-pv-thumb-img="1"]');
+    if (th1) {
+      th1.src = backSrc;
+      th1.alt = `${item.name || ""} - Back View`;
+      th1.style.transform = "none";
+      th1.style.width = "100%";
+      th1.style.height = "100%";
+      th1.style.objectFit = "contain";
+      th1.onerror = () => {
+        th1.src = frontSrc;
+      };
     }
 
     // 4 Features in hero
@@ -424,27 +443,9 @@ function mountViewer(root: HTMLElement, on: On, env?: PageEnv) {
         return;
       }
 
-      // 4-side images angle buttons
-      const angleBtn = target.closest<HTMLButtonElement>("[data-pv-set-angle]");
-      if (angleBtn && angleBtn.dataset.pvSetAngle !== undefined) {
-        applyViewAngle(pv, Number(angleBtn.dataset.pvSetAngle));
-        return;
-      }
-
-      // Prev / Next arrows
-      if (target.closest("[data-pv-prev]")) {
-        applyViewAngle(pv, (currentAngle + 3) % 4);
-        return;
-      }
-      if (target.closest("[data-pv-next]")) {
-        applyViewAngle(pv, (currentAngle + 1) % 4);
-        return;
-      }
-
-      // Zoom toggle
-      if (target.closest("[data-pv-zoom]")) {
-        isZoomed = !isZoomed;
-        applyViewAngle(pv, currentAngle);
+      // Prev / Next arrows (toggle between Front 0 and Back 1)
+      if (target.closest("[data-pv-prev]") || target.closest("[data-pv-next]")) {
+        applyViewAngle(pv, currentAngle === 0 ? 1 : 0);
         return;
       }
 
@@ -501,14 +502,12 @@ function mountViewer(root: HTMLElement, on: On, env?: PageEnv) {
       }
     }
 
-    // Clicking on the product card (picture, product title, card)
+    // Clicking on the product card (opens product detail modal)
     const card = target.closest<HTMLElement>(".pf-row");
-    if (card && card.id) {
-      if (target.closest(".pf-ico") || target.closest(".pf-name") || target.closest(".pf-cat") || target.closest(".pf-sum") || target.closest(".pf-view-btn")) {
-        e.preventDefault();
-        const btn = card.querySelector<HTMLElement>(".pf-view-btn") || card;
-        open(card.id, "overview", btn);
-      }
+    if (card && card.id && !target.closest("a, input, select, textarea")) {
+      e.preventDefault();
+      const btn = card.querySelector<HTMLElement>(".pf-view-btn") || card;
+      open(card.id, "overview", btn);
     }
   });
 }

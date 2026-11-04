@@ -539,9 +539,10 @@ export const PRODUCTS_CSS = FINDER_CSS + FANCY_SELECT_CSS + BRANDS_MARQUEE_CSS +
 /* phones: the product page: a calmer top, two small fact cards a row, one wide enquire button, tabs that fit */
 @media (max-width:767px){
   .pv-hero{gap:1rem;padding:1rem 1rem 1.1rem}
-  .pv-stage-wrap{height:16.5rem;border-radius:16px}
-  .pv-thumbs{gap:.45rem}
-  .pv-thumb-box{height:3.4rem}
+  .pv-stage-wrap{height:18rem;border-radius:16px}
+  .pv-thumbs{display:flex;justify-content:center;gap:1rem;margin-top:.75rem}
+  .pv-thumb-box{width:76px;height:76px;border-radius:12px;padding:6px}
+  .pv-thumb-label{font-size:.8rem}
   .pv-info{padding-right:0}
   .pv-title{font-size:var(--fs-h3);line-height:1.2}
   .pv-subtitle{margin:.3rem 0 .6rem;font-size:var(--fs-body,1rem);color:var(--accent)}
