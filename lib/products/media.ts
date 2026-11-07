@@ -276,6 +276,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "sika-mbrace-adh-2200-part-b": {
     image: "sika-mbrace-adh-2200-part-b.png",
     backImage: "sika-mbrace-adh-2200-part-b-back.png",
+    video: "sika-mbrace-adh-2200-part-b.mp4",
     description: "High-strength epoxy structural adhesive and putty Component B (hardener), designed to mix with Part A for bonding and surface sealing applications.",
   },
   "sika-antisol-a4-white": {
@@ -364,11 +365,13 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "renacon-renaplast-ready-mix-plaster": {
     image: "renacon-renaplast-ready-mix-plaster.png",
     backImage: "renacon-renaplast-ready-mix-plaster-back.png",
+    video: "renacon-renaplast-ready-mix-plaster.mp4",
     description: "High-quality, factory-prepared cement-based ready mix plaster formulated with graded sand and performance additives for interior and exterior masonry plastering.",
   },
   "renacon-renabond-aac-joint-mortar-superior": {
     image: "renacon-renabond-aac-joint-mortar-superior.png",
     backImage: "renacon-renabond-aac-joint-mortar-superior-back.png",
+    video: "renacon-renabond-aac-joint-mortar-superior.mp4",
     description: "Factory-prepared, polymer-modified thin-bed mortar specially formulated for high bond strength, fast workability, and durable joints in AAC block masonry.",
   },
 "renacon-aac-block-3-inch": {
