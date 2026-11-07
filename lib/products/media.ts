@@ -46,6 +46,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "sika-rustop": {
     image: "sika-rustop.png",
     backImage: "sika-rustop-back.png",
+    video: "sika-rustop.mp4",
     description: "Two-component polymer-modified cementitious coating for the corrosion protection of steel reinforcement in concrete repair.",
   },
   "sika-rust-off-100": {
@@ -121,6 +122,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "fosroc-cebex-112": {
     image: "fosroc-cebex-112.png",
+    video: "fosroc-cebex-112.mp4",
     description: "Plasticising and expanding admixture for cementitious grouts to improve fluidity, reduce water-cement ratio, and compensate for plastic settlement.",
     pdf: "TDS-Cebex-112-200326.pdf",
   },
@@ -220,47 +222,55 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "sika-seal-550": {
     image: "sika-seal-550.png",
     backImage: "sika-seal-550-back.png",
+    video: "sika-seal-550.mp4",
     description: "Two-component, acrylic polymer-modified cementitious elastomeric waterproofing and protective coating for concrete and masonry.",
     pdf: "pds-sikatop-550seal.pdf",
   },
   "sika-seal-551": {
     image: "sika-seal-551.png",
     backImage: "sika-seal-551-back.png",
+    video: "sika-seal-551.mp4",
     description: "Two-part, flexible cementitious slurry coating for waterproofing structures subject to positive and negative water pressure.",
     pdf: "pds-sikatop-551seal.pdf",
   },
   "sika-emaco-s348": {
     image: "sika-emaco-s348.png",
     backImage: "sika-emaco-s348-back.png",
+    video: "sika-emaco-s348.mp4",
     description: "High-strength, shrinkage-compensated, fiber-reinforced structural repair mortar for structural concrete reinstatement.",
     pdf: "pds-sikaemaco-s-348.pdf",
   },
   "sika-bit-w1": {
     image: "sika-bit-w1.png",
     backImage: "sika-bit-w1-back.png",
+    video: "sika-bit-w1.mp4",
     description: "High-performance cementitious adhesive mortar specially formulated for bonding SikaBit W-15 waterproofing membrane systems.",
     pdf: "PDS_SikaBitW-1_2020.06.29.pdf",
   },
   "sika-control-777": {
     image: "sika-control-777.png",
     backImage: "sika-control-777-back.png",
+    video: "sika-control-777.mp4",
     description: "Specialized permeability-reducing and shrinkage-reducing admixture engineered to improve concrete durability and limit moisture ingress.",
     pdf: "pds-sikacontrol-777.pdf",
   },
   "sika-plast-5132-t": {
     image: "sika-plast-5132-t.png",
     backImage: "sika-plast-5132-t-back.png",
+    video: "sika-plast-5132-t.mp4",
     description: "High performance superplasticizer and water-reducing admixture developed to provide extended slump retention and enhanced workability in concrete mixes.",
     pdf: "pds-sikaplast-5132t.pdf",
   },
   "sika-emaco-s346": {
     image: "sika-emaco-s346.png",
     backImage: "sika-emaco-s346-back.png",
+    video: "sika-emaco-s346.mp4",
     description: "High-strength, shrinkage-compensated, flowable micro-concrete and precision structural repair mortar for restoration of large-volume concrete elements.",
   },
   "sika-mbrace-adh-2200-part-a": {
     image: "sika-mbrace-adh-2200-part-a.png",
     backImage: "sika-mbrace-adh-2200-part-a-back.png",
+    video: "sika-mbrace-adh-2200-part-a.mp4",
     description: "High-strength, non-sag epoxy structural adhesive and putty Component A, engineered for structural bonding, leveling, and composite strengthening systems.",
   },
   "sika-mbrace-adh-2200-part-b": {
@@ -271,6 +281,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "sika-antisol-a4-white": {
     image: "sika-antisol-a4-white.png",
     backImage: "sika-antisol-a4-white-back.png",
+    video: "sika-antisol-a4-white.mp4",
     description: "Aluminate-pigmented, resin-based liquid curing compound formulated to reduce moisture loss and solar heat absorption on freshly placed concrete surfaces.",
     pdf: "sika_antisol_a-4white.pdf",
   },
@@ -305,41 +316,49 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "sika-chapdur": {
     image: "sika-chapdur.png",
     backImage: "sika-chapdur-back.png",
+    video: "sika-chapdur.mp4",
     description: "Non-metallic, pre-blended dry-shake mineral floor hardener providing superior abrasion, wear, and impact resistance for monolithic concrete floors.",
   },
   "sikadur-55-lp": {
     image: "sikadur-55-lp.png",
     backImage: "sikadur-55-lp-back.png",
+    video: "sikadur-55-lp.mp4",
     description: "Two-component, low viscosity, solvent-free epoxy resin injection adhesive for structural crack repair and bonding applications.",
   },
   "sika-grout-214": {
     image: "sika-grout-214.png",
     backImage: "sika-grout-214-back.png",
+    video: "sika-grout-214.mp4",
     description: "High-performance, non-shrink cementitious expanding grout for machine foundations, stanchion bases, anchor pockets, and precast concrete assembly.",
   },
   "sikaproof-312-hdpe": {
     image: "sikaproof-312-hdpe.png",
     backImage: "sikaproof-312-hdpe-back.png",
+    video: "sikaproof-312-hdpe.mp4",
     description: "Pre-applied, fully bonded HDPE composite waterproofing membrane system for below-ground concrete basements and foundations.",
   },
   "sikaproof-sandwich-tape-100": {
     image: "sikaproof-sandwich-tape-100.png",
     backImage: "sikaproof-sandwich-tape-100-back.png",
+    video: "sikaproof-sandwich-tape-100.mp4",
     description: "Double-sided self-adhesive tape designed for joint sealing, detailing, and bonding SikaProof membrane systems.",
   },
   "sikashield-w159": {
     image: "sikashield-w159.png",
     backImage: "sikashield-w159-back.png",
+    video: "sikashield-w159.mp4",
     description: "Self-adhesive, cold-applied bituminous waterproofing membrane reinforced with polymer backing for below-ground and roofing waterproofing.",
   },
   "sikashield-w162": {
     image: "sikashield-w162.png",
     backImage: "sikashield-w162-back.png",
+    video: "sikashield-w162.mp4",
     description: "1.5 mm self-adhesive, cold-applied, SBS-modified bituminous waterproofing sheet membrane with cross-laminated HDPE film and edge release strip.",
   },
   "sikaswell-a2010-bar": {
     image: "sikaswell-a2010-bar.png",
     backImage: "sikaswell-a2010-bar-back.png",
+    video: "sikaswell-a2010-bar.mp4",
     description: "Acrylic swellable waterstop profile that expands in contact with water to seal construction joints in concrete structures.",
   },
   "renacon-renaplast-ready-mix-plaster": {
