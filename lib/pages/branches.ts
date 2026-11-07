@@ -15,6 +15,8 @@
  * word and the page reads in full before scripts arrive.
  */
 import type { Branch } from "../content";
+import { towns as TOWN_PAGES } from "../locations";
+import { townPath } from "./locations";
 import { arrow, type ContactInfo, esc, listing, mapsLink, pageHead, secHead, tel, two } from "./kit";
 
 export interface BranchesData {
@@ -44,7 +46,9 @@ export function branchesMarkup(d: BranchesData) {
     rows.push(`<div class="br-row">${phoneIc}<a class="br-tel" href="${tel(phone)}">${esc(phone)}</a></div>`);
     if (isHead) rows.push(`<div class="br-row">${clockIc}<span>${esc(c.hours)}</span></div>`);
 
+    const town = TOWN_PAGES.find((t) => t.city === b.city);
     const acts = [
+      town ? `<a class="pg-link br-act br-act--page" href="${townPath(town)}" data-internal>Services and products in ${esc(b.city)}${arrow}</a>` : "",
       b.mapQuery
         ? `<a class="pg-link br-act" href="${esc(mapsLink(b.mapQuery))}" target="_blank" rel="noopener noreferrer">Open in Maps${arrow}</a>`
         : "",
@@ -56,7 +60,7 @@ export function branchesMarkup(d: BranchesData) {
     return `<li class="br-card${isHead ? " br-card--head" : ""}" data-rv style="--d:${i * 70}ms">
       <span class="br-no" aria-hidden="true">${two(i + 1)}</span>
       <p class="br-role">${esc(b.role)}</p>
-      <h3 class="br-city">${esc(b.city)}</h3>
+      <h3 class="br-city">${town ? `<a href="${townPath(town)}" data-internal>${esc(b.city)}</a>` : esc(b.city)}</h3>
       <p class="br-line">${esc(b.line)}</p>
       <div class="br-rows">${rows.join("")}</div>
       <div class="br-acts">${acts}</div>
@@ -85,6 +89,8 @@ export const BRANCHES_CSS = `
 .br-card--head .br-role{color:#9fbbe6}
 .br-city{margin:.3rem 0 0;font-family:var(--display);font-size:var(--fs-h3);font-weight:650;line-height:1.1;letter-spacing:-.02em;color:var(--ink)}
 .br-card--head .br-city{color:#fff}
+.br-city a{color:inherit;text-decoration:none}
+.br-city a:hover{color:var(--accent)}
 .br-line{margin:.6rem 0 0;max-width:34rem;font-size:var(--fs-body);line-height:1.6;color:var(--ink2)}
 .br-card--head .br-line{color:rgba(241,236,225,.84)}
 .br-rows{display:grid;gap:.55rem;margin-top:clamp(1rem,2vh,1.4rem);padding-top:clamp(1rem,2vh,1.4rem);border-top:1px solid var(--line);width:100%}
