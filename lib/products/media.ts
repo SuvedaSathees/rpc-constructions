@@ -376,18 +376,26 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
 "renacon-aac-block-3-inch": {
     image: "renacon-aac-block-3-inch.png",
+    backImage: "renacon-aac-block-3-inch-back.png",
+    video: "renacon-aac-block-3-inch.mp4",
     description: "High-precision autoclaved aerated concrete (AAC) block (3 inch thick) for lightweight, fire-resistant, and thermally insulated partition walls.",
   },
   "renacon-aac-block-4-inch": {
     image: "renacon-aac-block-4-inch.png",
+    backImage: "renacon-aac-block-4-inch-back.png",
+    video: "renacon-aac-block-4-inch.mp4",
     description: "High-precision autoclaved aerated concrete (AAC) block (4 inch thick) for internal non-load bearing walls, shaft enclosures, and partition masonry.",
   },
   "renacon-aac-block-6-inch": {
     image: "renacon-aac-block-6-inch.png",
+    backImage: "renacon-aac-block-6-inch-back.png",
+    video: "renacon-aac-block-6-inch.mp4",
     description: "High-precision autoclaved aerated concrete (AAC) block (6 inch thick) providing structural masonry strength, sound insulation, and thermal efficiency for exterior and interior walls.",
   },
   "renacon-aac-block-8-inch": {
     image: "renacon-aac-block-8-inch.png",
+    backImage: "renacon-aac-block-8-inch-back.png",
+    video: "renacon-aac-block-8-inch.mp4",
     description: "High-precision autoclaved aerated concrete (AAC) block (8 inch thick) designed for external perimeter walls, load-bearing infill masonry, and maximum acoustic and thermal performance.",
   },
   "renacon-aac-block-9-inch": {
