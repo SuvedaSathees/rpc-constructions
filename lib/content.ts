@@ -24,6 +24,7 @@ export const nav = [
   { label: "Projects", href: "/projects" },
   { label: "Services", href: "/services" },
   { label: "Blog", href: "/blog" },
+  { label: "Branches", href: "/branches" },
   { label: "Contact us", href: "/contact" },
 ] as const;
 
@@ -46,6 +47,50 @@ export const contact = {
   geo: { lat: 11.341, lng: 77.7172 },
   regions: ["Erode", "Coimbatore", "Krishnagiri", "Chennai"],
 } as const;
+
+/**
+ * A town we work from. Erode is the head office and the only address on the
+ * visiting card; the other three are the towns we run work out of. No address
+ * or direct number has been invented for them: give a branch `address`,
+ * `mapQuery` or `phone` here and the branches page shows them at once.
+ */
+export interface Branch {
+  city: string;
+  /** "Head office" or "Branch", shown over the town's name */
+  role: string;
+  /** one line on the work we do from there */
+  line: string;
+  address?: string;
+  mapQuery?: string;
+  phone?: string;
+}
+
+/** The four towns, head office first (app/branches, lib/pages/branches.ts) */
+export const branches: readonly Branch[] = [
+  {
+    city: "Erode",
+    role: "Head office",
+    line: "The office you can walk into: enquiries, site inspections and the quotes for every job we run.",
+    address: contact.address,
+    mapQuery: contact.mapQuery,
+    phone: contact.phone,
+  },
+  {
+    city: "Coimbatore",
+    role: "Branch",
+    line: "Waterproofing and construction across the city and the towns around it, from houses to office buildings.",
+  },
+  {
+    city: "Krishnagiri",
+    role: "Branch",
+    line: "Factories, warehouses and processing units, with roofs, gutters and floors detailed for the monsoon.",
+  },
+  {
+    city: "Chennai",
+    role: "Branch",
+    line: "Project work in and around the city, where the northeast monsoon sets the standard for every detail.",
+  },
+];
 
 
 

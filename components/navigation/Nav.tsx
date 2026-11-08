@@ -16,7 +16,7 @@ const tel = `tel:${contact.phone.replace(/[^0-9+]/g, "")}`;
 /** the page's sand, for the pill behind the page you are on */
 const SAND = "#ece6da";
 /** pages that open on a dark picture, where the logo's name is drawn in white */
-const DARK_TOP = new Set(["/", "/classic", "/waterproofing", "/about", "/products", "/projects", "/services", "/blog"]);
+const DARK_TOP = new Set(["/", "/classic", "/waterproofing", "/about", "/products", "/projects", "/services", "/blog", "/branches"]);
 /** the bars' material: the logo's dark blue, a little lighter at the top, with a fine light edge and a soft shadow */
 const BAR = {
   background: "linear-gradient(180deg, rgba(19,49,108,0.94), rgba(11,35,80,0.94) 60%)",
@@ -36,7 +36,7 @@ const NAV_CSS = `
 .rn-cta--sm{display:none;gap:8px;height:36px;padding:0 4px 0 14px;box-shadow:none}
 .rn-cta--sm .rn-ctai{width:28px;height:28px}
 @media (min-width:768px){.rn-cta--sm{display:inline-flex}}
-@media (min-width:1024px){
+@media (min-width:1200px){
   .rn-in{display:grid;grid-template-columns:minmax(13rem,1fr) auto minmax(0,1fr);align-items:center;padding-top:12px}
   .rn-sp{display:block}
   .rn-mini{display:none}
@@ -45,13 +45,14 @@ const NAV_CSS = `
   .rn-logo{height:52px}
 }
 @media (min-width:1280px){.rn-link{padding:0 15px}}
-@media (max-width:1023px){.rn-mini{margin-top:6px}}
+@media (max-width:1199px){.rn-mini{margin-top:6px}}
 `;
 
 /**
  * The header. The logo sits on the page itself, at its top left, with no box
  * round it, and scrolls away with the page (in white on the home page's dark
- * opening, in the logo's dark blue everywhere else). From 1024px the pages are
+ * opening, in the logo's dark blue everywhere else). From 1200px (the width at
+ * which all eight pages, the logo and Contact fit on one line) the pages are
  * in a rounded pill of the logo's dark blue centred at the top, and Contact is
  * a light blue pill at the right; both float with a gap above them and stay in
  * view. The page you are on sits in a sand pill, which slides across to the
@@ -200,7 +201,7 @@ export function Nav() {
           style={{ opacity: scrolled && !open ? 1 : 0, background: pathname === "/contact" ? "#d9e2ee" : undefined }}
         />
         <div className="rn-in gutter relative mx-auto flex max-w-none justify-end pt-2">
-          {/* from 1024px: room for the logo, the pages in a pill centred at the top, and Contact at the right */}
+          {/* from 1200px: room for the logo, the pages in a pill centred at the top, and Contact at the right */}
           <span aria-hidden className="rn-sp" />
           <nav aria-label="Primary" className="rn-bar pointer-events-auto" style={BAR}>
             <div ref={row} className="relative flex items-center gap-0.5">

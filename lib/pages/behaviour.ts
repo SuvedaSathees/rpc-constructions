@@ -14,7 +14,7 @@
 import { fancySelect } from "./fancy-select";
 import { mountContactForm } from "./contact-form";
 
-export type PageKind = "services" | "projects" | "about" | "contact" | "blog" | "post" | "products" | "methods";
+export type PageKind = "services" | "projects" | "about" | "contact" | "blog" | "post" | "products" | "methods" | "branches";
 export interface PageEnv {
   /** smooth-scroll to a position (the site's scroller when there is one) */
   scrollTo?: (y: number) => void;

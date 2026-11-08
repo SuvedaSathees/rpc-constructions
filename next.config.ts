@@ -13,6 +13,21 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  /**
+   * Keep search engines out until the site is on its own domain.
+   * Any *.vercel.app address (production and previews) answers with
+   * "noindex, nofollow", so Google drops it and does not index it again.
+   * On the real domain the rule does not match, so indexing turns on by itself.
+   * SITE_NOINDEX=true (in Vercel's environment variables) switches indexing
+   * off on every address, the real domain included, if ever needed.
+   * Do not block these pages in robots.txt: Google must be able to crawl a
+   * page to see its noindex.
+   */
+  async headers() {
+    const noindex = [{ key: "X-Robots-Tag", value: "noindex, nofollow" }];
+    if (process.env.SITE_NOINDEX === "true") return [{ source: "/:path*", headers: noindex }];
+    return [{ source: "/:path*", has: [{ type: "host", value: "(?<sub>.+)\\.vercel\\.app" }], headers: noindex }];
+  },
 };
 
 export default nextConfig;
