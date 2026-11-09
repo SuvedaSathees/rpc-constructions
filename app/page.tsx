@@ -63,6 +63,14 @@ const STILLS: Readonly<Record<string, { before: string; after: string }>> = {
   walls: { before: "/images/rain/wall-before.webp", after: "/images/rain/wall-after.webp" },
 };
 
+/** modern architectural photograph for each waterproofing application card */
+const WATERPROOFING_IMAGES: Readonly<Record<string, string>> = {
+  terrace: "/images/waterproofing/terrace-modern.jpg",
+  ceiling: "/images/waterproofing/ceiling-modern.jpg",
+  bathroom: "/images/waterproofing/bathroom-modern.jpg",
+  walls: "/images/waterproofing/walls-modern.jpg",
+};
+
 /** the brand slide: the product list's brands (most products first), then the methods guide's other brands */
 function brandSlide() {
   const listed = brandInfo().map((b) => ({ name: b.name, color: brandMark(b.name) }));
@@ -76,7 +84,7 @@ const hookData: HookData = {
     const [lead, ...rest] = ps;
     return lead ? [{ group, lead: { name: lead.name, slug: lead.slug, cat: lead.category, pic: picOf(lead.slug) }, more: rest.map((p) => p.name) }] : [];
   }),
-  signs: steps.map((x) => ({ place: x.place, see: x.title, fix: x.apply, href: x.link.href, ...STILLS[x.zone]! })),
+  signs: steps.map((x) => ({ place: x.place, see: x.title, fix: x.apply, href: x.link.href, image: WATERPROOFING_IMAGES[x.zone] ?? STILLS[x.zone]!.after, ...STILLS[x.zone]! })),
   projects: projects.slice(0, 3).map((p) => ({ slug: p.slug, name: p.name, location: p.location, type: p.type, image: p.image, summary: p.summary })),
   brands: brandSlide(),
 };

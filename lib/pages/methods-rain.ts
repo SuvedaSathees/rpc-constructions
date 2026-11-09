@@ -114,7 +114,6 @@ export function rainMarkup() {
     <div class="rt" data-from="above" data-leak>
       <div class="rt-head">
         <div><p class="pg-mark">Rain test</p><h2 class="pg-h2" id="rt-h">Follow one drop of rain.</h2></div>
-        <p class="pg-lede">Pick a method below. The drop travels into the building and stops at the layer that method makes. The right method for your building is chosen on site.</p>
       </div>
       <div class="rt-stage">
         <figure class="rt-scene" role="img" aria-labelledby="rt-cap">

@@ -25,7 +25,7 @@ export interface HookData {
   shelf: { group: string; lead: { name: string; slug: string; cat: string; pic: string }; more: string[] }[];
   /** the places on the waterproofing page, each with how many methods its guide names */
   /** the leaks people notice, as the film on the home page shows them: the place, what they see, what we do, and where to read more */
-  signs: { place: string; see: string; fix: string; href: string; before: string; after: string }[];
+  signs: { place: string; see: string; fix: string; href: string; image?: string; before: string; after: string }[];
   projects: { slug: string; name: string; location: string; type: string; image: string; summary: string }[];
   /** the brand slide: the product list's brands, then the methods guide's, with a colour for a name without a logo */
   brands: { name: string; color: string }[];
@@ -70,28 +70,24 @@ function products(d: HookData) {
 
 /* ------------------------------------------------------------------ 03 waterproofing */
 function waterproofing(d: HookData) {
-  const cards = d.signs
-    .map(
-      (x, i) => `<li data-rv style="--d:${i * 60}ms"><a class="hk-ba" href="${esc(x.href)}" data-internal>
-      <span class="hk-bap">
-        <img class="hk-ba-after" src="${esc(x.after)}" width="960" height="540" alt="" loading="lazy" decoding="async">
-        <img class="hk-ba-before" src="${esc(x.before)}" width="960" height="540" alt="" loading="lazy" decoding="async">
-        <span class="hk-bal" aria-hidden="true">Before</span><span class="hk-bar" aria-hidden="true">After</span><span class="hk-bad" aria-hidden="true"></span>
-      </span>
-      <span class="hk-bat">
-        <em>${esc(x.place)}</em>
-        <b>${esc(x.see)}</b>
-        <span class="hk-baf"><span>What we do</span>${esc(x.fix)}</span>
-      </span>
-      <span class="hk-bago" aria-hidden="true">${arrow}</span>
-    </a></li>`,
-    )
-    .join("");
+  void d;
   return `<section class="hk hk--paper hk-wp" id="waterproofing" aria-labelledby="hk-wp-h">
   <div class="hm-wrap">
-    <div class="hk-head"><div>${mark("03", "Waterproofing")}<h2 class="hm-h2" id="hk-wp-h" data-rv>What do you&nbsp;see?</h2></div></div>
-    <ul class="hk-bas">${cards}</ul>
-    <div class="hk-after" data-rv>${btn("/waterproofing", "See every method")}</div>
+    <div class="hk-wp-grid">
+      <div class="hk-wp-info">
+        <div>
+          ${mark("03", "Waterproofing Solutions")}
+          <h2 class="hm-h2 hk-wp-h2" id="hk-wp-h" data-rv>Water Stops Here.<br>Protection Starts Here.</h2>
+        </div>
+        <p class="hk-wp-lede" data-rv>Advanced waterproofing solutions designed to prevent leaks, resist moisture, and protect your building from the ground up. Because lasting structures deserve lasting protection.</p>
+        <div class="hk-wp-action" data-rv>${btn("/waterproofing", "See every method")}</div>
+      </div>
+      <div class="hk-wp-media" data-rv style="--d:120ms">
+        <figure class="hk-wp-figure">
+          <img src="/images/waterproofing/waterproofing-solutions.jpg" width="1024" height="576" alt="Professional applicator applying waterproofing coating on a rooftop terrace" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </div>
   </div>
 </section>`;
 }
@@ -303,28 +299,18 @@ export const HOOKS_CSS =
 .hm-pbh{margin:0;font-family:var(--serif);font-weight:600;font-size:var(--fs-sub);line-height:1.2;letter-spacing:-.02em;color:var(--ink)}
 
 /* 03 waterproofing: four places, each a still from the home page film split down the middle, the leak on the left and the same place dry on the right; pointed at, the dry side slides over */
-.hk-bas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.7rem,1.2vw,1rem);margin:0;padding:0;list-style:none}
-.hk-ba{position:relative;display:flex;flex-direction:column;height:100%;padding:.55rem;border-radius:20px;background:#fff;box-shadow:0 0 0 1px var(--line),0 18px 36px -30px rgba(18,34,59,.45);color:inherit;text-decoration:none;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
-.hk-bap{--x:50%;position:relative;display:block;aspect-ratio:4/3;overflow:hidden;border-radius:15px;background:#d9d0bf}
-.hk-bap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hk-ba-before{clip-path:inset(0 calc(100% - var(--x)) 0 0);transition:clip-path .7s cubic-bezier(.45,0,.2,1)}
-.hk-bad{position:absolute;top:0;bottom:0;left:var(--x);width:2px;margin-left:-1px;background:#fff;box-shadow:0 0 12px rgba(0,0,0,.35);transition:left .7s cubic-bezier(.45,0,.2,1)}
-.hk-bal,.hk-bar{position:absolute;z-index:1;bottom:.6rem;padding:.15rem .55rem;border-radius:999px;font-size:var(--fs-body);font-weight:600;line-height:1.3;color:#fff;transition:opacity .4s}
-.hk-bal{left:.6rem;background:rgba(162,69,44,.88)}
-.hk-bar{right:.6rem;background:rgba(11,110,128,.9)}
-.hk-ba:hover .hk-ba-before{clip-path:inset(0 100% 0 0)}
-.hk-ba:hover .hk-bad{left:0}
-.hk-ba:hover .hk-bal{opacity:0}
-.hk-bat{display:flex;flex-direction:column;gap:.25rem;padding:.9rem .45rem .5rem}
-.hk-bat em{font-style:normal;font-size:var(--fs-body);font-weight:500;color:var(--mute)}
-.hk-bat b{font-family:var(--serif);font-size:var(--fs-body);font-weight:700;line-height:1.35;color:var(--ink)}
-.hk-baf{margin-top:.5rem;padding-top:.6rem;border-top:1px solid var(--line);font-size:var(--fs-body);line-height:1.5;color:var(--ink2)}
-.hk-baf span{display:block;font-weight:600;color:var(--water)}
-.hk-bago{position:absolute;top:1.1rem;right:1.1rem;display:grid;place-items:center;width:2.3rem;height:2.3rem;border-radius:50%;background:#fff;box-shadow:0 4px 12px -6px rgba(18,34,59,.45);color:var(--ink);transition:background-color .3s,color .3s}
-.hk-ba:hover{transform:translateY(-4px);box-shadow:0 0 0 1.5px var(--navy),0 28px 44px -28px rgba(18,34,59,.55)}
-.hk-ba:hover .hk-bago{background:var(--navy);color:#fff}
-.hk-ba:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-.hk-ba:focus-visible .hk-ba-before{clip-path:inset(0 100% 0 0)}
+/* 03 waterproofing solutions */
+.hk-wp-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.22fr);align-items:center;gap:2.5rem clamp(2.5rem,6vw,6rem)}
+.hk-wp-info{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(1.1rem,2.4vh,1.6rem);max-width:35rem}
+.hk-wp-info .hm-mark{margin-bottom:.35rem}
+.hk-wp-h2{margin:0;font-family:var(--serif);font-weight:600;font-size:var(--fs-title);line-height:1.14;letter-spacing:-.02em;color:var(--ink);text-wrap:balance}
+.hk-wp-lede{margin:0;font-size:var(--fs-body);line-height:1.65;color:var(--ink2);text-wrap:pretty}
+.hk-wp-action{margin-top:.4rem}
+.hk-wp-media{position:relative;width:100%}
+.hk-wp-figure{position:relative;margin:0;overflow:hidden;border-radius:24px;aspect-ratio:16/9;background:#d9d0bf;box-shadow:0 0 0 1px var(--line),0 28px 56px -28px rgba(18,34,59,.38);transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s}
+.hk-wp-figure img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.hk-wp-figure:hover{transform:translateY(-3px);box-shadow:0 0 0 1px rgba(18,34,59,.18),0 34px 64px -26px rgba(18,34,59,.48)}
+.hk-wp-figure:hover img{transform:scale(1.03)}
 
 /* 04 projects: three prints in a pile, a little turned; the top one's words beside it */
 .hk-proj{display:flex;flex-direction:column;justify-content:center;min-height:calc(100svh - var(--nav-room));padding:calc(var(--nav-room) + clamp(.5rem,2vh,1.2rem)) 0 clamp(1rem,3vh,2rem)}
@@ -365,11 +351,12 @@ export const HOOKS_CSS =
 
 @media (max-width:1199px){
   .hk-shelf{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .hk-bas{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:1023px){
 }
 @media (max-width:899px){
+  .hk-wp-grid{grid-template-columns:minmax(0,1fr);gap:clamp(1.8rem,4vh,2.6rem)}
+  .hk-wp-info{max-width:none}
   .hk-pgrid{grid-template-columns:minmax(0,1fr)}
   .hk-pinfo{padding-left:0}
   .hk-proj{min-height:0;padding:clamp(3.5rem,9vh,5rem) 0}
@@ -379,10 +366,11 @@ export const HOOKS_CSS =
 }
 @media (max-width:599px){
   .hk-shelf{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .hk-bas{grid-template-columns:minmax(0,1fr)}
   .hk-kind{white-space:normal;align-items:flex-start}
   .hk-kind i{margin-top:.45rem}
   .hk-pol{width:84%}
+  .hk-wp-action{width:100%}
+  .hk-wp-action .hm-btn{width:100%;justify-content:center}
   .hk-btn{width:100%}
   .hk-side{align-items:stretch}
 }
@@ -410,14 +398,9 @@ export const HOOKS_CSS =
   .hk-brands .wp-btile{width:7.6rem;height:3.9rem;padding:.55rem .9rem;border-radius:12px}
   .hk-brands .wp-btile img{max-height:2.5rem}
   .hk-brands .wp-bname{font-size:var(--fs-body,1rem)}
-  /* waterproofing: four before and after pictures, two to a row */
-  .hk-bas{grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem}
-  .hk-ba{padding:.4rem .4rem .7rem;border-radius:16px}
-  .hk-bap{aspect-ratio:1/1}
-  .hk-bat b,.hk-baf{display:none}
-  .hk-bat em{font-size:var(--fs-body,1rem);font-style:normal;font-weight:600;color:var(--ink)}
-  .hk-bago{display:none}
-  .hk-wp .hk-after{margin-top:.9rem}
+  /* waterproofing solutions */
+  .hk-wp-figure{border-radius:18px}
+  .hk-wp-h2{font-size:var(--fs-h3);line-height:1.15}
   /* projects: the heading, the pile of prints (each names itself) and one row with the arrows and the button */
   .hk-proj{min-height:0;padding:2.4rem 0 2.2rem}
   .hk-pgrid{grid-template-columns:auto minmax(0,1fr);gap:0 .8rem}
@@ -445,5 +428,5 @@ export const HOOKS_CSS =
   .hm-services .hm-sbtns{margin-top:0}
   .hm-services .hm-sbtns .hm-btn{width:100%;justify-content:center}
 }
-@media (prefers-reduced-motion:reduce){.hk-pol,.hk-pi{transition:none;animation:none}.hk-ba,.hk-ba-before,.hk-bad,.hk-card img,.hk-pic img,.hk-pic svg{transition:none}.hk-card a:hover img{transform:none}.hk-tile:hover .hk-pic img,.hk-tile:hover .hk-pic svg{transform:none}.hk-tile:hover{transform:none}}
+@media (prefers-reduced-motion:reduce){.hk-pol,.hk-pi{transition:none;animation:none}.hk-wp-figure,.hk-wp-figure img,.hk-card img,.hk-pic img,.hk-pic svg{transition:none}.hk-card a:hover img{transform:none}.hk-tile:hover .hk-pic img,.hk-tile:hover .hk-pic svg{transform:none}.hk-tile:hover{transform:none}}
 `;
