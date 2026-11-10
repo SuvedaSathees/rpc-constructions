@@ -68,6 +68,8 @@ export interface HomeOptions {
   rawImages?: boolean;
   /** the section's number in its marker, when it sits elsewhere in the page */
   n?: string;
+  label?: string;
+  id?: string;
   /** on the home page's own run of sections: no button beside the headline, and the core service without its booking button */
   below?: boolean;
 }
@@ -166,11 +168,11 @@ export function servicesMarkup(d: HomeData, _o: HomeOptions) {
       return `<li>${check}<span><b>${esc(where)}</b>${How ? `<span>${esc(How)}</span>` : ""}</span></li>`;
     })
     .join("");
-  return `<section class="hm-sec hm-services" id="services" aria-labelledby="services-title">
+  return `<section class="hm-sec hm-services" id="${_o.id ?? "services"}" aria-labelledby="services-title">
   <div class="hm-wrap">
     <header class="hm-head">
       <div>
-        ${mark(_o.n ?? "02", "Services")}
+        ${mark(_o.n ?? "02", _o.label ?? "Services")}
         <h2 class="hm-h2" id="services-title" data-rv>Waterproofing, construction and leak&nbsp;repair.</h2>
       </div>
       ${_o.below ? "" : `<div class="hm-side" data-rv>

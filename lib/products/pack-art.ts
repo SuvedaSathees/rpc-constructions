@@ -41,11 +41,11 @@ const DRAW: Record<string, Draw> = {
     label(37, 50, 46, 36, t, z),
   // a steel drum with rolling hoops
   drum: (t, z, s) =>
-    `<rect x="31" y="20" width="58" height="84" rx="5" fill="${t}"/><rect x="31" y="20" width="58" height="84" rx="5" fill="url(#${s})"/>` +
-    `<path d="M31 25h58M31 99h58" stroke="#000" stroke-opacity=".22" stroke-width="2"/>` +
-    `<path d="M31 42h58M31 82h58" stroke="#000" stroke-opacity=".16" stroke-width="3"/>` +
-    `<circle cx="78" cy="22.5" r="2.4" fill="#000" fill-opacity=".3"/>` +
-    label(37, 47, 46, 33, t, z),
+    `<rect x="25" y="8" width="70" height="102" rx="6" fill="${t}"/><rect x="25" y="8" width="70" height="102" rx="6" fill="url(#${s})"/>` +
+    `<path d="M25 14h70M25 104h70" stroke="#000" stroke-opacity=".22" stroke-width="2"/>` +
+    `<path d="M25 36h70M25 80h70" stroke="#000" stroke-opacity=".16" stroke-width="3"/>` +
+    `<circle cx="80" cy="11" r="2.6" fill="#000" fill-opacity=".3"/>` +
+    label(31, 42, 58, 36, t, z, 13.5),
   // a two-part kit: a pail and a small can beside it
   kit: (t, z, s) =>
     `<path d="M24 44h50l-4 56H28z" fill="#f2f1ec"/><path d="M24 44h50l-4 56H28z" fill="url(#${s})"/>` +

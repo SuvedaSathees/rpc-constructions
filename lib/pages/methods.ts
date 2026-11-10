@@ -116,19 +116,19 @@ const BASE_CSS = `
 
 /* the monsoon house film, full width of the page, at its own proportions */
 /* the film edge to edge, one screen tall, like the home page's opening; the title in its middle, on a soft shade */
-.wp-film{position:relative;padding:0}
-.wp-fbox{position:relative;margin:0;width:100%;min-height:var(--head-h,22rem);height:clamp(22rem,54vh,34rem);overflow:hidden;border-radius:0;background:#0b1626}
-.wp-fvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.wp-fbox::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,20,44,.88) 0%,rgba(7,20,44,.65) 50%,rgba(7,20,44,.35) 100%),linear-gradient(180deg,rgba(7,20,44,.55),rgba(7,20,44,0) 35%);pointer-events:none}
-.wp-fhead{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;height:100%;max-width:1360px;margin:0 auto;padding:var(--nav-room,80px) var(--gutter,3rem) clamp(2rem,4.5vh,3rem);box-sizing:border-box;text-align:left}
+.wp-film{padding:0}
+.wp-fbox{position:relative;margin:0;width:100%;height:100svh;overflow:hidden;border-radius:0;background:#0b1626}
+.wp-fvid{display:block;width:100%;height:100%;object-fit:cover}
+.wp-fbox::after{content:"";position:absolute;inset:0;background:linear-gradient(20deg,rgba(6,16,34,.78) 0%,rgba(6,16,34,.42) 38%,rgba(6,16,34,0) 65%),linear-gradient(180deg,rgba(6,16,34,.45),transparent 22%);pointer-events:none}
+.wp-fhead{position:absolute;inset:auto 0 0 0;z-index:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;width:100%;max-width:1360px;margin:0 auto;padding:0 var(--gutter,3rem) clamp(2.4rem,9vh,5.5rem);box-sizing:border-box;text-align:left}
 .wp-fhead .pg-mark{justify-content:flex-start;margin:0 0 1rem;color:rgba(255,255,255,.85)}
 .wp-fhead .pg-h1{max-width:20ch;margin:0;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.35)}
 /* phones: the square film at its own proportions, small and centred just below the bar, and the title under it */
 @media (max-width:767px){
   .wp-film{background:#0a1823;padding:calc(var(--nav-h,60px) + 1rem) 0 0}
-  .wp-fbox{height:auto;min-height:0;overflow:visible;background:none;padding:0 var(--gutter,1rem)}
+  .wp-fbox{height:auto;overflow:visible;background:none;padding:0 var(--gutter,1rem)}
   .wp-fbox::after{display:none}
-  .wp-fvid{position:static;height:auto;aspect-ratio:1/1;border-radius:18px;box-shadow:0 18px 40px -22px rgba(0,0,0,.8)}
+  .wp-fvid{height:auto;aspect-ratio:1/1;border-radius:18px;box-shadow:0 18px 40px -22px rgba(0,0,0,.8)}
   .wp-fhead{position:static;inset:auto;padding:1.5rem 0 2.2rem;max-width:none}
 }
 /* the brands follow the methods on the same background, so they need little room above */

@@ -62,7 +62,7 @@ export function aboutMarkup(d: AboutData) {
         <p class="ab-ptrole">${esc(p.role)}</p>
         <h3 class="ab-ptname">${esc(p.name)}</h3>
         ${p.qualification ? `<p class="ab-ptq">${esc(p.qualification)}</p>` : ""}
-        <p class="ab-p">${esc(p.bio)}</p>
+        ${p.bio.split(/\n\s*\n/).filter(Boolean).map((para) => `<p class="ab-p">${esc(para.trim())}</p>`).join("")}
       </div>
     </article>`;
 
@@ -141,19 +141,18 @@ export const ABOUT_CSS = `
 .ab-whotext .ab-lead{margin-top:0}
 .ab-lead{margin:1.4rem 0 0;max-width:40rem;font-size:var(--fs-body);line-height:1.65;color:var(--ink)}
 .ab-p{margin:1rem 0 0;max-width:40rem;font-size:var(--fs-body);line-height:1.7;color:var(--ink2)}
-.ab-pts{display:grid;gap:clamp(2.5rem,7vh,4.5rem);margin-top:clamp(2.6rem,7vh,4.5rem)}
-.ab-pt{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:1.6rem clamp(2rem,6vw,6rem);align-items:center}
-.ab-pt--flip{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
-.ab-pt--flip .ab-ptph{order:2}
-.ab-pt--flip .ab-ptcopy{order:1;justify-self:end}
-.ab-ptph{width:100%;max-width:25rem}
-.ab-pt--flip .ab-ptph{justify-self:end}
-.ab-ptph img{display:block;width:100%;height:auto;aspect-ratio:5/6;object-fit:cover;object-position:center top;border-radius:14px;box-shadow:0 24px 48px -28px rgba(11,35,80,.45),0 0 0 1px var(--line)}
-.ab-ptcopy{max-width:36rem;padding-left:1.4rem;border-left:2px solid var(--accent)}
-.ab-ptrole{margin:0;font-size:var(--fs-body);font-weight:600;color:var(--accent)}
-.ab-ptname{margin:.4rem 0 0;font-family:var(--display);font-size:var(--fs-sub);font-weight:600;line-height:1.25;letter-spacing:-.015em;color:var(--ink)}
+.ab-pts{display:grid;gap:clamp(3.5rem,8vh,6rem);margin-top:clamp(2.6rem,7vh,4.5rem)}
+.ab-pt{display:grid;grid-template-columns:clamp(280px,32vw,400px) minmax(0,1fr);gap:clamp(2.5rem,5vw,4.5rem);align-items:center}
+.ab-pt--flip{grid-template-columns:minmax(0,1fr) clamp(280px,32vw,400px)}
+.ab-pt--flip .ab-ptph{order:2;justify-self:end}
+.ab-pt--flip .ab-ptcopy{order:1;justify-self:start}
+.ab-ptph{width:100%;max-width:27rem}
+.ab-ptph img{display:block;width:100%;height:auto;aspect-ratio:5/6;object-fit:cover;object-position:center top;border-radius:18px;box-shadow:0 24px 48px -24px rgba(11,35,80,.38),0 0 0 1px var(--line)}
+.ab-ptcopy{max-width:54rem}
+.ab-ptrole{margin:0;font-size:.84rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
+.ab-ptname{margin:.35rem 0 0;font-family:var(--display);font-size:clamp(1.75rem,2.4vw,2.25rem);font-weight:700;line-height:1.2;letter-spacing:-.02em;color:var(--ink)}
 .ab-ptq{margin:.3rem 0 0;font-size:var(--fs-body);color:var(--mute)}
-.ab-ptcopy .ab-p{margin-top:.85rem}
+.ab-ptcopy .ab-p{margin-top:1.15rem;max-width:52rem;font-size:1.035rem;line-height:1.74;letter-spacing:-.005em;color:var(--ink2);text-wrap:pretty}
 
 /* vision and mission: an architectural two-panel diptych — deep navy for the long-term vision, crisp ivory for our single mission on site */
 .ab-vmhead{margin-bottom:clamp(1.8rem,4vh,2.6rem)}
@@ -304,11 +303,13 @@ export const ABOUT_CSS = `
   .ab-hq-hud{flex-direction:column;align-items:flex-start;gap:.6rem}
   .ab-hq-hud-actions{width:100%;justify-content:space-between}
 }
+@media (max-width:1023px){
+  .ab-pt{grid-template-columns:clamp(240px,32vw,320px) minmax(0,1fr);gap:2rem}
+  .ab-pt--flip{grid-template-columns:minmax(0,1fr) clamp(240px,32vw,320px)}
+}
 @media (max-width:767px){
-  .ab-pt,.ab-pt--flip{grid-template-columns:1fr}
-  .ab-pt--flip .ab-ptph{order:0;justify-self:start}
-  .ab-pt--flip .ab-ptcopy{order:0;justify-self:start}
-  .ab-ptph{max-width:22rem}
+  .ab-pt{grid-template-columns:1fr;gap:1.5rem}
+  .ab-ptph{max-width:22rem;margin:0 auto}
   .ab-vlist{grid-template-columns:1fr}
 }
 
@@ -323,14 +324,15 @@ export const ABOUT_CSS = `
   .ab-whotext .ab-lead{margin-top:.8rem;font-size:var(--fs-body,1rem);line-height:1.6;color:var(--ink2)}
   .ab-whotext .ab-p{display:none}
 
-  .ab-pts{grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem;margin-top:1.6rem}
-  .ab-pt,.ab-pt--flip{gap:.7rem;align-items:start;padding:.45rem .45rem .85rem;border-radius:16px;background:#fff;box-shadow:0 0 0 1px var(--line),0 10px 24px -20px rgba(18,34,59,.45)}
-  .ab-pt .ab-ptph,.ab-pt--flip .ab-ptph{order:0;justify-self:stretch;max-width:none}
-  .ab-ptph img,.ab-ptph .pg-ph{aspect-ratio:4/5 !important;border-radius:12px;box-shadow:none}
-  .ab-pt .ab-ptcopy,.ab-pt--flip .ab-ptcopy{order:0;justify-self:stretch;max-width:none;padding:0 .4rem;border-left:0}
-  .ab-ptrole{font-size:var(--fs-body,1rem);line-height:1.3}
-  .ab-ptname{margin-top:.2rem;font-size:var(--fs-body,1rem);line-height:1.2}
-  .ab-ptq,.ab-ptcopy .ab-p{display:none}
+  .ab-pts{grid-template-columns:1fr;gap:2.2rem;margin-top:1.6rem}
+  .ab-pt,.ab-pt--flip{grid-template-columns:1fr;gap:1.2rem;align-items:start;padding:0;border-radius:0;background:transparent;box-shadow:none}
+  .ab-pt + .ab-pt{padding-top:2.2rem;border-top:none}
+  .ab-pt .ab-ptph,.ab-pt--flip .ab-ptph{order:0;justify-self:center;max-width:20rem}
+  .ab-ptph img,.ab-ptph .pg-ph{aspect-ratio:5/6 !important;border-radius:14px;box-shadow:0 16px 36px -20px rgba(11,35,80,.4),0 0 0 1px var(--line)}
+  .ab-pt .ab-ptcopy,.ab-pt--flip .ab-ptcopy{order:0;justify-self:stretch;max-width:none;padding:0;border-left:0}
+  .ab-ptrole{font-size:.82rem;line-height:1.3;letter-spacing:.08em;text-transform:uppercase}
+  .ab-ptname{margin-top:.25rem;font-size:1.4rem;line-height:1.25}
+  .ab-ptcopy .ab-p{display:block;margin-top:.9rem;font-size:.98rem;line-height:1.65;color:var(--ink2)}
 
   .ab-vmhead,.ab-vhead{margin-bottom:1.1rem}
   .ab-vmhead .pg-h2{margin-top:.5rem}

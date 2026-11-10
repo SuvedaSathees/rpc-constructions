@@ -200,7 +200,7 @@ ${enquiryMarkup(d.contact)}`;
 }
 
 export const PRODUCTS_CSS = FINDER_CSS + FANCY_SELECT_CSS + BRANDS_MARQUEE_CSS + COMPARE_CSS + `
-.pr-head{border-bottom:1px solid var(--line);padding-bottom:clamp(1.6rem,4vh,2.6rem)}
+.pr-head{--pg-shot:url("/images/products-hero.jpg");background:linear-gradient(90deg,rgba(7,20,44,.92) 0%,rgba(7,20,44,.76) 42%,rgba(7,20,44,.28) 75%,rgba(7,20,44,.1) 100%),linear-gradient(180deg,rgba(7,20,44,.55) 0%,rgba(7,20,44,0) 35%),var(--pg-shot) center center/cover no-repeat #0b2350;border-bottom:1px solid var(--line);padding-bottom:clamp(1.6rem,4vh,2.6rem)}
 .pr-bsec{padding-block:clamp(2rem,5vh,3.5rem);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .pr-bsec .pg-shead{margin-bottom:1.4rem}
 .pr-headgrid{display:grid;grid-template-columns:minmax(0,1.2fr) auto;align-items:end;gap:1.4rem clamp(2rem,6vw,7rem)}
@@ -484,7 +484,7 @@ export const PRODUCTS_CSS = FINDER_CSS + FANCY_SELECT_CSS + BRANDS_MARQUEE_CSS +
 
 /* phones, products banner: room for the button under the two lines, a button that fits its words */
 @media (max-width:767px){
-  .pr-head{--head-h:15.5rem;--head-pb:1.4rem}
+  .pr-head{--head-h:15.5rem;--head-pb:1.4rem;background-position:70% center}
   .pr-headgrid{gap:.95rem}
   .pg-head.pr-head .pr-headgrid .pg-h1{max-width:32rem}
   .pr-headside .pg-actions{justify-content:flex-start}

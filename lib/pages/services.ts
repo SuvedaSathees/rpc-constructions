@@ -252,14 +252,14 @@ export const SERVICES_CSS = `
 .sv-ba-mark{position:absolute;top:50%;left:50%;display:grid;place-items:center;width:3.4rem;height:3.4rem;border-radius:50%;background:#fff;color:var(--navy);box-shadow:0 8px 20px -10px rgba(18,34,59,.5);transform:translate(-50%,-50%)}
 .sv-ba-mark .sv-wi{display:contents}
 .sv-ba-mark svg{width:1.5rem;height:1.5rem}
-.sv-wbody{padding:1.1rem .85rem 0}
-.sv-w .sv-ct{display:flex;align-items:center;gap:.6rem;margin:0}
-.sv-w .sv-ct .sv-icon{flex:none;width:2.2rem;height:2.2rem;border-radius:10px}
+.sv-wbody{display:flex;flex-direction:column;flex:1;padding:1rem .75rem 0}
+.sv-w .sv-ct{display:flex;align-items:flex-start;gap:.55rem;margin:0;font-size:1.02rem;line-height:1.28;font-weight:600;letter-spacing:-.01em;min-height:2.65em}
+.sv-w .sv-ct .sv-icon{flex:none;width:2.1rem;height:2.1rem;border-radius:10px;margin-top:.05rem}
 .sv-w .sv-ct .sv-icon svg{width:1.1rem;height:1.1rem}
-.sv-w .sv-cp{margin:.6rem 0 1.2rem}
+.sv-w .sv-cp{margin:.6rem 0 0;font-size:.92rem;line-height:1.55;min-height:4.65em}
 /* no quote link at the foot of the cards: the text keeps its own space below */
 .sv-card{padding-bottom:1.4rem}
-.sv-w{padding-bottom:.4rem}
+.sv-w{padding-bottom:1.25rem}
 .sv-card .sv-cp{margin-bottom:0}
 .sv-btop{display:flex;align-items:center;gap:.8rem}
 .sv-bshort{margin:.2rem 0 0;font-size:var(--fs-body);font-weight:600;line-height:1.35;color:var(--accent)}

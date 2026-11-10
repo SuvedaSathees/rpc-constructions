@@ -25,7 +25,7 @@ export interface HookData {
   shelf: { group: string; lead: { name: string; slug: string; cat: string; pic: string }; more: string[] }[];
   /** the places on the waterproofing page, each with how many methods its guide names */
   /** the leaks people notice, as the film on the home page shows them: the place, what they see, what we do, and where to read more */
-  signs: { place: string; see: string; fix: string; href: string; image?: string; before: string; after: string }[];
+  signs: { place: string; see: string; fix: string; href: string; before: string; after: string }[];
   projects: { slug: string; name: string; location: string; type: string; image: string; summary: string }[];
   /** the brand slide: the product list's brands, then the methods guide's, with a colour for a name without a logo */
   brands: { name: string; color: string }[];
@@ -43,8 +43,8 @@ function products(d: HookData) {
   const tiles = d.shelf
     .map(
       (g, i) => `<li data-rv style="--d:${i * 50}ms"><a class="hk-tile" href="/products#${esc(g.lead.slug)}" data-internal${g.more.length ? ` title="${esc(`Also ${g.more.join(", ")}`)}"` : ""}>
+      <div class="hk-top"><span class="hk-kind"><i aria-hidden="true"></i>${esc(g.group)}</span></div>
       <span class="hk-pic">${g.lead.pic}</span>
-      <span class="hk-kind"><i aria-hidden="true"></i>${esc(g.group)}</span>
       <span class="hk-name">${esc(g.lead.name)}</span>
       <span class="hk-foot"><span class="hk-more ${g.more.length ? "hk-more--n" : "hk-more--v"}">${g.more.length ? `+${g.more.length} more` : "View product"}</span><span class="hk-tgo" aria-hidden="true">${arrow}</span></span>
     </a></li>`,
@@ -68,26 +68,33 @@ function products(d: HookData) {
 </section>`;
 }
 
-/* ------------------------------------------------------------------ 03 waterproofing */
-function waterproofing(d: HookData) {
-  void d;
-  return `<section class="hk hk--paper hk-wp" id="waterproofing" aria-labelledby="hk-wp-h">
+/* ------------------------------------------------------------------ 05 services (before & after) */
+function waterproofing(d: HookData, o: { n?: string; label?: string; id?: string } = {}) {
+  const cards = d.signs
+    .map(
+      (x, i) => `<li data-rv style="--d:${i * 60}ms"><a class="hk-ba" href="${esc(x.href)}" data-internal>
+      <span class="hk-bap">
+        <img class="hk-ba-after" src="${esc(x.after)}" width="960" height="540" alt="" loading="lazy" decoding="async">
+        <img class="hk-ba-before" src="${esc(x.before)}" width="960" height="540" alt="" loading="lazy" decoding="async">
+        <span class="hk-bal" aria-hidden="true">Before</span><span class="hk-bar" aria-hidden="true">After</span><span class="hk-bad" aria-hidden="true"></span>
+      </span>
+      <span class="hk-bat">
+        <em>${esc(x.place)}</em>
+        <b>${esc(x.see)}</b>
+        <span class="hk-baf"><span>What we do</span>${esc(x.fix)}</span>
+      </span>
+      <span class="hk-bago" aria-hidden="true">${arrow}</span>
+    </a></li>`,
+    )
+    .join("");
+  const n = o.n ?? "05";
+  const label = o.label ?? "Services";
+  const id = o.id ?? "services";
+  return `<section class="hk hk--paper hk-wp" id="${id}" aria-labelledby="hk-wp-h">
   <div class="hm-wrap">
-    <div class="hk-wp-grid">
-      <div class="hk-wp-info">
-        <div>
-          ${mark("03", "Waterproofing Solutions")}
-          <h2 class="hm-h2 hk-wp-h2" id="hk-wp-h" data-rv>Water Stops Here.<br>Protection Starts Here.</h2>
-        </div>
-        <p class="hk-wp-lede" data-rv>Advanced waterproofing solutions designed to prevent leaks, resist moisture, and protect your building from the ground up. Because lasting structures deserve lasting protection.</p>
-        <div class="hk-wp-action" data-rv>${btn("/waterproofing", "See every method")}</div>
-      </div>
-      <div class="hk-wp-media" data-rv style="--d:120ms">
-        <figure class="hk-wp-figure">
-          <img src="/images/waterproofing/waterproofing-solutions.jpg" width="1024" height="576" alt="Professional applicator applying waterproofing coating on a rooftop terrace" loading="lazy" decoding="async">
-        </figure>
-      </div>
-    </div>
+    <div class="hk-head"><div>${mark(n, label)}<h2 class="hm-h2" id="hk-wp-h" data-rv>What do you&nbsp;see?</h2></div></div>
+    <ul class="hk-bas">${cards}</ul>
+    <div class="hk-after" data-rv>${btn("/services", "See all services")}</div>
   </div>
 </section>`;
 }
@@ -199,9 +206,9 @@ export function hooksMarkup(home: HomeData, d: HookData) {
   return [
     rootedAboutMarkup(home, { n: "01" }),
     products(d),
-    waterproofing(d),
+    servicesMarkup(home, { n: "03", label: "Waterproofing", id: "waterproofing", below: true }),
     projects(d),
-    servicesMarkup(home, { n: "05", below: true }),
+    waterproofing(d, { n: "05", label: "Services", id: "services" }),
     // the close, in the about page's design: its own three steps and the ways to reach us
     `<div class="pg hk-cta">${ctaBand({ regions: [], ...home.contact } as ContactInfo, {
       title: "Seen a damp patch? Let’s fix it.",
@@ -245,51 +252,34 @@ export const HOOKS_CSS =
 /* a head with only the button beside the headline: the button at the far right */
 .hk-head--end .hk-side{align-items:flex-end;justify-self:end}
 
-/* 02 products: a shelf, one tile per kind: the kind on the picture, the product's name, and how many more in its range */
+/* 02 products: clean cards with category badge above the picture */
 .hk-shelf{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(.6rem,1.2vw,1rem);margin:0;padding:0;list-style:none}
-.hk-tile{display:flex;flex-direction:column;height:100%;padding:.55rem .55rem .9rem;border-radius:20px;background:#fff;box-shadow:0 0 0 1px var(--line),0 18px 36px -30px rgba(18,34,59,.45);color:inherit;text-decoration:none;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
-.hk-tile:hover{transform:translateY(-4px);box-shadow:0 0 0 1.5px var(--navy),0 28px 44px -28px rgba(18,34,59,.55)}
+.hk-tile{position:relative;display:flex;flex-direction:column;height:100%;padding:.8rem .8rem 1.05rem;border-radius:22px;background:linear-gradient(180deg,#fff 0%,#fffdf9 100%);box-shadow:0 0 0 1px var(--line),0 20px 40px -30px rgba(18,34,59,.45);color:inherit;text-decoration:none;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.hk-tile:hover{transform:translateY(-4px);box-shadow:0 0 0 1.5px var(--navy),0 28px 48px -26px rgba(18,34,59,.55)}
 .hk-tile:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-.hk-pic{position:relative;display:grid;place-items:center;aspect-ratio:1/1;overflow:hidden;border-radius:15px;background:radial-gradient(120% 90% at 50% 35%,#fff 0%,#fff 45%,#f1ece3 100%)}
-.hk-pic img{position:absolute;left:14%;top:14%;width:72%;height:72%;object-fit:contain;mix-blend-mode:multiply;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
-.hk-pic svg{width:72%;height:auto;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
-.hk-tile:hover .hk-pic img,.hk-tile:hover .hk-pic svg{transform:scale(1.05)}
-.hk-kind{display:flex;align-items:center;gap:.45rem;margin:.9rem .35rem 0;font-size:var(--fs-body);font-weight:500;line-height:1.3;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hk-kind i{flex:none;width:.5rem;height:.5rem;border-radius:50%;background:var(--water)}
-.hk-name{margin:.2rem .35rem 0;font-family:var(--serif);font-size:var(--fs-body);font-weight:700;line-height:1.3;letter-spacing:-.01em;color:var(--ink);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;min-height:2.6em}
-.hk-foot{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin:auto .35rem 0;padding-top:.7rem;border-top:1px solid var(--line)}
-.hk-more{min-width:0;font-size:var(--fs-body);line-height:1.35;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hk-tgo{flex:none;display:grid;place-items:center;width:2rem;height:2rem;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line);color:var(--ink);transition:background-color .3s,color .3s,box-shadow .3s}
-.hk-tile:hover .hk-tgo{background:var(--navy);color:#fff;box-shadow:none}
-/* tile polish: the kind sits on the picture as a chip, the picture has a soft tint, the name and the foot line up across the row */
-.hk-tile{position:relative;padding:.6rem .6rem 1rem;border-radius:22px;box-shadow:0 0 0 1px var(--line),0 22px 40px -32px rgba(18,34,59,.5)}
-.hk-pic{border-radius:16px;background:radial-gradient(110% 85% at 50% 30%,#fff 0%,#fbf8f2 55%,#efe8da 100%);box-shadow:inset 0 0 0 1px rgba(18,34,59,.05)}
-.hk-kind{position:absolute;top:1.15rem;left:1.15rem;z-index:2;max-width:calc(100% - 2.3rem);margin:0;padding:.28rem .7rem .28rem .6rem;border-radius:999px;background:rgba(255,255,255,.92);box-shadow:0 0 0 1px rgba(18,34,59,.08),0 6px 14px -8px rgba(18,34,59,.35);font-size:var(--fs-body);font-weight:600;color:var(--ink);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-.hk-name{margin:1rem .45rem 0;font-size:var(--fs-h3);line-height:1.25;min-height:2.5em}
-.hk-foot{margin:auto .45rem 0;padding-top:.8rem}
-.hk-more{font-weight:600;color:var(--ink2)}
-.hk-tgo{width:2.2rem;height:2.2rem;background:var(--navy);color:#fff;box-shadow:none}
-.hk-tile:hover .hk-tgo{background:var(--accent)}
-/* tile polish 2: a warmer card, a bigger picture standing on a soft shadow, a navy name, a pill for the extra products and an arrow that moves on hover */
-.hk-tile{background:linear-gradient(180deg,#fff 0%,#fffdf9 100%);overflow:hidden}
 .hk-tile::before{content:"";position:absolute;left:1.2rem;right:1.2rem;top:0;height:3px;border-radius:0 0 4px 4px;background:linear-gradient(90deg,var(--water),var(--accent));opacity:0;transform:scaleX(.4);transform-origin:left;transition:opacity .35s,transform .45s cubic-bezier(.2,.7,.2,1)}
 .hk-tile:hover::before{opacity:1;transform:none}
-.hk-tile:hover{box-shadow:0 0 0 1px rgba(18,34,59,.14),0 30px 46px -28px rgba(18,34,59,.5)}
-.hk-pic{background:radial-gradient(90% 70% at 50% 38%,#fff 0%,#fcf9f3 52%,#f0e9db 100%)}
-.hk-pic::after{content:"";position:absolute;left:24%;right:24%;bottom:10%;height:8%;border-radius:50%;background:radial-gradient(closest-side,rgba(18,34,59,.2),rgba(18,34,59,0));filter:blur(3px);z-index:0}
-.hk-pic img{z-index:1}
-.hk-pic svg{position:relative;z-index:1}
-.hk-pic img{left:6%;top:9%;width:88%;height:82%;filter:drop-shadow(0 10px 12px rgba(18,34,59,.18))}
-.hk-pic svg{width:76%}
-.hk-name{color:var(--navy);font-weight:700;letter-spacing:-.015em;margin-top:1.1rem}
-.hk-foot{border-top:1px solid rgba(18,34,59,.08)}
-.hk-more{display:inline-flex;align-items:center;font-weight:600;color:var(--navy)}
-.hk-more--n{padding:.22rem .7rem;border-radius:999px;background:rgba(18,34,59,.06);font-size:.92em}
-.hk-more--v{position:relative}
-.hk-tgo{transition:background-color .3s,transform .35s cubic-bezier(.2,.7,.2,1)}
-.hk-tile:hover .hk-tgo{transform:translateX(3px)}
+
+.hk-top{display:flex;align-items:center;min-height:1.75rem;margin-bottom:.55rem}
+.hk-kind{display:inline-flex;align-items:center;gap:.45rem;padding:.24rem .65rem .24rem .55rem;border-radius:999px;background:rgba(18,34,59,.06);box-shadow:0 0 0 1px rgba(18,34,59,.06);font-size:.78rem;font-weight:600;color:var(--ink);line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.hk-kind i{flex:none;width:.45rem;height:.45rem;border-radius:50%;background:var(--water)}
+
+.hk-pic{position:relative;display:grid;place-items:center;aspect-ratio:1/1;width:100%;overflow:hidden;border-radius:16px;background:radial-gradient(90% 75% at 50% 36%,#fff 0%,#fbf9f4 55%,#eee8dc 100%);box-shadow:inset 0 0 0 1px rgba(18,34,59,.06)}
+.hk-pic::after{content:"";position:absolute;left:20%;right:20%;bottom:8%;height:10%;border-radius:50%;background:radial-gradient(closest-side,rgba(18,34,59,.22),rgba(18,34,59,0));filter:blur(4px);z-index:0}
+.hk-pic img{position:absolute;left:12%;top:12%;width:76%;height:76%;object-fit:contain;mix-blend-mode:multiply;z-index:1;filter:drop-shadow(0 8px 12px rgba(18,34,59,.12));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.hk-pic svg{width:76%;height:auto;position:relative;z-index:1;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.hk-tile:hover .hk-pic img,.hk-tile:hover .hk-pic svg{transform:scale(1.05)}
+
+.hk-name{margin:.85rem .25rem 0;font-family:var(--serif);font-size:var(--fs-h3);font-weight:700;line-height:1.25;letter-spacing:-.015em;color:var(--navy);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;min-height:2.5em}
+
+.hk-foot{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin:auto .25rem 0;padding-top:.85rem;border-top:1px solid rgba(18,34,59,.08)}
+.hk-more{display:inline-flex;align-items:center;font-size:var(--fs-body);font-weight:600;color:var(--navy);white-space:nowrap}
+.hk-more--n{padding:.22rem .7rem;border-radius:999px;background:rgba(18,34,59,.06);font-size:.85rem}
+.hk-tgo{flex:none;display:grid;place-items:center;width:2.2rem;height:2.2rem;border-radius:50%;background:var(--navy);color:#fff;transition:background-color .3s,transform .35s cubic-bezier(.2,.7,.2,1)}
+.hk-tile:hover .hk-tgo{background:var(--accent);transform:translateX(3px)}
 .hk-tgo svg{transition:transform .35s cubic-bezier(.2,.7,.2,1)}
 .hk-tile:hover .hk-tgo svg{transform:rotate(45deg)}
+
 .hk-after{display:flex;justify-content:center;margin-top:clamp(1.4rem,3vh,2rem)}
 .hk-after--end{justify-content:flex-end}
 .hk-brands{margin-top:clamp(2.2rem,5vh,3.4rem)}
@@ -299,18 +289,28 @@ export const HOOKS_CSS =
 .hm-pbh{margin:0;font-family:var(--serif);font-weight:600;font-size:var(--fs-sub);line-height:1.2;letter-spacing:-.02em;color:var(--ink)}
 
 /* 03 waterproofing: four places, each a still from the home page film split down the middle, the leak on the left and the same place dry on the right; pointed at, the dry side slides over */
-/* 03 waterproofing solutions */
-.hk-wp-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.22fr);align-items:center;gap:2.5rem clamp(2.5rem,6vw,6rem)}
-.hk-wp-info{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(1.1rem,2.4vh,1.6rem);max-width:35rem}
-.hk-wp-info .hm-mark{margin-bottom:.35rem}
-.hk-wp-h2{margin:0;font-family:var(--serif);font-weight:600;font-size:var(--fs-title);line-height:1.14;letter-spacing:-.02em;color:var(--ink);text-wrap:balance}
-.hk-wp-lede{margin:0;font-size:var(--fs-body);line-height:1.65;color:var(--ink2);text-wrap:pretty}
-.hk-wp-action{margin-top:.4rem}
-.hk-wp-media{position:relative;width:100%}
-.hk-wp-figure{position:relative;margin:0;overflow:hidden;border-radius:24px;aspect-ratio:16/9;background:#d9d0bf;box-shadow:0 0 0 1px var(--line),0 28px 56px -28px rgba(18,34,59,.38);transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s}
-.hk-wp-figure img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
-.hk-wp-figure:hover{transform:translateY(-3px);box-shadow:0 0 0 1px rgba(18,34,59,.18),0 34px 64px -26px rgba(18,34,59,.48)}
-.hk-wp-figure:hover img{transform:scale(1.03)}
+.hk-bas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.7rem,1.2vw,1rem);margin:0;padding:0;list-style:none}
+.hk-ba{position:relative;display:flex;flex-direction:column;height:100%;padding:.55rem;border-radius:20px;background:#fff;box-shadow:0 0 0 1px var(--line),0 18px 36px -30px rgba(18,34,59,.45);color:inherit;text-decoration:none;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.hk-bap{--x:50%;position:relative;display:block;aspect-ratio:4/3;overflow:hidden;border-radius:15px;background:#d9d0bf}
+.hk-bap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hk-ba-before{clip-path:inset(0 calc(100% - var(--x)) 0 0);transition:clip-path .7s cubic-bezier(.45,0,.2,1)}
+.hk-bad{position:absolute;top:0;bottom:0;left:var(--x);width:2px;margin-left:-1px;background:#fff;box-shadow:0 0 12px rgba(0,0,0,.35);transition:left .7s cubic-bezier(.45,0,.2,1)}
+.hk-bal,.hk-bar{position:absolute;z-index:1;bottom:.6rem;padding:.15rem .55rem;border-radius:999px;font-size:var(--fs-body);font-weight:600;line-height:1.3;color:#fff;transition:opacity .4s}
+.hk-bal{left:.6rem;background:rgba(162,69,44,.88)}
+.hk-bar{right:.6rem;background:rgba(11,110,128,.9)}
+.hk-ba:hover .hk-ba-before{clip-path:inset(0 100% 0 0)}
+.hk-ba:hover .hk-bad{left:0}
+.hk-ba:hover .hk-bal{opacity:0}
+.hk-bat{display:flex;flex-direction:column;gap:.25rem;padding:.9rem .45rem .5rem}
+.hk-bat em{font-style:normal;font-size:var(--fs-body);font-weight:500;color:var(--mute)}
+.hk-bat b{font-family:var(--serif);font-size:var(--fs-body);font-weight:700;line-height:1.35;color:var(--ink)}
+.hk-baf{margin-top:.5rem;padding-top:.6rem;border-top:1px solid var(--line);font-size:var(--fs-body);line-height:1.5;color:var(--ink2)}
+.hk-baf span{display:block;font-weight:600;color:var(--water)}
+.hk-bago{position:absolute;top:1.1rem;right:1.1rem;display:grid;place-items:center;width:2.3rem;height:2.3rem;border-radius:50%;background:#fff;box-shadow:0 4px 12px -6px rgba(18,34,59,.45);color:var(--ink);transition:background-color .3s,color .3s}
+.hk-ba:hover{transform:translateY(-4px);box-shadow:0 0 0 1.5px var(--navy),0 28px 44px -28px rgba(18,34,59,.55)}
+.hk-ba:hover .hk-bago{background:var(--navy);color:#fff}
+.hk-ba:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.hk-ba:focus-visible .hk-ba-before{clip-path:inset(0 100% 0 0)}
 
 /* 04 projects: three prints in a pile, a little turned; the top one's words beside it */
 .hk-proj{display:flex;flex-direction:column;justify-content:center;min-height:calc(100svh - var(--nav-room));padding:calc(var(--nav-room) + clamp(.5rem,2vh,1.2rem)) 0 clamp(1rem,3vh,2rem)}
@@ -351,12 +351,11 @@ export const HOOKS_CSS =
 
 @media (max-width:1199px){
   .hk-shelf{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .hk-bas{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:1023px){
 }
 @media (max-width:899px){
-  .hk-wp-grid{grid-template-columns:minmax(0,1fr);gap:clamp(1.8rem,4vh,2.6rem)}
-  .hk-wp-info{max-width:none}
   .hk-pgrid{grid-template-columns:minmax(0,1fr)}
   .hk-pinfo{padding-left:0}
   .hk-proj{min-height:0;padding:clamp(3.5rem,9vh,5rem) 0}
@@ -366,11 +365,10 @@ export const HOOKS_CSS =
 }
 @media (max-width:599px){
   .hk-shelf{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hk-bas{grid-template-columns:minmax(0,1fr)}
   .hk-kind{white-space:normal;align-items:flex-start}
   .hk-kind i{margin-top:.45rem}
   .hk-pol{width:84%}
-  .hk-wp-action{width:100%}
-  .hk-wp-action .hm-btn{width:100%;justify-content:center}
   .hk-btn{width:100%}
   .hk-side{align-items:stretch}
 }
@@ -381,13 +379,12 @@ export const HOOKS_CSS =
   /* products: four tiles, two to a row */
   .hk-shelf{grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem}
   .hk-shelf li:nth-child(n+5){display:none}
-  .hk-tile{padding:.45rem .45rem .7rem;border-radius:16px}
-  .hk-pic{aspect-ratio:16/10}
+  .hk-tile{padding:.55rem .55rem .75rem;border-radius:16px}
+  .hk-top{min-height:1.4rem;margin-bottom:.35rem}
+  .hk-kind{font-size:.72rem;padding:.18rem .5rem .18rem .4rem}
+  .hk-pic{aspect-ratio:1/1}
   .hk-foot{display:none}
-  .hk-kind{font-size:.74rem;white-space:nowrap;align-items:center;top:.55rem;left:.55rem;max-width:calc(100% - 1.1rem);padding:.2rem .55rem .2rem .45rem}
-  .hk-kind i{margin-top:0;width:.4rem;height:.4rem}
-  .hk-pic img{top:22%;height:74%;left:12%;width:76%}
-  .hk-name{font-size:var(--fs-body,1rem)}
+  .hk-name{font-size:var(--fs-body,1rem);margin-top:.6rem}
   .hk-prod .hk-after{margin-top:.9rem}
   /* brands: one quiet strip of small logo cards under a line of words */
   .hk-brands{margin-top:1.4rem;padding-top:1.1rem;border-top:1px solid var(--line)}
@@ -398,9 +395,14 @@ export const HOOKS_CSS =
   .hk-brands .wp-btile{width:7.6rem;height:3.9rem;padding:.55rem .9rem;border-radius:12px}
   .hk-brands .wp-btile img{max-height:2.5rem}
   .hk-brands .wp-bname{font-size:var(--fs-body,1rem)}
-  /* waterproofing solutions */
-  .hk-wp-figure{border-radius:18px}
-  .hk-wp-h2{font-size:var(--fs-h3);line-height:1.15}
+  /* waterproofing: four before and after pictures, two to a row */
+  .hk-bas{grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem}
+  .hk-ba{padding:.4rem .4rem .7rem;border-radius:16px}
+  .hk-bap{aspect-ratio:1/1}
+  .hk-bat b,.hk-baf{display:none}
+  .hk-bat em{font-size:var(--fs-body,1rem);font-style:normal;font-weight:600;color:var(--ink)}
+  .hk-bago{display:none}
+  .hk-wp .hk-after{margin-top:.9rem}
   /* projects: the heading, the pile of prints (each names itself) and one row with the arrows and the button */
   .hk-proj{min-height:0;padding:2.4rem 0 2.2rem}
   .hk-pgrid{grid-template-columns:auto minmax(0,1fr);gap:0 .8rem}
@@ -428,5 +430,5 @@ export const HOOKS_CSS =
   .hm-services .hm-sbtns{margin-top:0}
   .hm-services .hm-sbtns .hm-btn{width:100%;justify-content:center}
 }
-@media (prefers-reduced-motion:reduce){.hk-pol,.hk-pi{transition:none;animation:none}.hk-wp-figure,.hk-wp-figure img,.hk-card img,.hk-pic img,.hk-pic svg{transition:none}.hk-card a:hover img{transform:none}.hk-tile:hover .hk-pic img,.hk-tile:hover .hk-pic svg{transform:none}.hk-tile:hover{transform:none}}
+@media (prefers-reduced-motion:reduce){.hk-pol,.hk-pi{transition:none;animation:none}.hk-ba,.hk-ba-before,.hk-bad,.hk-card img,.hk-pic img,.hk-pic svg{transition:none}.hk-card a:hover img{transform:none}.hk-tile:hover .hk-pic img,.hk-tile:hover .hk-pic svg{transform:none}.hk-tile:hover{transform:none}}
 `;
