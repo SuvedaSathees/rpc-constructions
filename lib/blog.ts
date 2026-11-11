@@ -251,7 +251,7 @@ export const blogPosts: BlogPost[] = [
     category: "Tanks & basements",
     date: "2026-07-16",
     readMinutes: 4,
-    cover: "/images/waterproofing/basement-car-park.jpg",
+    cover: "/images/rain/basement-after.webp",
     coverAlt: "Basement car park with the waterproofed joints in its walls and floor highlighted",
     author: "RPC Engineering Team",
     sections: [

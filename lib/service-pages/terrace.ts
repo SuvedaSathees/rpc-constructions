@@ -100,7 +100,7 @@ export const TERRACE: ServicePage = {
       { src: "/images/rain/terrace-before.webp", alt: "Cracked, stained terrace before waterproofing", caption: "Before: cracked screed and ponding water" },
       { src: "/images/rain/terrace-after.webp", alt: "The same terrace after a seamless waterproof coat", caption: "After: one seamless coat, edges turned up the parapet" },
       { src: "/images/waterproofing/terrace-parapet-outlet.jpg", alt: "Waterproofing detail where the terrace slab meets the parapet and outlet", caption: "The parapet joint and outlet, where most terrace leaks start" },
-      { src: "/images/waterproofing/terrace-slab-cutaway.jpg", alt: "Cutaway of a terrace slab showing the waterproofing layers", caption: "The layers, from slab to finish" },
+      { src: "/images/waterproofing/waterproofing-real-terrace.jpg", alt: "Cutaway of a terrace slab showing the waterproofing layers", caption: "The layers, from slab to finish" },
     ],
   },
   warranty: {

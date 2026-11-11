@@ -359,28 +359,28 @@ export const process = [
     id: "02",
     title: "Trace the water to its source",
     body: "A stain on a ceiling is rarely where water gets in. We follow it back through the slab, the pipes or the joints, so the repair lands where the leak begins.",
-    image: "/images/waterproofing/terrace-slab-cutaway.jpg",
+    image: "/images/waterproofing/waterproofing-real-terrace.jpg",
     alt: "Cutaway of a terrace slab showing the concrete, the waterproofing layers and a rainwater outlet",
   },
   {
     id: "03",
     title: "Choose one system, in writing",
     body: "Every surface needs its own method. You get one recommendation, the reason for it and an itemised quote before any work begins.",
-    image: "/images/waterproofing/basement-wall-cutaway.jpg",
+    image: "/images/rain/basement-after.webp",
     alt: "Cutaway of a basement wrapped in a waterproofing membrane, with groundwater held outside the wall",
   },
   {
     id: "04",
     title: "Prepare, then apply",
     body: "Loose plaster comes off, cracks are opened and filled and pipe openings are sealed. Only then does the coating go on, coat by coat, up every wall it meets.",
-    image: "/images/waterproofing/bathroom-membrane-under-tiles.jpg",
+    image: "/images/rain/bath-after.webp",
     alt: "Bathroom with its floor tiles lifted to show the waterproofing coat under the shower and up the walls",
   },
   {
     id: "05",
     title: "Test it with water",
     body: "Bathrooms and terraces are flooded and tanks filled, then left to stand before anything covers them. If the level drops, we find out why before moving on.",
-    image: "/images/waterproofing/water-tank-cutaway.jpg",
+    image: "/images/rain/tank-after.webp",
     alt: "Cutaway of an underground water tank filled for a leak test, with a sealed pipe through its wall",
   },
   {
@@ -432,7 +432,7 @@ export const partners: readonly { name: string; role: string; qualification: str
     qualification: "",
     bio: `Velmurugan leads RPC Construction Solutions and Robotics Bricks and Blocks, and runs both on four things: ethics, professionalism, commitment and quality.
 
-The work reaches across industrial, civil infrastructure and residential projects in several cities, alongside a specialist range of construction chemicals chosen for how long they keep a building sound. At Robotics Bricks Private Limited he sets the direction for paver blocks and precast. He is a member of Business Networking International.`,
+The work reaches across industrial, civil infrastructure and residential projects in several cities, alongside a specialist range of construction chemicals chosen for how long they keep a building sound. At Robotics Bricks Private Limited he sets the direction for paver blocks and precast. He is a member of Business Network International (BNI).`,
     image: "/images/partners/velmurugan-sivanantham.webp",
   },
   {
