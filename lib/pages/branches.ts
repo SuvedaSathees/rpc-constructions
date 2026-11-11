@@ -106,6 +106,11 @@ export const BRANCHES_CSS = `
 .br-tel:hover{color:var(--accent)}
 .br-card--head .br-tel{color:#fff}
 .br-card--head .br-tel:hover{color:#9fbbe6}
+/* touch screens: the number keeps its look but gets a finger-sized tap area */
+@media (pointer:coarse){
+  .br-tel,.br-city a{position:relative}
+  .br-tel::after,.br-city a::after{content:"";position:absolute;inset:-11px -6px}
+}
 .br-acts{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;margin-top:auto;padding-top:clamp(1rem,2vh,1.3rem)}
 .br-act{display:inline-flex;align-items:center;gap:.4rem;font-size:calc(var(--fs-body)*.94);font-weight:600;color:var(--accent);text-decoration:none}
 .br-act:hover{color:var(--navy)}

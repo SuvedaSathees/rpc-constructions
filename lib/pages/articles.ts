@@ -8,7 +8,6 @@
  * Cover photographs: none of the generated pictures are shown; each cover is
  * an empty frame in its topic's colour, ready for RPC's own photograph.
  */
-import { SEARCH_BAR_CSS, searchBar } from "./search-bar";
 import { METHODS } from "../methods/data";
 import { arrow, esc, ph, shortDate, tel, words, type ContactInfo, type PageOptions } from "./kit";
 
@@ -87,36 +86,10 @@ export function postCard(p: PostData, _o: PageOptions = {}, cat = false) {
 
 export function blogIndexMarkup(d: { posts: readonly PostData[]; contact: ContactInfo }, o: PageOptions = {}) {
   const [lead, ...rest] = d.posts;
-  // the filters: the twelve waterproofing methods, each with how many articles talk about it
-  const per = new Map(d.posts.map((p) => [p.slug, methodsIn(p)] as const));
-  const bar = searchBar({
-    label: "Search articles",
-    placeholder: "Search articles",
-    cls: "bl-bar",
-    hidden: true,
-    filters: [
-      {
-        key: "method",
-        label: "Waterproofing method",
-        options: [
-          { value: "all", text: `All methods (${d.posts.length})` },
-          ...METHODS.map((m) => {
-            const n = d.posts.filter((p) => per.get(p.slug)!.includes(m.key)).length;
-            return { value: m.key, text: `${m.short} (${n})`, disabled: n === 0 };
-          }),
-        ],
-      },
-    ],
-  });
   const head = `<header class="pg-head bl-head">
   <div class="pg-wrap">
-    <div class="bl-headgrid">
-      <div>
-        <p class="pg-mark">Blog</p>
-        <h1 class="pg-h1" data-rv="words">${words("Waterproofing advice from our&nbsp;engineers.")}</h1>
-      </div>
-      <div class="bl-headside">${bar}</div>
-    </div>
+    <p class="pg-mark">Blog</p>
+    <h1 class="pg-h1" data-rv="words">${words("Waterproofing advice from our&nbsp;engineers.")}</h1>
   </div>
 </header>`;
   const feature = lead
@@ -137,7 +110,7 @@ export function blogIndexMarkup(d: { posts: readonly PostData[]; contact: Contac
     ${feature}
     ${
       rest.length
-        ? `<div class="bl-morehead"><h2 class="pg-h3">More articles</h2><p class="bl-status" data-topic-status aria-live="polite">Showing all ${d.posts.length} articles</p></div>
+        ? `<div class="bl-morehead"><h2 class="pg-h3">More articles</h2></div>
     <ul class="bl-grid bl-grid--rows" data-rv-stagger="80">${rest.map((p) => postCard(p, o, true)).join("")}</ul>${
       rest.length > 3
         ? `
@@ -148,9 +121,8 @@ export function blogIndexMarkup(d: { posts: readonly PostData[]; contact: Contac
     </nav>`
         : ""
     }`
-        : `<p class="bl-status" data-topic-status aria-live="polite">Showing all ${d.posts.length} articles</p>`
+        : ""
     }
-    <p class="bl-empty" hidden>No articles match your search. <button type="button" data-reset>Show all articles</button></p>
   </div>
 </section>`;
 }
@@ -221,14 +193,9 @@ ${
 }`;
 }
 
-export const BLOG_CSS = SEARCH_BAR_CSS + `
+export const BLOG_CSS = `
 /* index: the heading, then the topics */
-.bl-headgrid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:1.4rem clamp(2rem,5vw,6rem);align-items:end}
-.bl-headgrid .pg-mark{margin-bottom:.9rem}
-.bl-headgrid .pg-intro{margin:0}
 .bl-head{padding-bottom:clamp(1.6rem,4vh,2.4rem)}
-.bl-headside{min-width:0;padding-bottom:.5rem}
-.bl-bar{max-width:36rem;margin-left:auto}
 .bl-sec{padding-top:clamp(2rem,5vh,3rem)}
 
 /* covers: empty frames in the topic's colour */
@@ -263,9 +230,6 @@ export const BLOG_CSS = SEARCH_BAR_CSS + `
 .bl-grid--changing{animation:bl-page-in .38s cubic-bezier(.22,1,.36,1)}
 @keyframes bl-page-in{from{opacity:.35;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @media (prefers-reduced-motion:reduce){.bl-grid--changing{animation:none}}
-.bl-status{margin:0;font-size:var(--fs-body);color:var(--mute)}
-.bl-empty{margin:0;padding:3rem 0;text-align:center;font-size:var(--fs-body);color:var(--mute)}
-.bl-empty button{border:0;border-bottom:1px solid currentColor;background:none;padding:0 0 2px;font:600 var(--fs-body) var(--sans);color:var(--ink);cursor:pointer}
 .bl-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.8rem,1.6vw,1.4rem);margin:0;padding:0;list-style:none}
 .bl-card{height:100%}
 .bl-card a{display:flex;flex-direction:column;height:100%;padding:.6rem;border-radius:8px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line);text-decoration:none;color:var(--ink);transition:box-shadow .3s}
@@ -339,8 +303,6 @@ export const BLOG_CSS = SEARCH_BAR_CSS + `
 .po-relhead .pg-h2{margin:0}
 
 @media (max-width:1023px){
-  .bl-headgrid{grid-template-columns:1fr}
-  .bl-bar{max-width:none;margin-left:0}
   .bl-feat a{grid-template-columns:1fr;align-items:start}
   .bl-featcopy{padding:.4rem .6rem .9rem}
   .bl-grid{grid-template-columns:1fr 1fr}

@@ -245,7 +245,7 @@ export const KIT_CSS = `
 /* the ways to reach us, each under one of the three steps: the phone, the email, the hours */
 .pg-ctaline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:baseline;gap:.4rem 1.4rem;margin:clamp(1.6rem,4vh,2.2rem) 0 0;font-size:var(--fs-body);color:rgba(255,255,255,.66)}
 .pg-ctaline > *{justify-self:start;min-width:0}
-@media (max-width:767px){.pg-ctaline{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:849px){.pg-ctaline{grid-template-columns:minmax(0,1fr)}}
 .pg-ctaline a{text-decoration:none}
 .pg-ctaline a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
 .pg-ctaline .pg-ctatel{font-family:var(--display);font-weight:600;font-size:var(--fs-sub);color:#fff}
@@ -327,10 +327,11 @@ export const KIT_CSS = `
   .pg-ctaacts .pg-btn{flex:1 1 auto;justify-content:center;height:2.7rem;padding:0 .7rem;font-size:var(--fs-body,1rem);white-space:nowrap}
   .pg-ctaacts .pg-btn--line{flex:0 0 auto}
   .pg-ctaacts .pg-btn .pg-ar{display:none}
-  .pg-ctasteps{grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem;margin-top:1rem;padding-top:.9rem}
-  .pg-ctasteps li{flex-direction:column;gap:.35rem}
+  .pg-ctasteps{grid-template-columns:minmax(0,1fr);gap:.5rem;margin-top:1.1rem;padding-top:1rem}
+  .pg-ctasteps li{flex-direction:row;align-items:center;gap:.65rem}
   .pg-ctasd{display:none}
-  .pg-ctast{font-size:var(--fs-body,1rem);line-height:1.25}
+  .pg-ctan{width:1.55rem;height:1.55rem;border-radius:999px;font-size:.8rem;background:rgba(255,255,255,.16)}
+  .pg-ctast{margin:0;font-size:var(--fs-body,1rem);font-weight:500;line-height:1.3;color:rgba(255,255,255,.92)}
   .pg-ctaline{grid-template-columns:minmax(0,1fr);gap:.15rem;margin-top:.9rem;padding-top:.8rem;border-top:1px solid rgba(255,255,255,.2);font-size:var(--fs-body,1rem)}
   .pg-ctaline a[href^="mailto"]{display:none}
   .pg-ctaline .pg-ctatel{font-size:var(--fs-body,1rem)}

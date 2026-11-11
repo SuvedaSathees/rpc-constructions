@@ -336,6 +336,7 @@ export const METHODS_TOOLS_CSS = `
 .wpx-spot{position:absolute;display:grid;place-items:center;width:2rem;height:2rem;margin:-1rem 0 0 -1rem;padding:0;border:0;border-radius:50%;background:var(--card);box-shadow:0 0 0 1.5px var(--navy),0 6px 14px -6px rgba(11,35,80,.55);font:inherit;font-size:var(--fs-body);font-weight:600;line-height:1;color:var(--navy);cursor:pointer;transition:background-color .2s,color .2s,transform .2s}
 .wpx-spot:hover{transform:scale(1.08)}
 .wpx-spot.is-on{background:var(--navy);color:#f5f0e6}
+@media (pointer:coarse){.wpx-spot::after{content:"";position:absolute;inset:-5px;border-radius:50%}}
 .wpx-tabs{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.9rem}
 .wpx-tab{display:inline-flex;align-items:center;gap:.5rem;height:2.4rem;padding:0 .95rem 0 .35rem;border:0;border-radius:6px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line);font:inherit;font-size:var(--fs-body);font-weight:500;color:var(--ink);white-space:nowrap;cursor:pointer;transition:background-color .2s,color .2s,box-shadow .2s}
 .wpx-tab span{display:grid;place-items:center;width:1.7rem;height:1.7rem;border-radius:50%;background:var(--sand-2);font-weight:600;font-variant-numeric:tabular-nums}

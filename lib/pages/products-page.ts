@@ -524,6 +524,11 @@ function mountFinder(root: HTMLElement, toEl: (el: HTMLElement, gap?: number) =>
   const picks = Array.from(box.querySelectorAll<HTMLButtonElement>("[data-pick]"));
   const chipB = Array.from(box.querySelectorAll<HTMLButtonElement>("[data-chip-brand]"));
   const chipF = Array.from(box.querySelectorAll<HTMLButtonElement>("[data-chip-fam]"));
+  // the same two filters as drop-downs, in the bar phones and tablets get
+  const sels = Array.from(box.querySelectorAll<HTMLSelectElement>("[data-pf-sel]"));
+  // the page draws the drop-downs itself, which lifts each select out of its label,
+  // so the label is kept here to mark the one that has something picked
+  const selLabel = new Map(sels.map((s, i) => [s, box.querySelectorAll<HTMLElement>(".pf-bar .sb-f")[i] ?? null] as const));
   const input = box.querySelector<HTMLInputElement>("[data-search]");
   const clearQ = box.querySelector<HTMLButtonElement>("[data-clear-q]");
   const status = box.querySelector<HTMLElement>("[data-status]");
@@ -628,6 +633,14 @@ function mountFinder(root: HTMLElement, toEl: (el: HTMLElement, gap?: number) =>
       c.toggleAttribute("data-empty", k !== "all" && n === 0 && !fams.has(k));
     }
 
+    // the bar's drop-downs follow whatever is picked
+    for (const sel of sels) {
+      const want = sel.dataset.pfSel === "fam" ? one(fams) : one(brands);
+      if (sel.value !== want) sel.value = want;
+      sel.dispatchEvent(new Event("fs-sync"));
+      selLabel.get(sel)?.classList.toggle("is-set", want !== "all");
+    }
+
     // how many are ticked in each group
     box.querySelectorAll<HTMLElement>("[data-picked]").forEach((el) => {
       const n = el.dataset.picked === "fam" ? fams.size : brands.size;
@@ -683,6 +696,17 @@ function mountFinder(root: HTMLElement, toEl: (el: HTMLElement, gap?: number) =>
     if (input) input.value = "";
     apply();
   };
+
+  for (const sel of sels) {
+    fancySelect(sel, on, "fs--sb");
+    on(sel, "change", () => {
+      const group = sel.dataset.pfSel === "fam" ? fams : brands;
+      group.clear();
+      if (sel.value !== "all") group.add(sel.value);
+      apply();
+      requestAnimationFrame(toList);
+    });
+  }
 
   on(box, "click", (e) => {
     const t = e.target as Element;

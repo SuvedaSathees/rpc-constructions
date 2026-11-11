@@ -291,15 +291,18 @@ main .pj-row h2.pj-name{margin:1rem 0 0;font-family:var(--display);font-weight:5
   .pj-herogrid > div:first-child{display:none}
   .pj-heroside{padding-bottom:0}
   .pj-listwrap{padding:.1rem 0 3.2rem}
-  .pj-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}
-  .pj-list .pj-row{position:relative;padding:0 0 .85rem;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 0 0 1px var(--line),0 10px 24px -20px rgba(18,34,59,.45)}
+  .pj-list{grid-template-columns:minmax(0,1fr);gap:.85rem}
+  .pj-list .pj-row{position:relative;padding:0 0 1rem;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 0 0 1px var(--line),0 14px 28px -22px rgba(18,34,59,.45)}
   .pj-list .pj-row:hover{transform:none}
-  .pj-list .pj-pic{margin:0;border-radius:0;aspect-ratio:4/3}
-  .pj-list .pj-top{position:absolute;top:.5rem;left:.5rem;right:auto}
-  .pj-list .pj-type,.pj-list .pj-lead,.pj-list .pj-wp{display:none}
-  .pj-list .pj-stat{height:1.5rem;padding:0 .55rem;gap:.35rem;background:rgba(255,255,255,.95);font-size:var(--fs-body,1rem);box-shadow:0 2px 8px -2px rgba(18,34,59,.35)}
-  main .pj-list .pj-row h2.pj-name{margin:.7rem .75rem 0;font-size:.9rem!important;line-height:1.22!important;letter-spacing:-.01em;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;min-height:2.44em}
-  .pj-list .pj-loc{margin:.35rem .75rem 0;font-size:var(--fs-body,1rem);line-height:1.3}
-  .pj-list .pj-loc svg{width:.8rem;height:.8rem}
+  .pj-list .pj-pic{margin:0;border-radius:0;aspect-ratio:16/10}
+  /* the state and the kind of building sit on the photograph, and the name below it
+     is given its whole length rather than being cut off after two lines */
+  .pj-list .pj-top{position:absolute;top:.6rem;left:.6rem;right:.6rem;justify-content:flex-start;gap:.4rem}
+  .pj-list .pj-lead,.pj-list .pj-wp{display:none}
+  .pj-list .pj-stat,.pj-list .pj-type{height:1.6rem;padding:0 .6rem;gap:.35rem;border-radius:999px;background:rgba(255,255,255,.95);font-size:var(--fs-body,1rem);font-weight:600;box-shadow:0 2px 8px -2px rgba(18,34,59,.35)}
+  .pj-list .pj-type{display:inline-flex;align-items:center;color:var(--ink2)}
+  main .pj-list .pj-row h2.pj-name{margin:.85rem .95rem 0;font-size:1.02rem!important;line-height:1.26!important;letter-spacing:-.01em;display:block;overflow:visible;min-height:0}
+  .pj-list .pj-loc{margin:.3rem .95rem 0;font-size:var(--fs-body,1rem);line-height:1.35}
+  .pj-list .pj-loc svg{width:.85rem;height:.85rem}
 }
 `;

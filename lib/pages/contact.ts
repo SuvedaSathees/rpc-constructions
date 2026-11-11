@@ -250,6 +250,13 @@ export const CONTACT_CSS = ROUTES_CSS + `
 .ct-alt{margin:.9rem 0 0;font-size:var(--fs-body,1rem);line-height:1.6;color:rgba(18,34,59,.7)}
 .ct-alt a{color:#12223b;font-weight:500;text-decoration:none;white-space:nowrap}
 .ct-alt a:hover{text-decoration:underline}
+/* touch screens: each number keeps its look but gets a finger-sized tap area, and the line
+   opens up enough that two numbers one above the other do not share it */
+@media (pointer:coarse){
+  .ct-alt{line-height:2.1}
+  .ct-alt a{position:relative}
+  .ct-alt a::after{content:"";position:absolute;inset:-11px -5px}
+}
 .ct-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem;margin:clamp(1.3rem,3vh,2rem) 0 0;padding:0;list-style:none}
 .ct-tile{position:relative;display:flex;flex-direction:column;height:100%;box-sizing:border-box;padding:1.1rem 1.15rem;border-radius:18px;background:var(--card);box-shadow:inset 0 0 0 1px rgba(39,86,160,.14),0 18px 36px -30px rgba(18,34,59,.45);color:var(--ink);text-decoration:none;transition:transform .25s,box-shadow .25s}
 .ct-tile:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1.5px var(--navy),0 24px 44px -30px rgba(18,34,59,.55)}

@@ -36,7 +36,7 @@ const NAV_CSS = `
 .rn-cta--sm{display:none;gap:8px;height:36px;padding:0 4px 0 14px;box-shadow:none}
 .rn-cta--sm .rn-ctai{width:28px;height:28px}
 @media (min-width:768px){.rn-cta--sm{display:inline-flex}}
-@media (min-width:1200px){
+@media (min-width:1280px){
   .rn-in{display:grid;grid-template-columns:minmax(13rem,1fr) auto minmax(0,1fr);align-items:center;padding-top:12px}
   .rn-sp{display:block}
   .rn-mini{display:none}
@@ -44,14 +44,14 @@ const NAV_CSS = `
   .rn-end{display:flex;justify-content:flex-end}
   .rn-logo{height:52px}
 }
-@media (min-width:1280px){.rn-link{padding:0 15px}}
-@media (max-width:1199px){.rn-mini{margin-top:6px}}
+@media (min-width:1440px){.rn-link{padding:0 15px}}
+@media (max-width:1279px){.rn-mini{margin-top:6px}}
 `;
 
 /**
  * The header. The logo sits on the page itself, at its top left, with no box
  * round it, and scrolls away with the page (in white on the home page's dark
- * opening, in the logo's dark blue everywhere else). From 1200px (the width at
+ * opening, in the logo's dark blue everywhere else). From 1280px (the width at
  * which all eight pages, the logo and Contact fit on one line) the pages are
  * in a rounded pill of the logo's dark blue centred at the top, and Contact is
  * a light blue pill at the right; both float with a gap above them and stay in
@@ -175,13 +175,13 @@ export function Nav() {
             <span className="flex lg:hidden">
               <Wordmark size="lg" tile={lightLogo} iso />
             </span>
-            <span className="hidden lg:flex xl:hidden">
+            <span className="hidden lg:flex 2xl:hidden">
               <Wordmark size="md" tile={lightLogo} iso />
             </span>
-            <span className="hidden xl:flex 2xl:hidden">
+            <span className="hidden min-[1536px]:flex min-[1920px]:hidden">
               <Wordmark size="xl" tile={lightLogo} iso />
             </span>
-            <span className="hidden 2xl:flex">
+            <span className="hidden min-[1920px]:flex">
               <Wordmark size="xxl" tile={lightLogo} iso />
             </span>
           </Link>
@@ -201,7 +201,7 @@ export function Nav() {
           style={{ opacity: scrolled && !open ? 1 : 0, background: pathname === "/contact" ? "#d9e2ee" : undefined }}
         />
         <div className="rn-in gutter relative mx-auto flex max-w-none justify-end pt-2">
-          {/* from 1200px: room for the logo, the pages in a pill centred at the top, and Contact at the right */}
+          {/* from 1280px: room for the logo, the pages in a pill centred at the top, and Contact at the right */}
           <span aria-hidden className="rn-sp" />
           <nav aria-label="Primary" className="rn-bar pointer-events-auto" style={BAR}>
             <div ref={row} className="relative flex items-center gap-0.5">

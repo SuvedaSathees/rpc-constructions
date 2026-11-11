@@ -231,7 +231,7 @@ const METHODS_MOBILE_CSS = `
   .rt-gh{display:none}
   .rt-group--none .rt-chip{grid-column:1 / -1}
   .rt-pick .rt-chip{white-space:normal}
-  .rt-chip{width:100%;height:auto;min-height:2.6rem;gap:.5rem;padding:.35rem .8rem .35rem .7rem;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font-size:var(--fs-body,1rem);line-height:1.2;white-space:normal;text-align:left}
+  .rt-chip{width:100%;height:auto;min-height:2.6rem;gap:.5rem;padding:.35rem .8rem .35rem .7rem;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font-size:var(--fs-body,1rem);line-height:1.2;white-space:normal;overflow-wrap:break-word;-webkit-hyphens:auto;hyphens:auto;text-align:left}
   .rt-chip .rt-r{box-shadow:inset 0 0 0 2px var(--k)}
   .rt-chip[aria-pressed=true]{box-shadow:none}
   .rt-info{order:4;padding:1rem 1.1rem 1.1rem;border-radius:16px}
@@ -250,10 +250,21 @@ const METHODS_MOBILE_CSS = `
   .rt-group--none .rt-chip{min-height:2.2rem;font-size:var(--fs-body,1rem)}
   .rt-info{position:relative;gap:.25rem;padding:.8rem .95rem .85rem;border-radius:14px}
   .rt-kind{display:none}
-  .rt-name{padding-right:6.4rem;font-size:var(--fs-body,1rem)}
+  .rt-name{padding-right:8.6rem;font-size:var(--fs-body,1rem)}
   .rt-where{font-size:var(--fs-body,1rem);line-height:1.45}
   .rt-mind{display:none !important}
   .rt-again{position:absolute;top:.6rem;right:.7rem;margin:0;padding:.35rem .7rem;font-size:var(--fs-body,1rem)}
+}
+@media (max-width:450px){
+  /* three pills to a row need about 450px before a word like "Cementitious" or
+     "Polyurethane" fits one of them; below that they go two to a row, whole */
+  .rt-pick{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:400px){
+  /* and on the narrowest phones the replay button drops below the words rather than
+     sitting over the longer method names */
+  .rt-info .rt-again{position:static;align-self:flex-end;margin:.4rem 0 0}
+  .rt-info .rt-name{padding-right:0}
 }
 @keyframes wpx-sheet{from{transform:translateY(40px);opacity:0}}
 `;

@@ -440,7 +440,7 @@
   main h2.pj-name.pj-name.pj-name.pj-name { margin: 0 0 .4rem !important; font-size: 1.05rem !important; line-height: 1.3 !important; font-weight: 600 !important; letter-spacing: -.01em; min-height: 2.6em !important; }
   main .sv-w h3.sv-ct.sv-ct.sv-ct.sv-ct {
     display: flex !important;
-    align-items: flex-start !important;
+    align-items: center !important;
     gap: .55rem !important;
     margin: 0 !important;
     font-size: 1.02rem !important;
@@ -469,7 +469,6 @@ main .sv-w .sv-ct .sv-icon {
   width: 2.1rem !important;
   height: 2.1rem !important;
   border-radius: 10px !important;
-  margin-top: .05rem !important;
 }
 main .sv-w .sv-ct .sv-icon svg {
   width: 1.1rem !important;

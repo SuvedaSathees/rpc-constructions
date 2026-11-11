@@ -96,12 +96,12 @@ export function serviceFaq(d: Pick<ServicesData, "services" | "process" | "conta
 /** RPC's before and after photographs, for every waterproofing service */
 const BA: Readonly<Record<string, readonly [string, string]>> = {
   terrace: ["/images/rain/terrace-before.webp", "/images/rain/terrace-after.webp"],
-  bathroom: ["/images/rain/bath-before.webp?v=2", "/images/rain/bath-after.webp?v=2"],
-  tank: ["/images/rain/tank-before.webp", "/images/rain/tank-after.webp"],
-  basement: ["/images/rain/basement-before.webp", "/images/rain/basement-after.webp"],
-  balcony: ["/images/rain/balcony-before.webp", "/images/rain/balcony-after.webp"],
+  bathroom: ["/images/rain/bath-before.webp?v=3", "/images/rain/bath-after.webp?v=2"],
+  tank: ["/images/rain/tank-before.webp?v=2", "/images/rain/tank-after.webp"],
+  basement: ["/images/rain/basement-before.webp?v=2", "/images/rain/basement-after.webp"],
+  balcony: ["/images/rain/balcony-before.webp?v=2", "/images/rain/balcony-after.webp"],
   walls: ["/images/rain/wall-before.webp", "/images/rain/wall-after.webp"],
-  podium: ["/images/rain/podium-before.webp", "/images/rain/podium-after.webp"],
+  podium: ["/images/rain/podium-before.webp?v=2", "/images/rain/podium-after.webp"],
   cracks: ["/images/rain/leak-before.webp", "/images/rain/leak-after.webp"],
 };
 const HANDLE = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
@@ -253,8 +253,8 @@ export const SERVICES_CSS = `
 .sv-ba-mark .sv-wi{display:contents}
 .sv-ba-mark svg{width:1.5rem;height:1.5rem}
 .sv-wbody{display:flex;flex-direction:column;flex:1;padding:1rem .75rem 0}
-.sv-w .sv-ct{display:flex;align-items:flex-start;gap:.55rem;margin:0;font-size:1.02rem;line-height:1.28;font-weight:600;letter-spacing:-.01em;min-height:2.65em}
-.sv-w .sv-ct .sv-icon{flex:none;width:2.1rem;height:2.1rem;border-radius:10px;margin-top:.05rem}
+.sv-w .sv-ct{display:flex;align-items:center;gap:.6rem;margin:0;font-size:1.02rem;line-height:1.28;font-weight:600;letter-spacing:-.01em;min-height:2.65em}
+.sv-w .sv-ct .sv-icon{flex:none;width:2.1rem;height:2.1rem;border-radius:10px}
 .sv-w .sv-ct .sv-icon svg{width:1.1rem;height:1.1rem}
 .sv-w .sv-cp{margin:.6rem 0 0;font-size:.92rem;line-height:1.55;min-height:4.65em}
 /* no quote link at the foot of the cards: the text keeps its own space below */

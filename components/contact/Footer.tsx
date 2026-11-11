@@ -67,7 +67,7 @@ export function Footer() {
             {/* pages: one wrapped row of links on a phone, a column from tablets up */}
             <nav aria-label="Footer" className="col-span-2 md:col-span-1">
               <p className={`${head} hidden md:block`}>Explore</p>
-              <ul className="grid grid-cols-3 gap-x-3 gap-y-1 md:flex md:flex-col md:items-start md:gap-2">
+              <ul className="grid grid-cols-2 gap-x-3 gap-y-1 min-[390px]:grid-cols-3 md:flex md:flex-col md:items-start md:gap-2">
                 {nav.map((n) => (
                   <li key={n.href}>
                     <Link href={n.href} className={link}>

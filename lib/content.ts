@@ -430,24 +430,18 @@ export const partners: readonly { name: string; role: string; qualification: str
     name: "Velmurugan Sivanantham",
     role: "Partner",
     qualification: "",
-    bio: `Velmurugan Sivanantham is a skilled professional dedicated to upholding the company's exceptional performance record, acknowledged as one of the finest in the industry. Along with the coordination of the Executive Management Team, he has developed an integrated business plan that optimizes market share and profitability of existing or new activities. His strong vision to focus on the four pillars - Ethics, Professionalism, Commitment, and Quality has led to the success of RPC Construction Solutions and Robotics Bricks and Blocks.
+    bio: `Velmurugan leads RPC Construction Solutions and Robotics Bricks and Blocks, and runs both on four things: ethics, professionalism, commitment and quality.
 
-Under the esteemed leadership of Mr. Velmurugan Sivanantham, both companies have stood out as leading competitors in the national market and have taken on construction projects in all major areas of the industry, including industrial, civil infrastructure, and residential housing projects in different cities. He is a distinguished provider of specialized construction chemicals dedicated to offering high-performance products that promote sustainability and environmental responsibility while also improving the security, toughness, and longevity of structures and infrastructure. In addition to offering the customers high-quality products, he strives to provide exceptional service.
-
-Mr. Velmurugan Sivanantham has also contributed to setting high-level goals, objectives, and plans and worked with them by closely monitoring their operations in Robotics Bricks Private Limited, which focuses on innovative solutions like paver blocks and precast materials.
-
-His insights believe working together is essential to success. He has created solutions that address customers’ needs above and beyond their expectations and perfectly collaborates with clients, partners, and industry experts. His route to success has been highly dependent on his competent team of professionals and his philosophy of upholding client satisfaction.
-
-Velmurugan Sivanantham is an active member of Business Networking International (BNI), a global business referral organization.`,
+The work reaches across industrial, civil infrastructure and residential projects in several cities, alongside a specialist range of construction chemicals chosen for how long they keep a building sound. At Robotics Bricks Private Limited he sets the direction for paver blocks and precast. He is a member of Business Networking International.`,
     image: "/images/partners/velmurugan-sivanantham.webp",
   },
   {
     name: "Aravinth Sivanantham",
     role: "Partner",
     qualification: "",
-    bio: `Aravinth Sivanantham is an entrepreneur, business leader, a diversified construction-focused business group built around a clear vision of making the construction industry more reliable, transparent, accessible, and professionally managed.
+    bio: `Aravinth builds the group around one idea: that construction should be reliable, transparent, accessible and professionally managed.
 
-With businesses spanning building material supply, construction solutions, construction chemicals, manufacturing, structural design, planning, estimation, and technology-enabled procurement, he has been working towards creating an integrated ecosystem that supports customers from the foundation of a project to its completion.`,
+His side of it runs from building material supply and construction chemicals to manufacturing, structural design, planning, estimation and technology-led procurement — one chain, meant to carry a customer from the foundation of a project through to the day it is finished.`,
     image: "/images/partners/aravinth-sivanantham.webp",
   },
 ];

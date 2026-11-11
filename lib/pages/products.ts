@@ -200,7 +200,8 @@ ${enquiryMarkup(d.contact)}`;
 }
 
 export const PRODUCTS_CSS = FINDER_CSS + FANCY_SELECT_CSS + BRANDS_MARQUEE_CSS + COMPARE_CSS + `
-.pr-head{--pg-shot:url("/images/products-hero.jpg");background:linear-gradient(90deg,rgba(7,20,44,.92) 0%,rgba(7,20,44,.76) 42%,rgba(7,20,44,.28) 75%,rgba(7,20,44,.1) 100%),linear-gradient(180deg,rgba(7,20,44,.55) 0%,rgba(7,20,44,0) 35%),var(--pg-shot) center center/cover no-repeat #0b2350;border-bottom:1px solid var(--line);padding-bottom:clamp(1.6rem,4vh,2.6rem)}
+/* the banner picture and its wash are the shared ones from the kit, the same as the About page; only the rule under it and the room below are the products page's own */
+.pr-head{border-bottom:1px solid var(--line);padding-bottom:clamp(1.6rem,4vh,2.6rem)}
 .pr-bsec{padding-block:clamp(2rem,5vh,3.5rem);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .pr-bsec .pg-shead{margin-bottom:1.4rem}
 .pr-headgrid{display:grid;grid-template-columns:minmax(0,1.2fr) auto;align-items:end;gap:1.4rem clamp(2rem,6vw,7rem)}
@@ -484,7 +485,7 @@ export const PRODUCTS_CSS = FINDER_CSS + FANCY_SELECT_CSS + BRANDS_MARQUEE_CSS +
 
 /* phones, products banner: room for the button under the two lines, a button that fits its words */
 @media (max-width:767px){
-  .pr-head{--head-h:15.5rem;--head-pb:1.4rem;background-position:70% center}
+  .pr-head{--head-h:15.5rem;--head-pb:1.4rem}
   .pr-headgrid{gap:.95rem}
   .pg-head.pr-head .pr-headgrid .pg-h1{max-width:32rem}
   .pr-headside .pg-actions{justify-content:flex-start}
@@ -511,6 +512,9 @@ export const PRODUCTS_CSS = FINDER_CSS + FANCY_SELECT_CSS + BRANDS_MARQUEE_CSS +
   .pf-chiprow--brands .pf-bt[aria-pressed="true"] .pf-bn{color:var(--navy)}
 }
 
+@media (max-width:430px){
+  .pf-chiprow--brands .pf-cs{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
 @media (max-width:380px){
   .pf-chips{padding-inline:.65rem}
   .pf-chiprow:not(.pf-chiprow--brands) .pf-chip{padding:0 .5rem;gap:.25rem;font-size:var(--fs-body,1rem)}

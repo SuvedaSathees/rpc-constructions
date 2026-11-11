@@ -202,22 +202,33 @@ function projects(root: HTMLElement, env: PageEnv): Off {
   return () => offs.forEach((f) => f());
 }
 
-/* blog: the search bar narrows the articles by words and by waterproofing method */
+/* blog: the list of articles is shown three at a time, with the page buttons under it */
 function blog(root: HTMLElement): Off {
-  const bar = root.querySelector<HTMLElement>(".bl-bar");
-  const items = Array.from(root.querySelectorAll<HTMLElement>("[data-methods]"));
-  const status = root.querySelector<HTMLElement>("[data-topic-status]");
-  const empty = root.querySelector<HTMLElement>(".bl-empty");
-  const more = root.querySelector<HTMLElement>(".bl-morehead h2");
   const grid = root.querySelector<HTMLElement>(".bl-grid--rows");
   const gridItems = grid ? Array.from(grid.children).filter((x): x is HTMLElement => x instanceof HTMLElement) : [];
   const pagination = root.querySelector<HTMLElement>("[data-bl-pagination]");
-  if (!bar || !items.length) return () => {};
+  if (!pagination || !gridItems.length) return () => {};
   const offs: Off[] = [];
   const pageSize = 3;
+  const pageCount = Math.max(1, Math.ceil(gridItems.length / pageSize));
   let page = 1;
+  const apply = () => {
+    gridItems.forEach((it, i) => (it.hidden = Math.floor(i / pageSize) + 1 !== page));
+    pagination.hidden = gridItems.length <= pageSize;
+    pagination.querySelectorAll<HTMLButtonElement>("[data-bl-page]").forEach((button) => {
+      const value = button.dataset.blPage;
+      if (value === "prev") button.disabled = page === 1;
+      else if (value === "next") button.disabled = page === pageCount;
+      else {
+        const active = value === String(page);
+        if (active) button.setAttribute("aria-current", "page");
+        else button.removeAttribute("aria-current");
+        button.classList.toggle("is-current", active);
+      }
+    });
+  };
   const changePage = (next: number) => {
-    page = Math.min(Math.max(1, Math.ceil(gridItems.length / pageSize)), Math.max(1, next));
+    page = Math.min(pageCount, Math.max(1, next));
     apply();
     if (grid) {
       grid.classList.remove("bl-grid--changing");
@@ -226,59 +237,14 @@ function blog(root: HTMLElement): Off {
     }
     gridItems.find((it) => !it.hidden)?.querySelector<HTMLElement>("a")?.focus({ preventScroll: true });
   };
-  const apply = () => {
-    const m = s.value("method");
-    const narrowed = m !== "all" || !!s.typed();
-    let n = 0;
-    for (const it of items) {
-      const on = (m === "all" || (it.dataset.methods ?? "").split(" ").includes(m)) && s.matches(it.dataset.text ?? "");
-      if (on) n++;
-    }
-    const matchingGridItems = gridItems.filter((it) => (m === "all" || (it.dataset.methods ?? "").split(" ").includes(m)) && s.matches(it.dataset.text ?? ""));
-    const pageCount = Math.max(1, Math.ceil(matchingGridItems.length / pageSize));
-    if (page > pageCount) page = 1;
-    gridItems.forEach((it) => {
-      const index = matchingGridItems.indexOf(it);
-      it.hidden = index < 0 || Math.floor(index / pageSize) + 1 !== page;
-    });
-    if (pagination) {
-      pagination.hidden = matchingGridItems.length <= pageSize;
-      pagination.querySelectorAll<HTMLButtonElement>("[data-bl-page]").forEach((button) => {
-        const value = button.dataset.blPage;
-        const active = value === String(page);
-        if (value === "prev") {
-          button.disabled = page === 1;
-          button.hidden = false;
-        } else if (value === "next") {
-          button.disabled = page === pageCount;
-          button.hidden = false;
-        }
-        else {
-          button.hidden = Number(value) > pageCount;
-          if (active) button.setAttribute("aria-current", "page");
-          else button.removeAttribute("aria-current");
-          button.classList.toggle("is-current", active);
-        }
-      });
-    }
-    if (empty) empty.hidden = n > 0;
-    if (more) more.textContent = narrowed ? "Articles found" : "More articles";
-    if (status) {
-      const bits = [m !== "all" ? `about ${s.label("method").toLowerCase()}` : "", s.typed() ? `matching “${s.typed()}”` : ""].filter(Boolean);
-      status.textContent = bits.length ? `Showing ${n} ${n === 1 ? "article" : "articles"} ${bits.join(", ")}` : `Showing ${n} ${n === 1 ? "article" : "articles"}`;
-    }
-  };
-  const s = mountSearch(bar, offs, apply);
-  offs.push(listen(root, "click", (e) => (e.target as HTMLElement).closest("[data-reset]") && s.reset()));
-  if (pagination)
-    offs.push(
-      listen(pagination, "click", (e) => {
-        const button = (e.target as HTMLElement).closest<HTMLButtonElement>("[data-bl-page]");
-        if (!button || button.disabled) return;
-        const value = button.dataset.blPage;
-        changePage(value === "prev" ? page - 1 : value === "next" ? page + 1 : Number(value));
-      }),
-    );
+  offs.push(
+    listen(pagination, "click", (e) => {
+      const button = (e.target as HTMLElement).closest<HTMLButtonElement>("[data-bl-page]");
+      if (!button || button.disabled) return;
+      const value = button.dataset.blPage;
+      changePage(value === "prev" ? page - 1 : value === "next" ? page + 1 : Number(value));
+    }),
+  );
   apply();
   return () => offs.forEach((f) => f());
 }
@@ -445,6 +411,50 @@ function valuesPick(root: HTMLElement): Off {
   };
 }
 
+/**
+ * The banner's words fade out as they rise towards the header, so no line of
+ * the title ever crosses the logo. The logo sits on the page with no box round
+ * it, and while a dark banner is under the header the bar deliberately has no
+ * strip behind it (components/navigation/Nav.tsx), so without this the h1 and
+ * the logo's own letters end up drawn on top of each other. Each line fades on
+ * its own way up, and is gone by the time it reaches the header.
+ */
+function headFade(root: HTMLElement): Off {
+  const head = root.querySelector<HTMLElement>(".pg-head, .pjs-head");
+  if (!head) return () => {};
+  const wrap = head.querySelector<HTMLElement>(".pg-wrap") ?? head;
+  const picked = Array.from(head.querySelectorAll<HTMLElement>(".pg-mark, .pg-h1, h1, .pg-intro, .pg-actions, .pg-headaside, .pjs-meta"));
+  const items = picked.length ? picked : Array.from(wrap.children).filter((e): e is HTMLElement => e instanceof HTMLElement);
+  if (!items.length) return () => {};
+  /** no line starts fading lower than this */
+  const FROM = 210;
+  /** by here, just clear of the logo, it has gone */
+  const TO = 76;
+  const off = onFrame(() => {
+    const y = window.scrollY;
+    for (const el of items) {
+      const top = el.getBoundingClientRect().top;
+      // where the line sits with the page at the top: fading starts there, never before it
+      const start = Math.min(FROM, top + y);
+      if (start <= TO + 16) {
+        el.style.opacity = "";
+        el.style.pointerEvents = "";
+        continue;
+      }
+      const p = Math.min(1, Math.max(0, (start - top) / (start - TO)));
+      el.style.opacity = p ? String(1 - p) : "";
+      el.style.pointerEvents = p > 0.85 ? "none" : "";
+    }
+  });
+  return () => {
+    off();
+    for (const el of items) {
+      el.style.opacity = "";
+      el.style.pointerEvents = "";
+    }
+  };
+}
+
 export function mountPageBehaviour(kind: PageKind, root: HTMLElement, env: PageEnv = {}): Off {
   const offs: Off[] = [];
   if (kind === "projects") offs.push(projects(root, env));
@@ -466,6 +476,6 @@ export function mountPageBehaviour(kind: PageKind, root: HTMLElement, env: PageE
       off();
     });
   }
-  offs.push(motion(root));
+  offs.push(motion(root), headFade(root));
   return () => offs.forEach((f) => f());
 }

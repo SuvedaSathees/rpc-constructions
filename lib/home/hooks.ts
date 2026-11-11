@@ -17,7 +17,7 @@
  * reveals) comes from HOME_CSS.
  */
 import { brandsMarqueeOf, BRANDS_MARQUEE_CSS } from "../methods/brand-logos";
-import { ctaBand, KIT_CSS, type ContactInfo } from "../pages/kit";
+import { KIT_CSS } from "../pages/kit";
 import { rootedAboutMarkup, ROOTED_ABOUT_CSS, servicesMarkup, type HomeData } from "./sections";
 
 export interface HookData {
@@ -209,16 +209,6 @@ export function hooksMarkup(home: HomeData, d: HookData) {
     servicesMarkup(home, { n: "03", label: "Waterproofing", id: "waterproofing", below: true }),
     projects(d),
     waterproofing(d, { n: "05", label: "Services", id: "services" }),
-    // the close, in the about page's design: its own three steps and the ways to reach us
-    `<div class="pg hk-cta">${ctaBand({ regions: [], ...home.contact } as ContactInfo, {
-      title: "Seen a damp patch? Let’s fix it.",
-      steps: [
-        ["Send us a photo", "WhatsApp a picture of the leak, the crack or the damp wall."],
-        ["We come and check", "An engineer visits your site. The first visit is free."],
-        ["Get one clear plan", "What is wrong, how we fix it and the price, in writing."],
-      ],
-      reach: true,
-    })}</div>`,
   ].join("\n");
 }
 
@@ -230,8 +220,6 @@ export const HOOKS_CSS =
 /* the hooks: one short section per page, in the order of the top menu; the grounds alternate, light sand and stone */
 .hm-services,.hm-contact{background:var(--paper)}
 .hm-services{padding-bottom:clamp(2rem,5vh,3.5rem)}
-.hk-cta{background:var(--paper)}
-.hk-cta .pg-cta{padding-top:0}
 .hk{position:relative;z-index:10;padding:clamp(4rem,11vh,7rem) 0}
 .hk--paper{background:var(--paper)}
 .hk--stone{background:var(--stone)}
@@ -298,6 +286,18 @@ export const HOOKS_CSS =
 .hk-bal,.hk-bar{position:absolute;z-index:1;bottom:.6rem;padding:.15rem .55rem;border-radius:999px;font-size:var(--fs-body);font-weight:600;line-height:1.3;color:#fff;transition:opacity .4s}
 .hk-bal{left:.6rem;background:rgba(162,69,44,.88)}
 .hk-bar{right:.6rem;background:rgba(11,110,128,.9)}
+/* the narrowest phones: two cards to a row leave each picture about 115px, which the two
+   pills at full size cannot share, so they shrink rather than sit on each other */
+@media (max-width:399px){
+  .hk-bal,.hk-bar{bottom:.45rem;padding:.1rem .42rem;font-size:.72rem}
+  .hk-bal{left:.45rem}
+  .hk-bar{right:.45rem}
+}
+/* phones: this one heading is short enough to stay on a single line, so it is not
+   held to the 13ch the other section headings use */
+@media (max-width:767px){
+  #hk-prod-h{max-width:none}
+}
 .hk-ba:hover .hk-ba-before{clip-path:inset(0 100% 0 0)}
 .hk-ba:hover .hk-bad{left:0}
 .hk-ba:hover .hk-bal{opacity:0}
