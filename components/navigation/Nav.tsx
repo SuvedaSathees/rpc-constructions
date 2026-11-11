@@ -36,16 +36,29 @@ const NAV_CSS = `
 .rn-cta--sm{display:none;gap:8px;height:36px;padding:0 4px 0 14px;box-shadow:none}
 .rn-cta--sm .rn-ctai{width:28px;height:28px}
 @media (min-width:768px){.rn-cta--sm{display:inline-flex}}
-@media (min-width:1280px){
-  .rn-in{display:grid;grid-template-columns:minmax(13rem,1fr) auto minmax(0,1fr);align-items:center;padding-top:12px}
+/* from 1024px (tablets in landscape and small laptops) the eight pages are on one line, drawn tighter so they fit */
+@media (min-width:1024px){
+  .rn-in{display:grid;grid-template-columns:minmax(9.5rem,1fr) auto minmax(0,1fr);align-items:center;padding-top:12px}
   .rn-sp{display:block}
   .rn-mini{display:none}
-  .rn-bar{display:flex;align-items:center;height:52px;padding:0 5px;border-radius:999px}
+  .rn-bar{display:flex;align-items:center;height:48px;padding:0 4px;border-radius:999px}
   .rn-end{display:flex;justify-content:flex-end}
+  .rn-logo{height:48px}
+  .rn-link{height:38px;padding:0 7px;font-size:.9rem}
+  .rn-cta{gap:8px;height:46px;padding:0 5px 0 16px}
+  .rn-ctai{width:36px;height:36px}
+}
+/* from 1280px there is room to let it breathe again */
+@media (min-width:1280px){
+  .rn-in{grid-template-columns:minmax(13rem,1fr) auto minmax(0,1fr)}
+  .rn-bar{height:52px;padding:0 5px}
   .rn-logo{height:52px}
+  .rn-link{height:42px;padding:0 11px;font-size:var(--fs-body)}
+  .rn-cta{gap:12px;height:52px;padding:0 6px 0 22px}
+  .rn-ctai{width:40px;height:40px}
 }
 @media (min-width:1440px){.rn-link{padding:0 15px}}
-@media (max-width:1279px){.rn-mini{margin-top:6px}}
+@media (max-width:1023px){.rn-mini{margin-top:6px}}
 `;
 
 /**
