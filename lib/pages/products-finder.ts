@@ -1093,11 +1093,12 @@ html.pv-open,body.pv-open{overflow:hidden !important}
 .pf-lists[data-view="grid"] .pf-chev{display:none}
 .pf-lists[data-view="grid"] .pf-open{display:none}
 @media (max-width:599px){
-  .pf-lists[data-view="grid"] .pf-row,.pf-lists[data-view="grid"] .pf-row:has(.pf-d[open]){--h:21.6rem}
-  .pf-lists[data-view="grid"] .pf-sum{grid-template-rows:8rem auto auto minmax(0,1fr);padding:.6rem .6rem 3.8rem;gap:.3rem}
+  .pf-lists[data-view="grid"] .pf-row,.pf-lists[data-view="grid"] .pf-row:has(.pf-d[open]){--h:22.4rem}
+  .pf-lists[data-view="grid"] .pf-row,.pf-lists[data-view="grid"] .pf-d,.pf-lists[data-view="grid"] .pf-sum{height:auto}
+  .pf-lists[data-view="grid"] .pf-sum{grid-template-rows:8rem auto auto minmax(0,1fr);padding:.6rem .6rem 3.8rem;gap:.3rem;height:auto;min-height:var(--h)}
   .pf-lists[data-view="grid"] .pf-ico{height:8rem;max-height:8rem}
   .pf-lists[data-view="grid"] .pf-fam{display:block}
-  .pf-lists[data-view="grid"] .pf-view-btn{top:calc(var(--h) - 3.05rem);left:.6rem;right:.6rem;height:2.45rem;font-size:var(--fs-body,1rem)}
+  .pf-lists[data-view="grid"] .pf-view-btn{top:auto;bottom:.6rem;left:.6rem;right:.6rem;height:2.45rem;font-size:var(--fs-body,1rem)}
 }
 
 /* list view */
