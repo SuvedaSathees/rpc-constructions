@@ -313,7 +313,7 @@ export const KIT_CSS = `
   .pg-head .pg-h1,.pg-head h1,.pjs-head .pj-h1{display:block;max-width:none;margin:0;font-family:var(--sans);font-weight:600;letter-spacing:-.01em;color:rgba(245,240,230,.96);text-shadow:0 1px 14px rgba(0,0,0,.45);text-wrap:balance}
 }
 .pg-head{display:flex !important;flex-direction:column;justify-content:flex-end;min-height:var(--head-h);height:auto;box-sizing:border-box;padding:var(--nav-room) 0 var(--head-pb) !important}
-@media (max-width:767px){.pg-head{padding-top:calc(var(--nav-room) + .9rem) !important}}
+@media (max-width:767px){.pg-head{padding-top:calc(var(--nav-room) + 2.4rem) !important}}
 .pg-head > .pg-wrap{width:100%}
 
 

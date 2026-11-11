@@ -284,6 +284,8 @@ export const ROOTED_ABOUT_CSS = `
 .hm-acopy .hm-mark{align-self:stretch}
 .hm-statement{margin:min(1.4rem,2.6svh) 0 0;max-width:26ch;font-family:var(--serif);font-weight:600;font-size:var(--fs-title);line-height:1.12;letter-spacing:-.02em;text-wrap:balance}
 .hm-lead{margin:min(1.6rem,3svh) 0 0;max-width:42rem;font-size:var(--fs-body);line-height:1.7;color:rgba(18,34,59,.8);text-wrap:pretty}
+/* the home page's running text, set justified with hyphenation */
+.hm-lead{text-align:justify;text-justify:inter-word;-webkit-hyphens:auto;hyphens:auto}
 .hm-values{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(1rem,2vw,2rem);align-self:stretch;margin:min(1.8rem,3.4svh) 0 min(1.8rem,3.4svh);padding:0;list-style:none}
 .hm-values li{display:grid;grid-template-columns:1.9rem 1fr;align-content:start;column-gap:.1rem;padding:min(.85rem,1.5svh) 0 min(.95rem,1.6svh);border-top:1px solid var(--line)}
 .hm-vno{grid-row:1/3;padding-top:.12rem;font-size:var(--fs-body);font-weight:600;font-variant-numeric:tabular-nums;color:var(--accent)}

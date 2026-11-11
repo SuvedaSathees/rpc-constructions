@@ -324,7 +324,7 @@ export const HOOKS_CSS =
 .hk-pname{margin:.2rem 0 0;font-family:var(--serif);font-size:var(--fs-sub);font-weight:600;line-height:1.2;letter-spacing:-.01em;color:var(--ink)}
 .hk-ploc{display:flex;align-items:center;gap:.4rem;margin:0;font-size:var(--fs-body);color:var(--mute)}
 .hk-ploc svg{width:1rem;height:1rem;color:var(--water)}
-.hk-psum{margin:.2rem 0 0;max-width:30rem;font-size:var(--fs-body);line-height:1.6;color:var(--ink2)}
+.hk-psum{margin:.2rem 0 0;max-width:30rem;font-size:var(--fs-body);line-height:1.6;color:var(--ink2);text-align:justify;text-justify:inter-word;-webkit-hyphens:auto;hyphens:auto}
 .hk-plink{display:inline-flex;align-items:center;gap:.45rem;margin-top:.4rem;padding-bottom:3px;border-bottom:1px solid currentColor;font-size:var(--fs-body);font-weight:600;color:var(--ink);text-decoration:none}
 .hk-plink:hover .hm-ar{transform:translate(2px,-2px)}
 .hk-pctl{display:flex;align-items:center;gap:.8rem}

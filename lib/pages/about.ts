@@ -141,6 +141,9 @@ export const ABOUT_CSS = `
 .ab-whotext .ab-lead{margin-top:0}
 .ab-lead{margin:1.4rem 0 0;max-width:40rem;font-size:var(--fs-body);line-height:1.65;color:var(--ink)}
 .ab-p{margin:1rem 0 0;max-width:40rem;font-size:var(--fs-body);line-height:1.7;color:var(--ink2)}
+/* the page's running text is set justified, with hyphenation so the narrow columns
+   on a phone do not open rivers between the words */
+.ab-p,.ab-vmtext,.ab-vcbody{text-align:justify;text-justify:inter-word;-webkit-hyphens:auto;hyphens:auto}
 .ab-pts{display:grid;gap:clamp(3.5rem,8vh,6rem);margin-top:clamp(2.6rem,7vh,4.5rem)}
 .ab-pt{display:grid;grid-template-columns:clamp(280px,32vw,400px) minmax(0,1fr);gap:clamp(2.5rem,5vw,4.5rem);align-items:center}
 .ab-pt--flip{grid-template-columns:minmax(0,1fr) clamp(280px,32vw,400px)}
@@ -346,11 +349,11 @@ export const ABOUT_CSS = `
   .ab-vmtext{font-size:var(--fs-body,1rem);line-height:1.45}
 
   .ab-vhead .pg-h2{margin-top:.5rem}
-  .ab-vcards{grid-template-columns:minmax(0,1fr);gap:.6rem}
-  .ab-vcard{display:flex;flex-direction:row;align-items:center;gap:.7rem;padding:.75rem .8rem;border-radius:16px}
+  .ab-vcards{grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem}
+  .ab-vcard{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.45rem;min-height:6.1rem;padding:.75rem .3rem .8rem;border-radius:14px;text-align:center}
   .ab-vcard:hover{transform:none}
   .ab-vcbig,.ab-vcbody{display:none}
-  .ab-vcic{flex:none;width:2.4rem;height:2.4rem;border-radius:12px}
-  .ab-vctitle{margin:0;font-size:var(--fs-body,1rem);line-height:1.2}
+  .ab-vcic{flex:none;width:2.2rem;height:2.2rem;border-radius:11px}
+  .ab-vctitle{margin:0;max-width:100%;font-size:.84rem;line-height:1.18;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:break-word}
 }
 `;

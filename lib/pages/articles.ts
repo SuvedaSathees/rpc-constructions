@@ -159,7 +159,6 @@ export function postMarkup(d: { post: PostData; related: readonly PostData[]; co
     </div>
   </header>
   <div class="pg-wrap po-main">
-    <div data-rv>${cover(p, "3/1", "po-cover")}</div>
     <div class="po-grid">
       <div class="po-body">
         ${body}
@@ -262,6 +261,11 @@ export const BLOG_CSS = `
 
 /* the article */
 .po-head{border-bottom:0;padding-bottom:clamp(1.6rem,4vh,2.4rem)}
+.po-head::after{content:"";position:absolute;inset:auto 0 0;height:46%;background:linear-gradient(0deg,rgba(7,20,44,.82),rgba(7,20,44,0));z-index:-1;pointer-events:none}
+.pg-head .po-by span:first-child{color:#fff}
+.po-by time{color:rgba(245,240,230,.86)}
+/* a little air between the picture and the first words */
+.po-grid{padding-top:clamp(2.6rem,5.5vh,3.8rem)}
 .po-head .pg-wrap,.po-main{max-width:calc(72rem + 2 * var(--gutter,3rem))}
 .po-cat{margin-top:0}
 .po-h1{margin:.7rem 0 0;max-width:24ch;font-family:var(--display);font-weight:600;font-size:var(--fs-title);line-height:1.14;letter-spacing:-.02em;text-wrap:balance}

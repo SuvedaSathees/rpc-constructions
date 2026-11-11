@@ -336,7 +336,6 @@ export const METHODS_TOOLS_CSS = `
 .wpx-spot{position:absolute;display:grid;place-items:center;width:2rem;height:2rem;margin:-1rem 0 0 -1rem;padding:0;border:0;border-radius:50%;background:var(--card);box-shadow:0 0 0 1.5px var(--navy),0 6px 14px -6px rgba(11,35,80,.55);font:inherit;font-size:var(--fs-body);font-weight:600;line-height:1;color:var(--navy);cursor:pointer;transition:background-color .2s,color .2s,transform .2s}
 .wpx-spot:hover{transform:scale(1.08)}
 .wpx-spot.is-on{background:var(--navy);color:#f5f0e6}
-@media (pointer:coarse){.wpx-spot::after{content:"";position:absolute;inset:-5px;border-radius:50%}}
 .wpx-tabs{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.9rem}
 .wpx-tab{display:inline-flex;align-items:center;gap:.5rem;height:2.4rem;padding:0 .95rem 0 .35rem;border:0;border-radius:6px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line);font:inherit;font-size:var(--fs-body);font-weight:500;color:var(--ink);white-space:nowrap;cursor:pointer;transition:background-color .2s,color .2s,box-shadow .2s}
 .wpx-tab span{display:grid;place-items:center;width:1.7rem;height:1.7rem;border-radius:50%;background:var(--sand-2);font-weight:600;font-variant-numeric:tabular-nums}
@@ -550,4 +549,22 @@ export const METHODS_TOOLS_CSS = `
   .wpx-menu{position:fixed;top:auto;bottom:.75rem;left:.75rem!important;right:.75rem!important;width:auto;max-height:72vh;overflow:auto}
   .wpx-mcols{grid-template-columns:minmax(0,1fr)}
 }
+
+/* phones and tablets: the method's sheet kept short enough to take in at a glance —
+   a shallower picture, the two notes as plain lines instead of tinted panels, and the
+   label beside its text rather than above it */
+@media (max-width:767px){
+  .wpx-popart{padding:.4rem .45rem .3rem;border-radius:12px}
+  .wpx-popart img{aspect-ratio:16/7;height:auto;object-fit:cover;border-radius:8px}
+  .wpx-dh{font-size:var(--fs-body,1rem);line-height:1.5}
+  .wpx-duse{margin-top:.5rem;font-size:var(--fs-body,1rem);line-height:1.4;color:var(--ink2)}
+  .wpx-dnotes{grid-template-columns:minmax(0,1fr);gap:.5rem;margin-top:.85rem}
+  .wpx-dnotes .wpx-dn{margin:0;padding:0;border-radius:0;background:none;box-shadow:none}
+  .wpx-dn b{display:inline;margin:0 .3rem 0 0}
+  .wpx-dn b::after{content:""}
+  .wpx-dn span{display:inline}
+  .wpx-dprod{padding-top:.85rem}
+  .wpx-dl{margin-bottom:.3rem}
+}
+
 `;
