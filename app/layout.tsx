@@ -174,6 +174,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en-IN" className={`${serif.variable} ${sans.variable} ${mono.variable} ${logo.variable}`}>
       <body>
+        {/*
+          Tablets are shown the desktop site, not a layout of their own: the page is laid
+          out at 1280px and the tablet scales it to fit, so an iPad shows exactly what a
+          laptop shows. It is set here, before anything is drawn, because a viewport
+          cannot be chosen with a media query. Only real touch tablets are caught (a
+          coarse pointer, a screen at least 768px on its shorter side, and a window
+          narrower than the desktop layout), so phones keep the layout built for them, and
+          touch screens already 1280px wide or more are left exactly as they are.
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{var m=document.querySelector('meta[name=\"viewport\"]');" +
+              "if(m&&matchMedia('(pointer:coarse)').matches" +
+              "&&Math.min(screen.width,screen.height)>=768&&innerWidth<1280){" +
+              "m.setAttribute('content','width=1280')}}catch(e){}",
+          }}
+        />
         {/* a refresh opens the page at the top, not where it was left (moving between pages: see SmoothScroll) */}
         <script dangerouslySetInnerHTML={{ __html: "try{history.scrollRestoration='manual'}catch(e){}" }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([organizationLd, websiteLd]) }} />

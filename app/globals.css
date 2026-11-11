@@ -443,6 +443,8 @@
     main .pj-list .pj-row h2.pj-name.pj-name.pj-name.pj-name { min-height: 0 !important; }
     /* the six values become small tiles: their labels take the tile's size, not the h3 size */
     main h3.ab-vctitle.ab-vctitle.ab-vctitle.ab-vctitle { font-size: .84rem !important; line-height: 1.18 !important; }
+    /* and the construction service cards, two to a row, take a card's size rather than a heading's */
+    main .sv-b h3.sv-ct.sv-ct.sv-ct.sv-ct { font-size: .88rem !important; line-height: 1.25 !important; }
   }
   main .sv-w h3.sv-ct.sv-ct.sv-ct.sv-ct {
     display: flex !important;

@@ -247,25 +247,6 @@ function filters(bs: readonly BrandInfo[], total: number) {
 </div>`;
 }
 
-/**
- * The same two filters as one compact bar: a drop-down for the kind of product and
- * one for the brand. It is what phones and tablets get in place of the column of
- * chips, and it reads the way the projects page's bar does.
- */
-function filterBar(bs: readonly BrandInfo[], total: number) {
-  const fams = FAMILIES.filter((f) => bs.some((b) => b.products.some((p) => p.family === f.key)));
-  const count = (f: string) => bs.reduce((s, b) => s + b.products.filter((p) => p.family === f).length, 0);
-  const opt = (v: string, t: string) => `<option value="${esc(v)}">${esc(t)}</option>`;
-  return `<div class="pf-bar" role="group" aria-label="Narrow the products">
-  <label class="sb-f"><span class="pg-vh">Product category</span><select data-pf-sel="fam">${opt("all", `All categories (${total})`)}${fams
-    .map((f) => opt(f.key, `${f.label} (${count(f.key)})`))
-    .join("")}</select></label>
-  <label class="sb-f"><span class="pg-vh">Brand</span><select data-pf-sel="brand">${opt("all", `All brands (${total})`)}${bs
-    .map((b) => opt(b.key, `${b.name} (${b.count})`))
-    .join("")}</select></label>
-</div>`;
-}
-
 export function finderMarkup(bs: readonly BrandInfo[], c: ContactInfo, js: readonly JobView[], total: number) {
   const lists = bs
     .map(
@@ -284,7 +265,6 @@ export function finderMarkup(bs: readonly BrandInfo[], c: ContactInfo, js: reado
       <div class="pf-side" data-lenis-prevent>${filters(bs, total)}</div>
       <div class="pf-main">
         <label class="pf-search">${search}<span class="sr-only">Search products</span><input type="search" data-search placeholder="Search ${total} products" autocomplete="off" enterkeyhint="search"><button type="button" class="pf-x" data-clear-q aria-label="Clear the search" hidden><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></label>
-        ${filterBar(bs, total)}
         <div class="pf-state"><p class="pf-status" data-status aria-live="polite">Showing all ${total} products.</p><button type="button" class="pf-clear" data-clear hidden>Show every product</button></div>
         <div class="pf-lists" data-view="grid">${lists}</div>
         <script type="application/json" id="rpc-products-catalog">${JSON.stringify(bs.flatMap((b) => b.products).map((p) => {
@@ -914,7 +894,9 @@ html.pv-open,body.pv-open{overflow:hidden !important}
   .pv-purchase-row{flex-direction:column;align-items:stretch;padding:1rem}
   .pv-enquire-btn{justify-content:center}
   .pv-tabs-bar{overflow-x:auto;scrollbar-width:none}
-  .pv-tab{white-space:nowrap;padding:0 .9rem}
+  /* the three tabs together came to more than the screen, so "Technical Data Sheet" was
+     cut off at the right edge: smaller type and tighter pills fit all three on one row */
+  .pv .pv-tab{white-space:nowrap;padding:0 .75rem;font-size:.9rem}
   .pv-thumb-box{width:72px;height:72px;border-radius:10px;padding:5px}
   .pv-thumb-label{font-size:.78rem}
   .pv-col-desc,.pv-col-apps,.pv-col-props{padding:1.2rem}
@@ -1102,23 +1084,5 @@ html.pv-open,body.pv-open{overflow:hidden !important}
 
 /* table view */
 .pf-lists[data-view="table"] .pf-view-btn{display:none}
-
-
-/* the two filters as one bar (phones and tablets), in place of the column of chips */
-.pf-bar{display:none;align-items:stretch;width:100%;min-height:3rem;margin-top:.55rem;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px rgba(18,34,59,.14)}
-.pf-bar:focus-within{box-shadow:inset 0 0 0 1.5px var(--navy),0 0 0 3px rgba(39,86,160,.1)}
-.pf-bar .sb-f{position:relative;display:flex;align-items:center;flex:1 1 0;min-width:0;padding:.3rem}
-.pf-bar .sb-f + .sb-f{border-left:1px solid rgba(18,34,59,.1)}
-.pf-bar select{width:100%;height:2.5rem;padding:0 .8rem;border:0;background:none;font:inherit;font-size:var(--fs-body);font-weight:600;color:var(--ink)}
-.pf-bar .fs{width:100%}
-.pf-bar .fs-btn{gap:.6rem;min-height:2.4rem;padding:.3rem .75rem;border-radius:8px;background:none;box-shadow:none;font-weight:500}
-.pf-bar .fs-btn .fs-n{display:none}
-.pf-bar .fs-btn:hover{background:rgba(18,34,59,.05);box-shadow:none}
-.pf-bar .fs-btn[aria-expanded=true]{background:rgba(39,86,160,.08);box-shadow:none}
-.pf-bar .sb-f.is-set .fs-btn{color:var(--accent)}
-@media (max-width:1023px){
-  .pf-side{display:none}
-  .pf-bar{display:flex}
-}
 
 `;
