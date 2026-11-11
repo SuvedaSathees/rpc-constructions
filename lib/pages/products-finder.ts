@@ -247,6 +247,17 @@ function filters(bs: readonly BrandInfo[], total: number) {
 </div>`;
 }
 
+/** the same two filters as drop-downs in one white bar: what phones and tablets get in place of the column */
+function filterBar(bs: readonly BrandInfo[], total: number) {
+  const fams = FAMILIES.filter((f) => bs.some((b) => b.products.some((p) => p.family === f.key)));
+  const count = (f: string) => bs.reduce((s, b) => s + b.products.filter((p) => p.family === f).length, 0);
+  const opt = (v: string, t: string, first = false) => `<option value="${esc(v)}"${first ? " selected" : ""}>${esc(t)}</option>`;
+  return `<div class="pf-bar" role="group" aria-label="Filter the products">
+  <label class="sb-f"><span class="sr-only">Product category</span><select data-pf-sel="fam">${opt("all", `All categories (${total})`, true)}${fams.map((f) => opt(f.key, `${f.label} (${count(f.key)})`)).join("")}</select></label>
+  <label class="sb-f"><span class="sr-only">Brand</span><select data-pf-sel="brand">${opt("all", `All brands (${total})`, true)}${bs.map((b) => opt(b.key, `${b.name} (${b.count})`)).join("")}</select></label>
+</div>`;
+}
+
 export function finderMarkup(bs: readonly BrandInfo[], c: ContactInfo, js: readonly JobView[], total: number) {
   const lists = bs
     .map(
@@ -265,6 +276,7 @@ export function finderMarkup(bs: readonly BrandInfo[], c: ContactInfo, js: reado
       <div class="pf-side" data-lenis-prevent>${filters(bs, total)}</div>
       <div class="pf-main">
         <label class="pf-search">${search}<span class="sr-only">Search products</span><input type="search" data-search placeholder="Search ${total} products" autocomplete="off" enterkeyhint="search"><button type="button" class="pf-x" data-clear-q aria-label="Clear the search" hidden><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></label>
+        ${filterBar(bs, total)}
         <div class="pf-state"><p class="pf-status" data-status aria-live="polite">Showing all ${total} products.</p><button type="button" class="pf-clear" data-clear hidden>Show every product</button></div>
         <div class="pf-lists" data-view="grid">${lists}</div>
         <script type="application/json" id="rpc-products-catalog">${JSON.stringify(bs.flatMap((b) => b.products).map((p) => {
@@ -376,6 +388,17 @@ export const FINDER_CSS = `
 .pf-search input::placeholder{color:var(--mute);opacity:1}
 .pg .pf-search input:focus-visible{outline:none}
 .pf-search input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
+/* the two filters as drop-downs in one white bar: phones and tablets get this in place of the column */
+.pf-bar{display:none;align-items:stretch;margin-top:.7rem;border-radius:8px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line)}
+.pf-bar .sb-f{position:relative;display:flex;align-items:center;flex:1 1 0;min-width:0;padding:.3rem}
+.pf-bar .sb-f + .sb-f{border-left:1px solid rgba(18,34,59,.1)}
+.pf-bar .sb-f select{width:100%;height:2.6rem;padding:0 .8rem;border:0;background:none;font:inherit;font-size:var(--fs-body);color:var(--ink)}
+.pf-bar .fs{width:100%}
+.pf-bar .fs-btn{gap:.6rem;width:100%;min-height:2.6rem;padding:.3rem .75rem;border-radius:6px;background:none;box-shadow:none;font-weight:500}
+.pf-bar .fs-btn .fs-n{display:none}
+.pf-bar .fs-btn:hover{background:rgba(18,34,59,.05);box-shadow:none}
+.pf-bar .fs-btn[aria-expanded=true]{background:rgba(39,86,160,.08);box-shadow:none}
+.pf-bar .sb-f.is-set .fs-btn{color:var(--accent)}
 .pf-x{display:grid;place-items:center;flex:none;width:2.2rem;height:2.2rem;margin-right:-.5rem;border:0;border-radius:8px;background:none;color:var(--mute);cursor:pointer}
 .pf-x[hidden]{display:none}
 .pf-x:hover{background:rgba(18,34,59,.06);color:var(--ink)}
@@ -581,9 +604,10 @@ export const FINDER_CSS = `
 .rl-send .pg-ar{width:1rem;height:1rem}
 
 @media (max-width:1023px){
-  /* tablets and phones: the filters as two rows of chips above the list */
+  /* tablets and phones: the filters as drop-downs in the bar under the search box */
   .pf{grid-template-columns:minmax(0,1fr);gap:1.2rem}
-  .pf-side{position:static;max-height:none;overflow:visible;padding-right:0;margin-right:0}
+  .pf-side{display:none}
+  .pf-bar{display:flex}
   .pf-chips{gap:.5rem}
   .pf-chiprow{flex-direction:row;gap:.4rem;overflow-x:auto;margin-inline:calc(-1 * var(--gutter,16px));padding:0 var(--gutter,16px) 2px;scrollbar-width:none}
   .pf-chiprow::-webkit-scrollbar{display:none}
