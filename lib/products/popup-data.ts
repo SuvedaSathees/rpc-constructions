@@ -136,32 +136,12 @@ export function getKeyBenefits(p: Product): string[] {
 }
 
 export function getApplications(p: Product): AppItem[] {
-  // If specific product has explicit areas in catalogue, parse or use verified imagery
-  const apps: AppItem[] = [
-    { name: "Basements", image: "/images/waterproofing/basement-car-park.jpg" },
-    { name: "Water Tanks", image: "/images/waterproofing/water-tank-cutaway.jpg" },
-    { name: "Roofs & Terraces", image: "/images/waterproofing/terrace-slab-cutaway.jpg" },
-    { name: "Bathrooms", image: "/images/waterproofing/bathroom-membrane-under-tiles.jpg" },
+  return [
+    { name: "Basements", image: "/images/rain/basement-after.webp" },
+    { name: "Water Tanks", image: "/images/rain/tank-after.webp" },
+    { name: "Roofs & Terraces", image: "/images/waterproofing/waterproofing-real-terrace.jpg" },
+    { name: "Bathrooms", image: "/images/rain/bath-after.webp" },
   ];
-
-  if (p.family === "admixtures") {
-    apps[0] = { name: "RMC Plants", image: "/images/methods/plaster.jpg" };
-    apps[1] = { name: "Precast Concrete", image: "/images/anatomy-structure.jpg" };
-    apps[2] = { name: "Bridge & Highway", image: "/images/completed-frame.jpg" };
-    apps[3] = { name: "Floors & Pavements", image: "/images/process-01.jpg" };
-  } else if (p.family === "repair" || p.family === "bonding") {
-    apps[0] = { name: "Columns & Beams", image: "/images/anatomy-structure.jpg" };
-    apps[1] = { name: "Slab Repairs", image: "/images/anatomy-foundation.jpg" };
-    apps[2] = { name: "Precast Joints", image: "/images/completed-frame.jpg" };
-    apps[3] = { name: "Industrial Floors", image: "/images/process-02.jpg" };
-  } else if (p.family === "grouts") {
-    apps[0] = { name: "Machine Bases", image: "/images/anatomy-foundation.jpg" };
-    apps[1] = { name: "Anchor Bolts", image: "/images/process-03.jpg" };
-    apps[2] = { name: "Base Plates", image: "/images/anatomy-structure.jpg" };
-    apps[3] = { name: "Cable Ducts", image: "/images/process-04.jpg" };
-  }
-
-  return apps;
 }
 
 export function getTypicalProperties(p: Product): SpecProperty[] {

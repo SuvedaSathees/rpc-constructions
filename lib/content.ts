@@ -359,28 +359,28 @@ export const process = [
     id: "02",
     title: "Trace the water to its source",
     body: "A stain on a ceiling is rarely where water gets in. We follow it back through the slab, the pipes or the joints, so the repair lands where the leak begins.",
-    image: "/images/waterproofing/terrace-slab-cutaway.jpg",
+    image: "/images/waterproofing/waterproofing-real-terrace.jpg",
     alt: "Cutaway of a terrace slab showing the concrete, the waterproofing layers and a rainwater outlet",
   },
   {
     id: "03",
     title: "Choose one system, in writing",
     body: "Every surface needs its own method. You get one recommendation, the reason for it and an itemised quote before any work begins.",
-    image: "/images/waterproofing/basement-wall-cutaway.jpg",
+    image: "/images/rain/basement-after.webp",
     alt: "Cutaway of a basement wrapped in a waterproofing membrane, with groundwater held outside the wall",
   },
   {
     id: "04",
     title: "Prepare, then apply",
     body: "Loose plaster comes off, cracks are opened and filled and pipe openings are sealed. Only then does the coating go on, coat by coat, up every wall it meets.",
-    image: "/images/waterproofing/bathroom-membrane-under-tiles.jpg",
+    image: "/images/rain/bath-after.webp",
     alt: "Bathroom with its floor tiles lifted to show the waterproofing coat under the shower and up the walls",
   },
   {
     id: "05",
     title: "Test it with water",
     body: "Bathrooms and terraces are flooded and tanks filled, then left to stand before anything covers them. If the level drops, we find out why before moving on.",
-    image: "/images/waterproofing/water-tank-cutaway.jpg",
+    image: "/images/rain/tank-after.webp",
     alt: "Cutaway of an underground water tank filled for a leak test, with a sealed pipe through its wall",
   },
   {
@@ -430,15 +430,11 @@ export const partners: readonly { name: string; role: string; qualification: str
     name: "Velmurugan Sivanantham",
     role: "Partner",
     qualification: "",
-    bio: `Velmurugan Sivanantham is a skilled professional dedicated to upholding the company's exceptional performance record, acknowledged as one of the finest in the industry. Along with the coordination of the Executive Management Team, he has developed an integrated business plan that optimizes market share and profitability of existing or new activities. His strong vision to focus on the four pillars - Ethics, Professionalism, Commitment, and Quality has led to the success of RPC Construction Solutions and Robotics Bricks and Blocks.
+    bio: `Mr. Velmurugan Sivanantham is an accomplished business leader with extensive expertise in the construction industry, recognized for his strategic vision, commitment to excellence, and innovative approach. Under his leadership, RPC Construction Solutions and Robotics Bricks Private Limited have established a strong presence in the national market, delivering quality solutions across industrial, civil infrastructure, and residential construction sectors.
 
-Under the esteemed leadership of Mr. Velmurugan Sivanantham, both companies have stood out as leading competitors in the national market and have taken on construction projects in all major areas of the industry, including industrial, civil infrastructure, and residential housing projects in different cities. He is a distinguished provider of specialized construction chemicals dedicated to offering high-performance products that promote sustainability and environmental responsibility while also improving the security, toughness, and longevity of structures and infrastructure. In addition to offering the customers high-quality products, he strives to provide exceptional service.
+Driven by the core values of Ethics, Professionalism, Commitment, and Quality, he is dedicated to advancing sustainable construction practices, developing innovative building solutions, and delivering exceptional value to clients. His strategic leadership, collaborative approach, and focus on operational excellence continue to drive business growth and strengthen long-term industry partnerships.
 
-Mr. Velmurugan Sivanantham has also contributed to setting high-level goals, objectives, and plans and worked with them by closely monitoring their operations in Robotics Bricks Private Limited, which focuses on innovative solutions like paver blocks and precast materials.
-
-His insights believe working together is essential to success. He has created solutions that address customers’ needs above and beyond their expectations and perfectly collaborates with clients, partners, and industry experts. His route to success has been highly dependent on his competent team of professionals and his philosophy of upholding client satisfaction.
-
-Velmurugan Sivanantham is an active member of Business Networking International (BNI), a global business referral organization.`,
+He is also an active member of Business Network International (BNI), a globally recognized business networking and referral organization.`,
     image: "/images/partners/velmurugan-sivanantham.webp",
   },
   {

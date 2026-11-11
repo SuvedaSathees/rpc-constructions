@@ -21,7 +21,7 @@ export const WATERPROOFING_PAGES: readonly ServicePage[] = [
       ["Tiles stay", "when the leak is at the joints, not the slab"],
       ["Flood test", "before every bathroom is handed back"],
     ],
-    hero: { src: "/images/waterproofing/bathroom-membrane-under-tiles.jpg", alt: "Flexible waterproof membrane laid on a bathroom floor and turned up the walls before tiling" },
+    hero: { src: "/images/rain/bath-after.webp", alt: "Flexible waterproof membrane laid on a bathroom floor and turned up the walls before tiling" },
     signs: {
       title: "Signs your bathroom needs waterproofing",
       lede: "A bathroom leak rarely shows in the bathroom. Look at the ceiling below and the walls next door.",
@@ -144,7 +144,7 @@ export const WATERPROOFING_PAGES: readonly ServicePage[] = [
       ["Named", "lining and data sheet, before work"],
       ["Fill test", "before the tank goes back into use"],
     ],
-    hero: { src: "/images/waterproofing/water-tank-cutaway.jpg", alt: "Cutaway of an RCC overhead water tank showing the inside waterproof lining" },
+    hero: { src: "/images/rain/tank-after.webp", alt: "Cutaway of an RCC overhead water tank showing the inside waterproof lining" },
     signs: {
       title: "Signs your tank or sump is leaking",
       lede: "A leak wastes water, but the bigger worry is what can get in.",
@@ -328,7 +328,7 @@ export const WATERPROOFING_PAGES: readonly ServicePage[] = [
         paras: [
           "Apartment and commercial cellars take water from the ground and from the podium or ramp above. We treat the walls and joints, the ramp drain and the slab above, and repair columns where the steel has started to rust. Work is planned in bays, so most of the parking stays in use. Sumps and underground water tanks are covered on our water tank waterproofing page.",
         ],
-        img: { src: "/images/waterproofing/basement-car-park.jpg", alt: "Underground apartment car park with waterproofed walls and columns", caption: "A cellar car park, treated bay by bay" },
+        img: { src: "/images/rain/basement-after.webp", alt: "Underground apartment car park with waterproofed walls and columns", caption: "A cellar car park, treated bay by bay" },
       },
     ],
     products: {
@@ -353,7 +353,7 @@ export const WATERPROOFING_PAGES: readonly ServicePage[] = [
       items: [
         { src: "/images/rain/basement-before.webp", alt: "Basement wall with damp patches and seepage at the floor joint", caption: "Before: seepage at the floor-wall joint" },
         { src: "/images/rain/basement-after.webp", alt: "The same basement wall dry after waterproofing from inside", caption: "After: leaks plugged and the wall lined" },
-        { src: "/images/waterproofing/basement-wall-cutaway.jpg", alt: "Cutaway of a basement wall showing the membrane, protection layer and soil", caption: "The layers on the outside of a new basement wall" },
+        { src: "/images/rain/basement-after.webp", alt: "Cutaway of a basement wall showing the membrane, protection layer and soil", caption: "The layers on the outside of a new basement wall" },
         { src: "/images/methods/sheet.webp", alt: "Roll of waterproofing membrane laid out on a concrete surface", caption: "Membrane sheet, laid before the soil goes back" },
       ],
     },
@@ -723,7 +723,7 @@ export const WATERPROOFING_PAGES: readonly ServicePage[] = [
       items: [
         { src: "/images/rain/podium-before.webp", alt: "Podium slab with leaking joints and stains before waterproofing", caption: "Before: leaking joints under the garden" },
         { src: "/images/rain/podium-after.webp", alt: "The same podium slab after membrane, root barrier and drainage layers", caption: "After: membrane, root barrier and drainage in place" },
-        { src: "/images/waterproofing/terrace-slab-cutaway.jpg", alt: "Cutaway of a roof slab showing the layers under a terrace garden", caption: "The layers between the slab and the soil" },
+        { src: "/images/waterproofing/waterproofing-real-terrace.jpg", alt: "Cutaway of a roof slab showing the layers under a terrace garden", caption: "The layers between the slab and the soil" },
       ],
     },
     warranty: {
