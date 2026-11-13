@@ -58,8 +58,8 @@ export const ROUTES_CSS = `
 .ab-go-k{margin:0;font-size:var(--fs-body);font-weight:600;color:var(--accent)}
 .ab-go-h{margin:0;font-size:var(--fs-body);font-weight:600;line-height:1.25;letter-spacing:-.01em;color:var(--ink)}
 /* the towns share one line, each taking an equal part of it, so they never fall to a second row */
-.ab-go-towns{display:flex;flex-wrap:nowrap;gap:.3rem}
-.ab-go-town{flex:0 1 auto;min-width:0;height:2rem;padding:0 .6rem;border:0;border-radius:999px;background:rgba(18,34,59,.06);font:inherit;font-size:clamp(.72rem,.82vw,.86rem);font-weight:600;line-height:1;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;cursor:pointer;transition:background-color .2s,color .2s}
+.ab-go-towns{display:flex;flex-wrap:nowrap;gap:.4rem}
+.ab-go-town{flex:1 1 0;min-width:0;height:2.1rem;padding:0 .6rem;border:0;border-radius:999px;background:rgba(18,34,59,.06);font:inherit;font-size:clamp(.72rem,.82vw,.86rem);font-weight:600;line-height:1;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;cursor:pointer;transition:background-color .2s,color .2s}
 .ab-go-town:hover{background:rgba(18,34,59,.1)}
 .ab-go-town[aria-selected=true]{background:var(--navy);color:#f5f0e6}
 .ab-go-town:focus-visible,.ab-go-route:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
