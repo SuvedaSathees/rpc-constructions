@@ -44,6 +44,8 @@ export interface Job {
   name: string;
   /** the sheet's kinds of product that do this job */
   categories: readonly string[];
+  /** takes the whole list rather than a few kinds, so every brand can be set against every other */
+  all?: boolean;
 }
 
 /**
@@ -52,6 +54,10 @@ export interface Job {
  * leaves it with one brand.
  */
 const JOB_LIST: readonly Job[] = [
+  /* The open comparison: any product against any other, so every brand on the list can be
+     picked. The named jobs below it pair like with like and are kept for when a product's
+     kind is known. */
+  { key: "any", name: "Any two products, brand against brand", categories: [], all: true },
   { key: "wet-area-coats", name: "Waterproof coats for bathrooms, tanks and wet areas", categories: ["Cementitious waterproofing", "Flexible cementitious waterproofing", "Cementitious waterproofing coating"] },
   { key: "waterstops", name: "Waterstops for construction joints", categories: ["Hydrophilic waterstop"] },
   { key: "tile-adhesives", name: "Tile adhesives", categories: ["Tile adhesive"] },
@@ -64,9 +70,6 @@ const JOB_LIST: readonly Job[] = [
   { key: "curing", name: "Curing compounds", categories: ["Concrete curing compound"] },
   { key: "superplasticisers", name: "Superplasticisers", categories: ["Concrete superplasticizer"] },
   { key: "hp-admixtures", name: "High-performance concrete admixtures", categories: ["High-performance concrete admixture"] },
-  { key: "integral-waterproofing", name: "Integral waterproofing liquids for concrete and mortar", categories: ["Integral waterproofing liquid", "Integral waterproofing admixture"] },
-  { key: "crystalline", name: "Integral crystalline waterproofing admixtures", categories: ["Crystalline waterproofing admixture"] },
-  { key: "mould-release", name: "Shuttering and mould release agents", categories: ["Shuttering / mould release agent"] },
   { key: "precast", name: "Admixtures for precast, blocks and pavers", categories: ["Precast concrete admixture"] },
 ];
 
@@ -79,26 +82,14 @@ export interface JobView extends Job {
 export function jobs(all: readonly Product[] = PRODUCTS): JobView[] {
   const order = brandInfo(all).map((b) => b.name);
   return JOB_LIST.map((j) => {
-    const products = all.filter((p) => j.categories.includes(p.category));
+    const products = j.all ? [...all] : all.filter((p) => j.categories.includes(p.category));
     const brands = order.map((name) => ({ name, key: brandKey(name), products: products.filter((p) => p.brand === name) })).filter((b) => b.products.length > 0);
     return { ...j, products, brands };
   }).filter((j) => j.brands.length > 1);
 }
 
 /** a colour for each brand's mark in the comparisons (the site's own palette, not the brands' trademark colours) */
-const MARK: Record<string, string> = {
-  Fosroc: "#0b6e80",
-  Sika: "#2756a0",
-  CCI: "#6b5b9a",
-  Renacon: "#97633f",
-  Berger: "#5f7a33",
-  "Asian Paints": "#c62828",
-  "Dr. Fixit": "#e65100",
-  "STP Limited": "#00838f",
-  Penetron: "#1b5e20",
-  "ARDEX ENDURA": "#be185d",
-  "MYK Arment": "#0284c7",
-};
+const MARK: Record<string, string> = { Fosroc: "#0b6e80", Sika: "#2756a0", CCI: "#6b5b9a", Renacon: "#97633f", Berger: "#5f7a33" };
 export const brandMark = (name: string) => MARK[name] ?? "#55707f";
 
 /** the kind of work a job belongs to, for grouping the list of jobs */

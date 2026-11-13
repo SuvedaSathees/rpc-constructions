@@ -34,6 +34,19 @@ const NAV_CSS = `
 .rn-sq{display:grid;place-items:center;width:36px;height:36px;border-radius:999px}
 .rn-link{display:inline-flex;align-items:center;height:42px;padding:0 11px;border-radius:999px;letter-spacing:.005em}
 .rn-pill{border-radius:999px;box-shadow:inset 0 -1px 0 rgba(18,34,59,.1),0 1px 2px rgba(4,12,30,.25)}
+/* The ground behind the logo. The lockup is open artwork — the letters are holes and the
+   wordmark is type on nothing — so whatever scrolls under it reads straight through. This
+   lays a soft corner wash over that area, blurred so any text passing beneath goes to a
+   smear rather than words, and masked so it has no edge to notice. */
+/* An ellipse opening from the corner, not a band: a straight edge anywhere on it reads as
+   a panel laid over the picture, and the corner is where a reader's eye already expects
+   the page to be darker. It is given room to fall away slowly in both directions. */
+.rn-lscrim{position:absolute;top:0;left:0;width:min(54rem,88%);height:calc(var(--nav-h,64px) + 3.4rem);pointer-events:none}
+@supports (backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px)){
+  .rn-lscrim{-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+    -webkit-mask-image:radial-gradient(125% 140% at 0% 0%,#000 0,#000 36%,rgba(0,0,0,.5) 56%,transparent 76%);
+    mask-image:radial-gradient(125% 140% at 0% 0%,#000 0,#000 36%,rgba(0,0,0,.5) 56%,transparent 76%)}
+}
 .rn-cta{display:inline-flex;align-items:center;gap:12px;height:52px;padding:0 6px 0 22px;border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),inset 0 0 0 1px rgba(255,255,255,.06),0 18px 36px -18px rgba(4,12,30,.7),0 3px 8px -3px rgba(4,12,30,.3)}
 .rn-ctai{display:grid;place-items:center;width:40px;height:40px;border-radius:999px}
 .rn-cta--sm{display:none;gap:8px;height:36px;padding:0 4px 0 14px;box-shadow:none}
@@ -46,7 +59,7 @@ const NAV_CSS = `
   .rn-mini{display:none}
   .rn-bar{display:flex;align-items:center;height:48px;padding:0 4px;border-radius:999px}
   .rn-end{display:flex;justify-content:flex-end}
-  .rn-logo{height:48px}
+  .rn-logo{height:auto;min-height:48px}
   .rn-link{height:38px;padding:0 7px;font-size:.9rem}
   .rn-cta{gap:8px;height:46px;padding:0 5px 0 16px}
   .rn-ctai{width:36px;height:36px}
@@ -54,7 +67,7 @@ const NAV_CSS = `
 /* from 1280px there is room to let it breathe again */
 @media (min-width:1280px){
   .rn-bar{height:52px;padding:0 5px}
-  .rn-logo{height:52px}
+  .rn-logo{height:auto;min-height:52px}
   .rn-link{height:42px;padding:0 11px;font-size:var(--fs-body)}
   .rn-cta{gap:12px;height:52px;padding:0 6px 0 22px}
   .rn-ctai{width:40px;height:40px}
@@ -177,9 +190,22 @@ export function Nav() {
     <>
       <style dangerouslySetInnerHTML={{ __html: NAV_CSS }} />
       {/* the logo, pinned at the top left with the bar, above the strip behind it (the open menu has its own) */}
+      {/* The ground behind the logo, in a layer of its own under the bar of links (z-50):
+          kept in with the logo it painted over the links and dimmed them. */}
+      <div className="pointer-events-none fixed inset-x-0 top-0 z-[49] transition-opacity duration-700" style={{ opacity: visible && !open ? 1 : 0 }} aria-hidden="true">
+        <div
+          className="rn-lscrim"
+          aria-hidden="true"
+          style={{
+            background: lightLogo
+              ? "radial-gradient(125% 140% at 0% 0%, rgba(5,14,32,.78) 0, rgba(5,14,32,.42) 40%, rgba(5,14,32,0) 72%)"
+              : `radial-gradient(125% 140% at 0% 0%, ${SCRIM(pathname, 0.9)} 0, ${SCRIM(pathname, 0.5)} 40%, ${SCRIM(pathname, 0)} 72%)`,
+          }}
+        />
+      </div>
       <div className="pointer-events-none fixed inset-x-0 top-0 z-[51] transition-opacity duration-700" style={{ opacity: visible && !open ? 1 : 0 }} aria-hidden={!visible || open}>
         {/* level with the middle of the floating bar */}
-        <div className="gutter mx-auto max-w-none pt-2 lg:pt-3">
+        <div className="gutter relative mx-auto max-w-none pt-2 lg:pt-3">
           <Link
             href="/"
             aria-label={`${brand.name} — home`}
@@ -187,17 +213,23 @@ export function Nav() {
             className={`rn-logo pointer-events-auto inline-flex min-h-12 items-center rounded-[12px] ${lightLogo ? "text-white" : "text-night"} ${focus}`}
           >
             {/* as big as the room beside the floating bar allows at each width */}
-            <span className="flex lg:hidden">
-              <Wordmark size="lg" tile={lightLogo} iso />
+            <span className="flex min-[768px]:hidden">
+              <Wordmark size="lg" iso />
             </span>
-            <span className="hidden min-[1024px]:flex min-[1536px]:hidden">
-              <Wordmark size="md" tile={lightLogo} iso />
+            <span className="hidden min-[768px]:flex min-[1024px]:hidden">
+              <Wordmark size="xl" iso />
+            </span>
+            <span className="hidden min-[1024px]:flex min-[1280px]:hidden">
+              <Wordmark size="mdx" iso />
+            </span>
+            <span className="hidden min-[1280px]:flex min-[1536px]:hidden">
+              <Wordmark size="lgx" iso />
             </span>
             <span className="hidden min-[1536px]:flex min-[1920px]:hidden">
-              <Wordmark size="xl" tile={lightLogo} iso />
+              <Wordmark size="xlx" iso />
             </span>
             <span className="hidden min-[1920px]:flex">
-              <Wordmark size="xxl" tile={lightLogo} iso />
+              <Wordmark size="xxlx" iso />
             </span>
           </Link>
         </div>

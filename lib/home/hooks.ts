@@ -283,13 +283,13 @@ export const HOOKS_CSS =
 .hk-bap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hk-ba-before{clip-path:inset(0 calc(100% - var(--x)) 0 0);transition:clip-path .7s cubic-bezier(.45,0,.2,1)}
 .hk-bad{position:absolute;top:0;bottom:0;left:var(--x);width:2px;margin-left:-1px;background:#fff;box-shadow:0 0 12px rgba(0,0,0,.35);transition:left .7s cubic-bezier(.45,0,.2,1)}
-.hk-bal,.hk-bar{position:absolute;z-index:1;bottom:.6rem;padding:.15rem .55rem;border-radius:999px;font-size:var(--fs-body);font-weight:600;line-height:1.3;color:#fff;transition:opacity .4s}
+.hk-bal,.hk-bar{position:absolute;z-index:1;bottom:.5rem;padding:.1rem .45rem;border-radius:999px;font-size:.72rem;font-weight:600;letter-spacing:.005em;line-height:1.35;color:#fff;transition:opacity .4s}
 .hk-bal{left:.6rem;background:rgba(162,69,44,.88)}
 .hk-bar{right:.6rem;background:rgba(11,110,128,.9)}
 /* the narrowest phones: two cards to a row leave each picture about 115px, which the two
    pills at full size cannot share, so they shrink rather than sit on each other */
 @media (max-width:399px){
-  .hk-bal,.hk-bar{bottom:.45rem;padding:.1rem .42rem;font-size:.72rem}
+  .hk-bal,.hk-bar{bottom:.4rem;padding:.08rem .36rem;font-size:.63rem}
   .hk-bal{left:.45rem}
   .hk-bar{right:.45rem}
 }
@@ -354,6 +354,9 @@ export const HOOKS_CSS =
 /* tablets and small laptops: the shelf keeps all five on one line, drawn smaller to fit */
 @media (min-width:768px) and (max-width:1199px){
   .hk-bas{grid-template-columns:repeat(4,minmax(0,1fr));gap:.55rem}
+  .hk-bal,.hk-bar{bottom:.4rem;padding:.08rem .38rem;font-size:.66rem}
+  .hk-bal{left:.4rem}
+  .hk-bar{right:.4rem}
   .hk-ba{padding:.4rem .4rem .7rem;border-radius:16px}
   .hk-bat{gap:.2rem;padding:.7rem .35rem .4rem}
   .hk-bat em{font-size:.78rem}

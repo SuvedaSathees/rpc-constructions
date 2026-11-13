@@ -139,7 +139,7 @@ function faceOff(j: JobView, c: ContactInfo, hidden = false) {
   <header class="fo-ph">
     <div>
       <h3 class="fo-jt sr-only" id="fo-t-${j.key}">${esc(j.name)}</h3>
-      <p class="fo-k">${n} products from ${esc(listing(j.brands.map((b) => b.name)))}. Pick two brands, then a product from each.</p>
+      <p class="fo-k">${j.brands.length > 3 ? `${n} products from all ${j.brands.length} brands on our list` : `${n} products from ${esc(listing(j.brands.map((b) => b.name)))}`}. Pick two brands, then a product from each.</p>
     </div>
   </header>
   <div class="bc-picks">${brandDropdown(`bd-${j.key}-a`, "Brand 1", brands, pa.brand, undefined, rest)}<span class="bc-vs" aria-hidden="true">vs</span>${brandDropdown(`bd-${j.key}-b`, "Brand 2", brands, pb.brand, pa.brand, rest)}</div>

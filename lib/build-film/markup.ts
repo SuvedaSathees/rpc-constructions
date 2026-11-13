@@ -113,7 +113,14 @@ html.mh-on .lb-launch,html.mh-on .lb-hint{opacity:0 !important;visibility:hidden
 .mh-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 
 /* the hook, on the left in the middle of the height once the film has played (without scripts it is simply there) */
-.mh-hook{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:calc(var(--nav-h,64px) + 1rem) var(--gutter,1.5rem) clamp(2rem,6vh,4rem) clamp(2.5rem,8vw,9rem);text-align:left;pointer-events:none}
+/* the closing panel is centred in the picture, but on a short window it is taller than
+   the room it has. Centring with justify-content would then spill it past the padding
+   and up under the logo, so the room above and below is taken by auto margins instead:
+   they share out what is spare and collapse to nothing when there is none, which keeps
+   the first line below the nav whatever the height. */
+.mh-hook{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;padding:calc(var(--nav-h,64px) + 1rem) var(--gutter,1.5rem) clamp(2rem,6vh,4rem) clamp(2.5rem,8vw,9rem);text-align:left;pointer-events:none}
+.mh-hook>:first-child{margin-top:auto}
+.mh-hook>:last-child{margin-bottom:auto}
 .mh-hook>*{pointer-events:auto}
 .mh-kicker{display:flex;align-items:center;gap:.75rem;margin:0 0 1.15rem;font-family:var(--font-inter-tight),system-ui,sans-serif;font-size:var(--fs-body,1rem);font-weight:500;line-height:1.4;color:rgba(226,236,240,.86);text-shadow:0 1px 14px rgba(0,0,0,.5)}
 .mh-kicker::before{content:"";flex:none;width:2rem;height:2px;border-radius:2px;background:var(--mh-blue)}
@@ -335,5 +342,25 @@ html.mh-on .lb-launch,html.mh-on .lb-hint{opacity:0 !important;visibility:hidden
 @media (pointer:coarse){
   .mh-more{position:relative}
   .mh-more::after{content:"";position:absolute;inset:-11px -6px}
+}
+
+/* a laptop window shorter than the panel needs: the supporting line goes and the rest draws
+   in, so the title, the three points and the two buttons all stay on the screen */
+/* the logo grows with the screen, so the room kept clear above the panel grows with it too.
+   Written at the weight of the tall-screen block further up, which sets the padding outright. */
+@media (min-width:1024px){.mh-hook,.mh-js .mh-hook{padding-top:calc(var(--nav-h,64px) + .75rem)}}
+@media (min-width:1280px){.mh-hook,.mh-js .mh-hook{padding-top:calc(var(--nav-h,64px) + .8rem)}}
+@media (min-width:1536px){.mh-hook,.mh-js .mh-hook{padding-top:calc(var(--nav-h,64px) + 1rem)}}
+@media (min-width:1920px){.mh-hook,.mh-js .mh-hook{padding-top:calc(var(--nav-h,64px) + 1.2rem)}}
+@media (min-width:768px) and (max-height:620px){
+  .mh-hook .mh-lede{display:none}
+  .mh-hook .mh-kicker{margin-bottom:.75rem}
+  .mh-hook .mh-title{font-size:clamp(1.9rem,3.2vw,2.7rem)}
+  .mh-hook .mh-points{margin-top:.9rem;gap:.4rem}
+  .mh-hook .mh-ctas{margin-top:1.15rem}
+}
+@media (min-width:768px) and (max-height:520px){
+  .mh-hook .mh-kicker{display:none}
+  .mh-hook .mh-title{font-size:clamp(1.7rem,2.8vw,2.2rem)}
 }
 `;

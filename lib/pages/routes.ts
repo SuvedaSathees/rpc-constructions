@@ -39,7 +39,7 @@ export function routesMarkup(dest: string, regions: readonly string[]) {
           (t, i) => `<ul class="ab-go-from" data-from-town="${esc(t.town)}"${i === 0 ? "" : " hidden"}>${t.from
             .map(
               ([label, place], j) =>
-                `<li><button type="button" class="ab-go-route" data-place="${esc(place)}" data-label="${esc(`${label.replace(/^From /, "")}, ${t.town}`)}" aria-pressed="${i === 0 && j === 0}">${pin}<span><b>${esc(short(label))}</b><small>${esc(place)}</small></span></button></li>`,
+                `<li><a class="ab-go-route" href="${esc(openRoute(place, dest))}" target="_blank" rel="noopener noreferrer" data-place="${esc(place)}" data-label="${esc(`${label.replace(/^From /, "")}, ${t.town}`)}"${i === 0 && j === 0 ? ' aria-current="true"' : ""}>${pin}<span><b>${esc(short(label))}</b><small>${esc(place)}</small></span></a></li>`,
             )
             .join("")}</ul>`,
         )
@@ -58,11 +58,13 @@ export const ROUTES_CSS = `
 .ab-go-side{display:flex;flex-direction:column;gap:.9rem;padding:clamp(1.1rem,2vw,1.5rem)}
 .ab-go-k{margin:0;font-size:var(--fs-body);font-weight:600;color:var(--accent)}
 .ab-go-h{margin:0;font-size:var(--fs-body);font-weight:600;line-height:1.25;letter-spacing:-.01em;color:var(--ink)}
-.ab-go-towns{display:flex;flex-wrap:wrap;gap:.35rem}
-.ab-go-town{height:2rem;padding:0 .8rem;border:0;border-radius:999px;background:rgba(18,34,59,.06);font:inherit;font-size:var(--fs-s);font-weight:600;color:var(--ink);cursor:pointer;transition:background-color .2s,color .2s}
+/* the towns share one line, each taking an equal part of it, so they never fall to a second row */
+.ab-go-towns{display:flex;flex-wrap:nowrap;gap:.3rem}
+.ab-go-town{flex:1 1 0;min-width:0;height:2rem;padding:0 .45rem;border:0;border-radius:999px;background:rgba(18,34,59,.06);font:inherit;font-size:clamp(.72rem,.82vw,.86rem);font-weight:600;line-height:1;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;cursor:pointer;transition:background-color .2s,color .2s}
 .ab-go-town:hover{background:rgba(18,34,59,.1)}
 .ab-go-town[aria-selected=true]{background:var(--navy);color:#f5f0e6}
 .ab-go-town:focus-visible,.ab-go-route:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ab-go-route{text-decoration:none}
 .ab-go-from{display:grid;grid-template-columns:minmax(0,1fr);gap:.4rem;margin:0;padding:0;list-style:none}
 .ab-go-from[hidden]{display:none}
 .ab-go-route{display:flex;align-items:flex-start;gap:.55rem;width:100%;height:100%;padding:.5rem .75rem;border:0;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font:inherit;text-align:left;cursor:pointer;transition:box-shadow .2s,background-color .2s}
@@ -71,9 +73,9 @@ export const ROUTES_CSS = `
 .ab-go-route b{font-size:var(--fs-s);font-weight:600;color:var(--ink)}
 .ab-go-route small{font-size:var(--fs-s);color:var(--mute);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ab-go-route:hover{box-shadow:inset 0 0 0 1.5px var(--navy)}
-.ab-go-route[aria-pressed=true]{background:var(--navy);box-shadow:none}
-.ab-go-route[aria-pressed=true] b,.ab-go-route[aria-pressed=true] svg{color:#fff}
-.ab-go-route[aria-pressed=true] small{color:rgba(245,240,230,.7)}
+.ab-go-route[aria-current=true]{background:var(--navy);box-shadow:none}
+.ab-go-route[aria-current=true] b,.ab-go-route[aria-current=true] svg{color:#fff}
+.ab-go-route[aria-current=true] small{color:rgba(245,240,230,.7)}
 .ab-go-open{display:inline-flex;align-items:center;gap:.4rem;margin-top:auto;font-size:var(--fs-s);font-weight:600;color:var(--accent);text-decoration:none}
 .ab-go-open:hover{text-decoration:underline;text-underline-offset:3px}
 .ab-go-open .pg-ar{width:.9rem;height:.9rem}

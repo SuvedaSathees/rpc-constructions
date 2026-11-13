@@ -262,9 +262,10 @@ function aboutRoutes(root: HTMLElement): Off {
   const towns = Array.from(box.querySelectorAll<HTMLButtonElement>("[data-town]"));
   const lists = Array.from(box.querySelectorAll<HTMLElement>("[data-from-town]"));
   const enc = encodeURIComponent;
-  const route = (b: HTMLButtonElement) => {
+  const route = (b: HTMLElement) => {
     const place = b.dataset.place ?? "";
-    box.querySelectorAll<HTMLButtonElement>("[data-place]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    // the starting places are links now, so the one in view is marked as current, not pressed
+    box.querySelectorAll<HTMLElement>("[data-place]").forEach((x) => (x === b ? x.setAttribute("aria-current", "true") : x.removeAttribute("aria-current")));
     if (map) {
       map.src = `https://maps.google.com/maps?saddr=${enc(place)}&daddr=${enc(dest)}&output=embed`;
       map.title = `Road route from ${b.dataset.label ?? place} to our office`;
@@ -278,11 +279,11 @@ function aboutRoutes(root: HTMLElement): Off {
       const k = town.dataset.town;
       towns.forEach((x) => x.setAttribute("aria-selected", String(x === town)));
       lists.forEach((l) => (l.hidden = l.dataset.fromTown !== k));
-      const firstRoute = lists.find((l) => l.dataset.fromTown === k)?.querySelector<HTMLButtonElement>("[data-place]");
+      const firstRoute = lists.find((l) => l.dataset.fromTown === k)?.querySelector<HTMLElement>("[data-place]");
       if (firstRoute) route(firstRoute);
       return;
     }
-    const r = t.closest<HTMLButtonElement>("[data-place]");
+    const r = t.closest<HTMLElement>("[data-place]");
     if (r && box.contains(r)) route(r);
   };
   box.addEventListener("click", onClick);

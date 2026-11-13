@@ -101,7 +101,7 @@ function sceneMarkup(ps: readonly ProjectData[]) {
       : `<h3 class="pjs-name">Overhead tanks and underground sumps</h3>
         <p class="pjs-lead">Sealed so the water stays clean and stays in.</p>
         <div class="pjs-wp"><p class="pjs-wk">Methods our guide names for them</p>${ticks(tankMethods)}</div>
-        <div class="pjs-foot">${step(i)}<a class="pg-btn pg-btn--ink" href="/waterproofing#a-tank" data-internal>Tank waterproofing${arrow}</a></div>`;
+        <div class="pjs-foot">${step(i)}</div>`;
     return `<div class="pjs-panel" data-spot-panel="${sp.key}"${i === 0 ? "" : " hidden"}>${zoom}<div class="pjs-body">${body}</div></div>`;
   };
   return `<header class="pjs" aria-labelledby="pjs-h">

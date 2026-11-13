@@ -72,6 +72,12 @@ export interface HomeOptions {
   id?: string;
   /** on the home page's own run of sections: no button beside the headline, and the core service without its booking button */
   below?: boolean;
+  /** where the service tiles lead; by default each one opens the services page at its own service */
+  tilesHref?: string;
+  /** the tiles beside the core service; by default the rest of the services */
+  tiles?: readonly { title: string; line: string }[];
+  /** the section's headline, when the block is not the run of services */
+  title?: string;
 }
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -135,6 +141,14 @@ function projectsMarkup(d: HomeData, _o: HomeOptions) {
 /** a small drawing for each service (the lucide set's house, building, factory, wrench, sofa and clipboard, and a drop) */
 const SERVICE_ICON: readonly (readonly [RegExp, string])[] = [
   [/waterproof/i, `<path d="M12 21.5a6.6 6.6 0 0 0 6.6-6.6c0-1.9-.95-3.7-2.85-5.2S12.45 5.9 12 3.5c-.45 2.4-1.9 4.7-3.75 6.2S5.4 13 5.4 14.9A6.6 6.6 0 0 0 12 21.5z"/><path d="M8.9 15.2a3.1 3.1 0 0 0 2.9 2.9"/>`],
+  /* the parts of a building, for the waterproofing block: the droplet above stays first,
+     because an unmatched title falls back to it */
+  [/terrace|roof/i, `<path d="M3 12h18"/><path d="M5.5 12V9.2a1 1 0 0 1 .52-.88l5.5-3a1 1 0 0 1 .96 0l5.5 3a1 1 0 0 1 .52.88V12"/><path d="M7 16v1.5M12 16v2.5M17 16v1.5"/>`],
+  [/bathroom|toilet/i, `<path d="M3 3v6a4 4 0 0 0 4 4h1"/><rect x="8" y="9" width="9" height="4" rx="2"/><path d="M10 17v.01M13 18v.01M16 17v.01M11.5 21v.01M14.5 21v.01"/>`],
+  [/tank|sump/i, `<ellipse cx="12" cy="6" rx="7" ry="2.8"/><path d="M5 6v12c0 1.55 3.13 2.8 7 2.8s7-1.25 7-2.8V6"/><path d="M5 12.5c0 1.55 3.13 2.8 7 2.8s7-1.25 7-2.8"/>`],
+  [/basement|foundation/i, `<path d="M12 3 3 7.5 12 12l9-4.5Z"/><path d="m3 12 9 4.5 9-4.5"/><path d="m3 16.5 9 4.5 9-4.5"/>`],
+  [/balcony|utility/i, `<path d="M3 7h18"/><path d="M3 10.5h18"/><path d="M4.5 7v13M19.5 7v13M8.5 10.5v9.5M12 10.5v9.5M15.5 10.5v9.5"/>`],
+  [/crack|leak/i, `<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M13.5 6.5 10 12h3.2L9.8 17.5"/>`],
   [/residential/i, `<path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>`],
   [/commercial/i, `<path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/>`],
   [/industrial/i, `<path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1M12 18h1M7 18h1"/>`],
@@ -149,13 +163,16 @@ export function servicesMarkup(d: HomeData, _o: HomeOptions) {
   const [lead, ...rest] = d.services;
   if (!lead) return "";
   const check = `<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.4 6.6 11.4 12.6 4.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-  const tiles = rest
+  const tileItems =
+    _o.tiles?.map((t) => ({ title: t.title, line: t.line, href: _o.tilesHref ?? "/services" })) ??
+    rest.map((s) => ({ title: s.title, line: s.line ?? s.short ?? s.scale, href: _o.tilesHref ?? `/services#${serviceSlug(s.title)}` }));
+  const tiles = tileItems
     .map(
-      (s, i) => `<li data-rv style="--d:${i * 50}ms">
-  <a class="hm-tile" href="/services#${serviceSlug(s.title)}" data-internal>
-    <span class="hm-ttop">${serviceIcon(s.title)}<span class="hm-tgo" aria-hidden="true">${arrow}</span></span>
-    <span class="hm-tt">${esc(s.title)}</span>
-    <span class="hm-tl">${esc(s.line ?? s.short ?? s.scale)}</span>
+      (t, i) => `<li data-rv style="--d:${i * 50}ms">
+  <a class="hm-tile" href="${esc(t.href)}" data-internal>
+    <span class="hm-ttop">${serviceIcon(t.title)}<span class="hm-tgo" aria-hidden="true">${arrow}</span></span>
+    <span class="hm-tt">${esc(t.title)}</span>
+    <span class="hm-tl">${esc(t.line)}</span>
   </a>
 </li>`,
     )
@@ -173,7 +190,7 @@ export function servicesMarkup(d: HomeData, _o: HomeOptions) {
     <header class="hm-head">
       <div>
         ${mark(_o.n ?? "02", _o.label ?? "Services")}
-        <h2 class="hm-h2" id="services-title" data-rv>Waterproofing, construction and leak&nbsp;repair.</h2>
+        <h2 class="hm-h2" id="services-title" data-rv>${_o.title ?? "Waterproofing, construction and leak&nbsp;repair."}</h2>
       </div>
       ${_o.below ? "" : `<div class="hm-side" data-rv>
         <a class="hm-btn hm-btn--line" href="/services" data-internal>View all services${arrow}</a>

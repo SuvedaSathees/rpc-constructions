@@ -99,7 +99,7 @@ export function contactPageMarkup(d: ContactPageData) {
         <li><a class="ct-tile" href="mailto:${esc(c.email)}">${icon("email")}<span class="ct-tk">Email</span><span class="ct-tv ct-tv--mail">${mail}</span><span class="ct-tn">Drawings and documents</span>${go}</a></li>
         <li><a class="ct-tile" href="${esc(mapsLink(c.mapQuery))}" target="_blank" rel="noopener noreferrer">${icon("visit")}<span class="ct-tk">Office</span><span class="ct-tv">${esc(street)}</span><span class="ct-tn">${esc(hoursText)}</span>${go}</a></li>
       </ul>
-      <p class="ct-alt" data-rv>More numbers: ${(c.morePhones ?? []).map((n) => `<a href="${tel(n)}">${esc(n)}</a>`).join(" · ")}</p>`;
+      <p class="ct-alt" data-rv>More numbers: ${(c.morePhones ?? []).map((n) => `<a href="${tel(n)}">${esc(n)}</a>`).join(", ")}</p>`;
   return `<section class="pg-dark ct-page" aria-labelledby="ct-title">
   <div class="pg-wrap ct-grid">
     <div class="ct-info">
@@ -187,7 +187,7 @@ export const CONTACT_CSS = ROUTES_CSS + `
 .ct-field > span{font-size:var(--fs-body);font-weight:500;color:var(--ink2)}
 .ct-field input,.ct-field select,.ct-field textarea{width:100%;min-width:0;border:1px solid rgba(18,34,59,.16);border-radius:6px;background:var(--sand);font:inherit;font-size:var(--fs-body);color:var(--ink);outline:none;transition:border-color .25s,box-shadow .25s}
 .ct-field input,.ct-field select{height:2.75rem;padding:0 .85rem}
-.ct-field select{appearance:none;padding-right:2.3rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4' fill='none' stroke='%23121314' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .75rem center;background-size:14px}
+.ct-field select{appearance:none;padding-right:2.3rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4' fill='none' stroke='%232756a0' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .8rem center;background-size:17px}
 .ct-field textarea{padding:.7rem .85rem;resize:vertical;min-height:4.3rem;line-height:1.5}
 .ct-field textarea[rows]{height:4.3rem}
 .ct-field input::placeholder,.ct-field textarea::placeholder{color:rgba(18,34,59,.42)}
@@ -250,9 +250,11 @@ export const CONTACT_CSS = ROUTES_CSS + `
 }
 
 /* ---- enhanced: the four ways as even tiles, what happens next, the form under a dark band ---- */
-.ct-alt{margin:.9rem 0 0;font-size:var(--fs-body,1rem);line-height:1.6;color:rgba(18,34,59,.7)}
-.ct-alt a{color:#12223b;font-weight:500;text-decoration:none;white-space:nowrap}
-.ct-alt a:hover{text-decoration:underline}
+/* the other numbers on one line: the label, then the three numbers separated by commas.
+   The size follows the column so all four parts hold that line on any screen. */
+.ct-alt{margin:1rem 0 0;font-size:clamp(.64rem,.78vw,.84rem);line-height:1.5;white-space:nowrap;color:rgba(18,34,59,.62)}
+.ct-alt a{font-size:inherit;font-weight:600;color:#12223b;text-decoration:none;white-space:nowrap}
+.ct-alt a:hover{text-decoration:underline;text-underline-offset:3px}
 /* touch screens: each number keeps its look but gets a finger-sized tap area, and the line
    opens up enough that two numbers one above the other do not share it */
 @media (pointer:coarse){
@@ -288,7 +290,7 @@ export const CONTACT_CSS = ROUTES_CSS + `
 .ct-cardtop .ct-cardh{color:#fff}
 .ct-cardtop p{margin:.3rem 0 0;font-size:var(--fs-body);color:rgba(245,240,230,.72)}
 .ct-card .ct-form,.ct-card .ct-done{margin:0;padding:clamp(1.2rem,2vw,1.6rem) clamp(1.3rem,2vw,1.75rem) clamp(1.3rem,2vw,1.75rem)}
-.ct-field input,.ct-field select,.ct-field textarea{border-radius:12px;background:#fbf8f2}
+.ct-field input,.ct-field select,.ct-field textarea{border-radius:12px;background-color:#fbf8f2}
 .ct-sbtn{border-radius:12px}
 @media (max-width:479px){
   .ct-tiles{grid-template-columns:1fr}
@@ -320,8 +322,9 @@ export const CONTACT_CSS = ROUTES_CSS + `
 /* every tile the same size; the email on one line */
 .ct-tiles{grid-auto-rows:1fr}
 .ct-tile{min-height:9.6rem}
-/* the address is set a shade smaller so the domain holds one line in a narrow tile */
-.ct-tv--mail{font-size:.94rem;letter-spacing:-.012em;line-height:1.32}
+/* the address is set to the room its tile has: one line on a wide screen, and below that
+   two tidy lines broken at the @, never three with a letter stranded on the last */
+.ct-tv--mail{font-size:clamp(.8rem,1.05vw,.95rem);letter-spacing:-.012em;line-height:1.32}
 .ct-tile--call .ct-open{font-size:var(--fs-body);line-height:1.35}
 /* phones: each way to reach us as one compact row, icon, words and arrow */
 @media (max-width:599px){
@@ -350,12 +353,12 @@ export const CONTACT_CSS = ROUTES_CSS + `
 .ct-ico--wa{background:rgba(37,211,102,.14)}
 .ct-card{overflow:hidden;border-radius:20px;background:#fff;box-shadow:0 0 0 1px rgba(39,86,160,.12),0 40px 80px -48px rgba(11,35,80,.6)}
 .ct-cardtop{background:var(--navy)}
-.ct-field input,.ct-field select,.ct-field textarea{border-color:rgba(39,86,160,.18);background:#f4f7fb}
-.ct-field input:focus,.ct-field select:focus,.ct-field textarea:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(39,86,160,.14)}
+.ct-field input,.ct-field select,.ct-field textarea{border-color:rgba(39,86,160,.18);background-color:#f4f7fb}
+.ct-field input:focus,.ct-field select:focus,.ct-field textarea:focus{border-color:var(--accent);background-color:#fff;box-shadow:0 0 0 3px rgba(39,86,160,.14)}
 .ct-sbtn{border-radius:12px}
 .ct-reach .ab-go{background:#fff;box-shadow:0 0 0 1px rgba(39,86,160,.12),0 40px 80px -56px rgba(11,35,80,.6)}
 .ct-reach .ab-go-route{background:#f4f7fb;box-shadow:inset 0 0 0 1px rgba(39,86,160,.12)}
-.ct-reach .ab-go-route[aria-pressed=true]{background:var(--navy);box-shadow:none}
+.ct-reach .ab-go-route[aria-current=true]{background:var(--navy);box-shadow:none}
 .ct-reach .ab-go-town{background:#eef3f9}
 .ct-reach .ab-go-town[aria-selected=true]{background:var(--navy)}
 
@@ -438,5 +441,11 @@ export const CONTACT_CSS = ROUTES_CSS + `
   .ct-tv{line-height:1.32}
   .ct-tile--call .ct-open{font-size:.82rem;line-height:1.35}
   .ct-tile:hover .ct-tn,.ct-tile:focus-visible .ct-tn{color:rgba(245,240,230,.72)}
+}
+/* the four ways to reach us as one even set: each value keeps the room for a second line,
+   and the line under it sits on the floor of the tile, so all four read across and down */
+@media (min-width:768px){
+  .ct-tile .ct-tv{min-height:2.64em}
+  .ct-tile .ct-tn,.ct-tile .ct-open{margin-top:auto;padding-top:.5rem}
 }
 `;

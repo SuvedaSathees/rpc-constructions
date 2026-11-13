@@ -45,7 +45,7 @@ export function brandDropdown(id: string, label: string, brands: readonly CmpBra
           `<li role="option" tabindex="-1" data-brand="${esc(x.name)}" aria-selected="${x.name === cur.name}"${x.name === hide ? " hidden" : ""}>${brandFace(x)}<b>${esc(x.name)}</b><span class="bc-meta">${plural(x.count, "product")}</span></li>`,
       )
       .join("")}${rest
-      .map((x, i) => `<li class="bc-none${i === 0 ? " bc-none--first" : ""}" role="option" aria-disabled="true" aria-selected="false">${brandFace(x)}<b>${esc(x.name)}</b><span class="bc-meta">No product for this</span></li>`)
+      .map((x, i) => `<li class="bc-none${i === 0 ? " bc-none--first" : ""}" role="option" aria-disabled="true" aria-selected="false">${brandFace(x)}<b>${esc(x.name)}</b><span class="bc-meta">No product for this job yet</span></li>`)
       .join("")}</ul>
   </div>`;
 }

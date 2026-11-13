@@ -38,7 +38,6 @@ export const contact = {
   hours: "Mon – Sat · 08:30 – 18:30 IST",
   /** PLACEHOLDER — replace "#" with the real profile URLs before launch */
   socials: [
-    { label: "LinkedIn", href: "#" },
     { label: "Instagram", href: "https://www.instagram.com/rpc_construction_solutions/" },
     { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61593300913227" },
     { label: "WhatsApp", href: "https://wa.me/919942354602" },
@@ -88,7 +87,7 @@ export const branches: readonly Branch[] = [
     city: "Krishnagiri",
     role: "Branch",
     line: "Factories, warehouses and processing units, with roofs, gutters and floors detailed for the monsoon.",
-    mapUrl: "https://goo.gl/maps/aMBnc9fmxjQC89h88",
+    mapUrl: "https://goo.gl/maps/aMBnc9fmxjQC89h88?g_st=awb",
   },
   {
     city: "Chennai",

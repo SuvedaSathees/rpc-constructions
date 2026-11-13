@@ -47,15 +47,26 @@
     --fs-title: var(--fs-h2);
     --fs-sub: var(--fs-h3);
     --fs-body: 1rem;
-    /* room at the top for the big logo (on the page) and the small floating bar of pages: 60px on phones and tablets, 64px from 1024px */
-    --nav-h: 60px;
-    --nav-bar: 60px;
+    /* Room at the top for the logo on the page and for the small floating bar. This is what
+       every page pads by, so it has to be the header's real height: the logo grows with the
+       screen, and anything that kept the old flat 64px ran under it. */
+    --nav-h: 68px;
+    --nav-bar: 68px;
+  }
+  @media (min-width: 768px) {
+    :root { --nav-h: 74px; --nav-bar: 74px; }
   }
   @media (min-width: 1024px) {
-    :root {
-      --nav-h: 64px;
-      --nav-bar: 64px;
-    }
+    :root { --nav-h: 78px; --nav-bar: 78px; }
+  }
+  @media (min-width: 1280px) {
+    :root { --nav-h: 86px; --nav-bar: 86px; }
+  }
+  @media (min-width: 1536px) {
+    :root { --nav-h: 96px; --nav-bar: 96px; }
+  }
+  @media (min-width: 1920px) {
+    :root { --nav-h: 106px; --nav-bar: 106px; }
   }
   html {
     -webkit-font-smoothing: antialiased;
@@ -424,6 +435,8 @@
   main h1:not(.sr-only):not(.mh-sr):not(.hm-sr) { font-size: var(--fs-h1) !important; line-height: 1.08 !important; }
   main h2:not(.sr-only):not(.mh-sr):not(.hm-sr) { font-size: var(--fs-h2) !important; line-height: 1.12 !important; }
   main h3:not(.sr-only):not(.mh-sr):not(.hm-sr) { font-size: var(--fs-h3) !important; line-height: 1.2 !important; }
+  /* the questions heading opens a column of cards; at the page-title size it swamped them */
+  main .sv-fsec h2.pg-h2.pg-h2.pg-h2.pg-h2 { font-size: clamp(1.15rem, .95rem + .6vw, 1.5rem) !important; line-height: 1.2 !important; }
   /* a question in an FAQ is a row of text, not a section heading */
   main .sv-q h3.sv-q-t.sv-q-t.sv-q-t.sv-q-t,
   main .sv-q summary h3, main details.sv-q h3 { font-size: .95rem !important; line-height: 1.4 !important; font-weight: 600 !important; }
