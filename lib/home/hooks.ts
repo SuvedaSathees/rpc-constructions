@@ -206,7 +206,25 @@ export function hooksMarkup(home: HomeData, d: HookData) {
   return [
     rootedAboutMarkup(home, { n: "01" }),
     products(d),
-    servicesMarkup(home, { n: "03", label: "Waterproofing", id: "waterproofing", below: true }),
+    // Section 03 is the waterproofing block from its marker down: the tiles beside the core
+    // service are the parts of a building the waterproofing page covers, not the construction
+    // services, and every one of them opens that page.
+    servicesMarkup(home, {
+      n: "03",
+      label: "Waterproofing",
+      title: "Waterproofing, from the terrace to the&nbsp;sump.",
+      id: "waterproofing",
+      below: true,
+      tilesHref: "/waterproofing",
+      tiles: [
+        { title: "Terrace & roof", line: "PU, torch-on and liquid membranes" },
+        { title: "Bathroom & toilet", line: "Two cementitious coats, pond-tested" },
+        { title: "Water tank & sump", line: "Crystalline inside, membrane outside" },
+        { title: "Basement & foundation", line: "HDPE sheet and waterstops at the joints" },
+        { title: "Balcony & utility areas", line: "Sealed falls, skirting and drain mouths" },
+        { title: "Concrete cracks & leaks", line: "Injection grouting, traced to the source" },
+      ],
+    }),
     projects(d),
     waterproofing(d, { n: "05", label: "Services", id: "services" }),
   ].join("\n");
