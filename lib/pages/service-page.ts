@@ -7,7 +7,7 @@
  * the questions, related services and our branches.
  *
  * Breadcrumb: Home › Services › {service}. Every page links to three related
- * services, to the four branch pages and to the products it uses, so no page
+ * services, to the three branch pages and to the products it uses, so no page
  * is a dead end and the branch pages are linked from every service.
  *
  * Shares its card, question and town styles with the branch pages
@@ -41,7 +41,7 @@ const WHY: Record<ServicePage["kind"], readonly (readonly [string, string])[]> =
     ["One method, in writing", "The system, the products and the area they cover, named before work starts."],
     ["Products we supply", "Fosroc, Sika, CCI and Berger, stored and mixed as their makers specify."],
     ["Tested before handover", "Terraces are pond-tested, tanks filled and wet areas flooded before we leave."],
-    ["Four branches", "A head office in Erode and teams in Coimbatore, Krishnagiri and Chennai."],
+    ["Three towns", "A head office in Erode and teams in Coimbatore and Krishnagiri."],
   ],
   building: [
     ["One contract", "Building and waterproofing under one team, with no gaps between trades."],
@@ -49,7 +49,7 @@ const WHY: Record<ServicePage["kind"], readonly (readonly [string, string])[]> =
     ["Engineer checks at each stage", "Each layer inspected before the next trade covers it."],
     ["Materials we supply", "Fosroc, Sika, CCI, Berger and Renacon, so you know what goes into your building."],
     ["ISO 9001:2015", "Work planned, checked and recorded to a written quality system."],
-    ["Four branches", "A head office in Erode and teams in Coimbatore, Krishnagiri and Chennai."],
+    ["Three towns", "A head office in Erode and teams in Coimbatore and Krishnagiri."],
   ],
 };
 
@@ -182,7 +182,7 @@ export function servicePageMarkup(d: ServicePageData) {
 
   const towns = `<section class="pg-sec pg-sec--stone lc-also" aria-labelledby="sp-tw-h">
   <div class="pg-wrap">
-    ${secHead({ label: "Near you", title: `${name} in Erode, Coimbatore, Krishnagiri and Chennai`, lede: "Our head office in Erode and our branch teams take on this work in and around each town. Open your town for its local services, products and areas.", id: "sp-tw-h" })}
+    ${secHead({ label: "Near you", title: `${name} in Erode, Coimbatore and Krishnagiri`, lede: "Our head office in Erode and our branch teams take on this work in and around each town. Open your town for its local services, products and areas.", id: "sp-tw-h" })}
     <ul class="lc-towns">${d.towns.map((t) => `<li><a class="lc-town" href="${townPath(t)}" data-internal><span class="lc-trole">${esc(t.role)}</span><span class="lc-tname">${esc(t.place ?? t.city)}</span>${arrow}</a></li>`).join("")}</ul>
   </div>
 </section>`;

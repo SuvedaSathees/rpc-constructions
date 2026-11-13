@@ -10,11 +10,11 @@ export const WATERPROOFING_PAGES: readonly ServicePage[] = [
     area: "bathroom",
     title: "Bathroom Waterproofing & Leakage Repair",
     description:
-      "Bathroom waterproofing & leakage repair, often without removing tiles: joints, floor trap, sunken slab. Erode, Coimbatore, Chennai & Hosur. Free visit.",
+      "Bathroom waterproofing & leakage repair, often without removing tiles: joints, floor trap, sunken slab. Erode, Coimbatore, Krishnagiri & Hosur. Free visit.",
     h1: "Bathroom waterproofing services",
     intro: [
       "Bathroom waterproofing services from RPC Constructions stop water escaping from your bathroom into the walls and the room below, and in many cases we do it without breaking the tiles. An engineer traces where the water gets out, through the tile joints, the floor-wall corner, the floor trap, a pipe or the sunken slab, and our own crew seals that point with one named system.",
-      "We work on houses, flats and hostels across Erode, Coimbatore, Krishnagiri, Hosur and Chennai, on old bathrooms that already leak and on new ones before they are tiled. We also supply the Fosroc, Sika and Berger products we use, so you can see exactly what goes under your floor.",
+      "We work on houses, flats and hostels across Erode, Coimbatore, Krishnagiri and Hosur, on old bathrooms that already leak and on new ones before they are tiled. We also supply the Fosroc, Sika and Berger products we use, so you can see exactly what goes under your floor.",
     ],
     badges: [
       ["Free", "inspection and leak trace by an engineer"],
@@ -133,11 +133,11 @@ export const WATERPROOFING_PAGES: readonly ServicePage[] = [
     area: "tank",
     title: "Water Tank & Sump Waterproofing Services",
     description:
-      "Water tank & sump waterproofing with linings named in writing for drinking water. Leak repair & crystalline coats. Erode, Coimbatore, Chennai & Hosur.",
+      "Water tank & sump waterproofing with linings named in writing for drinking water. Leak repair & crystalline coats. Erode, Coimbatore, Krishnagiri & Hosur.",
     h1: "Water tank waterproofing services",
     intro: [
       "Water tank waterproofing services from RPC Constructions stop overhead tanks and underground sumps leaking, and keep the water you drink clean. We drain and clean the tank, repair cracks and joints, plug any running leak, and line the inside with a coat we name in writing, with its data sheet, so you can check it is suitable for drinking water.",
-      "We treat RCC overhead tanks on house terraces, apartment sumps and large storage sumps across Erode, Coimbatore, Krishnagiri, Hosur and Chennai. In Erode, hard borewell water leaves thick scale on tank walls, so descaling comes before any repair; in Chennai's low-lying areas, the ground water around a sump is the bigger risk.",
+      "We treat RCC overhead tanks on house terraces, apartment sumps and large storage sumps across Erode, Coimbatore, Krishnagiri and Hosur. In Erode, hard borewell water leaves thick scale on tank walls, so descaling comes before any repair; on low-lying sites, the ground water around a sump is the bigger risk.",
     ],
     badges: [
       ["Free", "inspection and fill test of the tank"],
@@ -175,7 +175,7 @@ export const WATERPROOFING_PAGES: readonly ServicePage[] = [
         id: "sump-waterproofing",
         title: "Sump waterproofing",
         paras: [
-          "A sump leaks both ways. When it is full, water leaks out into the ground; when the ground is wet, ground water, and sometimes seepage from a nearby drain, leaks in. That second direction is a health problem, not only a waste of water. It is worst in low-lying parts of Chennai such as Velachery and Pallikaranai, where the ground water stays high through the north-east monsoon.",
+          "A sump leaks both ways. When it is full, water leaks out into the ground; when the ground is wet, ground water, and sometimes seepage from a nearby drain, leaks in. That second direction is a health problem, not only a waste of water. It is worst on low-lying ground and beside open drains, where the ground water stays high through the north-east monsoon.",
           "An existing sump can only be treated from inside, because the outside is buried. We empty and clean it, cut out and plug every leaking crack and joint, seal the pipe entries, and apply a crystalline treatment and a cementitious lining over the walls and floor. New sumps are built watertight from the start: waterstops in the joints, a crystalline admixture in the concrete, and a lining inside.",
         ],
         bullets: [
@@ -261,11 +261,11 @@ export const WATERPROOFING_PAGES: readonly ServicePage[] = [
     area: "basement",
     title: "Basement & Lift Pit Waterproofing",
     description:
-      "Basement waterproofing services for basements, lift pits, retaining walls & cellar parking. Membrane, crystalline & injection. Chennai, Coimbatore, Erode.",
+      "Basement waterproofing services for basements, lift pits, retaining walls & cellar parking. Membrane, crystalline & injection. Erode, Coimbatore, Krishnagiri.",
     h1: "Basement waterproofing services",
     intro: [
       "Basement waterproofing services from RPC Constructions keep ground water out of basements, lift pits, retaining walls and cellar car parks, in new buildings and in ones that already leak. On new work we wrap the structure from outside and seal every joint before backfilling; on a basement that already leaks, we stop the running water and treat the walls and floor from inside.",
-      "Basements in Chennai's low-lying areas, such as Velachery and Pallikaranai, sit in high ground water through the north-east monsoon, and sites in Coimbatore, Erode, Krishnagiri and Hosur on clay or near channels see the water rise each rainy season. An engineer reads the site and the structure first, and we supply the Sika and Fosroc membranes and admixtures we use.",
+      "Basements on low-lying ground sit in high ground water through the north-east monsoon, and sites in Erode, Coimbatore, Krishnagiri and Hosur on clay or near channels see the water rise each rainy season. An engineer reads the site and the structure first, and we supply the Sika and Fosroc membranes and admixtures we use.",
     ],
     badges: [
       ["Free", "site inspection by an engineer"],
@@ -384,11 +384,11 @@ export const WATERPROOFING_PAGES: readonly ServicePage[] = [
     area: "balcony",
     title: "Balcony Waterproofing & Leak Repair",
     description:
-      "Balcony waterproofing services, often without removing tiles: joints, skirting, drain outlet & slope. Stop leaks below. Erode, Coimbatore, Chennai & Hosur.",
+      "Balcony waterproofing services, often without removing tiles: joints, skirting, drain outlet & slope. Stop leaks below. Erode, Coimbatore, Krishnagiri & Hosur.",
     h1: "Balcony waterproofing services",
     intro: [
       "Balcony waterproofing services from RPC Constructions stop rain and washing water leaking through your balcony into the room or flat below, and in most cases the tiles can stay. We seal the tile joints, the skirting, the door threshold and the drain outlet; where the bed under the tiles is already wet, we lift them and lay a flexible waterproof coat on the slab.",
-      "We treat open and covered balconies, sit-outs, utility areas and open-to-sky areas in houses and apartments across Erode, Coimbatore, Krishnagiri, Hosur and Chennai. Driving rain in the October to December monsoon finds every open joint on an exposed balcony, so we look at the slope and the drain as well as the floor.",
+      "We treat open and covered balconies, sit-outs, utility areas and open-to-sky areas in houses and apartments across Erode, Coimbatore, Krishnagiri and Hosur. Driving rain in the October to December monsoon finds every open joint on an exposed balcony, so we look at the slope and the drain as well as the floor.",
     ],
     badges: [
       ["Free", "inspection, the method in writing"],
@@ -506,11 +506,11 @@ export const WATERPROOFING_PAGES: readonly ServicePage[] = [
     area: "walls",
     title: "External Wall Waterproofing & Seepage",
     description:
-      "External wall waterproofing to stop wall seepage & dampness from rain: crack filling, plaster repair & a flexible coat. Erode, Coimbatore, Chennai & Hosur.",
+      "External wall waterproofing to stop wall seepage & dampness from rain: crack filling, plaster repair & a flexible coat. Erode, Coimbatore, Krishnagiri & Hosur.",
     h1: "External wall waterproofing",
     intro: [
       "External wall waterproofing from RPC Constructions stops rain soaking through your outer walls and showing up inside as seepage, damp patches and peeling paint. We fill the cracks, repair hollow plaster, seal the window and sunshade joints, and finish the exterior wall with a flexible waterproof coating named in your quote.",
-      "Wind-driven rain is the cause in most homes we see. Chennai takes the heavy north-east monsoon and salt air, Erode and Coimbatore get their main rains from October to December with drizzle in Coimbatore from June, and Krishnagiri and Hosur get the south-west monsoon after the April and May storms. The treatment is the same; the timing is planned around your town's dry months.",
+      "Wind-driven rain is the cause in most homes we see. Erode and Coimbatore get their main rains from October to December, with drizzle in Coimbatore from June, and Krishnagiri and Hosur get the south-west monsoon after the April and May storms. The treatment is the same; the timing is planned around your town's dry months.",
     ],
     badges: [
       ["Free", "inspection of the walls inside and out"],
@@ -562,7 +562,7 @@ export const WATERPROOFING_PAGES: readonly ServicePage[] = [
         id: "exterior-wall-waterproofing-coating",
         title: "Exterior wall waterproofing coating: paint or elastomeric?",
         paras: [
-          "Ordinary exterior emulsion is a decorative coat; it resists a shower but cracks when the wall moves with the heat. An elastomeric waterproof coating is thicker and stretches, so it bridges hairline cracks and keeps out wind-driven rain. On walls that face the monsoon, or near the sea in Chennai, we use the elastomeric system and can finish it in the colour you choose.",
+          "Ordinary exterior emulsion is a decorative coat; it resists a shower but cracks when the wall moves with the heat. An elastomeric waterproof coating is thicker and stretches, so it bridges hairline cracks and keeps out wind-driven rain. On walls that face the monsoon, we use the elastomeric system and can finish it in the colour you choose.",
         ],
       },
       {
@@ -619,7 +619,7 @@ export const WATERPROOFING_PAGES: readonly ServicePage[] = [
       { q: "Is waterproof exterior paint enough?", a: "On sheltered walls with no cracks, sometimes. On walls that face the monsoon, an elastomeric coating is needed, because it stretches over fine cracks where paint splits. We tell you which your walls need after the inspection." },
       { q: "Can external wall waterproofing be done on a painted wall?", a: "Yes, if the paint is sound. We clean it, remove any loose paint, fill the cracks, prime and coat over it. Flaking or chalky paint is scraped back first so the coat can bond." },
       { q: "How long does exterior wall waterproofing last?", a: "A good elastomeric system lasts several times longer than ordinary exterior paint, depending on the product, the thickness and the exposure. Walls facing the sea or the monsoon wear faster. Your quote states the guarantee for the system chosen." },
-      { q: "When is the best time to waterproof external walls?", a: "In the dry months before your monsoon: January to September in Erode and Chennai, and January to March in Krishnagiri and Hosur, before the April and May storms. In Coimbatore, the drier spells between the two monsoons work best. The wall must be dry for the coat to bond." },
+      { q: "When is the best time to waterproof external walls?", a: "In the dry months before your monsoon: January to September in Erode, and January to March in Krishnagiri and Hosur, before the April and May storms. In Coimbatore, the drier spells between the two monsoons work best. The wall must be dry for the coat to bond." },
       { q: "Do you waterproof apartment blocks and tall walls?", a: "Yes. We work from scaffolding and plan the work elevation by elevation, so residents can stay in their flats." },
     ],
     related: ["crack-and-leakage-treatment", "terrace-waterproofing", "balcony-waterproofing"],
@@ -633,11 +633,11 @@ export const WATERPROOFING_PAGES: readonly ServicePage[] = [
     area: "podium",
     title: "Terrace Garden & Podium Waterproofing",
     description:
-      "Terrace garden waterproofing for roof gardens, podiums & planters: membrane, root barrier & drainage, flood-tested. Chennai, Coimbatore, Erode, Hosur.",
+      "Terrace garden waterproofing for roof gardens, podiums & planters: membrane, root barrier & drainage, flood-tested. Erode, Coimbatore, Krishnagiri, Hosur.",
     h1: "Terrace garden waterproofing",
     intro: [
       "Terrace garden waterproofing from RPC Constructions lets you grow plants, lawns and planters on a roof or podium without water or roots getting into the slab. We lay a waterproofing membrane, a root barrier, a protection layer and a drainage layer, and flood-test the slab before any soil goes on.",
-      "We waterproof house terrace gardens, apartment podium gardens over car parks, planter boxes, landscaped decks and pool decks across Erode, Coimbatore, Krishnagiri, Hosur and Chennai. A garden keeps the slab wet all year, not only in the monsoon, so the system has to be built for constant moisture.",
+      "We waterproof house terrace gardens, apartment podium gardens over car parks, planter boxes, landscaped decks and pool decks across Erode, Coimbatore, Krishnagiri and Hosur. A garden keeps the slab wet all year, not only in the monsoon, so the system has to be built for constant moisture.",
     ],
     badges: [
       ["Root barrier", "under every terrace garden"],
@@ -753,11 +753,11 @@ export const WATERPROOFING_PAGES: readonly ServicePage[] = [
     area: "cracks",
     title: "Crack Repair & Leak Injection Grouting",
     description:
-      "Wall crack repair & leakage treatment: we trace the leak, then seal it by PU or epoxy injection. Ceiling leaks, rising damp. Erode, Coimbatore, Chennai.",
+      "Wall crack repair & leakage treatment: we trace the leak, then seal it by PU or epoxy injection. Ceiling leaks, rising damp. Erode, Coimbatore, Krishnagiri.",
     h1: "Wall crack repair and leakage treatment",
     intro: [
       "Wall crack repair and leakage treatment from RPC Constructions starts with finding the leak. An engineer traces where the water comes from and what the crack means, and then our own crew seals it, by injection grouting, crack filling or structural repair, depending on the cause.",
-      "This is the service to call when you can see the damage but not the source: a ceiling that drips, a wall that stays damp, a crack that keeps coming back. We work across Erode, Coimbatore, Krishnagiri, Hosur and Chennai, and if the cause turns out to be the terrace, a bathroom or an outer wall, we say so and treat that.",
+      "This is the service to call when you can see the damage but not the source: a ceiling that drips, a wall that stays damp, a crack that keeps coming back. We work across Erode, Coimbatore, Krishnagiri and Hosur, and if the cause turns out to be the terrace, a bathroom or an outer wall, we say so and treat that.",
     ],
     badges: [
       ["Free", "leak trace and crack check by an engineer"],

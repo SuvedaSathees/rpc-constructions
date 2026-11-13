@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "RPC Constructions",
     short_name: "RPC",
-    description: "Waterproofing, leak repair and construction in Erode, Coimbatore, Krishnagiri and Chennai.",
+    description: "Waterproofing, leak repair and construction in Erode, Coimbatore and Krishnagiri.",
     start_url: "/",
     display: "standalone",
     background_color: "#eeeae3",

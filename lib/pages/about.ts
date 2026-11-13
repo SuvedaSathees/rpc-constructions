@@ -245,13 +245,11 @@ export const ABOUT_CSS = `
 .ab-r-cross{stroke:rgba(245,240,230,.06);stroke-width:1}
 .ab-r-tag{font-family:var(--sans);font-size:var(--fs-body,1rem);font-weight:700;letter-spacing:.08em;fill:rgba(56,189,248,.7)}
 .ab-r-ray{stroke:#38bdf8;stroke-width:1.5;stroke-dasharray:4 4;animation:ab-r-dash 1.8s linear infinite}
-.ab-r-ray--chennai{stroke:#f59e0b}
 @keyframes ab-r-dash{to{stroke-dashoffset:-24}}
 .ab-r-pulse{fill:none;stroke:#f59e0b;animation:ab-r-beacon 2.4s ease-out infinite;transform-origin:250px 120px}
 @keyframes ab-r-beacon{0%{r:5px;opacity:.9;stroke-width:2px}100%{r:20px;opacity:0;stroke-width:.5px}}
 .ab-r-hqname{font-family:var(--sans);font-size:var(--fs-body,1rem);font-weight:800;letter-spacing:.06em;fill:#f5f0e6}
 .ab-r-node{fill:#38bdf8;stroke:#0c1b33;stroke-width:1.8}
-.ab-r-node--chennai{fill:#f59e0b}
 .ab-r-tname{font-family:var(--display);font-size:var(--fs-body,1rem);font-weight:600;fill:#ffffff}
 .ab-r-tdist{font-family:var(--sans);font-size:var(--fs-body,1rem);font-weight:600;fill:rgba(245,240,230,.6)}
 .ab-r-north{font-family:var(--sans);font-size:var(--fs-body,1rem);font-weight:800;fill:#f59e0b}

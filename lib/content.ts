@@ -45,12 +45,12 @@ export const contact = {
   whatsapp: "https://wa.me/919942354602",
   mapQuery: "No. 26, Bharathi Palayam, 2nd Street, Kurikaran Palayam, N.R. Mahal Backside, Erode, Tamil Nadu 638002",
   geo: { lat: 11.341, lng: 77.7172 },
-  regions: ["Erode", "Coimbatore", "Krishnagiri", "Chennai"],
+  regions: ["Erode", "Coimbatore", "Krishnagiri"],
 } as const;
 
 /**
  * A town we work from. Erode is the head office and the only address on the
- * visiting card; the other three are the towns we run work out of. No address
+ * visiting card; the other two are the towns we run work out of. No address
  * or direct number has been invented for them: give a branch `address`,
  * `mapQuery` or `phone` here and the branches page shows them at once.
  */
@@ -67,7 +67,7 @@ export interface Branch {
   phone?: string;
 }
 
-/** The four towns, head office first (app/branches, lib/pages/branches.ts) */
+/** The three towns, head office first (app/branches, lib/pages/branches.ts) */
 export const branches: readonly Branch[] = [
   {
     city: "Erode",
@@ -88,11 +88,6 @@ export const branches: readonly Branch[] = [
     role: "Branch",
     line: "Factories, warehouses and processing units, with roofs, gutters and floors detailed for the monsoon.",
     mapUrl: "https://goo.gl/maps/aMBnc9fmxjQC89h88?g_st=awb",
-  },
-  {
-    city: "Chennai",
-    role: "Branch",
-    line: "Project work in and around the city, where the northeast monsoon sets the standard for every detail.",
   },
 ];
 
@@ -199,22 +194,6 @@ export const projects: Project[] = [
     materials: "Colour-coated roof sheeting, precast compound wall, trimix flooring",
     clientType: "[Industrial Client]",
     waterproofing: "Integral-admixture trimix floors · sealed roof-sheet laps · storm-water drainage",
-  },
-  {
-    slug: "anna-nagar-mixed-use",
-    name: "Anna Nagar Mixed-Use",
-    location: "Anna Nagar, Chennai",
-    type: "Mixed-use",
-    area: "[88,000 sq ft]",
-    year: "[2026]",
-    status: "In design",
-    image: "/images/projects/anna-nagar-mixed-use-chennai.jpg",
-    summary: "Street-level shops with offices and apartments above, planned around a shaded central courtyard.",
-    story: "Chennai’s heavy northeast-monsoon rain shaped the design: the basement, the podium and the street-facing façade were detailed against water before anything else.",
-    structuralSystem: "RCC frame with post-tensioned transfer slab",
-    materials: "Exposed concrete, terracotta jaali screens, glazing",
-    clientType: "[Joint Development]",
-    waterproofing: "Crystalline basement · PU podium & terrace · elastomeric façade coating",
   },
 ];
 
@@ -553,7 +532,7 @@ export const faqs = [
   },
   {
     question: "Can we visit current RPC construction sites?",
-    answer: "Yes. Prospective clients are welcomed to inspect our active sites and completed projects in Erode, Coimbatore, Chennai, and surrounding regions by appointment to witness our craftsmanship and site standards firsthand.",
+    answer: "Yes. Prospective clients are welcomed to inspect our active sites and completed projects in Erode, Coimbatore, Krishnagiri, and surrounding regions by appointment to witness our craftsmanship and site standards firsthand.",
   },
 ] as const;
 

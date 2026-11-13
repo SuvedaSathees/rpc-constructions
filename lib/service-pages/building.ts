@@ -13,11 +13,11 @@ export const BUILDING_PAGES: readonly ServicePage[] = [
     kind: "building",
     title: "House Construction Contractors",
     description:
-      "House construction contractors in Erode, Coimbatore, Chennai & Hosur: turnkey homes, plan drawings, waterproofing built in. Free site visit & estimate.",
+      "House construction contractors in Erode, Coimbatore, Krishnagiri & Hosur: turnkey homes, plan drawings, waterproofing built in. Free site visit & estimate.",
     h1: "House construction contractors",
     intro: [
       "RPC Constructions are house construction contractors who build independent houses, villas, duplexes and apartment blocks turnkey, from the soil test and plan drawings to painting and handover, under one contract. Every terrace, bathroom and sump is waterproofed and water-tested while the house goes up, so you move into a dry home instead of chasing the first leak after the first monsoon.",
-      "Our head office is at Kurikaran Palayam in Erode, with branches in Coimbatore, Krishnagiri and Chennai, so our own site teams build across the Kongu belt, around Hosur and in Chennai. We also supply the Fosroc, Sika, Berger and Renacon AAC products that go into your house, so you can see exactly what is in its slabs and walls.",
+      "Our head office is at Kurikaran Palayam in Erode, with branches in Coimbatore and Krishnagiri, so our own site teams build across the Kongu belt and around Hosur. We also supply the Fosroc, Sika, Berger and Renacon AAC products that go into your house, so you can see exactly what is in its slabs and walls.",
     ],
     badges: [
       ["8 – 24 months", "typical build time, by size and scope"],
@@ -37,7 +37,7 @@ export const BUILDING_PAGES: readonly ServicePage[] = [
         { title: "You have lived in a house that leaked", body: "Our background is waterproofing. Terraces, bathrooms, sumps and tanks are sealed and tested at the stage they are built, not patched later." },
         { title: "You are building a villa or duplex", body: "Courtyards, sloping tiled roofs, double-height rooms and split levels need careful detailing at every joint. We draw and build those details." },
         { title: "You are building to rent or sell", body: "Small apartment blocks and rows of houses, built to one specification and handed over with the test records for each flat." },
-        { title: "You want a house that suits the heat", body: "AAC block walls, cool roof coatings and well-placed openings keep rooms cooler through the Kongu and Chennai summers." },
+        { title: "You want a house that suits the heat", body: "AAC block walls, cool roof coatings and well-placed openings keep rooms cooler through the Kongu summer." },
       ],
     },
     table: {
@@ -61,7 +61,7 @@ export const BUILDING_PAGES: readonly ServicePage[] = [
         id: "plan-approval",
         title: "Plan approval and building permits",
         paras: [
-          "Before a house can be built, its plan needs approval from the local body, or from DTCP in most of Tamil Nadu and CMDA in Chennai. We prepare the architectural and structural drawings to the rules that apply to your plot, collect the documents the authority asks for and help you through each step of the application.",
+          "Before a house can be built, its plan needs approval from the local body, or from DTCP in most of Tamil Nadu. We prepare the architectural and structural drawings to the rules that apply to your plot, collect the documents the authority asks for and help you through each step of the application.",
           "Setbacks, floor area and height limits shape the design, so we check them at the first drawing, not after. That way the house you approve on paper is the house the authority will accept.",
         ],
       },
@@ -95,9 +95,9 @@ export const BUILDING_PAGES: readonly ServicePage[] = [
       },
       {
         id: "house-construction-erode-coimbatore",
-        title: "House construction in Erode, Coimbatore, Hosur and Chennai",
+        title: "House construction in Erode, Coimbatore, Krishnagiri and Hosur",
         paras: [
-          "Erode is our head office, and the towns around it, Perundurai, Bhavani and Gobichettipalayam, are within easy reach of our teams. From our Coimbatore branch we build across the city and its suburbs; from Krishnagiri we cover Hosur and the surrounding area; and our Chennai branch serves the city and its outskirts.",
+          "Erode is our head office, and the towns around it, Perundurai, Bhavani and Gobichettipalayam, are within easy reach of our teams. From our Coimbatore branch we build across the city and its suburbs, and from Krishnagiri we cover Hosur and the surrounding area.",
           "Soil, ground water and rainfall differ from one place to the next, so the foundation and the waterproofing are designed for your site, not copied from the last one.",
         ],
       },
@@ -146,7 +146,7 @@ export const BUILDING_PAGES: readonly ServicePage[] = [
       { q: "Is waterproofing included during construction?", a: "Yes. The terrace, bathrooms, balconies, sump and overhead tank are waterproofed as they are built, and each is water-tested before tiles or finishes cover it. An engineer inspects every layer." },
       { q: "How are payments staged during construction?", a: "Payments are tied to stages of the work, such as foundation, each slab, walls, plastering and finishes, not to dates. The schedule is written into the contract, and each payment falls due when that stage is complete and checked." },
       { q: "Can I choose my own materials and brands?", a: "Yes. The estimate names a material and brand for each item, and you can change any of them. We price the change and confirm it in writing before we order." },
-      { q: "Do you build houses outside Erode?", a: "Yes. From our branches in Coimbatore, Krishnagiri and Chennai we build in Coimbatore and its suburbs, Hosur and Krishnagiri, and in and around Chennai, as well as across the Erode district." },
+      { q: "Do you build houses outside Erode?", a: "Yes. From our branches in Coimbatore and Krishnagiri we build in Coimbatore and its suburbs, and in Hosur and Krishnagiri, as well as across the Erode district." },
     ],
     related: ["interiors", "bathroom-waterproofing", "terrace-waterproofing"],
   },
@@ -158,11 +158,11 @@ export const BUILDING_PAGES: readonly ServicePage[] = [
     kind: "building",
     title: "Commercial Building Construction Company",
     description:
-      "Commercial building construction company for offices, showrooms, hospitals & complexes in Chennai, Coimbatore, Erode & Hosur. Design-build. Get a quote.",
+      "Commercial building construction company for offices, showrooms, hospitals & complexes in Erode, Coimbatore, Krishnagiri & Hosur. Design-build. Get a quote.",
     h1: "Commercial building construction company",
     intro: [
       "RPC Constructions is a commercial building construction company that builds offices, showrooms, shopping and mixed-use complexes, hospitals and hotels, from the structural design to a shell-and-core handover or a full fit-out. We build for heavy daily use, with basement car parks that stay dry and façades sealed against driving rain.",
-      "We work from our head office in Erode and our branches in Coimbatore, Krishnagiri and Chennai, so we build on busy roads such as Avinashi Road in Coimbatore, in Chennai and its suburbs, around Hosur and across the Kongu belt. Our own site teams carry out the structure and the waterproofing under one contract.",
+      "We work from our head office in Erode and our branches in Coimbatore and Krishnagiri, so we build on busy roads such as Avinashi Road in Coimbatore, around Hosur and across the Kongu belt. Our own site teams carry out the structure and the waterproofing under one contract.",
     ],
     badges: [
       ["12 – 30 months", "typical programme, by size and scope"],
@@ -228,10 +228,10 @@ export const BUILDING_PAGES: readonly ServicePage[] = [
         ],
       },
       {
-        id: "commercial-construction-chennai-coimbatore",
-        title: "Commercial construction in Chennai, Coimbatore, Erode and Hosur",
+        id: "commercial-construction-coimbatore-erode",
+        title: "Commercial construction in Erode, Coimbatore, Krishnagiri and Hosur",
         paras: [
-          "Our Coimbatore branch builds along Avinashi Road, Trichy Road and the city's growing suburbs. Our Chennai branch handles the high water table that makes basements there harder to keep dry. From Erode we build showrooms and complexes across the Kongu belt, and from Krishnagiri we cover Hosur, where offices and showrooms grow around the industrial estates.",
+          "Our Coimbatore branch builds along Avinashi Road, Trichy Road and the city's growing suburbs. From Erode we build showrooms and complexes across the Kongu belt, and from Krishnagiri we cover Hosur, where offices and showrooms grow around the industrial estates.",
           "Warehouses, godowns and factory buildings are covered on our industrial construction page.",
         ],
       },
@@ -257,7 +257,7 @@ export const BUILDING_PAGES: readonly ServicePage[] = [
     gallery: {
       title: "From our sites",
       items: [
-        { src: "/images/projects/anna-nagar-mixed-use-chennai.jpg", alt: "Multi-storey commercial building under construction with its concrete frame exposed", caption: "A mixed-use frame going up floor by floor" },
+        { src: "/stages/06-structural-frame.jpg", alt: "Multi-storey commercial building under construction with its concrete frame exposed", caption: "A structural frame going up floor by floor" },
         { src: "/stages/05-beams-and-slabs.jpg", alt: "Reinforcement for beams and a floor slab laid out before a concrete pour", caption: "Beams and slabs, checked before every pour" },
         { src: "/images/completed-frame.jpg", alt: "Finished multi-storey building with its façade complete", caption: "Complete, sealed and ready to occupy" },
       ],
@@ -289,11 +289,11 @@ export const BUILDING_PAGES: readonly ServicePage[] = [
     kind: "building",
     title: "Industrial, Factory & PEB Construction",
     description:
-      "Industrial construction company for factories, warehouses & PEB sheds in Hosur, Krishnagiri, Coimbatore, Erode & Chennai. Civil, floors & roofing.",
+      "Industrial construction company for factories, warehouses & PEB sheds in Hosur, Krishnagiri, Coimbatore & Erode. Civil, floors & roofing.",
     h1: "Industrial construction company",
     intro: [
       "RPC Constructions is an industrial construction company that builds factories, warehouses, godowns and pre-engineered (PEB) steel sheds, with the civil foundations, machine pits, industrial floors, roofing and drainage under one contract. Roofs, gutters and floors are detailed to keep machinery and stock dry through the monsoon.",
-      "We build in the SIPCOT estates at Hosur and Krishnagiri, in Perundurai near our Erode head office, around Coimbatore, and in the industrial belt west of Chennai. Our branches in Krishnagiri, Coimbatore and Chennai keep our own site teams close to each site.",
+      "We build in the SIPCOT estates at Hosur and Krishnagiri, in Perundurai near our Erode head office, and around Coimbatore. Our branches in Krishnagiri and Coimbatore keep our own site teams close to each site.",
     ],
     badges: [
       ["6 – 18 months", "typical programme, by size and scope"],
@@ -365,7 +365,7 @@ export const BUILDING_PAGES: readonly ServicePage[] = [
         id: "factory-construction-hosur-coimbatore",
         title: "Factory construction in Hosur, Krishnagiri, Coimbatore and Erode",
         paras: [
-          "Our Krishnagiri branch covers the SIPCOT estates at Hosur and Krishnagiri, where engineering and electronics plants keep expanding. Around Perundurai and Erode we build for textile, food processing and engineering units, and from Coimbatore we serve the city's foundries, pump makers and textile mills. Our Chennai branch covers the industrial corridor to the west of the city.",
+          "Our Krishnagiri branch covers the SIPCOT estates at Hosur and Krishnagiri, where engineering and electronics plants keep expanding. Around Perundurai and Erode we build for textile, food processing and engineering units, and from Coimbatore we serve the city's foundries, pump makers and textile mills.",
           "Industrial RCC roofs and godown slabs that need waterproofing on their own are handled by our terrace waterproofing team.",
         ],
       },
@@ -422,11 +422,11 @@ export const BUILDING_PAGES: readonly ServicePage[] = [
     kind: "building",
     title: "House Renovation & Repair Services",
     description:
-      "House renovation services in Erode, Coimbatore, Chennai & Hosur: re-plastering, re-flooring, bathroom remodels, extensions & structural repair. Free visit.",
+      "House renovation services in Erode, Coimbatore, Krishnagiri & Hosur: re-plastering, re-flooring, bathroom remodels, extensions & structural repair. Free visit.",
     h1: "House renovation services",
     intro: [
       "RPC Constructions' house renovation services repair and upgrade the house you already own: re-plastering, re-flooring, bathroom and kitchen remodels, roof repair, structural strengthening and extensions, planned around the family still living in it. We survey the house first, so the work fixes causes, not just surfaces.",
-      "We renovate homes and small buildings from our head office in Erode and our branches in Coimbatore, Krishnagiri and Chennai, which covers the Kongu belt, Hosur and Chennai. Our own site teams do the civil work and the waterproofing, so a new floor or a fresh coat of paint is never laid over a problem that will spoil it.",
+      "We renovate homes and small buildings from our head office in Erode and our branches in Coimbatore and Krishnagiri, which covers the Kongu belt and Hosur. Our own site teams do the civil work and the waterproofing, so a new floor or a fresh coat of paint is never laid over a problem that will spoil it.",
     ],
     badges: [
       ["2 – 10 months", "typical renovation, by scope"],
@@ -471,7 +471,7 @@ export const BUILDING_PAGES: readonly ServicePage[] = [
         id: "old-house-renovation",
         title: "Old house renovation or rebuild?",
         paras: [
-          "Many older houses in Erode, Coimbatore and Chennai have a sound structure under tired finishes. If the foundation, columns and slabs are in good condition, renovating keeps what works and replaces what does not, and you can often stay in the house.",
+          "Many older houses in Erode, Coimbatore and Krishnagiri have a sound structure under tired finishes. If the foundation, columns and slabs are in good condition, renovating keeps what works and replaces what does not, and you can often stay in the house.",
           "If the steel in the slabs is badly rusted, the house has settled, or the layout no longer suits the family, rebuilding can be the better choice. Our survey tells you which, and we put the reasons in writing. If you decide to rebuild, our house construction team takes it from there.",
         ],
       },
@@ -555,11 +555,11 @@ export const BUILDING_PAGES: readonly ServicePage[] = [
     kind: "building",
     title: "Home Interior Design & Modular Kitchens",
     description:
-      "Home interior designers in Erode, Coimbatore, Hosur & Chennai: modular kitchens, wardrobes, false ceilings & panelling, fitted over tested wet areas.",
+      "Home interior designers in Erode, Coimbatore, Krishnagiri & Hosur: modular kitchens, wardrobes, false ceilings & panelling, fitted over tested wet areas.",
     h1: "Home interior designers",
     intro: [
       "RPC Constructions' home interior designers plan and fit modular kitchens, wardrobes, false ceilings, TV units and wall panelling to the same drawings as the building, so cabinets, lights, plumbing and switches line up the first time. Sinks, bathrooms and utility areas are sealed and water-tested before tiles and cabinets cover them.",
-      "We design and fit home interiors from our head office in Erode and our branches in Coimbatore, Krishnagiri and Chennai, for new houses we build, flats you have just bought and homes we are renovating, in Erode, Coimbatore, Hosur and Chennai. One team handles the civil work and the interiors, so nothing is cut open after it is finished.",
+      "We design and fit home interiors from our head office in Erode and our branches in Coimbatore and Krishnagiri, for new houses we build, flats you have just bought and homes we are renovating, in Erode, Coimbatore, Krishnagiri and Hosur. One team handles the civil work and the interiors, so nothing is cut open after it is finished.",
     ],
     badges: [
       ["1 – 6 months", "typical fit-out, by scope"],
@@ -622,9 +622,9 @@ export const BUILDING_PAGES: readonly ServicePage[] = [
       },
       {
         id: "interior-designers-erode-coimbatore",
-        title: "Interior designers in Erode, Coimbatore, Hosur and Chennai",
+        title: "Interior designers in Erode, Coimbatore, Krishnagiri and Hosur",
         paras: [
-          "Our Erode head office designs and fits interiors across the Erode district. From Coimbatore we serve the city and its suburbs, from Krishnagiri we cover Hosur, and our Chennai branch works across the city. Wherever you are, the same team that checks the civil work fits the interiors over it.",
+          "Our Erode head office designs and fits interiors across the Erode district. From Coimbatore we serve the city and its suburbs, and from Krishnagiri we cover Hosur. Wherever you are, the same team that checks the civil work fits the interiors over it.",
         ],
       },
     ],
@@ -681,11 +681,11 @@ export const BUILDING_PAGES: readonly ServicePage[] = [
     kind: "building",
     title: "Construction Project Management Services",
     description:
-      "Construction project management services (PMC) for homes, factories & commercial builds: site supervision, QS & quality audit. Erode, Coimbatore, Chennai.",
+      "Construction project management services (PMC) for homes, factories & commercial builds: site supervision, QS & quality audit. Erode, Coimbatore, Krishnagiri.",
     h1: "Construction project management services",
     intro: [
       "RPC Constructions' construction project management services give owners and developers independent control of cost, programme and quality on a house, factory or commercial building, whether we build it or another contractor does. We plan the project, check each stage on site, measure and certify the bills, and keep the records you need at handover.",
-      "We manage projects from our head office in Erode and our branches in Coimbatore, Krishnagiri and Chennai, which covers the Kongu belt, Hosur and Chennai. We also act for NRI owners building at home. One check sets us apart: an engineer inspects each waterproofing layer before the next trade covers it.",
+      "We manage projects from our head office in Erode and our branches in Coimbatore and Krishnagiri, which covers the Kongu belt and Hosur. We also act for NRI owners building at home. One check sets us apart: an engineer inspects each waterproofing layer before the next trade covers it.",
     ],
     badges: [
       ["Full lifecycle", "from brief to handover"],
@@ -756,9 +756,9 @@ export const BUILDING_PAGES: readonly ServicePage[] = [
       },
       {
         id: "project-management-consultants-coimbatore",
-        title: "Project management consultants in Coimbatore, Erode and Chennai",
+        title: "Project management consultants in Erode, Coimbatore and Krishnagiri",
         paras: [
-          "Our Coimbatore branch manages homes and commercial buildings across the city. From our Erode head office we cover the Kongu belt, our Krishnagiri branch covers the factories and homes around Hosur, and our Chennai branch works across the city and its industrial suburbs.",
+          "Our Coimbatore branch manages homes and commercial buildings across the city. From our Erode head office we cover the Kongu belt, and our Krishnagiri branch covers the factories and homes around Hosur.",
         ],
       },
     ],

@@ -74,7 +74,6 @@ const SPOTS: readonly { key: string; label: string; x: number; y: number; slug?:
   { key: "homes", label: "Homes and apartments", x: 12.7, y: 52, slug: "kaveri-residences" },
   { key: "villas", label: "Villas", x: 36, y: 55, slug: "thindal-courtyard-villa" },
   { key: "offices", label: "Offices", x: 57.4, y: 41, slug: "avinashi-corporate-centre" },
-  { key: "mixed", label: "Shops with flats above", x: 67.2, y: 25, slug: "anna-nagar-mixed-use" },
   { key: "factories", label: "Factories", x: 86, y: 47, slug: "sipcot-textile-processing-unit" },
   { key: "tanks", label: "Water tanks and sumps", x: 74.5, y: 73 },
 ];

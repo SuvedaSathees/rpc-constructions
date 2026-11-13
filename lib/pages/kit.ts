@@ -41,7 +41,7 @@ export const words = (html: string) =>
     .map((w, i) => `<span class="pg-w"><span style="--wi:${i}">${w}</span></span>`)
     .join(" ");
 export const mapsLink = (q: string) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
-/** "Erode, Coimbatore and Chennai" */
+/** "Erode, Coimbatore and Krishnagiri" */
 export const listing = (xs: readonly string[]) => (xs.length < 2 ? xs.join("") : `${xs.slice(0, -1).join(", ")} and ${xs[xs.length - 1]}`);
 
 export const arrow = `<svg class="pg-ar" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
@@ -54,7 +54,6 @@ const SIZES: Record<string, readonly [number, number]> = {
   "/images/architectural-craft-detail.jpg": [896, 1200],
   "/images/detail-02.jpg": [1200, 896],
   "/images/anatomy-wp-walls.jpg": [1376, 768],
-  "/images/projects/anna-nagar-mixed-use-chennai.jpg": [1376, 768],
   "/images/projects/avinashi-corporate-centre-coimbatore.jpg": [1376, 768],
   "/images/projects/sipcot-textile-unit-perundurai.jpg": [1376, 768],
   "/images/projects/thindal-courtyard-villa-erode.jpg": [1376, 768],

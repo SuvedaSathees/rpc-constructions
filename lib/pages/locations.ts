@@ -1,6 +1,6 @@
 /**
  * The branch landing pages, one per town we work from, at
- * /waterproofing-in/{town} (Erode, Coimbatore, Krishnagiri, Chennai), all
+ * /waterproofing-in/{town} (Erode, Coimbatore, Krishnagiri), all
  * listed on /branches. The town is in the address, the title and the h1, so
  * each page answers "waterproofing in {town}" on its own.
  *
@@ -376,7 +376,7 @@ export const LOCATIONS_CSS = `
 .lc-q p{margin:0;padding:0 1.2rem 1.1rem;font-size:var(--fs-body);line-height:1.65;color:var(--ink2)}
 .lc-q summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:8px}
 /* the other towns */
-.lc-towns{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.8rem,1.4vw,1.1rem);margin:clamp(1.4rem,3vh,2rem) 0 0;padding:0;list-style:none}
+.lc-towns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.8rem,1.4vw,1.1rem);margin:clamp(1.4rem,3vh,2rem) 0 0;padding:0;list-style:none}
 .lc-town{display:flex;flex-direction:column;gap:.3rem;height:100%;padding:1.1rem 1.2rem;border-radius:8px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line);text-decoration:none;color:var(--ink)}
 .lc-town:hover{box-shadow:inset 0 0 0 1.5px var(--accent)}
 .lc-trole{font-size:calc(var(--fs-body)*.84);font-weight:600;color:var(--water)}
@@ -386,7 +386,7 @@ export const LOCATIONS_CSS = `
 .lc-town--all .lc-trole,.lc-town--all .pg-ar{color:#9fbbe6}
 
 @media (max-width:1023px){
-  .lc-cards,.lc-sgrid,.lc-jobs,.lc-towns{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lc-cards,.lc-sgrid,.lc-jobs{grid-template-columns:repeat(2,minmax(0,1fr))}
   .lc-pgrid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .lc-guides .lc-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
   .lc-factlist{grid-template-columns:repeat(2,minmax(0,1fr))}

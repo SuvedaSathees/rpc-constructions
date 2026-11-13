@@ -1,7 +1,7 @@
 /**
- * The branches page: the four towns RPC works from. Erode is the head
+ * The branches page: the three towns RPC works from. Erode is the head
  * office — the address from the visiting card, the hours, and a link that
- * opens it in Maps — and Coimbatore, Krishnagiri and Chennai are the towns
+ * opens it in Maps — and Coimbatore and Krishnagiri are the towns
  * we run work out of. A branch with no address of its own says plainly that
  * its enquiries go through the head office, rather than showing one that
  * does not exist; the moment a branch is given an `address`, a `mapQuery` or
@@ -35,7 +35,7 @@ export function branchesMarkup(d: BranchesData) {
   const head = pageHead({
     trail: [{ name: "Home", href: "/" }, { name: "Branches", href: "/branches" }],
     label: "Branches",
-    title: `Four towns, one&nbsp;standard of work.`,
+    title: `Three towns, one&nbsp;standard of work.`,
   });
 
   const card = (b: Branch, i: number) => {
@@ -69,7 +69,7 @@ export function branchesMarkup(d: BranchesData) {
 
   const list = `<section class="pg-sec br-sec" aria-labelledby="br-h">
   <div class="pg-wrap">
-    ${secHead({ label: "Where we are", title: "The head office, and three towns we work from.", lede: "Every enquiry reaches the same team in Erode, whichever town your building is in.", id: "br-h" })}
+    ${secHead({ label: "Where we are", title: "The head office, and two towns we work from.", lede: "Every enquiry reaches the same team in Erode, whichever town your building is in.", id: "br-h" })}
     <ul class="br-grid" data-rv-stagger="70">${d.branches.map(card).join("")}</ul>
     <p class="br-note" data-rv>${pin}<span>Enquiries and site visits for ${esc(listing(towns.slice(1)))} are booked through the Erode head office.</span></p>
   </div>
@@ -79,8 +79,8 @@ export function branchesMarkup(d: BranchesData) {
 }
 
 export const BRANCHES_CSS = `
-/* the four towns: the head office first, wider, then the three branches */
-.br-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.9rem,1.6vw,1.3rem);margin:clamp(2rem,5vh,3rem) 0 0;padding:0;list-style:none}
+/* the three towns: the head office first, wider, then the two branches */
+.br-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(.9rem,1.6vw,1.3rem);margin:clamp(2rem,5vh,3rem) 0 0;padding:0;list-style:none}
 .br-card{position:relative;display:flex;flex-direction:column;align-items:flex-start;padding:clamp(1.3rem,2.4vw,1.9rem);border-radius:8px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line)}
 .br-card--head{grid-column:1/-1;background:var(--navy);color:#f1ece1;box-shadow:none}
 .br-no{position:absolute;top:clamp(1.1rem,2.2vw,1.7rem);right:clamp(1.1rem,2.2vw,1.7rem);font-family:var(--display);font-size:1.6rem;font-weight:650;line-height:1;color:rgba(18,34,59,.14)}

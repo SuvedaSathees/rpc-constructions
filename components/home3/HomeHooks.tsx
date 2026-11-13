@@ -11,7 +11,7 @@ const HOME: HomeData = {
   services,
   points: [
     { title: "Erode waterproofing contractors", body: "Head office at Kurikaran Palayam, Erode." },
-    { title: "Coimbatore, Krishnagiri, Chennai", body: "Waterproofing and leak repair in four cities." },
+    { title: "Coimbatore and Krishnagiri", body: "Waterproofing and leak repair across three towns." },
     { title: "Terrace, bathroom, sump, basement", body: "Homes, offices and factories kept leak-free." },
     { title: "Free site inspection", body: "One team from the first visit to handover." },
   ],

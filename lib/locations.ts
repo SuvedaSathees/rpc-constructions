@@ -185,53 +185,6 @@ export const towns: readonly Town[] = [
       { q: "How do I book a site inspection in Krishnagiri or Hosur?", a: "Call us or send photos on WhatsApp. Our team plans the visit with the Erode head office and confirms the date." },
     ],
   },
-  {
-    slug: "chennai",
-    city: "Chennai",
-    district: "Chennai",
-    role: "Branch",
-    summary: "Project work in and around Chennai, where the northeast monsoon and the sea air set the standard for every detail.",
-    intro:
-      "RPC Constructions takes on waterproofing and building projects in and around Chennai, and supplies construction chemicals for them. We seal terraces, basements, bathrooms and external walls against the city's heavy northeast monsoon.",
-    description: "Waterproofing contractors in Chennai for terraces, basements, bathrooms and walls, ready for the northeast monsoon. Free site inspection.",
-    climate: {
-      // Anna University CCCDM 1186.5 mm (1951-2020); IMD station normals about 1,300-1,400 mm; the NE monsoon brings about 60% of the year's rain
-      rainfall: "About 1,200 to 1,400 mm a year, among the highest in Tamil Nadu",
-      season: "About 60% of the year's rain falls in the northeast monsoon, October to December, with cyclones and days of heavy rain.",
-      ground: "A coastal city with humid, salty air, a high water table in many areas and many apartments with basement parking.",
-    },
-    why: [
-      "Chennai gets most of its rain in a few weeks of the northeast monsoon, sometimes with cyclones. Terraces have to shed a great deal of water fast, and any weak outlet, joint or crack is tested hard in a single storm.",
-      "Near the coast, the air is humid and salty, which attacks steel in concrete and old coatings. Low-lying areas near the lakes and marshes, such as Velachery and Pallikaranai, flood in heavy rain, and where the water table is high, basements and lift pits take water from below as well as from the rain.",
-    ],
-    problems: [
-      { title: "Terrace leaks in monsoon storms", body: "Roofs that cannot clear heavy rain fast enough, leaking at outlets, joints and cracks.", service: "terrace" },
-      { title: "Water in basements and lift pits", body: "Seepage from a high water table into basement parking and lift pits of apartments.", service: "basement" },
-      { title: "Damp walls and rusting steel", body: "Salty, humid air and wind-driven rain causing damp walls and spalling concrete.", service: "walls" },
-      { title: "Bathroom seepage in apartments", body: "Leaks from bathroom floors into the flat below, a common complaint in older blocks.", service: "bathroom" },
-    ],
-    focus: ["terrace", "basement", "walls", "bathroom"],
-    serviceNotes: {
-      terrace: "A coat or membrane with the outlets and parapets sealed, so the terrace clears monsoon rain without leaking.",
-      basement: "Crystalline treatment, membranes and joint sealing for basements and lift pits below a high water table.",
-      walls: "A coat that keeps out wind-driven monsoon rain and sea air on Chennai's exposed walls and facades.",
-      bathroom: "Bathroom floors in older Chennai apartment blocks, sealed under the tiles so the flat below stops getting damp.",
-      tank: "Sumps sealed inside and out, where a high water table and salty groundwater press in from the soil.",
-      cracks: "Cracks and spalled concrete where sea air has rusted the steel, cleaned, treated and sealed again.",
-      podium: "Podium decks over stilt parking, sealed so monsoon rain on the gardens does not drip onto the cars below.",
-    },
-    systems: ["terrace", "basement", "repair", "bathroom"],
-    localities: ["Velachery", "Anna Nagar", "Adyar", "T. Nagar", "OMR and Sholinganallur", "Porur", "Tambaram", "Ambattur", "Mylapore"],
-    nearby: ["Chengalpattu", "Kanchipuram", "Sriperumbudur", "Avadi", "Tiruvallur", "Poonamallee"],
-    areasNote: "We take on project work in and around Chennai, planned with the Erode head office.",
-    guides: ["waterproofing-before-the-monsoon", "bathroom-leakage-repair", "basement-waterproofing-coimbatore"],
-    faqs: [
-      { q: "When should I waterproof my terrace in Chennai?", a: "Before the northeast monsoon, ideally by September. The coat needs dry days to cure, and Chennai's heaviest rain comes from October to December." },
-      { q: "Can you stop water in a Chennai basement or lift pit?", a: "Yes. We trace where the water comes in and seal the walls, floor and joints, using crystalline treatment, injection grouting or a membrane as the site needs." },
-      { q: "How much does waterproofing cost in Chennai?", a: "It depends on the area, the surface and the method. The inspection is free, and the method and price come in writing before work starts." },
-      { q: "How do I book a site inspection in Chennai?", a: "Call us or send photos on WhatsApp. We plan the visit with the Erode head office and confirm the date with you." },
-    ],
-  },
 ];
 
 export const townBySlug = (slug: string) => towns.find((t) => t.slug === slug);

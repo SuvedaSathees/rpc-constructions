@@ -7,9 +7,9 @@ import { KIT_CSS } from "@/lib/pages/kit";
 import { breadcrumbLd, ldJson, pageMeta, siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({
-  title: "Our Branches – Erode, Coimbatore, Krishnagiri & Chennai",
+  title: "Our Branches – Erode, Coimbatore & Krishnagiri",
   description:
-    "RPC Constructions works from four towns in Tamil Nadu: the head office in Kurikaran Palayam, Erode, and branches in Coimbatore, Krishnagiri and Chennai. Call +91 99423 54602 to book a free site inspection.",
+    "RPC Constructions works from three towns in Tamil Nadu: the head office in Kurikaran Palayam, Erode, and branches in Coimbatore and Krishnagiri. Call +91 99423 54602 to book a free site inspection.",
   path: "/branches",
 });
 
@@ -23,7 +23,7 @@ const ld = [
     "@type": "CollectionPage",
     url: `${siteUrl}/branches`,
     name: "RPC Constructions branches",
-    description: "The towns RPC Constructions works from: Erode, Coimbatore, Krishnagiri and Chennai.",
+    description: "The towns RPC Constructions works from: Erode, Coimbatore and Krishnagiri.",
     about: { "@id": `${siteUrl}/#organization` },
     mainEntity: {
       "@type": "ItemList",
@@ -36,7 +36,7 @@ const ld = [
   },
 ];
 
-/** Branches: the head office in Erode and the three towns we run work from */
+/** Branches: the head office in Erode and the two towns we run work from */
 export default function BranchesPage() {
   return (
     <>
