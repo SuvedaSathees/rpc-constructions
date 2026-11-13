@@ -7,7 +7,7 @@
  * ask about something similar. /projects#slug lands on that project (the home
  * page links so).
  */
-import { arrow, esc, mark, words, type ContactInfo, type PageOptions } from "./kit";
+import { esc, mark, words, type ContactInfo, type PageOptions } from "./kit";
 import { SEARCH_BAR_CSS, searchBar } from "./search-bar";
 import { PLACES, METHODS } from "../methods/data";
 
@@ -216,6 +216,21 @@ export const PROJECTS_CSS = SEARCH_BAR_CSS + `
 .pjs-step button{display:grid;place-items:center;width:2.2rem;height:2.2rem;border:0;border-radius:50%;background:rgba(18,34,59,.06);font:inherit;font-size:var(--fs-h3);line-height:1;color:var(--ink);cursor:pointer;transition:background-color .2s}
 .pjs-step button:hover{background:rgba(18,34,59,.12)}
 .pjs-step button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* Tablets and small laptops: the box beside the view is barely 330px across and the card
+   was running past its own foot. It keeps the three things worth having at that size — the
+   closer look, a short line on the project, and the step through the six — and the list of
+   layers goes, since the project's own page carries it. */
+@media (min-width:768px) and (max-width:1439px){
+  .pjs-zoom{min-height:7rem}
+  .pjs-body{gap:.22rem;padding:.8rem 1rem .85rem}
+  .pjs-loc{gap:.3rem;font-size:.8rem}
+  .pjs-loc svg{width:.85rem;height:.85rem}
+  .pjs-lead{margin-top:.2rem;font-size:.82rem;line-height:1.45;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+  .pjs-wp{display:none}
+  .pjs-foot{padding-top:.6rem}
+  .pjs-step{gap:.3rem;font-size:.8rem}
+  .pjs-step button{width:1.9rem;height:1.9rem;font-size:1rem}
+}
 @media (prefers-reduced-motion:reduce){.pjs-n::after,.pjs-zoom{animation:none}}
 @media (max-width:1023px){
   .pjs-grid{grid-template-columns:minmax(0,1fr)}

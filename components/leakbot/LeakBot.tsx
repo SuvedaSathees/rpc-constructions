@@ -269,7 +269,14 @@ const CSS = `
 .lb-hint[data-hidden="1"]{opacity:0 !important;visibility:hidden;pointer-events:none;animation:none}
 @keyframes lb-hint-in{from{opacity:0;transform:translate(10px,50%)}to{opacity:1;transform:translate(0,50%)}}
 @keyframes lb-hint-bob{0%,100%{transform:translate(0,50%)}50%{transform:translate(-4px,50%)}}
-@media (max-width:599px){.lb-hint{font-size:12px;padding:8px 11px;animation:lb-hint-in .5s 1.2s cubic-bezier(.2,.8,.2,1) both,lb-hint-out .4s 9s forwards}}
+/* phones: a smaller button tucked further into the corner, so it stops sitting on the
+   buttons and card text of a narrow screen, with its bubble moved to match */
+@media (max-width:599px){
+  .lb-launch{width:50px;height:50px;right:max(12px,calc(env(safe-area-inset-right) + 8px));bottom:max(16px,calc(env(safe-area-inset-bottom) + 12px))}
+  .lb-launch svg,.lb-launch img{transform:scale(.78)}
+  .lb-hint{right:calc(max(12px,calc(env(safe-area-inset-right) + 8px)) + 50px + 8px);bottom:calc(max(16px,calc(env(safe-area-inset-bottom) + 12px)) + 25px);font-size:11.5px;padding:7px 10px;gap:6px;animation:lb-hint-in .5s 1.2s cubic-bezier(.2,.8,.2,1) both,lb-hint-out .4s 9s forwards}
+  .lb-hint-dot{width:6px;height:6px;box-shadow:0 0 0 2px rgba(47,181,122,.2)}
+}
 @keyframes lb-hint-out{to{opacity:0;visibility:hidden;transform:translate(10px,50%)}}
 @media (prefers-reduced-motion:reduce){.lb-eye,.lb-eyes,.lb-launch,.lb-hint{animation:none !important}}
 .lb-drop{position:relative;display:grid;place-items:center;width:40px;height:40px;border-radius:999px;background:#0b6e80}

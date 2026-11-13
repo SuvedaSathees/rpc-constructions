@@ -448,4 +448,18 @@ export const CONTACT_CSS = ROUTES_CSS + `
   .ct-tile .ct-tv{min-height:2.64em}
   .ct-tile .ct-tn,.ct-tile .ct-open{margin-top:auto;padding-top:.5rem}
 }
+/* Phones: the page is the two ways to reach us and the form, nothing else. The other
+   numbers are let off the single line they hold on a laptop — at this width that line
+   squeezed them to ten pixels — and the two cards are matched so they read as a pair. */
+@media (max-width:767px){
+  .ct-page .ct-alt{margin-top:.75rem;font-size:.8rem;line-height:1.7;white-space:normal}
+  .ct-page .ct-alt a{display:inline-block;padding:.1rem 0}
+  .ct-page .ct-tiles{gap:.55rem}
+  .ct-page .ct-tile{min-height:0;padding:.85rem .85rem .95rem}
+  .ct-page .ct-tile .ct-ico{width:2.1rem;height:2.1rem;border-radius:10px}
+  .ct-page .ct-tk{margin-top:.6rem;font-size:.82rem}
+  .ct-page .ct-tv{margin-top:.1rem;min-height:2.6em;font-size:.92rem;line-height:1.3}
+  .ct-page .ct-cardh{font-size:1.02rem}
+  .ct-page .ct-field > span{font-size:.82rem}
+}
 `;

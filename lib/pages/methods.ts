@@ -186,8 +186,8 @@ const METHODS_MOBILE_CSS = `
   .wpx-top{margin-bottom:.9rem;padding-top:1.2rem}
   .wpx-h{font-size:var(--fs-h3)}
   .wpx-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.4rem;overflow:visible;margin-inline:0;padding:0}
-  .wpx-tab{flex:none;justify-content:flex-start;gap:.5rem;height:2.5rem;padding:0 .5rem 0 .4rem;font-size:var(--fs-body,1rem);min-width:0}
-  .wpx-tab span{width:1.5rem;height:1.5rem;flex:none;font-size:var(--fs-body,1rem)}
+  .wpx-tab{flex:none;align-items:center;justify-content:flex-start;gap:.45rem;min-height:2.5rem;height:auto;padding:.35rem .55rem .35rem .4rem;font-size:.84rem;line-height:1.2;white-space:normal;overflow-wrap:anywhere;text-align:left;min-width:0}
+  .wpx-tab span{width:1.4rem;height:1.4rem;flex:none;align-self:flex-start;font-size:.78rem}
   .wpx-panel .wpx-ma{display:none}
   .wpx-panel .wpx-ms .wpx-mrow{padding:.8rem 0}
   .wpx-panel .wpx-mn{font-size:var(--fs-body,1rem)}
@@ -226,15 +226,16 @@ const METHODS_MOBILE_CSS = `
   .rt-step span{display:none}
   .rt-stage{display:contents}
   .rt-scene{order:1;width:100%;min-height:0;height:auto;aspect-ratio:16/9;border-radius:16px;box-shadow:inset 0 0 0 1px var(--line),0 18px 36px -28px rgba(18,34,59,.5)}
-  .rt-pick{order:3;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-flow:row;grid-template-rows:none;grid-auto-columns:auto;gap:.45rem;margin:0;padding:0;overflow:visible}
+  .rt-pick{order:3;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-flow:row;grid-template-rows:none;grid-auto-columns:auto;gap:.35rem;margin:0;padding:0;overflow:visible}
   .rt-group,.rt-opts,.rt-group--coat .rt-opts{display:contents}
   .rt-gh{display:none}
   .rt-group--none .rt-chip{grid-column:1 / -1}
   .rt-pick .rt-chip{white-space:normal}
-  .rt-chip{width:100%;height:auto;min-height:2.6rem;gap:.5rem;padding:.35rem .8rem .35rem .7rem;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font-size:var(--fs-body,1rem);line-height:1.2;white-space:normal;overflow-wrap:break-word;-webkit-hyphens:auto;hyphens:auto;text-align:left}
+  .rt-chip{width:100%;height:auto;align-self:stretch;min-height:2.25rem;gap:.4rem;padding:.3rem .6rem .3rem .5rem;border-radius:11px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font-size:.8rem;font-weight:500;line-height:1.2;white-space:normal;overflow-wrap:break-word;-webkit-hyphens:auto;hyphens:auto;text-align:left}
+  .rt-chip .rt-r{width:.85rem;height:.85rem;flex:none}
   .rt-chip .rt-r{box-shadow:inset 0 0 0 2px var(--k)}
   .rt-chip[aria-pressed=true]{box-shadow:none}
-  .rt-info{order:4;padding:1rem 1.1rem 1.1rem;border-radius:16px}
+  .rt-info{order:4;padding:.85rem .95rem .95rem;border-radius:14px;font-size:.84rem;line-height:1.45}
   .rt-name{font-size:var(--fs-h3)}
 
   /* the rain test, kept to one screen: a shorter header, three methods to a row, and one slim card for the words */
@@ -245,9 +246,9 @@ const METHODS_MOBILE_CSS = `
   .rt-step{margin:0 0 -.3rem}
   .rt-step b{font-size:var(--fs-body,1rem);color:var(--mute)}
   .rt-pick{grid-template-columns:repeat(3,minmax(0,1fr));gap:.35rem}
-  .rt-chip{min-height:2.45rem;gap:.35rem;padding:.3rem .5rem;border-radius:12px;font-size:var(--fs-body,1rem);line-height:1.15}
+  .rt-chip{min-height:2.25rem;gap:.35rem;padding:.3rem .5rem;border-radius:11px;font-size:.8rem;font-weight:500;line-height:1.2}
   .rt-chip .rt-r{flex:none;width:.85rem;height:.85rem}
-  .rt-group--none .rt-chip{min-height:2.2rem;font-size:var(--fs-body,1rem)}
+  .rt-group--none .rt-chip{min-height:2.1rem;font-size:.82rem}
   .rt-info{position:relative;gap:.25rem;padding:.8rem .95rem .85rem;border-radius:14px}
   .rt-kind{display:none}
   .rt-name{padding-right:8.6rem;font-size:var(--fs-body,1rem)}

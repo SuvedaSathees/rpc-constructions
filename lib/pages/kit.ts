@@ -313,7 +313,7 @@ export const KIT_CSS = `
   .pg-head .pg-h1,.pg-head h1,.pjs-head .pj-h1{display:block;max-width:none;margin:0;font-family:var(--sans);font-weight:600;letter-spacing:-.01em;color:rgba(245,240,230,.96);text-shadow:0 1px 14px rgba(0,0,0,.45);text-wrap:balance}
 }
 .pg-head{display:flex !important;flex-direction:column;justify-content:flex-end;min-height:var(--head-h);height:auto;box-sizing:border-box;padding:var(--nav-room) 0 var(--head-pb) !important}
-@media (max-width:767px){.pg-head{padding-top:calc(var(--nav-room) + 2.4rem) !important}}
+@media (max-width:767px){.pg-head{padding-top:calc(var(--nav-room) + .9rem) !important}}
 .pg-head > .pg-wrap{width:100%}
 
 
@@ -323,9 +323,8 @@ export const KIT_CSS = `
   .pg-ctan{background:rgba(255,255,255,.14)}
   .pg-ctahead{gap:.9rem}
   .pg-ctah{font-size:var(--fs-h3);line-height:1.15;max-width:none}
-  .pg-ctaacts{flex-wrap:wrap;gap:.5rem}
-  .pg-ctaacts .pg-btn{flex:1 1 auto;justify-content:center;height:2.7rem;padding:0 .7rem;font-size:var(--fs-body,1rem);white-space:nowrap}
-  .pg-ctaacts .pg-btn--line{flex:0 0 auto}
+  .pg-ctaacts{flex-direction:column;flex-wrap:nowrap;gap:.5rem;width:100%}
+  .pg-ctaacts .pg-btn{flex:0 0 auto;width:100%;justify-content:center;height:2.8rem;padding:0 .7rem;font-size:.92rem;white-space:nowrap}
   .pg-ctaacts .pg-btn .pg-ar{display:none}
   .pg-ctasteps{grid-template-columns:minmax(0,1fr);gap:.5rem;margin-top:1.1rem;padding-top:1rem}
   .pg-ctasteps li{flex-direction:row;align-items:center;gap:.65rem}

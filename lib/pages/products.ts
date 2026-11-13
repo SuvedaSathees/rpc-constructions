@@ -525,16 +525,30 @@ export const PRODUCTS_CSS = FINDER_CSS + FANCY_SELECT_CSS + BRANDS_MARQUEE_CSS +
 /* phones: the comparison as two product cards and one small card for each fact */
 @media (max-width:599px){
   .fo-k{display:none}
-  .fo-panel{padding:.9rem .8rem 1rem}
+  .fo-panel{padding:.8rem .7rem .9rem}
+  /* the two brand pickers carried a desktop-sized logo plate, which left the brand's own
+     name clipped to "Fosr…" on a phone. Plate and type both come down so the name fits. */
+  .bc-picks{gap:.5rem;margin-top:.7rem}
+  .bc-dd{gap:.25rem}
+  .bc-btn{min-height:2.9rem;gap:.45rem;padding:.3rem .6rem .3rem .3rem;border-radius:11px}
+  .bc-face{width:3.3rem;height:1.85rem;padding:.12rem .22rem;border-radius:7px}
+  .bc-face img{max-height:1.45rem}
+  .bc-cur{gap:.45rem}
+  .bc-cur b{font-size:.9rem}
+  .bc-chev{width:.9rem;height:.9rem}
+  .bc-vs{width:2rem;height:2rem;margin-bottom:.4rem;font-size:.78rem}
+  .bc-list{border-radius:11px}
+  .bc-list li{gap:.45rem;padding:.4rem .5rem}
+  .bc-meta{font-size:.68rem}
   .bc-k{font-size:var(--fs-body,1rem);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
   .cmp-wrap{margin-top:.9rem;background:none;box-shadow:none;border-radius:0}
   .cmp-t thead tr{column-gap:.5rem}
-  .cmp-t thead th{padding:.7rem .7rem .8rem;border-bottom:0;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
-  .cmp-pick > span{font-size:var(--fs-body,1rem);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+  .cmp-t thead th{padding:.55rem .6rem .65rem;border-bottom:0;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
+  .cmp-pick > span{font-size:.64rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
   .cmp-t tbody tr{column-gap:0;margin-top:.5rem;overflow:hidden;border:0;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
   .cmp-t tbody tr[data-row=brand]{display:none}
-  .cmp-t tbody th{padding:.7rem .85rem .15rem;font-size:var(--fs-body,1rem);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
-  .cmp-t tbody td{padding:.2rem .85rem .8rem;font-size:var(--fs-body,1rem);line-height:1.4}
+  .cmp-t tbody th{padding:.55rem .7rem .1rem;font-size:.64rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--mute)}
+  .cmp-t tbody td{padding:.15rem .7rem .65rem;font-size:.8rem;line-height:1.38}
   .cmp-t tbody td[data-s=b]{border-left:1px solid var(--line)}
   .cmp-t tbody td span{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
   .cmp-t tfoot td{padding:.7rem 0 0}
