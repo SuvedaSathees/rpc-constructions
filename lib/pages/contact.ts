@@ -399,7 +399,7 @@ export const CONTACT_CSS = ROUTES_CSS + `
   .ct-reach .ab-go-side{gap:.85rem;padding:1.1rem 1rem 1.1rem}
   .ct-reach .ab-go-h{font-size:var(--fs-body,1rem);font-weight:650;letter-spacing:-.015em}
   .ct-reach .ab-go-towns{gap:.35rem}
-  .ct-reach .ab-go-town{height:2.1rem;padding:0 .85rem;font-size:var(--fs-body,1rem)}
+  .ct-reach .ab-go-town{height:2rem;padding:0 .5rem;font-size:.8rem}
   .ct-reach .ab-go-from{grid-template-columns:repeat(2,minmax(0,1fr));gap:.4rem}
   .ct-reach .ab-go-route{align-items:center;gap:.5rem;padding:.55rem .65rem;border-radius:12px}
   .ct-reach .ab-go-route svg{margin-top:0}
