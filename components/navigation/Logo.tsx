@@ -42,9 +42,11 @@ const SIZES = {
  * light tile, so its blue faces read; `tile={false}` leaves it bare. Wrap it in
  * a link or give the page its own text for the name.
  */
-export function Wordmark({ className = "", size = "md", tile = true, iso = false, name = true, light = false }: { className?: string; size?: keyof typeof SIZES; tile?: boolean; iso?: boolean; name?: boolean; light?: boolean }) {
+export function Wordmark({ className = "", size = "md", tile = false, iso = false, name = true, light = false }: { className?: string; size?: keyof typeof SIZES; tile?: boolean; iso?: boolean; name?: boolean; light?: boolean }) {
   const s = SIZES[size];
-  // the reversed cut carries itself on a dark ground, so it is never given a panel
+  // The mark stands on the page itself. Its own whites are solid — the letters and the three
+  // joints are painted, not punched through — so the blue holds against a dark bar without a
+  // panel under it. `tile` puts one back for a ground that would swallow the blue.
   const panel = tile && !light;
   // with the certification line under the name, the drawing is taller by that line
   const vh = iso ? 52 : 40;
