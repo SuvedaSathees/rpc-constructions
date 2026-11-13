@@ -5,8 +5,8 @@
  * top showing how far through you are), a box for anyone seeing the problem at
  * home, and more to read.
  *
- * Cover photographs: none of the generated pictures are shown; each cover is
- * an empty frame in its topic's colour, ready for RPC's own photograph.
+ * Cover photographs: each post carries its own cover from lib/blog.ts. A post
+ * with no cover falls back to an empty frame in its topic's colour.
  */
 import { METHODS } from "../methods/data";
 import { arrow, esc, ph, shortDate, tel, words, type ContactInfo, type PageOptions } from "./kit";
@@ -48,7 +48,10 @@ const topic = (c: string) => TOPIC[c] ?? { bg: "#e2d9c9", ink: "#12223b" };
 const tone = (c: string) => `--tbg:${topic(c).bg};--tink:${topic(c).ink}`;
 const when = (p: PostData) => `<time datetime="${esc(p.date)}">${shortDate(p.date)}</time><span>${p.readMinutes} min read</span>`;
 const bulb = `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>`;
-const cover = (p: PostData, ratio: string, cls = "") => ph({ ratio, cls: `bl-cover${cls ? ` ${cls}` : ""}` });
+const cover = (p: PostData, ratio: string, cls = "") =>
+  p.cover
+    ? `<div class="bl-cover bl-cover--img${cls ? ` ${cls}` : ""}" style="aspect-ratio:${ratio}"><img src="${esc(p.cover)}" alt="${esc(p.coverAlt)}" loading="lazy" decoding="async"></div>`
+    : ph({ ratio, cls: `bl-cover${cls ? ` ${cls}` : ""}` });
 
 /** the words that show an article talks about each of the twelve methods */
 const METHOD_WORDS: Record<string, RegExp> = {
@@ -199,6 +202,8 @@ export const BLOG_CSS = `
 
 /* covers: empty frames in the topic's colour */
 .bl-cover{border-radius:6px;background:var(--tbg,#e2d9c9);box-shadow:inset 0 0 0 1px rgba(18,34,59,.06);color:color-mix(in srgb,var(--tink,#12223b) 55%,transparent)}
+.bl-cover--img{overflow:hidden}
+.bl-cover--img img{display:block;width:100%;height:100%;object-fit:cover}
 
 /* topic, excerpt and date, shared */
 .bl-cat{display:flex;align-items:center;gap:.6rem;margin:0;font-size:var(--fs-body);font-weight:600;color:var(--tink,var(--accent))}

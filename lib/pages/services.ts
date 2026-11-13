@@ -295,9 +295,16 @@ export const SERVICES_CSS = `
 .sv-q p{margin:0;padding:0 1.2rem 1.1rem;font-size:var(--fs-body);line-height:1.65;color:var(--ink2)}
 
 @media (max-width:1199px){
-  .sv-wgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .sv-blist{grid-template-columns:repeat(2,minmax(0,1fr))}
   /* the six steps keep to one line, which slides sideways */
+}
+/* tablets and small laptops keep the four-a-row shelf of the wide view, drawn smaller */
+@media (min-width:768px) and (max-width:1199px){
+  .sv-wgrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem}
+  .sv-blist{grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem}
+  .sv-w{padding:.4rem .4rem .75rem;border-radius:16px}
+  .sv-wbody{padding:.5rem .45rem 0}
+  .sv-cp{font-size:.8rem;line-height:1.45}
+  .sv-icon{width:1.5rem;height:1.5rem}
 }
 @media (max-width:1023px){
   .sv-headgrid,.sv-fgrid{grid-template-columns:1fr}

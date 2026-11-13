@@ -4,7 +4,7 @@
  *
  *   01 About          the home page's own About section (lib/home/sections.ts): the statement,
  *                     four short facts and the frame for the team's photograph
- *   02 Products       our best-selling Fosroc products on one shelf, a tile for each kind,
+ *   02 Products       our fast-moving products on one shelf, a tile for each kind,
  *                     then the brands in our methods guide, moving by
  *   03 Waterproofing  "where is the water getting in?": four of the places, each opening its
  *                     methods on the waterproofing page
@@ -21,7 +21,7 @@ import { KIT_CSS } from "../pages/kit";
 import { rootedAboutMarkup, ROOTED_ABOUT_CSS, servicesMarkup, type HomeData } from "./sections";
 
 export interface HookData {
-  /** the best sellers on the shelf: one tile per kind, its first product shown */
+  /** the fast movers on the shelf: one tile per kind, its first product shown */
   shelf: { group: string; lead: { name: string; slug: string; cat: string; pic: string }; more: string[] }[];
   /** the places on the waterproofing page, each with how many methods its guide names */
   /** the leaks people notice, as the film on the home page shows them: the place, what they see, what we do, and where to read more */
@@ -53,7 +53,7 @@ function products(d: HookData) {
   return `<section class="hk hk--stone hk-prod" id="products" aria-labelledby="hk-prod-h">
   <div class="hm-wrap">
     <div class="hk-head">
-      <div>${mark("02", "Products")}<h2 class="hm-h2" id="hk-prod-h" data-rv>Our best-selling products.</h2></div>
+      <div>${mark("02", "Products")}<h2 class="hm-h2" id="hk-prod-h" data-rv>Our fast-moving products.</h2></div>
     </div>
     <ul class="hk-shelf">${tiles}</ul>
     <div class="hk-after" data-rv>${btn("/products", "See all products")}</div>
@@ -324,7 +324,7 @@ export const HOOKS_CSS =
 .hk-pname{margin:.2rem 0 0;font-family:var(--serif);font-size:var(--fs-sub);font-weight:600;line-height:1.2;letter-spacing:-.01em;color:var(--ink)}
 .hk-ploc{display:flex;align-items:center;gap:.4rem;margin:0;font-size:var(--fs-body);color:var(--mute)}
 .hk-ploc svg{width:1rem;height:1rem;color:var(--water)}
-.hk-psum{margin:.2rem 0 0;max-width:30rem;font-size:var(--fs-body);line-height:1.6;color:var(--ink2);text-align:justify;text-justify:inter-word;-webkit-hyphens:auto;hyphens:auto}
+.hk-psum{margin:.2rem 0 0;max-width:30rem;font-size:var(--fs-body);line-height:1.6;color:var(--ink2)}
 .hk-plink{display:inline-flex;align-items:center;gap:.45rem;margin-top:.4rem;padding-bottom:3px;border-bottom:1px solid currentColor;font-size:var(--fs-body);font-weight:600;color:var(--ink);text-decoration:none}
 .hk-plink:hover .hm-ar{transform:translate(2px,-2px)}
 .hk-pctl{display:flex;align-items:center;gap:.8rem}
@@ -350,8 +350,26 @@ export const HOOKS_CSS =
 .hk-stack:hover .hk-pol[data-pos="0"]{transform:translate(-50%,-51.5%) rotate(-1deg)}
 
 @media (max-width:1199px){
-  .hk-shelf{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .hk-bas{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+/* tablets and small laptops: the shelf keeps all five on one line, drawn smaller to fit */
+@media (min-width:768px) and (max-width:1199px){
+  .hk-bas{grid-template-columns:repeat(4,minmax(0,1fr));gap:.55rem}
+  .hk-ba{padding:.4rem .4rem .7rem;border-radius:16px}
+  .hk-bat{gap:.2rem;padding:.7rem .35rem .4rem}
+  .hk-bat em{font-size:.78rem}
+  .hk-bat b{font-size:.92rem;line-height:1.3}
+  .hk-baf{font-size:.82rem;line-height:1.4;padding:.5rem .35rem 0}
+  .hk-shelf{grid-template-columns:repeat(5,minmax(0,1fr));gap:.55rem}
+  .hk-tile{padding:.55rem .55rem .7rem;border-radius:16px}
+  .hk-top{min-height:1.4rem;margin-bottom:.3rem}
+  .hk-kind{gap:.3rem;padding:.16rem .45rem .16rem .38rem;font-size:.68rem}
+  .hk-kind i{width:.36rem;height:.36rem}
+  .hk-pic{border-radius:12px}
+  .hk-name{margin:.5rem .15rem 0;font-size:.95rem;line-height:1.2;min-height:2.4em}
+  .hk-foot{gap:.35rem;margin:auto .15rem 0;padding-top:.5rem}
+  .hk-more{font-size:.78rem}
+  .hk-more--n{padding:.14rem .45rem;font-size:.72rem}
+  .hk-tgo{width:1.7rem;height:1.7rem}
 }
 @media (max-width:1023px){
 }

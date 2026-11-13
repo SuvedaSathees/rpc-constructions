@@ -33,16 +33,15 @@ export const metadata: Metadata = {
 };
 
 /**
- * Our best-selling Fosroc products, as RPC ticked them on Fosroc's product
- * selection chart, grouped the way the chart groups them. Only the ones on
- * RPC's product list are shown, each linking to its card on the products page.
+ * The products that move fastest off RPC’s shelf, named by the kind of job
+ * each one does. Each links to its card on the products page.
  */
 const BEST_SELLERS: readonly [string, readonly string[]][] = [
-  ["Superplasticiser", ["fosroc-conplast-sp430", "fosroc-conplast-sp430-g8", "fosroc-conplast-sp430-es2"]],
-  ["PCE admixture", ["fosroc-auramix-400", "fosroc-auramix-350", "fosroc-auramix-300", "fosroc-auramix-300-plus", "fosroc-auramix-200-20", "fosroc-auramix-200-41"]],
-  ["Accelerator", ["fosroc-conplast-nc"]],
-  ["Mortar plasticiser", ["fosroc-cebex-112"]],
-  ["Waterproofing", ["fosroc-conplast-crystalline"]],
+  ["Non-shrink grout", ["fosroc-conbextra-gp2"]],
+  ["Waterproofer", ["fosroc-conplast-wl-xtra"]],
+  ["Grout additive", ["fosroc-cebex-112"]],
+  ["Superplasticiser", ["fosroc-conplast-sp430"]],
+  ["Bonding agent", ["fosroc-nitobond-sbr"]],
 ];
 
 /** a product's picture: the maker's pack shot where we have one, otherwise its pack drawn in the colour of its kind */

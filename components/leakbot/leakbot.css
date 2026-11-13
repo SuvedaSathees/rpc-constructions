@@ -25,7 +25,12 @@
 .lb-hint[data-hidden="1"]{opacity:0 !important;visibility:hidden;pointer-events:none;animation:none}
 @keyframes lb-hint-in{from{opacity:0;transform:translate(10px,50%)}to{opacity:1;transform:translate(0,50%)}}
 @keyframes lb-hint-bob{0%,100%{transform:translate(0,50%)}50%{transform:translate(-4px,50%)}}
-@media (max-width:599px){.lb-hint{font-size:12px;padding:8px 11px;animation:lb-hint-in .5s 1.2s cubic-bezier(.2,.8,.2,1) both,lb-hint-out .4s 9s forwards}}
+/* phones: a smaller button tucked further into the corner, so it stops sitting on
+   top of buttons, map controls and card text on a narrow screen */
+@media (max-width:599px){
+  .lb-launch{width:52px;height:52px;right:max(14px,calc(env(safe-area-inset-right) + 10px));bottom:max(18px,calc(env(safe-area-inset-bottom) + 14px))}
+  .lb-hint{right:calc(max(14px,calc(env(safe-area-inset-right) + 10px)) + 52px + 10px);bottom:calc(max(18px,calc(env(safe-area-inset-bottom) + 14px)) + 26px);font-size:12px;padding:8px 11px;animation:lb-hint-in .5s 1.2s cubic-bezier(.2,.8,.2,1) both,lb-hint-out .4s 9s forwards}
+}
 @keyframes lb-hint-out{to{opacity:0;visibility:hidden;transform:translate(10px,50%)}}
 @media (prefers-reduced-motion:reduce){.lb-eye,.lb-eyes,.lb-launch,.lb-hint{animation:none !important}}
 .lb-drop{position:relative;display:grid;place-items:center;width:40px;height:40px;border-radius:999px;background:#0b6e80}

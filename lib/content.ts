@@ -24,7 +24,8 @@ export const nav = [
   { label: "Projects", href: "/projects" },
   { label: "Services", href: "/services" },
   { label: "Blog", href: "/blog" },
-  { label: "Branches", href: "/branches" },
+  /* Branches is left out on purpose: the page stays at /branches and in the
+     sitemap for search, but it is not offered in the menu or the footer. */
   { label: "Contact us", href: "/contact" },
 ] as const;
 
@@ -38,8 +39,8 @@ export const contact = {
   /** PLACEHOLDER — replace "#" with the real profile URLs before launch */
   socials: [
     { label: "LinkedIn", href: "#" },
-    { label: "Instagram", href: "#" },
-    { label: "Facebook", href: "#" },
+    { label: "Instagram", href: "https://www.instagram.com/rpc_construction_solutions/" },
+    { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61593300913227" },
     { label: "WhatsApp", href: "https://wa.me/919942354602" },
   ],
   whatsapp: "https://wa.me/919942354602",
@@ -62,6 +63,8 @@ export interface Branch {
   line: string;
   address?: string;
   mapQuery?: string;
+  /** a Google Maps place link for the branch, used in place of a search on mapQuery */
+  mapUrl?: string;
   phone?: string;
 }
 
@@ -79,11 +82,13 @@ export const branches: readonly Branch[] = [
     city: "Coimbatore",
     role: "Branch",
     line: "Waterproofing and construction across the city and the towns around it, from houses to office buildings.",
+    mapUrl: "https://maps.app.goo.gl/J1bBfJD9XhzePRch8",
   },
   {
     city: "Krishnagiri",
     role: "Branch",
     line: "Factories, warehouses and processing units, with roofs, gutters and floors detailed for the monsoon.",
+    mapUrl: "https://goo.gl/maps/aMBnc9fmxjQC89h88",
   },
   {
     city: "Chennai",
@@ -430,18 +435,18 @@ export const partners: readonly { name: string; role: string; qualification: str
     name: "Velmurugan Sivanantham",
     role: "Partner",
     qualification: "",
-    bio: `Velmurugan leads RPC Construction Solutions and Robotics Bricks and Blocks, and runs both on four things: ethics, professionalism, commitment and quality.
+    bio: `Velmurugan leads RPC Construction Solutions and Robotics Bricks and Blocks on four things: ethics, professionalism, commitment and quality.
 
-The work reaches across industrial, civil infrastructure and residential projects in several cities, alongside a specialist range of construction chemicals chosen for how long they keep a building sound. At Robotics Bricks Private Limited he sets the direction for paver blocks and precast. He is a member of Business Network International (BNI).`,
+He works on industrial, civil infrastructure and residential projects across several cities, and chooses the construction chemicals that keep those buildings sound. At Robotics Bricks Private Limited he directs paver blocks and precast. Member of BNI.`,
     image: "/images/partners/velmurugan-sivanantham.webp",
   },
   {
     name: "Aravinth Sivanantham",
     role: "Partner",
     qualification: "",
-    bio: `Aravinth builds the group around one idea: that construction should be reliable, transparent, accessible and professionally managed.
+    bio: `Aravinth runs the group on one idea: construction should be reliable, transparent, accessible and professionally managed.
 
-His side of it runs from building material supply and construction chemicals to manufacturing, structural design, planning, estimation and technology-led procurement — one chain, meant to carry a customer from the foundation of a project through to the day it is finished.`,
+His side covers material supply and construction chemicals, manufacturing, structural design, planning, estimation and procurement — one chain, from foundation to handover.`,
     image: "/images/partners/aravinth-sivanantham.webp",
   },
 ];

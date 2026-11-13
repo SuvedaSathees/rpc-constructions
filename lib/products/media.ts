@@ -434,6 +434,148 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     image: "fosroc-reebol-standard.png",
     description: "Ready-to-use chemical mould release agent for concrete. Forms a thin, uniform film on formwork surfaces to ensure easy and clean de-moulding.",
   },
+
+  /* ---- 28 added products from Asian Paints, Dr. Fixit, STP, Penetron, ARDEX ENDURA, MYK Arment ---- */
+  "asian-paints-smartcare-cemboost-200": {
+    image: "asian-paints-smartcare-cemboost-200.png",
+    backImage: "asian-paints-smartcare-cemboost-200-back.png",
+    description: "Integral liquid waterproofing compound for concrete and mortar that protects against water ingress, dampness, and rebar corrosion.",
+  },
+  "asian-paints-smartcare-vitalia-neo": {
+    image: "asian-paints-smartcare-vitalia-neo.png",
+    backImage: "asian-paints-smartcare-vitalia-neo-back.png",
+    description: "Superior integral waterproofing liquid formulated with plasticising additives to enhance workability, reduce cracks, and prevent efflorescence.",
+  },
+  "asian-paints-smartcare-hypershot-af-100": {
+    image: "asian-paints-smartcare-hypershot-af-100.png",
+    backImage: "asian-paints-smartcare-hypershot-af-100-back.png",
+    description: "High-performance alkali-free liquid shotcrete accelerator for wet and dry sprayed concrete in tunneling and structural mining.",
+  },
+  "asian-paints-maximopast-px-100": {
+    image: "asian-paints-maximopast-px-100.png",
+    backImage: "asian-paints-maximopast-px-100-back.png",
+    description: "Polycarboxylate ether (PCE) based superplasticizer delivering high water reduction and improved workability for ready-mixed concrete.",
+  },
+  "asian-paints-maximopast-px-200": {
+    image: "asian-paints-maximopast-px-200.png",
+    backImage: "asian-paints-maximopast-px-200-back.png",
+    description: "Advanced PCE-based concrete admixture providing extended slump retention and early strength development for high-grade concrete mixes.",
+  },
+  "asian-paints-maximopast-px-300": {
+    image: "asian-paints-maximopast-px-300.png",
+    backImage: "asian-paints-maximopast-px-300-back.png",
+    description: "Premium hyperplasticizer engineered for ultra-high strength, self-compacting concrete (SCC), and mass transit infrastructure projects.",
+  },
+  "dr-fixit-pidiproof-lw": {
+    image: "dr-fixit-pidiproof-lw.png",
+    backImage: "dr-fixit-pidiproof-lw-back.png",
+    description: "Specially formulated integral liquid waterproofing compound for cement mortar and concrete, preventing capillary absorption and corrosion.",
+  },
+  "stp-limited-tarfelt-lm": {
+    image: "stp-limited-tarfelt-lm.png",
+    backImage: "stp-limited-tarfelt-lm-back.png",
+    description: "Cold-applied, elastomeric liquid bituminous waterproofing membrane forming a jointless, continuous waterproof barrier over roofs and podiums.",
+  },
+  "stp-limited-shalisbr-latex": {
+    image: "stp-limited-shalisbr-latex.png",
+    backImage: "stp-limited-shalisbr-latex-back.png",
+    description: "Carboxylated styrene butadiene copolymer latex designed as a multi-purpose bonding agent, waterproof slurry, and repair mortar modifier.",
+  },
+  "stp-limited-shalitex-primer": {
+    image: "stp-limited-shalitex-primer.png",
+    backImage: "stp-limited-shalitex-primer-back.png",
+    description: "Solvent-based penetrating bituminous primer for priming concrete, masonry, and metal surfaces before waterproofing membrane application.",
+  },
+  "penetron-penetron-admix": {
+    image: "penetron-penetron-admix.png",
+    backImage: "penetron-penetron-admix-back.png",
+    description: "3rd generation integral crystalline waterproofing admixture that permanently seals microcracks, pores, and capillaries inside concrete.",
+  },
+  "ardex-endura-bronze-star": {
+    image: "ardex-endura-bronze-star.png",
+    backImage: "ardex-endura-bronze-star-back.png",
+    description: "Polymer-modified cementitious tile adhesive (IS 15477 Type 1T) designed for installation of ceramic tiles on interior floors and walls.",
+  },
+  "ardex-endura-silver-star": {
+    image: "ardex-endura-silver-star.png",
+    backImage: "ardex-endura-silver-star-back.png",
+    description: "High-performance polymer-modified tile adhesive (IS 15477 Type 2T) for fixing ceramic, vitrified, and semi-vitreous tiles on interior/exterior surfaces.",
+  },
+  "ardex-endura-silver-star-plus": {
+    image: "ardex-endura-silver-star-plus.png",
+    backImage: "ardex-endura-silver-star-plus-back.png",
+    description: "Advanced tile adhesive with extended open time (IS 15477 Type 2TE) for fixing vitrified tiles and natural stone on walls and heavy foot-traffic floors.",
+  },
+  "ardex-endura-gold-star": {
+    image: "ardex-endura-gold-star.png",
+    backImage: "ardex-endura-gold-star-back.png",
+    description: "Premium flexible polymer-modified tile adhesive (IS 15477 Type 3TE) engineered for tile-on-tile renovation and exterior wall claddings.",
+  },
+  "ardex-endura-diamond-star": {
+    image: "ardex-endura-diamond-star.png",
+    backImage: "ardex-endura-diamond-star-back.png",
+    description: "Extra-flexible polymer-modified tile adhesive (IS 15477 Type 3TE S1) formulated for large format porcelain slabs and external vertical claddings.",
+  },
+  "ardex-endura-white-star": {
+    image: "ardex-endura-white-star.png",
+    backImage: "ardex-endura-white-star-back.png",
+    description: "White cement-based polymer tile adhesive (IS 15477 Type 2T) specially formulated for translucent marble, mosaics, and light-colored stone.",
+  },
+  "ardex-endura-platinum-star": {
+    image: "ardex-endura-platinum-star.png",
+    backImage: "ardex-endura-platinum-star-back.png",
+    description: "Deformable premium tile adhesive (IS 15477 Type 4TE S1) engineered for slim porcelain slabs, glass tiles, and exterior facade claddings.",
+  },
+  "ardex-endura-platinum-star-plus": {
+    image: "ardex-endura-platinum-star-plus.png",
+    backImage: "ardex-endura-platinum-star-plus-back.png",
+    description: "Highly deformable polymer adhesive (IS 15477 Type 4TE S2) with maximum flexibility for mega-format sintered stone and vibration-prone substrates.",
+  },
+  "ardex-endura-epoxy": {
+    image: "ardex-endura-epoxy.png",
+    backImage: "ardex-endura-epoxy-back.png",
+    description: "Three-component 100% solid epoxy resin grout for stain-free, chemical-resistant, and hygienic joint filling in ceramic and vitrified tiles.",
+  },
+  "myk-arment-aquaarm-proof-wp10": {
+    image: "myk-arment-aquaarm-proof-wp10.png",
+    backImage: "myk-arment-aquaarm-proof-wp10-back.png",
+    description: "High-grade liquid integral waterproofing admixture for concrete and mortar, reducing water absorption and capillary transmission.",
+  },
+  "myk-arment-armix-ellecrete-p-101": {
+    image: "myk-arment-armix-ellecrete-p-101.png",
+    backImage: "myk-arment-armix-ellecrete-p-101-back.png",
+    description: "Normal water-reducing plasticizer and set retarder improving pumpability, workability, and surface finish of ready-mixed concrete.",
+  },
+  "myk-arment-armix-ae": {
+    image: "myk-arment-armix-ae.png",
+    backImage: "myk-arment-armix-ae-back.png",
+    description: "Synthetic air-entraining concrete admixture providing controlled air voids to enhance durability and freeze-thaw resistance in pavements and dams.",
+  },
+  "myk-arment-armix-emmecrete-sp-111": {
+    image: "myk-arment-armix-emmecrete-sp-111.png",
+    backImage: "myk-arment-armix-emmecrete-sp-111-back.png",
+    description: "Sulphonated naphthalene formaldehyde (SNF) superplasticizer delivering high early strength, high workability, and rapid turnaround in precast concrete.",
+  },
+  "myk-arment-armix-hyyecrete-sp-200": {
+    image: "myk-arment-armix-hyyecrete-sp-200.png",
+    backImage: "myk-arment-armix-hyyecrete-sp-200-back.png",
+    description: "High-performance polycarboxylate ether (PCE) superplasticizer for self-compacting, high-grade, and heavily reinforced concrete structures.",
+  },
+  "myk-arment-armix-cure-wb": {
+    image: "myk-arment-armix-cure-wb.png",
+    backImage: "myk-arment-armix-cure-wb-back.png",
+    description: "Water-based wax/resin emulsion membrane curing compound preventing moisture loss during early hydration in concrete slabs and pavements.",
+  },
+  "myk-arment-armix-form-fr-1": {
+    image: "myk-arment-armix-form-fr-1.png",
+    backImage: "myk-arment-armix-form-fr-1-back.png",
+    description: "Solvent-based chemical mould release agent formulated to deliver smooth, stain-free architectural concrete and easy formwork release.",
+  },
+  "myk-arment-armix-form-fr-2": {
+    image: "myk-arment-armix-form-fr-2.png",
+    backImage: "myk-arment-armix-form-fr-2-back.png",
+    description: "Water-dilutable concentrate mould release agent providing clean strike and extended life for steel, plywood, and plastic formwork.",
+  },
 };
 
 export const mediaOf = (slug: string): ProductMedia => PRODUCT_MEDIA[slug] ?? {};

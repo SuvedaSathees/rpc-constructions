@@ -16,7 +16,7 @@
  * rates are asked for. Without scripts every product is listed, each row still
  * opens, and each product keeps its own rate link.
  */
-import { BRAND_LOGOS, otherBrands } from "../methods/brand-logos";
+import { BRAND_LOGOS } from "../methods/brand-logos";
 import { backImageSrc, imageSrc, mediaOf, pdfSrc, videoSrc } from "../products/media";
 import { FAMILIES, familyOf, type Product } from "../products";
 import { brandMark, type BrandInfo, type JobView } from "../products/brands";
@@ -241,7 +241,6 @@ function filters(bs: readonly BrandInfo[], total: number) {
     <div class="pf-cs">
     <button type="button" class="pf-chip pf-chip--all" data-chip-brand="all" aria-pressed="true">All brands<span>${total}</span></button>
     ${bs.map((b) => `<button type="button" class="pf-chip pf-bt" data-chip-brand="${b.key}" aria-pressed="false" style="--c:${brandMark(b.name)}">${tick}<em class="pf-blogo">${brandFace(b.name)}</em><small class="pf-bn">${esc(b.name)}</small><span>${b.count}</span></button>`).join("")}
-    ${otherBrands(bs.map((b) => b.name)).map((name) => `<span class="pf-chip pf-bt pf-bt--none" role="note" aria-label="${esc(name)}: no products on our list yet" title="No products on our list yet"><em class="pf-blogo">${brandFace(name)}</em><small class="pf-bn">${esc(name)}</small><span>0</span></span>`).join("")}
     </div>
   </div>
 </div>`;
@@ -371,9 +370,6 @@ export const FINDER_CSS = `
 .pf-blogo strong{font-family:var(--display);font-weight:700;letter-spacing:-.01em;color:var(--c,var(--ink))}
 .pf-chip.pf-bt[data-empty]{opacity:.45}
 /* a brand from the brand slide with no products on the list yet: shown, not picked */
-.pf-bt--none{cursor:default}
-.pf-bt--none .pf-blogo{opacity:.55;filter:grayscale(1)}
-.pf-bt--none:hover{box-shadow:inset 0 0 0 1px var(--line)}
 /* each brand's list opens with its logo */
 .pf-bhn{font-weight:600}
 .pf-bhl{display:inline-grid;place-items:center;height:2.6rem;padding:.35rem .7rem;border-radius:8px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font-style:normal}

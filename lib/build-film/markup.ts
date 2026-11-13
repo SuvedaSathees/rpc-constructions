@@ -298,6 +298,34 @@ html.mh-on .lb-launch,html.mh-on .lb-hint{opacity:0 !important;visibility:hidden
   }
 }
 @keyframes mh-hook-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+/* tablets: the wide view's hero, one screen tall. The film fills the frame and the
+   words sit over it, exactly as on a laptop; what changes is that nothing is scrolled
+   through — the film plays itself to the finished building (mount.ts, "auto"). */
+@media (min-width:768px) and (max-aspect-ratio:7/5){
+  .mh.mh-js{height:100vh;height:100svh;min-height:0}
+  .mh-js .mh-pin{position:relative;display:block;height:100vh;height:100svh;min-height:0;overflow:hidden}
+  .mh-js .mh-stage{position:absolute;inset:0;z-index:0;margin:0;width:auto;height:auto;aspect-ratio:auto;flex:none}
+  .mh-js .mh-film{object-position:100% 100%}
+  .mh-js .mh-shade{display:block}
+  .mh-js .mh-chip{display:none}
+  .mh-js .mh-body{position:relative;z-index:1;flex:none;height:100%;justify-content:flex-end;
+    padding:calc(var(--nav-h,64px) + 1.6rem) clamp(1.5rem,5vw,3.25rem) clamp(2.6rem,7vh,4rem)}
+  .mh-js .mh-foot{width:min(36rem,62vw);max-width:none;margin-inline:0}
+  .mh-js .mh-now .mh-state{display:flex}
+  .mh-js .mh-uses{margin-top:.95rem}
+  .mh-js .mh-prod{font-size:var(--fs-h2)}
+  .mh-js .mh-chapters ol{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .mh-js .mh-hook{position:absolute;inset:0;display:flex;width:auto;max-width:none;margin:0;
+    padding:calc(var(--nav-h,64px) + 1rem) var(--gutter,1.5rem) clamp(2rem,6vh,4rem) clamp(2rem,6vw,4rem)}
+  .mh-js .mh-title{max-width:12ch;font-size:clamp(2.2rem,4.4vw,3.4rem)}
+  /* there is nothing to scroll through here */
+  .mh-js .mh-hint{display:none}
+}
+/* a narrow tablet has no room for six chapter names on one line */
+@media (min-width:768px) and (max-width:899px){
+  .mh-js .mh-chapters ol{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:.75rem}
+}
+
 @media (prefers-reduced-motion:reduce){
   .mh-js .mh-foot,.mh-now::before,.mh-chip,.mh-hint{transition:none !important}
   .mh-js .mh-now>*{transition:none !important}

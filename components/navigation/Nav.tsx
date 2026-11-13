@@ -24,6 +24,9 @@ const BAR = {
   backdropFilter: "blur(14px) saturate(150%)",
   boxShadow: "inset 0 1px 0 rgba(255,255,255,0.12), inset 0 0 0 1px rgba(255,255,255,0.06), 0 18px 36px -18px rgba(4,12,30,0.7), 0 3px 8px -3px rgba(4,12,30,0.3)",
 } as const;
+/** the strip behind the bar, in the colour of the page under it */
+const SCRIM = (path: string, a = 1) => (path === "/contact" ? `rgba(217,226,238,${a})` : `rgba(236,230,218,${a})`);
+
 /** the header's layout and shapes (kept here rather than in utility classes, so they never depend on a stylesheet rebuild) */
 const NAV_CSS = `
 .rn-sp,.rn-bar,.rn-end{display:none}
@@ -38,7 +41,7 @@ const NAV_CSS = `
 @media (min-width:768px){.rn-cta--sm{display:inline-flex}}
 /* from 1024px (tablets in landscape and small laptops) the eight pages are on one line, drawn tighter so they fit */
 @media (min-width:1024px){
-  .rn-in{display:grid;grid-template-columns:minmax(9.5rem,1fr) auto minmax(0,1fr);align-items:center;padding-top:12px}
+  .rn-in{display:grid;grid-template-columns:minmax(13.5rem,1fr) auto minmax(0,1fr);align-items:center;padding-top:12px}
   .rn-sp{display:block}
   .rn-mini{display:none}
   .rn-bar{display:flex;align-items:center;height:48px;padding:0 4px;border-radius:999px}
@@ -50,7 +53,6 @@ const NAV_CSS = `
 }
 /* from 1280px there is room to let it breathe again */
 @media (min-width:1280px){
-  .rn-in{grid-template-columns:minmax(13rem,1fr) auto minmax(0,1fr)}
   .rn-bar{height:52px;padding:0 5px}
   .rn-logo{height:52px}
   .rn-link{height:42px;padding:0 11px;font-size:var(--fs-body)}
@@ -188,7 +190,7 @@ export function Nav() {
             <span className="flex lg:hidden">
               <Wordmark size="lg" tile={lightLogo} iso />
             </span>
-            <span className="hidden lg:flex 2xl:hidden">
+            <span className="hidden min-[1024px]:flex min-[1536px]:hidden">
               <Wordmark size="md" tile={lightLogo} iso />
             </span>
             <span className="hidden min-[1536px]:flex min-[1920px]:hidden">
@@ -210,8 +212,13 @@ export function Nav() {
       >
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 -bottom-2 bg-paper shadow-[0_10px_24px_-18px_rgba(18,34,59,0.35)] transition-opacity duration-300"
-          style={{ opacity: scrolled && !open ? 1 : 0, background: pathname === "/contact" ? "#d9e2ee" : undefined }}
+          className="pointer-events-none absolute inset-x-0 top-0 -bottom-6 shadow-[0_10px_24px_-18px_rgba(18,34,59,0.35)] transition-opacity duration-300"
+          style={{
+            opacity: scrolled && !open ? 1 : 0,
+            // solid to the foot of the bar, then a short fade, so a line of text passing
+            // under it dissolves instead of being cut across the middle
+            background: `linear-gradient(180deg, ${SCRIM(pathname)} 0 calc(100% - 22px), ${SCRIM(pathname, 0)} 100%)`,
+          }}
         />
         <div className="rn-in gutter relative mx-auto flex max-w-none justify-end pt-2">
           {/* from 1280px: room for the logo, the pages in a pill centred at the top, and Contact at the right */}

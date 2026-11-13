@@ -24,7 +24,7 @@ import { brandInfo, brandMark, jobs, type JobView } from "../products/brands";
 import { cap, fullName, shortName, useTerms, usesNote } from "../products/compare";
 import { arrow, ctaBand, esc, listing, mark, type ContactInfo } from "./kit";
 import { enquiryMarkup, FINDER_CSS, finderMarkup } from "./products-finder";
-import { BRAND_LOGOS, BRANDS_MARQUEE_CSS, otherBrands } from "../methods/brand-logos";
+import { BRAND_LOGOS, BRANDS_MARQUEE_CSS } from "../methods/brand-logos";
 import { brandDropdown, COMPARE_CSS, type CmpBrand } from "./products-compare";
 
 export interface ProductsData {
@@ -119,9 +119,9 @@ function faceOff(j: JobView, c: ContactInfo, hidden = false) {
   const B = sides[pb.slug]!;
   // the job's brands, for the two brand lists over the table
   const brands: CmpBrand[] = j.brands.map((br) => ({ name: br.name, logo: BRAND_LOGOS[br.name], color: brandMark(br.name), count: br.products.length }));
-  // every other brand, from the product list and the brand slide, listed too but not picked: none of its products does this job
+  // every other brand on the product list, listed too but not picked: none of its products does this job
   const listed = brandInfo().map((b) => b.name);
-  const rest: CmpBrand[] = [...listed.filter((n) => !brands.some((b) => b.name === n)), ...otherBrands(listed)].map((name) => ({ name, logo: BRAND_LOGOS[name], color: brandMark(name), count: 0 }));
+  const rest: CmpBrand[] = [...listed.filter((n) => !brands.some((b) => b.name === n))].map((name) => ({ name, logo: BRAND_LOGOS[name], color: brandMark(name), count: 0 }));
   // each column picks a product of its brand: a list per brand, the one for the brand picked showing
   const pick = (s: "a" | "b", sel: Product) =>
     `<th scope="col" data-s="${s}"><div class="cmp-pick"><span>Product ${s === "a" ? 1 : 2}</span>${j.brands

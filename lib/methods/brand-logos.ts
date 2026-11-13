@@ -19,8 +19,10 @@ export const BRAND_LOGOS: Readonly<Record<string, string>> = {
   Sika: "sika.png",
   "Dr. Fixit": "dr-fixit.png",
   "Asian Paints SmartCare": "asian-paints.png",
+  "Asian Paints": "asian-paints.png",
   "ARDEX ENDURA": "ardex-endura.png",
   "MYK Schomburg": "myk-arment.png",
+  "MYK Arment": "myk-arment.png",
   Mapei: "mapei.png",
   "STP Limited": "stp.png",
   Sunanda: "sunanda.png",
@@ -102,6 +104,11 @@ export const BRANDS_MARQUEE_CSS = `
   .wp-marq{margin-inline:0;-webkit-mask-image:none;mask-image:none}
   .wp-mtrack{flex-wrap:wrap;width:auto;animation:none}
   .wp-mtrack li[aria-hidden]{display:none}
+}
+@media (min-width:768px) and (max-width:1199px){
+  .wp-mtrack{gap:.7rem}
+  .wp-btile{width:9.5rem;height:4.6rem;padding:.7rem 1rem;border-radius:12px}
+  .wp-btile img{max-height:2.9rem}
 }
 @media (max-width:767px){
   .wp-btile{width:10.5rem;height:5.2rem;padding:.8rem 1.1rem}

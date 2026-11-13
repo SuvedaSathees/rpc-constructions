@@ -49,8 +49,8 @@ export function branchesMarkup(d: BranchesData) {
     const town = TOWN_PAGES.find((t) => t.city === b.city);
     const acts = [
       town ? `<a class="pg-link br-act br-act--page" href="${townPath(town)}" data-internal>Services and products in ${esc(b.city)}${arrow}</a>` : "",
-      b.mapQuery
-        ? `<a class="pg-link br-act" href="${esc(mapsLink(b.mapQuery))}" target="_blank" rel="noopener noreferrer">Open in Maps${arrow}</a>`
+      b.mapUrl || b.mapQuery
+        ? `<a class="pg-link br-act" href="${esc(b.mapUrl ?? mapsLink(b.mapQuery!))}" target="_blank" rel="noopener noreferrer">Open in Maps${arrow}</a>`
         : "",
       `<a class="pg-link br-act" href="/contact#enquiry" data-internal>Book an inspection${arrow}</a>`,
     ]

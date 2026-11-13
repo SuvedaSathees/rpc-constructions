@@ -1,4 +1,15 @@
-export type Brand = "Fosroc" | "Sika" | "CCI" | "Berger" | "Renacon";
+export type Brand =
+  | "Fosroc"
+  | "Sika"
+  | "CCI"
+  | "Berger"
+  | "Renacon"
+  | "Asian Paints"
+  | "Dr. Fixit"
+  | "STP Limited"
+  | "Penetron"
+  | "ARDEX ENDURA"
+  | "MYK Arment";
 export type Family = "waterproofing" | "admixtures" | "tiling" | "bonding" | "repair" | "grouts" | "site" | "walling" | "other";
 /** the kind of container a pack comes in, for its little drawing */
 export type Shape = "bag" | "kit" | "pail" | "can" | "drum" | "roll" | "block" | "bottle" | "tin" | "cartridge" | "sachet" | "pouch";

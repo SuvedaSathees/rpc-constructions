@@ -47,8 +47,9 @@ function form(d: ContactPageData) {
   <div class="ct-row">
     ${field("Name *", `<input required name="name" autocomplete="name" placeholder="Your name">`, "ct-f")}
     ${field("Phone *", `<input required type="tel" name="phone" autocomplete="tel" inputmode="tel" pattern="[0-9+\\s\\-]{8,}" placeholder="+91 98765 43210">`, "ct-f")}
+    ${field("Email", `<input type="email" name="email" autocomplete="email" placeholder="you@example.com">`, "ct-f")}
     ${field("Project", `<select name="type">${types}</select>`, "ct-f")}
-    ${field("Site location *", `<input required name="location" placeholder="e.g. Perundurai Road, Erode">`, "ct-f")}
+    ${field("Site location *", `<input required name="location" placeholder="e.g. Perundurai Road, Erode">`, "ct-full")}
     ${field("Message", `<textarea name="message" rows="2" placeholder="Where the leak is, or what you plan to build"></textarea>`, "ct-full")}
   </div>
   <p class="ct-alert" role="alert" hidden>We couldn’t send that just now. Please try again, send it on WhatsApp, or call <a href="${tel(c.phone)}">${esc(c.phone)}</a>.</p>
@@ -90,10 +91,12 @@ export function contactPageMarkup(d: ContactPageData) {
   const hoursText = `${DAYS[o.d0]} to ${DAYS[o.d1]}, ${clock(o.from)} to ${clock(o.to)}`;
   const street = c.address.split(",").slice(0, 2).join(",");
   const go = `<span class="ct-tgo" aria-hidden="true">${arrow}</span>`;
+  /* the address is longer than the tile, so it is given a place to break: after the @ */
+  const mail = esc(c.email).replace("@", "@<wbr>");
   const tiles = `<ul class="ct-tiles" data-rv>
         <li><a class="ct-tile ct-tile--call" href="${tel(c.phone)}">${icon("call", " ct-ico--call")}<span class="ct-tk">Call an engineer</span><span class="ct-tv">${esc(c.phone)}</span><span class="ct-open" data-hours data-days="${o.d0}-${o.d1}" data-from="${o.from}" data-to="${o.to}"><i aria-hidden="true"></i><span data-open-text>Open ${hoursText}</span></span>${go}</a></li>
         <li><a class="ct-tile ct-tile--wa" href="${esc(c.whatsapp)}" target="_blank" rel="noopener noreferrer">${icon("whatsapp", " ct-ico--wa")}<span class="ct-tk">WhatsApp</span><span class="ct-tv">Chat with an engineer</span><span class="ct-tn">Send a photo of the leak</span>${go}</a></li>
-        <li><a class="ct-tile" href="mailto:${esc(c.email)}">${icon("email")}<span class="ct-tk">Email</span><span class="ct-tv ct-tv--mail">${esc(c.email)}</span><span class="ct-tn">Drawings and documents</span>${go}</a></li>
+        <li><a class="ct-tile" href="mailto:${esc(c.email)}">${icon("email")}<span class="ct-tk">Email</span><span class="ct-tv ct-tv--mail">${mail}</span><span class="ct-tn">Drawings and documents</span>${go}</a></li>
         <li><a class="ct-tile" href="${esc(mapsLink(c.mapQuery))}" target="_blank" rel="noopener noreferrer">${icon("visit")}<span class="ct-tk">Office</span><span class="ct-tv">${esc(street)}</span><span class="ct-tn">${esc(hoursText)}</span>${go}</a></li>
       </ul>
       <p class="ct-alt" data-rv>More numbers: ${(c.morePhones ?? []).map((n) => `<a href="${tel(n)}">${esc(n)}</a>`).join(" · ")}</p>`;
@@ -317,7 +320,8 @@ export const CONTACT_CSS = ROUTES_CSS + `
 /* every tile the same size; the email on one line */
 .ct-tiles{grid-auto-rows:1fr}
 .ct-tile{min-height:9.6rem}
-.ct-tv--mail{white-space:nowrap;letter-spacing:-.01em}
+/* the address is set a shade smaller so the domain holds one line in a narrow tile */
+.ct-tv--mail{font-size:.94rem;letter-spacing:-.012em;line-height:1.32}
 .ct-tile--call .ct-open{font-size:var(--fs-body);line-height:1.35}
 /* phones: each way to reach us as one compact row, icon, words and arrow */
 @media (max-width:599px){
@@ -422,7 +426,17 @@ export const CONTACT_CSS = ROUTES_CSS + `
   .ct-grid{align-items:stretch}
   .ct-card{display:flex;flex-direction:column}
   .ct-card .ct-form{flex:1}
-  .ct-card .ct-row{flex:1;grid-template-rows:auto auto minmax(0,1fr)}
+  /* four rows: name/phone, email/project, site location, message. The message takes the slack */
+  .ct-card .ct-row{flex:1;grid-template-rows:auto auto auto minmax(0,1fr)}
   .ct-card .ct-full textarea{flex:1;height:auto !important;min-height:4.3rem}
+}
+
+/* tablets up: the tiles have room for the line that says what each way to reach us is for,
+   which also stops the three shorter tiles sitting half empty beside the call tile */
+@media (min-width:768px){
+  .ct-tn{display:block;margin-top:.3rem;font-size:.82rem;line-height:1.4;color:var(--mute)}
+  .ct-tv{line-height:1.32}
+  .ct-tile--call .ct-open{font-size:.82rem;line-height:1.35}
+  .ct-tile:hover .ct-tn,.ct-tile:focus-visible .ct-tn{color:rgba(245,240,230,.72)}
 }
 `;

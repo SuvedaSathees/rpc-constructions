@@ -170,18 +170,24 @@ export const PROJECTS_CSS = SEARCH_BAR_CSS + `
 .pjs-grid{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:.9rem;align-items:stretch}
 .pjs-scene{position:relative;margin:0;aspect-ratio:1376/768;overflow:hidden;border-radius:18px;background:#20303f;box-shadow:0 30px 60px -40px rgba(18,34,59,.55)}
 .pjs-scene img{display:block;width:100%;height:100%;object-fit:cover}
-.pjs-spot{position:absolute;z-index:1;display:flex;align-items:center;gap:.45rem;margin:-1rem 0 0 -1rem;padding:0;border:0;background:none;font:inherit;cursor:pointer}
+/* a point on the view is the numbered disc itself; its name floats above the disc, so a
+   long name no longer runs sideways across the points next to it */
+.pjs-spot{position:absolute;z-index:1;display:block;width:2rem;height:2rem;margin:-1rem 0 0 -1rem;padding:0;border:0;background:none;font:inherit;cursor:pointer}
+.pjs-spot:hover,.pjs-spot:focus-visible,.pjs-spot[aria-pressed=true]{z-index:3}
 .pjs-n{position:relative;display:grid;place-items:center;width:2rem;height:2rem;border-radius:50%;background:#f5f0e6;color:var(--navy);font-size:var(--fs-body);font-weight:700;box-shadow:0 6px 16px -4px rgba(4,12,30,.6);transition:background-color .2s,color .2s,transform .2s}
 .pjs-n::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid rgba(245,240,230,.85);opacity:0;animation:pjs-ring 2.6s ease-out infinite}
 @keyframes pjs-ring{0%{opacity:.9;transform:scale(.8)}100%{opacity:0;transform:scale(1.5)}}
-.pjs-tag{padding:.3rem .6rem;border-radius:999px;background:rgba(11,22,38,.72);color:#fff;font-size:var(--fs-body);font-weight:600;white-space:nowrap;backdrop-filter:blur(6px);opacity:0;transform:translateX(-4px);transition:opacity .2s,transform .2s;pointer-events:none}
-.pjs-spot:hover .pjs-tag,.pjs-spot:focus-visible .pjs-tag,.pjs-spot[aria-pressed=true] .pjs-tag{opacity:1;transform:none}
+.pjs-tag{position:absolute;left:50%;bottom:calc(100% + .45rem);padding:.3rem .65rem;border-radius:999px;background:rgba(11,22,38,.82);color:#fff;font-size:var(--fs-body);font-weight:600;line-height:1.3;white-space:nowrap;backdrop-filter:blur(6px);opacity:0;transform:translateX(-50%) translateY(4px);transition:opacity .2s,transform .2s;pointer-events:none}
+.pjs-spot:hover .pjs-tag,.pjs-spot:focus-visible .pjs-tag,.pjs-spot[aria-pressed=true] .pjs-tag{opacity:1;transform:translateX(-50%)}
 .pjs-spot:hover .pjs-n{transform:scale(1.08)}
 .pjs-spot[aria-pressed=true] .pjs-n{background:var(--navy);color:#fff}
 .pjs-spot:focus-visible{outline:none}
 .pjs-spot:focus-visible .pjs-n{outline:3px solid #f2c14e;outline-offset:2px}
-/* the factory and the tank sit on the right, so their names open to the left */
-.pjs-spot[data-spot=factories],.pjs-spot[data-spot=tanks]{flex-direction:row-reverse;margin-left:auto;transform:translateX(-100%) translateX(2rem)}
+/* the names of the two points nearest the edges are nudged back inside the view */
+.pjs-spot[data-spot=factories] .pjs-tag{left:auto;right:0;transform:translateY(4px)}
+.pjs-spot[data-spot=factories]:hover .pjs-tag,.pjs-spot[data-spot=factories]:focus-visible .pjs-tag,.pjs-spot[data-spot=factories][aria-pressed=true] .pjs-tag{transform:none}
+.pjs-spot[data-spot=homes] .pjs-tag{left:0;transform:translateY(4px)}
+.pjs-spot[data-spot=homes]:hover .pjs-tag,.pjs-spot[data-spot=homes]:focus-visible .pjs-tag,.pjs-spot[data-spot=homes][aria-pressed=true] .pjs-tag{transform:none}
 .pjs-scene{align-self:start}
 .pjs-side{position:relative;min-height:0}
 .pjs-panel{position:absolute;inset:0;display:flex;flex-direction:column;overflow:hidden;border-radius:18px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line)}
@@ -216,7 +222,7 @@ export const PROJECTS_CSS = SEARCH_BAR_CSS + `
   .pjs-panel{position:static}
   .pjs-zoom{display:none}
 }
-@media (max-width:599px){.pjs-tag{display:none}.pjs-n{width:1.7rem;height:1.7rem}.pjs-spot{margin:-.85rem 0 0 -.85rem}}
+@media (max-width:599px){.pjs-tag{display:none}.pjs-n{width:1.7rem;height:1.7rem}.pjs-spot{width:1.7rem;height:1.7rem;margin:-.85rem 0 0 -.85rem}}
 /* each project card opens with its photo, whole, at its own proportions */
 .pj-pic{margin:-1.3rem -1.35rem 1rem;aspect-ratio:1376/768;overflow:hidden;border-radius:18px 18px 0 0;background:#d9d0bf}
 .pj-pic img{display:block;width:100%;height:100%;object-fit:cover}
@@ -240,10 +246,12 @@ export const PROJECTS_CSS = SEARCH_BAR_CSS + `
 /* the running count is read out, not shown */
 .pj-showing{position:absolute;width:1px;height:1px;margin:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 
-/* the projects as cards, three to a row */
+/* the projects as cards, four to a row */
 .pj-listwrap{padding:clamp(.4rem,1.6vh,1rem) 0 clamp(4.5rem,12vh,7.5rem)}
-/* the cards: plain and even, three to a row */
-.pj-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:stretch;gap:clamp(.9rem,1.5vw,1.2rem)}
+/* the cards: plain and even, four to a row. A flex row rather than a grid so a short
+   last row (five projects, or a filtered few) sits centred instead of hanging left. */
+.pj-list{--pj-gap:clamp(.9rem,1.5vw,1.2rem);display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:var(--pj-gap)}
+.pj-list > .pj-row{flex:0 1 calc((100% - 3 * var(--pj-gap)) / 4);min-width:0}
 .pj-row{display:flex;flex-direction:column;padding:1.3rem 1.35rem 1.4rem;border-radius:18px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line);scroll-margin-top:calc(var(--nav-bar,80px) + 1rem);transition:box-shadow .3s,transform .3s}
 .pj-row:hover{box-shadow:inset 0 0 0 1px rgba(18,34,59,.28),0 24px 44px -34px rgba(18,34,59,.55);transform:translateY(-2px)}
 .pj-row[hidden]{display:none}
@@ -271,10 +279,12 @@ main .pj-row h2.pj-name{margin:1rem 0 0;font-family:var(--display);font-weight:5
   .pj-herogrid{grid-template-columns:1fr;align-items:start;gap:1.4rem}
   .pj-heroside{gap:1.3rem}
   .pj-heroside .pg-intro{max-width:40rem}
+  /* the title is above it now, so the bar runs the width of the page rather than hanging right */
+  .pj-bar{max-width:none;margin-left:0}
 }
-/* tablets: two to a row; phones: one */
-@media (max-width:1279px){.pj-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:699px){.pj-list{grid-template-columns:minmax(0,1fr)}}
+/* tablets and small laptops: still four to a row, on a tighter gap (the card's own
+   chrome is scaled down in globals.css, where the card's sizes are set) */
+@media (min-width:768px) and (max-width:1279px){.pj-list{--pj-gap:.6rem}}
 @media (max-width:767px){
   .pj-bar{max-width:none}
   .pj-hero{padding:2.4rem 0 1.4rem}
@@ -291,7 +301,9 @@ main .pj-row h2.pj-name{margin:1rem 0 0;font-family:var(--display);font-weight:5
   .pj-herogrid > div:first-child{display:none}
   .pj-heroside{padding-bottom:0}
   .pj-listwrap{padding:.1rem 0 3.2rem}
-  .pj-list{grid-template-columns:minmax(0,1fr);gap:.85rem}
+  /* phones: two to a row as well, on the smallest card */
+  .pj-list{--pj-gap:.55rem}
+  .pj-list > .pj-row{flex-basis:calc((100% - var(--pj-gap)) / 2)}
   .pj-list .pj-row{position:relative;padding:0 0 1rem;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 0 0 1px var(--line),0 14px 28px -22px rgba(18,34,59,.45)}
   .pj-list .pj-row:hover{transform:none}
   .pj-list .pj-pic{margin:0;border-radius:0;aspect-ratio:16/10}

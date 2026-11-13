@@ -64,6 +64,9 @@ const JOB_LIST: readonly Job[] = [
   { key: "curing", name: "Curing compounds", categories: ["Concrete curing compound"] },
   { key: "superplasticisers", name: "Superplasticisers", categories: ["Concrete superplasticizer"] },
   { key: "hp-admixtures", name: "High-performance concrete admixtures", categories: ["High-performance concrete admixture"] },
+  { key: "integral-waterproofing", name: "Integral waterproofing liquids for concrete and mortar", categories: ["Integral waterproofing liquid", "Integral waterproofing admixture"] },
+  { key: "crystalline", name: "Integral crystalline waterproofing admixtures", categories: ["Crystalline waterproofing admixture"] },
+  { key: "mould-release", name: "Shuttering and mould release agents", categories: ["Shuttering / mould release agent"] },
   { key: "precast", name: "Admixtures for precast, blocks and pavers", categories: ["Precast concrete admixture"] },
 ];
 
@@ -83,7 +86,19 @@ export function jobs(all: readonly Product[] = PRODUCTS): JobView[] {
 }
 
 /** a colour for each brand's mark in the comparisons (the site's own palette, not the brands' trademark colours) */
-const MARK: Record<string, string> = { Fosroc: "#0b6e80", Sika: "#2756a0", CCI: "#6b5b9a", Renacon: "#97633f", Berger: "#5f7a33" };
+const MARK: Record<string, string> = {
+  Fosroc: "#0b6e80",
+  Sika: "#2756a0",
+  CCI: "#6b5b9a",
+  Renacon: "#97633f",
+  Berger: "#5f7a33",
+  "Asian Paints": "#c62828",
+  "Dr. Fixit": "#e65100",
+  "STP Limited": "#00838f",
+  Penetron: "#1b5e20",
+  "ARDEX ENDURA": "#be185d",
+  "MYK Arment": "#0284c7",
+};
 export const brandMark = (name: string) => MARK[name] ?? "#55707f";
 
 /** the kind of work a job belongs to, for grouping the list of jobs */

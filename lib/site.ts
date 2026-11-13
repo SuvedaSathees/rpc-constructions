@@ -4,7 +4,7 @@ import type { Metadata } from "next";
  * Production URL — used for canonical links, the sitemap and structured data.
  * Set NEXT_PUBLIC_SITE_URL in the hosting environment if the domain differs.
  */
-export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.rpcconstructions.com").replace(/\/$/, "");
+export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://rpc-constructions.vercel.app").replace(/\/$/, "");
 
 const BRAND = "RPC Constructions";
 const DEFAULT_IMAGE = { url: "/images/og-rpc.png", width: 1200, height: 630, alt: "RPC Constructions: waterproofing and construction in Erode, Coimbatore and across Tamil Nadu" };

@@ -33,7 +33,7 @@ const SIZES = {
  * light tile, so its blue faces read; `tile={false}` leaves it bare. Wrap it in
  * a link or give the page its own text for the name.
  */
-export function Wordmark({ className = "", size = "md", tile = true, iso = false }: { className?: string; size?: keyof typeof SIZES; tile?: boolean; iso?: boolean }) {
+export function Wordmark({ className = "", size = "md", tile = true, iso = false, name = true }: { className?: string; size?: keyof typeof SIZES; tile?: boolean; iso?: boolean; name?: boolean }) {
   const s = SIZES[size];
   // with the certification line under the name, the drawing is taller by that line
   const vh = iso ? 52 : 40;
@@ -49,6 +49,7 @@ export function Wordmark({ className = "", size = "md", tile = true, iso = false
       ) : (
         <LogoMark className={`${s.mark} shrink-0`} />
       )}
+      {name ? (
       <svg viewBox={`0 0 150 ${vh}`} height={h} width={Math.round((s.h * 150) / 40)} aria-hidden="true" focusable="false" className="block shrink-0 overflow-visible">
         <text x="0" y="19" fill="currentColor" style={{ ...display, fontWeight: 700, fontSize: 22, letterSpacing: 2.2 }}>
           RPC
@@ -62,6 +63,7 @@ export function Wordmark({ className = "", size = "md", tile = true, iso = false
           </text>
         ) : null}
       </svg>
+      ) : null}
     </span>
   );
 }

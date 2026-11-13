@@ -68,8 +68,7 @@ export function mountBuild(section: HTMLElement, opts: BuildOptions = {}): Build
   const pin = section.querySelector<HTMLElement>(".mh-pin");
   const now = section.querySelector<HTMLElement>(".mh-now");
   const chip = section.querySelector<HTMLElement>(".mh-chip");
-  const isPhone = window.matchMedia("(max-width: 767px)").matches;
-  const list = isPhone ? film.phoneChapters : film.chapters;
+  const list = film.chapters;
   if (!video || !pin || !now || !chip || !list.length) return { release() {}, destroy() {} };
   const q = <T extends HTMLElement>(s: string) => section.querySelector<T>(s);
   const place = now.querySelector<HTMLElement>(".mh-place")!;
@@ -103,11 +102,9 @@ export function mountBuild(section: HTMLElement, opts: BuildOptions = {}): Build
   const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const saveData = Boolean((navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData);
   section.classList.add("mh-js");
-  /** phones and upright screens: no scrolling through it, the film plays by itself to the finished building */
-  const narrow = window.matchMedia("(max-width: 899px), (max-aspect-ratio: 7/5)");
+  /** phones, tablets and upright screens: no scrolling through it, the film plays by itself to the finished building */
+  const narrow = window.matchMedia("(max-width: 899px), (max-aspect-ratio: 7/5), (pointer: coarse)");
   let auto = narrow.matches;
-  const phone = window.matchMedia("(max-width: 767px)");
-  if (video) video.poster = phone.matches ? film.posterPhone : film.poster;
   section.classList.toggle("mh-auto", auto);
 
   const last = list.length; // the step after the last stage: the finished building
@@ -187,10 +184,10 @@ export function mountBuild(section: HTMLElement, opts: BuildOptions = {}): Build
     hint?.classList.toggle("is-off", on);
     helper();
   }
-  /** the leak helper button stays away for the whole hero (the stages and the closing words) and comes back once the hero has scrolled clear of it */
+  /** the leak helper button stays away while the stages are on screen and not yet done */
   function helper() {
     const r = section.getBoundingClientRect();
-    const on = r.bottom > window.innerHeight - 120 && r.top < window.innerHeight * 0.5;
+    const on = live && r.bottom > window.innerHeight * 0.5 && r.top < window.innerHeight * 0.5 && !section.classList.contains("is-ended");
     document.documentElement.classList.toggle("mh-on", on);
   }
 
@@ -234,7 +231,7 @@ export function mountBuild(section: HTMLElement, opts: BuildOptions = {}): Build
       // no playing: the stage's still, in close on its product, or the finished building
       video!.pause();
       stopAt = holdOf(k);
-      const d = Number.isFinite(video!.duration) ? video!.duration : isPhone ? film.phoneDuration : film.duration;
+      const d = Number.isFinite(video!.duration) ? video!.duration : film.duration;
       video!.currentTime = end ? Math.max(0, d - 0.05) : stopAt;
       setEnded(end);
       update(true);
@@ -396,7 +393,6 @@ export function mountBuild(section: HTMLElement, opts: BuildOptions = {}): Build
   document.addEventListener("visibilitychange", onVisibility);
 
   update(true);
-  helper();
 
   function release() {
     if (live) return;
@@ -412,7 +408,6 @@ export function mountBuild(section: HTMLElement, opts: BuildOptions = {}): Build
   const onShape = () => {
     if (narrow.matches === auto) return;
     auto = narrow.matches;
-    if (video) video.poster = phone.matches ? film.posterPhone : film.poster;
     section.classList.toggle("mh-auto", auto);
     setEnded(false);
     if (live) go(auto ? 0 : stepFromScroll(), true);
