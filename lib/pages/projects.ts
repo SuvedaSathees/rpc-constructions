@@ -162,7 +162,7 @@ export const PROJECTS_CSS = SEARCH_BAR_CSS + `
 .pjs-head .pj-h1{color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.25)}
 
 .pjs-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:1.3rem;align-items:stretch;max-width:1180px;margin-inline:auto}
-.pjs-scene{position:relative;margin:0;aspect-ratio:1376/768;overflow:hidden;border-radius:18px;background:#1a2836;box-shadow:0 30px 60px -40px rgba(18,34,59,.55);border:1px solid rgba(18,34,59,.12)}
+.pjs-scene{position:relative;align-self:start;width:100%;margin:0;aspect-ratio:1376/768;overflow:hidden;border-radius:18px;background:#1a2836;box-shadow:0 30px 60px -40px rgba(18,34,59,.55);border:1px solid rgba(18,34,59,.12)}
 .pjs-scene img{display:block;width:100%;height:100%;object-fit:cover}
 
 /* Numbered interactive pins */
@@ -195,7 +195,7 @@ export const PROJECTS_CSS = SEARCH_BAR_CSS + `
 /* Waterproofing matrix */
 
 /* Footer strip */
-.pjs-cap{display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:1.1rem;padding:1.7rem 1.75rem;border-radius:16px;background:var(--card);box-shadow:0 22px 46px -30px rgba(7,20,44,.5)}
+.pjs-cap{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:1.1rem;padding:1.7rem 1.75rem;border-radius:16px;background:var(--card);box-shadow:0 22px 46px -30px rgba(7,20,44,.5)}
 .pjs-cap[hidden]{display:none}
 .pjs-capn{min-width:0;width:100%}
 .pjs-stat{display:inline-flex;align-items:center;gap:.4rem;margin:0 0 .6rem;padding:.26rem .7rem;border-radius:999px;font-size:.78rem;font-weight:600}
@@ -203,8 +203,8 @@ export const PROJECTS_CSS = SEARCH_BAR_CSS + `
 .pjs-stat[data-s=done]{background:rgba(46,125,50,.12);color:#2e7d32}
 .pjs-stat[data-s=live]{background:rgba(199,122,0,.14);color:#a86400}
 .pjs-stat[data-s=plan]{background:rgba(39,86,160,.12);color:var(--accent)}
-.pjs-facts{width:100%;margin:0;padding:0;display:flex;flex-direction:column}
-.pjs-facts > div{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:.72rem 0;border-top:1px solid rgba(18,34,59,.1)}
+.pjs-facts{width:100%;flex:1 1 auto;margin:0;padding:0;display:flex;flex-direction:column}
+.pjs-facts > div{display:flex;flex:1 1 auto;align-items:center;justify-content:space-between;gap:1rem;padding:.72rem 0;border-top:1px solid rgba(18,34,59,.1)}
 .pjs-facts > div:last-child{border-bottom:1px solid rgba(18,34,59,.1)}
 .pjs-facts dt{margin:0;flex:none;font-size:.84rem;color:var(--mute)}
 .pjs-facts dd{margin:0;min-width:0;font-size:.94rem;font-weight:600;line-height:1.35;color:var(--navy);text-align:right;overflow-wrap:anywhere}
@@ -212,7 +212,7 @@ export const PROJECTS_CSS = SEARCH_BAR_CSS + `
 .pjs-cap .pjs-loc{display:flex;align-items:center;min-width:0;gap:.4rem;margin:.3rem 0 0;font-size:clamp(.86rem,.8rem + .22vw,1rem);color:var(--ink2)}
 .pjs-cap .pjs-loc svg{flex:none;width:1.05em;height:1.05em;color:var(--accent)}
 .pjs-capa{display:flex;align-items:center;gap:.8rem;flex:none}
-@media (max-width:1200px){
+@media (max-width:1365px){
   .pjs-grid{gap:1rem}
   .pjs-cap{gap:1rem;padding:1.25rem 1.35rem}
   .pjs-capa{width:100%;justify-content:space-between}
@@ -225,6 +225,35 @@ export const PROJECTS_CSS = SEARCH_BAR_CSS + `
 .pjs-cta:hover{background:var(--accent);color:#fff;transform:translateY(-1px)}
 .pjs-cta svg{flex:none;transition:transform .2s}
 .pjs-cta:hover svg{transform:translateY(2px)}
+
+/* below the widest layout the card has to fit inside the view's height, so the
+   rows between the rules carry less padding of their own and stretch instead */
+@media (max-width:1439px){
+  .pjs-facts > div{padding:.5rem 0}
+}
+/* the narrow two-column band: the view is at its shortest here, so the card
+   pairs scale with delivered on one line and trims its own chrome to match */
+@media (min-width:1024px) and (max-width:1199px){
+  .pjs-cap{gap:.75rem;padding:1.15rem 1.3rem}
+  .pjs-cap .pjs-loc{margin-top:.2rem}
+  .pjs-facts{display:grid;grid-template-columns:1fr 1fr;column-gap:1.2rem;grid-auto-rows:1fr;align-content:stretch}
+  .pjs-facts > div{padding:.36rem 0}
+  .pjs-facts > div:first-child{grid-column:1/-1}
+  .pjs-facts > div:nth-child(2){border-bottom:1px solid rgba(18,34,59,.1)}
+  .pjs-facts dt{font-size:.8rem}
+  .pjs-facts dd{font-size:.9rem}
+  .pjs-stat{margin-bottom:.4rem;padding:.2rem .6rem;font-size:.74rem}
+  .pjs-step button{width:2rem;height:2rem;font-size:1rem}
+  .pjs-cta{height:2.45rem;padding:0 .95rem;font-size:.86rem}
+}
+/* tablet: the view takes the full width and the card under it splits in two,
+   the landmark on the left and its figures on the right */
+@media (min-width:700px) and (max-width:1023px){
+  .pjs-cap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);column-gap:2rem;row-gap:1.1rem;align-items:start;padding:1.4rem 1.6rem}
+  .pjs-capn{grid-column:1;grid-row:1}
+  .pjs-facts{grid-column:2;grid-row:1 / span 2;align-self:stretch}
+  .pjs-capa{grid-column:1;grid-row:2;align-self:end;width:100%;justify-content:space-between}
+}
 
 @media (min-width:768px) and (max-width:1439px){
   .pjs-body{padding:.9rem 1.05rem .85rem;gap:.7rem}
