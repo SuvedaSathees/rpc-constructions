@@ -104,7 +104,7 @@ export const SYSTEMS: readonly System[] = [
     line: "Concrete that holds water on one side",
     layers: [
       { key: "joint", look: "joint", name: "Joint waterstop", note: "Fixed in each construction joint before the next pour", products: ["fosroc-supercast-sw20", "sikaswell-a2010-bar"] },
-      { key: "mix", look: "mix", name: "In the concrete", note: "Admixture mixed in when the walls and floor are cast", products: ["fosroc-conplast-crystalline", "fosroc-conplast-wl-xtra"] },
+      { key: "mix", look: "mix", name: "In the concrete", note: "Admixture mixed in when the walls and floor are cast", products: ["fosroc-conplast-crystalline", "penetron-penetron-admix", "fosroc-conplast-wl-xtra"] },
       { key: "plug", look: "plug", name: "Stop active leaks", note: "Rapid-setting plug for any spot that is running", products: ["fosroc-rendroc-plug"] },
       { key: "coat", look: "coat", name: "Inside coat", note: "A cementitious coat on the inside faces", products: ["fosroc-brushbond-grey", "fosroc-nitocote-cm210-white", "sika-seal-550", "sika-seal-551", "fosroc-brushbond-rfx-grey"] },
     ],
@@ -116,7 +116,7 @@ export const SYSTEMS: readonly System[] = [
     layers: [
       { key: "sheet", look: "sheet", name: "Membrane outside", note: "A barrier on the face the ground water reaches", products: ["sikaproof-312-hdpe", "sika-bit-w1", "sikashield-w159", "sikaproof-sandwich-tape-100"] },
       { key: "joint", look: "joint", name: "Joint waterstop", note: "In every construction joint", products: ["fosroc-supercast-sw20", "sikaswell-a2010-bar"] },
-      { key: "mix", look: "mix", name: "In the concrete", note: "Makes the walls and raft themselves resist water", products: ["fosroc-conplast-crystalline", "fosroc-conplast-wl-xtra"] },
+      { key: "mix", look: "mix", name: "In the concrete", note: "Makes the walls and raft themselves resist water", products: ["fosroc-conplast-crystalline", "penetron-penetron-admix", "fosroc-conplast-wl-xtra"] },
       { key: "plug", look: "plug", name: "Stop active leaks", note: "For water already coming through", products: ["fosroc-rendroc-plug"] },
     ],
   },
@@ -140,7 +140,7 @@ export const SYSTEMS: readonly System[] = [
       { key: "form", look: "form", name: "Formwork release", note: "On the shuttering, so the concrete comes away clean", products: ["fosroc-reebol-emulsion-xtra", "fosroc-reebol-standard", "fosroc-moulding-oil"] },
       { key: "flow", look: "mix", name: "Workability and strength", note: "Less water for the same flow", products: ["fosroc-conplast-sp430", "fosroc-conplast-sp430-g", "fosroc-conplast-sp430-g8", "fosroc-conplast-sp430-es2", "fosroc-conplast-sp439", "fosroc-auramix-200-20", "fosroc-auramix-200-41", "fosroc-auramix-300", "fosroc-auramix-300-plus", "fosroc-auramix-350", "fosroc-auramix-400", "cci-novaplast-8200", "cci-novamix-2000", "cci-novamix-4000", "sika-plast-5132-t"] },
       { key: "special", look: "mix", name: "Special requirements", note: "Faster early strength, entrained air, or a property set by the grade", products: ["fosroc-conplast-nc", "cci-novatech-aea", "sika-control-777"] },
-      { key: "dry", look: "mix", name: "Waterproof concrete", note: "For slabs, tanks and foundations", products: ["fosroc-conplast-wl-xtra", "fosroc-conplast-crystalline"] },
+      { key: "dry", look: "mix", name: "Waterproof concrete", note: "For slabs, tanks and foundations", products: ["fosroc-conplast-wl-xtra", "fosroc-conplast-crystalline", "penetron-penetron-admix"] },
       { key: "cure", look: "cure", name: "Curing", note: "Sprayed on to hold the water in while it gains strength", products: ["fosroc-concure-wb-white", "cci-novacure-wb", "sika-antisol-a4-white"] },
     ],
   },

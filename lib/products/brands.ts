@@ -59,6 +59,7 @@ const JOB_LIST: readonly Job[] = [
      kind is known. */
   { key: "any", name: "Any two products, brand against brand", categories: [], all: true },
   { key: "wet-area-coats", name: "Waterproof coats for bathrooms, tanks and wet areas", categories: ["Cementitious waterproofing", "Flexible cementitious waterproofing", "Cementitious waterproofing coating"] },
+  { key: "crystalline", name: "Crystalline waterproofing admixtures", categories: ["Crystalline waterproofing admixture"] },
   { key: "waterstops", name: "Waterstops for construction joints", categories: ["Hydrophilic waterstop"] },
   { key: "tile-adhesives", name: "Tile adhesives", categories: ["Tile adhesive"] },
   { key: "epoxy-grouts", name: "Epoxy tile grouts", categories: ["Epoxy tile grout"] },
@@ -89,7 +90,7 @@ export function jobs(all: readonly Product[] = PRODUCTS): JobView[] {
 }
 
 /** a colour for each brand's mark in the comparisons (the site's own palette, not the brands' trademark colours) */
-const MARK: Record<string, string> = { Fosroc: "#0b6e80", Sika: "#2756a0", CCI: "#6b5b9a", Renacon: "#97633f", Berger: "#5f7a33" };
+const MARK: Record<string, string> = { Fosroc: "#0b6e80", Sika: "#2756a0", CCI: "#6b5b9a", Renacon: "#97633f", Berger: "#5f7a33", Penetron: "#0d3b66", "Asian Paints": "#d9381e", "Dr. Fixit": "#e65100", "STP Limited": "#2e7d32", "ARDEX ENDURA": "#b71c1c", "MYK Arment": "#00838f" };
 export const brandMark = (name: string) => MARK[name] ?? "#55707f";
 
 /** the kind of work a job belongs to, for grouping the list of jobs */

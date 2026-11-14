@@ -139,7 +139,7 @@ export const METHODS: readonly Method[] = [
     how: "Chemicals that react with water and cement to grow crystals inside the pores and hairline cracks of the concrete, blocking water from within.",
     notes: ["Works within the concrete, so there is no surface layer to peel off", "Seals hairline cracks, not cracks that keep moving"],
     zones: ["tank", "below"],
-    products: ["fosroc-conplast-crystalline"],
+    products: ["fosroc-conplast-crystalline", "penetron-penetron-admix"],
   },
   {
     no: 8,

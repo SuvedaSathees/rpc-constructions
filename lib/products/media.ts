@@ -43,6 +43,12 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     description: "High-performance polymer-modified cementitious tile adhesive with slip resistance (C2TE) for fixing ceramic, vitrified tiles and natural stones on interior and exterior walls and floors.",
     pdf: "Tile Bond Anti-Slip PDS.pdf",
   },
+  "berger-hs-epoxy-tile-grout": {
+    image: "berger-hs-epoxy-tile-grout.png",
+    backImage: "berger-hs-epoxy-tile-grout-back.png",
+    description: "High-performance three-component epoxy tile joint filler offering stain resistance, chemical resistance, and 100% waterproof hygienic finish.",
+  },
+
   "sika-rustop": {
     image: "sika-rustop.png",
     backImage: "sika-rustop-back.png",
@@ -150,6 +156,8 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     pdf: "TDS-Conplast-SP430-G8-India3.pdf",
   },
   "fosroc-auramix-400": {
+    image: "fosroc-auramix-400.png",
+    backImage: "fosroc-auramix-400-back.png",
     description: "High performance PCE-based superplasticizer for ready-mix concrete requiring exceptional slump retention and high durability.",
     pdf: "TDS-Auramix-400-India3.pdf",
   },
@@ -439,57 +447,57 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "asian-paints-smartcare-cemboost-200": {
     image: "asian-paints-smartcare-cemboost-200.png",
     backImage: "asian-paints-smartcare-cemboost-200-back.png",
-    description: "Integral liquid waterproofing compound for concrete and mortar that protects against water ingress, dampness, and rebar corrosion.",
+    description: "Integral liquid waterproofing compound for cementitious mixes that reduces water penetration through the capillary network in mortars and concrete.",
   },
   "asian-paints-smartcare-vitalia-neo": {
     image: "asian-paints-smartcare-vitalia-neo.png",
     backImage: "asian-paints-smartcare-vitalia-neo-back.png",
-    description: "Superior integral waterproofing liquid formulated with plasticising additives to enhance workability, reduce cracks, and prevent efflorescence.",
+    description: "Integral waterproofing liquid designed for cementitious mixes to reduce water penetration, enhance workability, and prevent efflorescence.",
   },
   "asian-paints-smartcare-hypershot-af-100": {
     image: "asian-paints-smartcare-hypershot-af-100.png",
     backImage: "asian-paints-smartcare-hypershot-af-100-back.png",
-    description: "High-performance alkali-free liquid shotcrete accelerator for wet and dry sprayed concrete in tunneling and structural mining.",
+    description: "Alkali-free liquid shotcrete accelerator and industrial chemical admixture for rapid setting and early structural strength in sprayed concrete.",
   },
   "asian-paints-maximopast-px-100": {
     image: "asian-paints-maximopast-px-100.png",
     backImage: "asian-paints-maximopast-px-100-back.png",
-    description: "Polycarboxylate ether (PCE) based superplasticizer delivering high water reduction and improved workability for ready-mixed concrete.",
+    description: "High-range water-reducing concrete superplasticizer (PCE polymer additive) delivering high workability, reduced water demand, and increased compressive strength.",
   },
   "asian-paints-maximopast-px-200": {
     image: "asian-paints-maximopast-px-200.png",
     backImage: "asian-paints-maximopast-px-200-back.png",
-    description: "Advanced PCE-based concrete admixture providing extended slump retention and early strength development for high-grade concrete mixes.",
+    description: "High-performance PCE concrete admixture providing extended slump retention, high water reduction, and rapid early strength development for high-grade mixes.",
   },
   "asian-paints-maximopast-px-300": {
     image: "asian-paints-maximopast-px-300.png",
     backImage: "asian-paints-maximopast-px-300-back.png",
-    description: "Premium hyperplasticizer engineered for ultra-high strength, self-compacting concrete (SCC), and mass transit infrastructure projects.",
+    description: "Advanced polycarboxylate ether (PCE) hyperplasticizer for ultra-high strength, self-compacting concrete (SCC), and mass infrastructure.",
   },
   "dr-fixit-pidiproof-lw": {
     image: "dr-fixit-pidiproof-lw.png",
     backImage: "dr-fixit-pidiproof-lw-back.png",
-    description: "Specially formulated integral liquid waterproofing compound for cement mortar and concrete, preventing capillary absorption and corrosion.",
+    description: "Integral liquid waterproofing compound for concrete and mortar that reduces water permeability, enhances workability, and controls shrinkage cracking.",
   },
   "stp-limited-tarfelt-lm": {
     image: "stp-limited-tarfelt-lm.png",
     backImage: "stp-limited-tarfelt-lm-back.png",
-    description: "Cold-applied, elastomeric liquid bituminous waterproofing membrane forming a jointless, continuous waterproof barrier over roofs and podiums.",
+    description: "Ready-to-use liquid bituminous membrane forming a seamless, flexible waterproof barrier with excellent crack-bridging ability and high adhesion.",
   },
   "stp-limited-shalisbr-latex": {
     image: "stp-limited-shalisbr-latex.png",
     backImage: "stp-limited-shalisbr-latex-back.png",
-    description: "Carboxylated styrene butadiene copolymer latex designed as a multi-purpose bonding agent, waterproof slurry, and repair mortar modifier.",
+    description: "Styrene-butadiene rubber (SBR) latex bonding agent and waterproofing admixture improving adhesion, flexibility, water resistance, and durability of repair mortars, plasters, and concrete.",
   },
   "stp-limited-shalitex-primer": {
     image: "stp-limited-shalitex-primer.png",
     backImage: "stp-limited-shalitex-primer-back.png",
-    description: "Solvent-based penetrating bituminous primer for priming concrete, masonry, and metal surfaces before waterproofing membrane application.",
+    description: "Solvent-based penetrating bituminous primer conforming to IS 3384 (Part 1), sealing pores on concrete and masonry before waterproofing membrane application.",
   },
   "penetron-penetron-admix": {
     image: "penetron-penetron-admix.png",
     backImage: "penetron-penetron-admix-back.png",
-    description: "3rd generation integral crystalline waterproofing admixture that permanently seals microcracks, pores, and capillaries inside concrete.",
+    description: "Penetron Admix is a crystalline waterproofing admixture for concrete, which reacts with moisture to form insoluble crystals, reducing water permeability and protecting concrete for a longer life.",
   },
   "ardex-endura-bronze-star": {
     image: "ardex-endura-bronze-star.png",
@@ -539,7 +547,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "myk-arment-aquaarm-proof-wp10": {
     image: "myk-arment-aquaarm-proof-wp10.png",
     backImage: "myk-arment-aquaarm-proof-wp10-back.png",
-    description: "High-grade liquid integral waterproofing admixture for concrete and mortar, reducing water absorption and capillary transmission.",
+    description: "High-performance integral waterproofing liquid for cementitious systems conforming to IS 2645:2008. Reduces water-cement ratio, improves workability, minimizes capillary porosity, and enhances concrete durability.",
   },
   "myk-arment-armix-ellecrete-p-101": {
     image: "myk-arment-armix-ellecrete-p-101.png",

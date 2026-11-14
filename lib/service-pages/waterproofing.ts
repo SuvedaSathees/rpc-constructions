@@ -211,7 +211,7 @@ export const WATERPROOFING_PAGES: readonly ServicePage[] = [
     products: {
       title: "The products we use in tanks and sumps",
       lede: "Crystalline and cementitious systems, a rapid plugging mortar and joint waterstops from Fosroc and Sika. We supply them too, so you can check each one before it goes into your tank.",
-      slugs: ["fosroc-conplast-crystalline", "fosroc-brushbond-grey", "fosroc-rendroc-plug", "fosroc-supercast-sw20", "sika-seal-551", "fosroc-nitocote-cm210-white"],
+      slugs: ["fosroc-conplast-crystalline", "penetron-penetron-admix", "fosroc-brushbond-grey", "fosroc-rendroc-plug", "fosroc-supercast-sw20", "sika-seal-551", "fosroc-nitocote-cm210-white"],
       jobs: ["tank"],
     },
     process: {
@@ -334,7 +334,7 @@ export const WATERPROOFING_PAGES: readonly ServicePage[] = [
     products: {
       title: "The products we use below ground",
       lede: "HDPE and bituminous membranes, joint waterstops, crystalline admixtures and a rapid plugging mortar from Sika and Fosroc. We supply them too, so you can see each one and what it is for.",
-      slugs: ["sikaproof-312-hdpe", "sika-bit-w1", "fosroc-supercast-sw20", "sikaswell-a2010-bar", "fosroc-conplast-crystalline", "fosroc-rendroc-plug"],
+      slugs: ["sikaproof-312-hdpe", "sika-bit-w1", "fosroc-supercast-sw20", "sikaswell-a2010-bar", "fosroc-conplast-crystalline", "penetron-penetron-admix", "fosroc-rendroc-plug"],
       jobs: ["basement"],
     },
     process: {
