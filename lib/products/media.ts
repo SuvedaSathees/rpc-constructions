@@ -627,6 +627,31 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     backImage: "cci-novamix-4000-back.png",
     description: "Advanced high-performance concrete admixture delivering superior water reduction, long slump life, and elevated early compressive strength.",
   },
+  "cci-novacast-pv50": {
+    image: "cci-novacast-pv50.png",
+    backImage: "cci-novacast-pv50-back.png",
+    description: "High-performance precast concrete admixture engineered for accelerated early strength gain, rapid demoulding, and crisp surface finish.",
+  },
+  "cci-novatech-aea": {
+    image: "cci-novatech-aea.png",
+    backImage: "cci-novatech-aea-back.png",
+    description: "Air entraining admixture introducing micro-air bubbles to dramatically enhance freeze-thaw durability, cohesion, and pumpability in concrete.",
+  },
+  "cci-novacure-wb": {
+    image: "cci-novacure-wb.png",
+    backImage: "cci-novacure-wb-back.png",
+    description: "Water-based wax emulsion concrete curing compound forming a non-penetrating film to reduce rapid surface moisture loss and shrinkage cracking.",
+  },
+  "cci-neo-bond-sbr": {
+    image: "cci-neo-bond-sbr.png",
+    backImage: "cci-neo-bond-sbr-back.png",
+    description: "High performance SBR latex bonding agent and polymer modifier for waterproof screeds, structural repair mortars, and high-adhesion slurry coats.",
+  },
+  "cci-neotop-2": {
+    image: "cci-neotop-2.png",
+    backImage: "cci-neotop-2-back.png",
+    description: "Specialized construction application chemical system formulated for durable protective topping, wear resistance, and structural integrity.",
+  },
 };
 
 export const mediaOf = (slug: string): ProductMedia => PRODUCT_MEDIA[slug] ?? {};

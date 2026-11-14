@@ -616,6 +616,51 @@ export function getProductFeatures(p: Product): FeatureItem[] {
     ];
   }
 
+  if (p.slug === "cci-novacast-pv50") {
+    return [
+      { icon: SHIELD_ICON, title: "High Early Demoulding Strength" },
+      { icon: WATER_ICON, title: "Optimized Water Reduction" },
+      { icon: CLOCK_ICON, title: "Accelerated Curing Cycle" },
+      { icon: WRENCH_ICON, title: "Sharp Edge Definition" },
+    ];
+  }
+
+  if (p.slug === "cci-novatech-aea") {
+    return [
+      { icon: WATER_ICON, title: "Microscopic Air Bubble Matrix" },
+      { icon: SHIELD_ICON, title: "Superior Freeze-Thaw Durability" },
+      { icon: CLOCK_ICON, title: "Enhanced Plastic Cohesion" },
+      { icon: WRENCH_ICON, title: "Bleed & Segregation Prevention" },
+    ];
+  }
+
+  if (p.slug === "cci-novacure-wb") {
+    return [
+      { icon: SHIELD_ICON, title: "Moisture Retention Efficiency (>85%)" },
+      { icon: WATER_ICON, title: "Water-Based Wax Emulsion" },
+      { icon: CRACK_ICON, title: "Prevents Plastic Shrinkage Cracking" },
+      { icon: CLOCK_ICON, title: "Eliminates Continuous Water Curing" },
+    ];
+  }
+
+  if (p.slug === "cci-neo-bond-sbr") {
+    return [
+      { icon: SHIELD_ICON, title: "High Interfacial Bond Strength" },
+      { icon: WATER_ICON, title: "Impermeable Waterproof Screeds" },
+      { icon: CRACK_ICON, title: "Flexural & Tensile Toughness" },
+      { icon: WRENCH_ICON, title: "Structural Patch & Repair Mortars" },
+    ];
+  }
+
+  if (p.slug === "cci-neotop-2") {
+    return [
+      { icon: SHIELD_ICON, title: "Heavy-Duty Surface Protection" },
+      { icon: WRENCH_ICON, title: "High Abrasion & Impact Resistance" },
+      { icon: WATER_ICON, title: "Low Capillary Permeability" },
+      { icon: CLOCK_ICON, title: "Durable Long-Life Service" },
+    ];
+  }
+
   if (p.slug === "berger-hs-epoxy-tile-grout") {
 
     return [
@@ -1415,6 +1460,61 @@ export function getKeyBenefits(p: Product): string[] {
       "Drastically reduces capillary porosity, providing superior protection against sulfate attacks and carbonation",
       "Produces robust, self-levelling concrete requiring minimal consolidation energy",
       "Supplied in 230 kg industrial drums conforming to IS 9103 and ASTM C494 Type G",
+    ];
+  }
+
+  if (p.slug === "cci-novacast-pv50") {
+    return [
+      "Engineered specifically for precast elements, pavers, building blocks, and architectural factory concrete",
+      "Accelerates early compressive strength gain, permitting faster formwork stripping within 10 to 14 hours",
+      "Reduces steam curing time or external heat curing requirements, lowering manufacturing energy costs",
+      "Provides superior plastic flow and compaction into complex, heavily profiled mould configurations",
+      "Improves precast surface finish, eliminating blowholes, honeycombing, and edge spalling",
+      "Supplied in 230 kg drums and 20 kg cans conforming to IS 9103 and ASTM C494 Type F",
+    ];
+  }
+
+  if (p.slug === "cci-novatech-aea") {
+    return [
+      "Introduces a stable matrix of uniformly spaced microscopic air bubbles throughout the concrete paste",
+      "Dramatically improves resistance to freeze-thaw cycles, scaling salts, and harsh thermal weathering",
+      "Enhances plastic workability and cohesive body in lean mixes and manufactured sand (M-sand) blends",
+      "Minimizes bleeding, sand streaking, and aggregate segregation in high-slump and pumped placements",
+      "Reduces concrete permeability by interrupting capillary action and water tracking channels",
+      "Supplied in 230 kg industrial drums conforming to IS 9103 and ASTM C260 standards",
+    ];
+  }
+
+  if (p.slug === "cci-novacure-wb") {
+    return [
+      "Forms a continuous, non-penetrating micro-wax barrier film across freshly placed concrete surfaces",
+      "Restricts evaporative moisture loss during early hydration by over 85%, ensuring optimal cement curing",
+      "Minimizes drying shrinkage cracks, thermal map-cracking, and premature surface dusting",
+      "Eliminates the logistical burden of wet hessian burlap wrapping and continuous water pounding",
+      "Non-flammable, non-hazardous water-based emulsion suitable for interior floors and outdoor pavements",
+      "Supplied in 230 kg industrial drums conforming to ASTM C309 Type 1 Class A and BS 7542",
+    ];
+  }
+
+  if (p.slug === "cci-neo-bond-sbr") {
+    return [
+      "High solids styrene-butadiene copolymer (SBR) latex designed as an integral bonding and waterproofing agent",
+      "Forms a permanent, chemical-resistant adhesive bond between old and new concrete or masonry substrates",
+      "Substantially enhances tensile, flexural, and impact resistance of polymer-modified mortar toppings",
+      "Drastically cuts water permeability, resisting positive and negative hydrostatic moisture transmission",
+      "Prevents cracking and crazing in thin repair overlays, floor screeds, and waterproof render coatings",
+      "Supplied in 20 kg ergonomic containers for high-durability construction and rehabilitation works",
+    ];
+  }
+
+  if (p.slug === "cci-neotop-2") {
+    return [
+      "Specialized construction chemical formulation engineered for protective surface overlay and structural integrity",
+      "Provides superior resistance against surface abrasion, point impact loads, and mechanical wear",
+      "Produces a dense, monolithic finish compatible with standard civil engineering site practices",
+      "Protects underlying concrete against chemical spillage, oil staining, and atmospheric carbonation",
+      "Easy site batching and uniform placement with standard trowelling and application tools",
+      "Supplied in 12 kg and 24 kg industrial pails for commercial, industrial, and infrastructure facilities",
     ];
   }
 
@@ -2381,6 +2481,61 @@ export function getTypicalProperties(p: Product): SpecProperty[] {
       { label: "pH Value", value: "6.0 - 8.0" },
       { label: "Chloride Content", value: "Nil (IS 456 compliant)" },
       { label: "Recommended Dosage", value: "0.5 - 1.4% by weight of cement" },
+    ];
+  }
+
+  if (p.slug === "cci-novacast-pv50") {
+    return [
+      { label: "Chemical Base", value: "Modified Naphthalene / Polymeric Accelerator Blend" },
+      { label: "Appearance", value: "Brown free-flowing liquid" },
+      { label: "Specific Gravity", value: "1.18 - 1.22 @ 27°C" },
+      { label: "pH Value", value: "7.0 - 8.5" },
+      { label: "Chloride Content", value: "Nil (IS 456 compliant)" },
+      { label: "Recommended Dosage", value: "0.6 - 1.6% by weight of cement" },
+    ];
+  }
+
+  if (p.slug === "cci-novatech-aea") {
+    return [
+      { label: "Chemical Base", value: "Modified Synthetic Surfactant Solution" },
+      { label: "Appearance", value: "Clear to light amber liquid" },
+      { label: "Specific Gravity", value: "1.01 - 1.05 @ 27°C" },
+      { label: "pH Value", value: "7.0 - 9.0" },
+      { label: "Chloride Content", value: "Nil (IS 456 compliant)" },
+      { label: "Recommended Dosage", value: "0.05 - 0.20 L per 100 kg cement" },
+    ];
+  }
+
+  if (p.slug === "cci-novacure-wb") {
+    return [
+      { label: "Form", value: "Water-based wax emulsion" },
+      { label: "Appearance", value: "Milky white liquid (dries clear)" },
+      { label: "Specific Gravity", value: "0.98 - 1.02 @ 27°C" },
+      { label: "Curing Efficiency", value: "≥ 85% water retention (BS 7542)" },
+      { label: "Application Method", value: "Low-pressure spray or roller" },
+      { label: "Theoretical Coverage", value: "4.5 - 6.0 m² per liter" },
+    ];
+  }
+
+  if (p.slug === "cci-neo-bond-sbr") {
+    return [
+      { label: "Polymer Base", value: "Styrene Butadiene Rubber (SBR) Latex" },
+      { label: "Appearance", value: "Milky white free-flowing emulsion" },
+      { label: "Specific Gravity", value: "1.01 - 1.04 @ 27°C" },
+      { label: "Total Solids Content", value: "Approx. 35 - 40%" },
+      { label: "Bond Strength", value: "> 2.5 N/mm² (Concrete failure)" },
+      { label: "Recommended Dilution", value: "1:1 with clean water for bonding slurry" },
+    ];
+  }
+
+  if (p.slug === "cci-neotop-2") {
+    return [
+      { label: "Form", value: "Specialized premix powder / polymer compound" },
+      { label: "Appearance", value: "Uniform grey / pigmented formulation" },
+      { label: "Bulk Density", value: "1.30 - 1.50 g/cm³" },
+      { label: "Compressive Strength", value: "High design strength" },
+      { label: "Packaging", value: "12 kg and 24 kg durable pails" },
+      { label: "Storage", value: "Dry, sheltered conditions above 5°C" },
     ];
   }
 
