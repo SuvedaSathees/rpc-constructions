@@ -166,7 +166,10 @@ function mountViewer(root: HTMLElement, on: On, env?: PageEnv) {
   };
 
   const applyViewAngle = (pv: HTMLDialogElement, idx: number) => {
-    currentAngle = idx === 1 ? 1 : 0;
+    /* backImageSrc guesses "<front>-back.<ext>" when media.ts names no back photo, so a
+       product can carry a back path whose file does not exist. The probe below settles it
+       and marks the dialog; without a real back photo every route here lands on 0. */
+    currentAngle = idx === 1 && pv.dataset.pvBack === "1" ? 1 : 0;
     const thumbs = Array.from(pv.querySelectorAll<HTMLButtonElement>("[data-pv-view]"));
     thumbs.forEach((th) => {
       th.classList.toggle("is-active", Number(th.dataset.pvView) === currentAngle);
@@ -268,6 +271,23 @@ function mountViewer(root: HTMLElement, on: On, env?: PageEnv) {
       th1.onerror = () => {
         th1.src = frontSrc;
       };
+    }
+
+    /* A back path is only a guess until the file answers, so ask for it before offering the
+       turn: no back photo, no thumbnails and no arrows, and the viewer stays on the front. */
+    const setBack = (ok: boolean) => {
+      pv.dataset.pvBack = ok ? "1" : "";
+      pv.querySelector<HTMLElement>(".pv-thumbs")?.toggleAttribute("hidden", !ok);
+      pv.querySelector<HTMLElement>("[data-pv-prev]")?.toggleAttribute("hidden", !ok);
+      pv.querySelector<HTMLElement>("[data-pv-next]")?.toggleAttribute("hidden", !ok);
+      if (!ok) currentAngle = 0;
+    };
+    setBack(false);
+    if (backSrc && backSrc !== frontSrc) {
+      const probe = new Image();
+      probe.onload = () => setBack(true);
+      probe.onerror = () => setBack(false);
+      probe.src = backSrc;
     }
 
     // 4 Features in hero

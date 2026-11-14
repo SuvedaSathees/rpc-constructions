@@ -19,6 +19,9 @@ export interface ProjectData {
   status: string;
   image: string;
   summary: string;
+  area?: string;
+  year?: string;
+  clientType?: string;
   /** the story of its waterproofing */
   story?: string;
   waterproofing?: string;
@@ -53,7 +56,7 @@ function row(p: ProjectData) {
   const layers = layersOf(p);
   const text = [p.name, p.location, p.type, p.status, p.summary, p.waterproofing ?? "", p.materials ?? ""].join(" ").toLowerCase();
   return `<article class="pj-row" id="${esc(p.slug)}" data-town="${esc(town(p.location))}" data-status="${esc(p.status)}" data-text="${esc(text)}" aria-labelledby="pj-${esc(p.slug)}">
-  ${p.image ? `<figure class="pj-pic"><img src="${esc(p.image)}" width="1376" height="768" alt="${esc(`${p.name}, ${p.location}`)}" loading="lazy" decoding="async"></figure>` : ""}
+  ${p.image ? `<figure class="pj-pic"><img src="${esc(p.image)}" width="1376" height="768" alt="${esc(`${p.name}, ${p.location}`)}" loading="lazy" decoding="async"></figure>` : `<figure class="pj-pic pj-pic--none" aria-hidden="true"></figure>`}
   <p class="pj-top"><span class="pj-stat" data-s="${dot(p.status)}"><i class="pj-st" data-s="${dot(p.status)}"></i>${esc(p.status)}</span><span class="pj-type">${esc(p.type)}</span></p>
   <h2 class="pj-name" id="pj-${esc(p.slug)}">${esc(p.name)}</h2>
   <p class="pj-loc">${pin}${esc(p.location)}</p>
@@ -63,55 +66,50 @@ function row(p: ProjectData) {
 }
 
 /**
- * The applications as one aerial view of a town like ours (a picture made
- * with Google's Flow, its mark left in its corner): each kind of building is
+ * The applications as one aerial view of a town like ours: each kind of building is
  * a numbered point on it. Pick one and the box beside it zooms into that
- * building and shows our project of that kind, or, for the water tank, the
- * methods for tanks and sumps.
+ * building and shows our project of that kind.
  */
 const SCENE = "/images/projects/applications-scene.webp";
-const SPOTS: readonly { key: string; label: string; x: number; y: number; slug?: string }[] = [
-  { key: "homes", label: "Homes and apartments", x: 12.7, y: 52, slug: "kaveri-residences" },
-  { key: "villas", label: "Villas", x: 36, y: 55, slug: "thindal-courtyard-villa" },
-  { key: "offices", label: "Offices", x: 57.4, y: 41, slug: "avinashi-corporate-centre" },
-  { key: "factories", label: "Factories", x: 86, y: 47, slug: "sipcot-textile-processing-unit" },
-  { key: "tanks", label: "Water tanks and sumps", x: 74.5, y: 73 },
+/** each building in the view: a landmark project of ours with its zoom coordinates and data */
+const SPOTS: readonly { key: string; label: string; x: number; y: number; slug?: string; title?: string; lead?: string; place?: string }[] = [
+  { key: "library", label: "Kalaignar Library", x: 24, y: 58, slug: "kalaignar-centenary-library-madurai" },
+  { key: "campus", label: "IIT Palakkad", x: 25, y: 36, slug: "iit-palakkad" },
+  { key: "highway", label: "Chithode Highway", x: 55, y: 52, slug: "sathyamangalam-chithode-highway" },
+  { key: "factory", label: "VinFast Factory", x: 78, y: 45, slug: "vinfast-thoothukudi-plant" },
+  { key: "irrigation", label: "Athikadavu Scheme", x: 83, y: 74, slug: "athikadavu-avinashi-scheme" },
 ];
-/** how far the box beside the view zooms in */
-const ZOOM = 3;
-const bgPos = (v: number) => Math.min(100, Math.max(0, ((v / 100) * ZOOM - 0.5) / (ZOOM - 1) * 100)).toFixed(1);
-
 function sceneMarkup(ps: readonly ProjectData[]) {
-  const tank = PLACES.find((pl) => pl.key === "tank");
-  const tankMethods = (tank?.methods ?? []).map((n) => METHODS.find((m) => m.no === n)?.short).filter(Boolean) as string[];
-  const TICK = `<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   const step = (i: number) =>
-    `<span class="pjs-step"><button type="button" data-step="-1" aria-label="Previous building">‹</button><span>${i + 1} / ${SPOTS.length}</span><button type="button" data-step="1" aria-label="Next building">›</button></span>`;
+    `<span class="pjs-step"><button type="button" data-step="-1" aria-label="Previous landmark">‹</button><span>${i + 1} / ${SPOTS.length}</span><button type="button" data-step="1" aria-label="Next landmark">›</button></span>`;
+  /* under the photo: the landmark's name, where it is, and the way on to its card */
   const panel = (sp: (typeof SPOTS)[number], i: number) => {
     const pr = sp.slug ? ps.find((p) => p.slug === sp.slug) : undefined;
-    const zoom = `<div class="pjs-zoom" style="background-position:${bgPos(sp.x)}% ${bgPos(sp.y)}%" role="img" aria-label="${esc(`A closer look at the ${sp.label.toLowerCase()} in the view`)}"><span class="pjs-zl"><b>${i + 1}</b>${esc(sp.label)}</span>${pr ? `<span class="pjs-zs pj-stat" data-s="${dot(pr.status)}"><i class="pj-st"></i>${esc(pr.status)}</span>` : ""}</div>`;
-    const ticks = (xs: readonly string[]) => `<ul class="pjs-ticks">${xs.map((l) => `<li>${TICK}<span>${esc(l)}</span></li>`).join("")}</ul>`;
-    const body = pr
-      ? `<h3 class="pjs-name">${esc(pr.name)}</h3>
-        <p class="pjs-loc">${pin}${esc(pr.location)}</p>
-        <p class="pjs-lead">${esc(pr.summary)}</p>
-        ${layersOf(pr).length ? `<div class="pjs-wp"><p class="pjs-wk">Waterproofing built in</p>${ticks(layersOf(pr))}</div>` : ""}
-        <div class="pjs-foot">${step(i)}</div>`
-      : `<h3 class="pjs-name">Overhead tanks and underground sumps</h3>
-        <p class="pjs-lead">Sealed so the water stays clean and stays in.</p>
-        <div class="pjs-wp"><p class="pjs-wk">Methods our guide names for them</p>${ticks(tankMethods)}</div>
-        <div class="pjs-foot">${step(i)}</div>`;
-    return `<div class="pjs-panel" data-spot-panel="${sp.key}"${i === 0 ? "" : " hidden"}>${zoom}<div class="pjs-body">${body}</div></div>`;
+    const name = pr ? pr.name : (sp.title ?? sp.label);
+    const where = pr ? `<p class="pjs-loc">${pin}<span>${esc(pr.location)}</span></p>` : "";
+    const cta = pr
+      ? `<a href="#${esc(pr.slug)}" class="pjs-cta"><span>Explore project</span><svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M8 3v10M3 8l5 5 5-5"/></svg></a>`
+      : "";
+    const fact = (k: string, v?: string) => (v ? `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>` : "");
+    const facts = pr
+      ? `<dl class="pjs-facts">${fact("Client", pr.clientType)}${fact("Scale", pr.area)}${fact("Delivered", pr.year)}</dl>`
+      : "";
+    const stat = pr ? `<span class="pjs-stat" data-s="${dot(pr.status)}">${esc(pr.status)}</span>` : "";
+    return `<div class="pjs-cap" data-spot-panel="${sp.key}"${i === 0 ? "" : " hidden"}>
+      <div class="pjs-capn">${stat}<h3 class="pjs-name">${esc(name)}</h3>${where}</div>
+      ${facts}
+      <div class="pjs-capa">${step(i)}${cta}</div>
+    </div>`;
   };
   return `<header class="pjs" aria-labelledby="pjs-h">
   <div class="pg-wrap">
-    <div class="pjs-head">${mark("01", "Building types")}<h1 class="pj-h1" id="pjs-h" data-rv="words">${words("From homes to factories, kept&nbsp;dry.")}</h1></div>
-    <div class="pjs-grid" style="--scene:url('${SCENE}')">
+    <div class="pjs-head">${mark("01", "Landmark typologies")}<h1 class="pj-h1" id="pjs-h" data-rv="words">${words("From libraries to highways, built to last.")}</h1></div>
+    <div class="pjs-grid">
       <figure class="pjs-scene">
-        <img src="${SCENE}" width="1376" height="768" alt="An aerial view of a town near Erode after rain: an apartment block, a villa, an office tower, shops with flats above, a textile factory and a water tank" loading="lazy" decoding="async">
+        <img src="${SCENE}" width="1376" height="768" alt="Aerial panorama of landmark civil and architectural infrastructure projects in Tamil Nadu: Kalaignar Library, IIT Palakkad, Chithode Highway, VinFast Plant, and Athikadavu Scheme" loading="lazy" decoding="async">
         ${SPOTS.map((sp, i) => `<button type="button" class="pjs-spot" data-spot="${sp.key}" style="left:${sp.x}%;top:${sp.y}%" aria-pressed="${i === 0}" aria-label="${esc(sp.label)}"><span class="pjs-n">${i + 1}</span><span class="pjs-tag">${esc(sp.label)}</span></button>`).join("")}
       </figure>
-      <div class="pjs-side">${SPOTS.map(panel).join("")}</div>
+      ${SPOTS.map(panel).join("")}
     </div>
   </div>
 </header>`;
@@ -155,91 +153,94 @@ export function projectsPageMarkup(d: ProjectsData, o: PageOptions = {}) {
 }
 
 export const PROJECTS_CSS = SEARCH_BAR_CSS + `
-/* applications: the aerial view with numbered buildings, and the box that zooms into the one picked */
-.pjs{padding:calc(var(--nav-room) + clamp(2rem,6vh,3.8rem)) 0 0}
-.pjs-head{margin-bottom:clamp(1.1rem,2.6vh,1.6rem)}
-.pjs-head .pg-mark{margin-bottom:.9rem}
-/* the opening band: the same shaded photograph as every page's opening, behind the title; the view of the town rises over its foot */
-.pjs{position:relative;isolation:isolate;overflow-x:clip;padding-top:0 !important}
+/* Landmark typologies regional overview & interactive engineering dossier */
+.pjs{padding:calc(var(--nav-room) + clamp(2rem,6vh,3.8rem)) 0 0;position:relative;isolation:isolate;overflow-x:clip;padding-top:0 !important}
 .pjs-head{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:var(--head-h);box-sizing:border-box;padding:var(--nav-room) 0 var(--head-pb);margin-bottom:clamp(1.4rem,3.2vh,2.2rem) !important}
 .pjs-head::before{content:"";position:absolute;z-index:-1;left:50%;width:100vw;margin-left:-50vw;top:0;bottom:0;background:linear-gradient(90deg,rgba(7,20,44,.9) 0%,rgba(7,20,44,.72) 50%,rgba(7,20,44,.45) 100%),linear-gradient(180deg,rgba(7,20,44,.55),rgba(7,20,44,0) 35%),url("/images/hero-final.jpg") center 42%/cover no-repeat #0b2350}
-.pjs-head .pg-mark{color:rgba(245,240,230,.78)}
+.pjs-head .pg-mark{color:rgba(245,240,230,.78);margin-bottom:.9rem}
 .pjs-head .pg-idx{color:#9fbbe6}
 .pjs-head .pj-h1{color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.25)}
-.pjs-grid{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:.9rem;align-items:stretch}
-.pjs-scene{position:relative;margin:0;aspect-ratio:1376/768;overflow:hidden;border-radius:18px;background:#20303f;box-shadow:0 30px 60px -40px rgba(18,34,59,.55)}
+
+.pjs-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:1.3rem;align-items:stretch;max-width:1180px;margin-inline:auto}
+.pjs-scene{position:relative;margin:0;aspect-ratio:1376/768;overflow:hidden;border-radius:18px;background:#1a2836;box-shadow:0 30px 60px -40px rgba(18,34,59,.55);border:1px solid rgba(18,34,59,.12)}
 .pjs-scene img{display:block;width:100%;height:100%;object-fit:cover}
-/* a point on the view is the numbered disc itself; its name floats above the disc, so a
-   long name no longer runs sideways across the points next to it */
-.pjs-spot{position:absolute;z-index:1;display:block;width:2rem;height:2rem;margin:-1rem 0 0 -1rem;padding:0;border:0;background:none;font:inherit;cursor:pointer}
-.pjs-spot:hover,.pjs-spot:focus-visible,.pjs-spot[aria-pressed=true]{z-index:3}
-.pjs-n{position:relative;display:grid;place-items:center;width:2rem;height:2rem;border-radius:50%;background:#f5f0e6;color:var(--navy);font-size:var(--fs-body);font-weight:700;box-shadow:0 6px 16px -4px rgba(4,12,30,.6);transition:background-color .2s,color .2s,transform .2s}
-.pjs-n::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid rgba(245,240,230,.85);opacity:0;animation:pjs-ring 2.6s ease-out infinite}
+
+/* Numbered interactive pins */
+.pjs-spot{position:absolute;z-index:2;display:block;width:2rem;height:2rem;margin:-1rem 0 0 -1rem;padding:0;border:0;background:none;font:inherit;cursor:pointer}
+.pjs-spot:hover,.pjs-spot:focus-visible,.pjs-spot[aria-pressed=true]{z-index:4}
+.pjs-n{position:relative;display:grid;place-items:center;width:2rem;height:2rem;border-radius:50%;background:#ffffff;color:var(--navy);font-size:.88rem;font-weight:700;box-shadow:0 8px 20px -4px rgba(4,12,30,.65),0 0 0 2px rgba(255,255,255,.9);transition:background-color .2s,color .2s,transform .2s,box-shadow .2s}
+.pjs-n::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(255,255,255,.8);opacity:0;animation:pjs-ring 2.6s ease-out infinite}
 @keyframes pjs-ring{0%{opacity:.9;transform:scale(.8)}100%{opacity:0;transform:scale(1.5)}}
-.pjs-tag{position:absolute;left:50%;bottom:calc(100% + .45rem);padding:.3rem .65rem;border-radius:999px;background:rgba(11,22,38,.82);color:#fff;font-size:var(--fs-body);font-weight:600;line-height:1.3;white-space:nowrap;backdrop-filter:blur(6px);opacity:0;transform:translateX(-50%) translateY(4px);transition:opacity .2s,transform .2s;pointer-events:none}
+.pjs-tag{position:absolute;left:50%;bottom:calc(100% + .55rem);padding:.35rem .75rem;border-radius:999px;background:rgba(7,20,44,.88);color:#fff;font-size:.8rem;font-weight:600;line-height:1.2;white-space:nowrap;backdrop-filter:blur(8px);box-shadow:0 6px 18px -4px rgba(0,0,0,.4);opacity:0;transform:translateX(-50%) translateY(4px);transition:opacity .2s,transform .2s;pointer-events:none}
 .pjs-spot:hover .pjs-tag,.pjs-spot:focus-visible .pjs-tag,.pjs-spot[aria-pressed=true] .pjs-tag{opacity:1;transform:translateX(-50%)}
-.pjs-spot:hover .pjs-n{transform:scale(1.08)}
-.pjs-spot[aria-pressed=true] .pjs-n{background:var(--navy);color:#fff}
+.pjs-spot:hover .pjs-n{transform:scale(1.12)}
+.pjs-spot[aria-pressed=true] .pjs-n{background:var(--navy);color:#fff;box-shadow:0 0 0 3px #fff,0 8px 24px -4px rgba(7,20,44,.8)}
 .pjs-spot:focus-visible{outline:none}
-.pjs-spot:focus-visible .pjs-n{outline:3px solid #f2c14e;outline-offset:2px}
-/* the names of the two points nearest the edges are nudged back inside the view */
-.pjs-spot[data-spot=factories] .pjs-tag{left:auto;right:0;transform:translateY(4px)}
-.pjs-spot[data-spot=factories]:hover .pjs-tag,.pjs-spot[data-spot=factories]:focus-visible .pjs-tag,.pjs-spot[data-spot=factories][aria-pressed=true] .pjs-tag{transform:none}
-.pjs-spot[data-spot=homes] .pjs-tag{left:0;transform:translateY(4px)}
-.pjs-spot[data-spot=homes]:hover .pjs-tag,.pjs-spot[data-spot=homes]:focus-visible .pjs-tag,.pjs-spot[data-spot=homes][aria-pressed=true] .pjs-tag{transform:none}
-.pjs-scene{align-self:start}
-.pjs-side{position:relative;min-height:0}
-.pjs-panel{position:absolute;inset:0;display:flex;flex-direction:column;overflow:hidden;border-radius:18px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line)}
-.pjs-panel[hidden]{display:none}
-.pjs-zoom{flex:1 1 auto;min-height:5rem;background-image:var(--scene);background-size:${ZOOM * 100}% auto;background-repeat:no-repeat;animation:pjs-in .5s cubic-bezier(.2,.7,.2,1)}
-@keyframes pjs-in{from{background-size:100% auto;opacity:.6}}
-.pjs-zoom{position:relative}
-.pjs-zoom::after{content:"";position:absolute;inset:auto 0 0;height:55%;background:linear-gradient(0deg,rgba(11,22,38,.6),rgba(11,22,38,0));pointer-events:none}
-.pjs-zl{position:absolute;left:.8rem;bottom:.75rem;z-index:1;display:inline-flex;align-items:center;gap:.5rem;font-size:var(--fs-body);font-weight:600;color:#fff}
-.pjs-zl b{display:grid;place-items:center;width:1.7rem;height:1.7rem;border-radius:50%;background:#f5f0e6;color:var(--navy);font-weight:700}
-.pjs-zoom .pjs-zs{position:absolute;right:.7rem;top:.7rem;z-index:1;height:1.7rem;padding:0 .65rem;background:#e3f1e8;box-shadow:0 4px 12px -4px rgba(4,12,30,.5)}
-.pjs-zoom .pjs-zs[data-s=live]{background:#fbefd6}.pjs-zoom .pjs-zs[data-s=plan]{background:#e2e9f5}
-.pjs-body{display:flex;flex-direction:column;gap:.3rem;min-height:0;padding:1rem 1.2rem 1rem}
-.pjs-name{margin:0;font-size:var(--fs-sub);font-weight:600;line-height:1.2;letter-spacing:-.01em;color:var(--ink)}
-.pjs-loc{display:flex;align-items:center;gap:.35rem;margin:0;font-size:var(--fs-body);color:var(--mute)}
-.pjs-loc svg{flex:none;width:1rem;height:1rem}
-.pjs-lead{margin:.25rem 0 0;font-size:var(--fs-body);line-height:1.5;color:var(--ink2)}
-.pjs-wp{margin-top:.55rem;padding-top:.6rem;border-top:1px solid var(--line)}
-.pjs-wk{margin:0 0 .35rem;font-size:var(--fs-body);font-weight:600;color:var(--accent)}
-.pjs-ticks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.3rem .9rem;margin:0;padding:0;list-style:none}
-.pjs-ticks li{display:flex;gap:.4rem;font-size:var(--fs-body);line-height:1.35;color:var(--ink)}
-.pjs-ticks svg{flex:none;width:1rem;height:1rem;margin-top:.1rem;color:var(--water)}
-.pjs-foot{display:flex;align-items:center;justify-content:space-between;gap:.8rem;margin-top:auto;padding-top:.8rem}
-.pjs-foot .pg-btn{height:2.6rem;padding:0 1rem}
-.pjs-step{display:inline-flex;align-items:center;gap:.35rem;font-size:var(--fs-body);font-variant-numeric:tabular-nums;color:var(--mute)}
-.pjs-step button{display:grid;place-items:center;width:2.2rem;height:2.2rem;border:0;border-radius:50%;background:rgba(18,34,59,.06);font:inherit;font-size:var(--fs-h3);line-height:1;color:var(--ink);cursor:pointer;transition:background-color .2s}
-.pjs-step button:hover{background:rgba(18,34,59,.12)}
-.pjs-step button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-/* Tablets and small laptops: the box beside the view is barely 330px across and the card
-   was running past its own foot. It keeps the three things worth having at that size — the
-   closer look, a short line on the project, and the step through the six — and the list of
-   layers goes, since the project's own page carries it. */
-@media (min-width:768px) and (max-width:1439px){
-  .pjs-zoom{min-height:7rem}
-  .pjs-body{gap:.22rem;padding:.8rem 1rem .85rem}
-  .pjs-loc{gap:.3rem;font-size:.8rem}
-  .pjs-loc svg{width:.85rem;height:.85rem}
-  .pjs-lead{margin-top:.2rem;font-size:.82rem;line-height:1.45;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
-  .pjs-wp{display:none}
-  .pjs-foot{padding-top:.6rem}
-  .pjs-step{gap:.3rem;font-size:.8rem}
-  .pjs-step button{width:1.9rem;height:1.9rem;font-size:1rem}
+.pjs-spot:focus-visible .pjs-n{outline:3px solid #f2c14e;outline-offset:3px}
+.pjs-spot[data-spot=irrigation] .pjs-tag{left:auto;right:0;transform:translateY(4px)}
+.pjs-spot[data-spot=irrigation]:hover .pjs-tag,.pjs-spot[data-spot=irrigation]:focus-visible .pjs-tag,.pjs-spot[data-spot=irrigation][aria-pressed=true] .pjs-tag{transform:none}
+
+/* Side architectural dossier panel */
+
+/* Header: Blueprint Midnight Technical Strip */
+.pjs-st{display:inline-block;width:6px;height:6px;border-radius:50%}
+.pjs-st[data-s=done]{background:#4caf50;box-shadow:0 0 6px #4caf50}
+.pjs-st[data-s=live]{background:#ffb300;box-shadow:0 0 6px #ffb300}
+.pjs-st[data-s=plan]{background:#64b5f6;box-shadow:0 0 6px #64b5f6}
+.pjs-cat{flex:none;padding:.14rem .48rem;border-radius:5px;background:rgba(255,255,255,.14);font-size:.65rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#e8f0fe}
+
+/* Body: Spec strip, narrative & waterproofing checklist */
+.pjs-body{display:flex;flex-direction:column;flex:1 1 auto;justify-content:space-between;padding:1.1rem 1.3rem 1rem;gap:.9rem;overflow:hidden}
+
+/* Waterproofing matrix */
+
+/* Footer strip */
+.pjs-cap{display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:1.1rem;padding:1.7rem 1.75rem;border-radius:16px;background:var(--card);box-shadow:0 22px 46px -30px rgba(7,20,44,.5)}
+.pjs-cap[hidden]{display:none}
+.pjs-capn{min-width:0;width:100%}
+.pjs-stat{display:inline-flex;align-items:center;gap:.4rem;margin:0 0 .6rem;padding:.26rem .7rem;border-radius:999px;font-size:.78rem;font-weight:600}
+.pjs-stat::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.pjs-stat[data-s=done]{background:rgba(46,125,50,.12);color:#2e7d32}
+.pjs-stat[data-s=live]{background:rgba(199,122,0,.14);color:#a86400}
+.pjs-stat[data-s=plan]{background:rgba(39,86,160,.12);color:var(--accent)}
+.pjs-facts{width:100%;margin:0;padding:0;display:flex;flex-direction:column}
+.pjs-facts > div{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:.72rem 0;border-top:1px solid rgba(18,34,59,.1)}
+.pjs-facts > div:last-child{border-bottom:1px solid rgba(18,34,59,.1)}
+.pjs-facts dt{margin:0;flex:none;font-size:.84rem;color:var(--mute)}
+.pjs-facts dd{margin:0;min-width:0;font-size:.94rem;font-weight:600;line-height:1.35;color:var(--navy);text-align:right;overflow-wrap:anywhere}
+.pjs-cap .pjs-name{margin:0;font-weight:700;letter-spacing:-.015em;color:var(--navy);overflow-wrap:anywhere}
+.pjs-cap .pjs-loc{display:flex;align-items:center;min-width:0;gap:.4rem;margin:.3rem 0 0;font-size:clamp(.86rem,.8rem + .22vw,1rem);color:var(--ink2)}
+.pjs-cap .pjs-loc svg{flex:none;width:1.05em;height:1.05em;color:var(--accent)}
+.pjs-capa{display:flex;align-items:center;gap:.8rem;flex:none}
+@media (max-width:1200px){
+  .pjs-grid{gap:1rem}
+  .pjs-cap{gap:1rem;padding:1.25rem 1.35rem}
+  .pjs-capa{width:100%;justify-content:space-between}
 }
-@media (prefers-reduced-motion:reduce){.pjs-n::after,.pjs-zoom{animation:none}}
+.pjs-step{display:inline-flex;align-items:center;gap:.5rem;font-size:.9rem;font-weight:600;font-variant-numeric:tabular-nums;color:var(--mute)}
+.pjs-step button{display:grid;place-items:center;width:2.2rem;height:2.2rem;border:0;border-radius:50%;background:#ffffff;border:1px solid rgba(18,34,59,.15);font:inherit;font-size:1.05rem;line-height:1;color:var(--navy);cursor:pointer;box-shadow:0 2px 5px -2px rgba(18,34,59,.1);transition:background-color .2s,border-color .2s,transform .15s}
+.pjs-step button:hover{background:var(--navy);color:#fff;border-color:var(--navy);transform:scale(1.05)}
+.pjs-step button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.pjs-cta{display:inline-flex;align-items:center;gap:.4rem;height:2.7rem;padding:0 1.15rem;border-radius:8px;background:var(--navy);color:#f5f0e6;font-size:.9rem;font-weight:600;text-decoration:none;box-shadow:0 3px 10px -3px rgba(11,35,80,.35);transition:background-color .2s,transform .15s}
+.pjs-cta:hover{background:var(--accent);color:#fff;transform:translateY(-1px)}
+.pjs-cta svg{flex:none;transition:transform .2s}
+.pjs-cta:hover svg{transform:translateY(2px)}
+
+@media (min-width:768px) and (max-width:1439px){
+  .pjs-body{padding:.9rem 1.05rem .85rem;gap:.7rem}
+}
+@media (prefers-reduced-motion:reduce){.pjs-n::after{animation:none}}
 @media (max-width:1023px){
   .pjs-grid{grid-template-columns:minmax(0,1fr)}
-  .pjs-panel{position:static}
-  .pjs-zoom{display:none}
+}
+@media (max-width:480px){
 }
 @media (max-width:599px){.pjs-tag{display:none}.pjs-n{width:1.7rem;height:1.7rem}.pjs-spot{width:1.7rem;height:1.7rem;margin:-.85rem 0 0 -.85rem}}
 /* each project card opens with its photo, whole, at its own proportions */
 .pj-pic{margin:-1.3rem -1.35rem 1rem;aspect-ratio:1376/768;overflow:hidden;border-radius:18px 18px 0 0;background:#d9d0bf}
 .pj-pic img{display:block;width:100%;height:100%;object-fit:cover}
+/* a project whose photo has not come in yet: the same block, hatched, so the row keeps its shape */
+.pj-pic--none{background:repeating-linear-gradient(135deg,#ddd5c6 0 10px,#d5ccba 10px 20px)}
 .pj-row.pj-next{justify-content:center;gap:.6rem;padding-bottom:1.35rem;background:var(--navy);box-shadow:none}
 .pj-row.pj-next .pj-type{color:rgba(245,240,230,.7)}
 .pj-row.pj-next .pj-name{color:#fff}

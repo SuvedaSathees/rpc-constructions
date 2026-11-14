@@ -445,9 +445,11 @@
   @media (max-width: 599px) {
     main .fo-sec h2.pg-h2.pg-h2.pg-h2.pg-h2 { font-size: 1.15rem !important; line-height: 1.25 !important; }
   }
-  /* the project name in the box beside the aerial view is a card title, not a section heading */
-  @media (min-width: 768px) and (max-width: 1439px) {
-    main .pjs-panel h3.pjs-name.pjs-name.pjs-name.pjs-name { font-size: 1.02rem !important; line-height: 1.25 !important; }
+  /* the landmark's name under the aerial view is that view's caption, so it takes a
+     caption's scale rather than this page's h3 size, at every width */
+  main .pjs-cap h3.pjs-name.pjs-name.pjs-name.pjs-name {
+    font-size: clamp(1.3rem, 1rem + 0.8vw, 1.8rem) !important;
+    line-height: 1.18 !important;
   }
   /* the questions heading opens a column of cards; at the page-title size it swamped them */
   main .sv-fsec h2.pg-h2.pg-h2.pg-h2.pg-h2 { font-size: clamp(1.15rem, .95rem + .6vw, 1.5rem) !important; line-height: 1.2 !important; }

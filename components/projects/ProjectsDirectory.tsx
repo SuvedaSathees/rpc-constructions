@@ -7,7 +7,7 @@ import { ArrowUpRight, MapPin } from "lucide-react";
 import { ArrowLink } from "@/components/ui/Primitives";
 import { projects } from "@/lib/content";
 
-const categories = ["All", "Residential", "Commercial", "Villa", "Industrial", "Mixed-use"] as const;
+const categories = ["All", "Institutional", "Industrial", "Infrastructure", "Energy", "Residential", "Commercial"] as const;
 
 const statusDot = (s: string) => (s === "Completed" ? "bg-emerald-500" : s === "Under construction" ? "animate-pulse bg-amber-500" : "bg-sky-500");
 

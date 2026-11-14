@@ -5,12 +5,12 @@
  * outwards, and its top is laid panel by panel, back to front, as the page
  * loads (the steps under the name read Walls, Roof, Sealed). Once the page is
  * in, the joints close and a gloss runs over it as it is sealed, and it
- * becomes the logo itself, its letters and lines in cream. Then the logo
+ * becomes the logo itself, in full colour. Then the logo
  * flies up onto the logo in the top bar while the screen fades onto the hero.
  *
  * The cube is drawn on the exact shape of the logo's cube (public/logo.png),
- * so the built cube and the logo line up; the logo comes from a light copy of
- * it (public/media/loader-mark.webp). Plain markup and one mount function,
+ * so the built cube and the logo line up; the logo itself is the same mark the
+ * top bar shows (public/media/loader-mark.webp). Plain markup and one mount function,
  * like lib/loader/drop.ts, with the same options, so it drops into the same
  * place. Everything here is the paragraph size, like the site's small type.
  */
@@ -31,7 +31,7 @@ export interface BuildOptions {
   onGone?: () => void;
 }
 
-/** the cube mark, the same picture the top bar shows, made light for this screen */
+/** the cube mark: the top bar’s own logo, reframed to sit on the built cube */
 const MARK = "/media/loader-mark.webp";
 /** set once the full opening has played, so a return in the same visit is quicker */
 const INTRO_KEY = "rpc-build-intro";
@@ -136,9 +136,8 @@ export const BUILD_CSS = `
 .bl-stage{position:relative;width:var(--m);height:var(--m)}
 .bl-cube{position:absolute;inset:0;width:100%;height:100%;display:block;transition:opacity ${FLAT_MS}ms ease}
 .bl.is-flat .bl-cube{opacity:0}
-/* the logo, the same size and place as the cube drawn under it; its letters and lines are see-through, so a cream hexagon sits behind them as the top bar's tile does */
+/* the logo, the same size and place as the cube drawn under it; its faces are solid and its seams see-through, so the night blue shows through them as it does in the top bar */
 .bl-mark{--hex:polygon(49.8% 11.2%,84.3% 28.2%,84.3% 68.4%,49.8% 86.6%,15.4% 68.4%,15.4% 28.2%);position:absolute;inset:0;opacity:0;transform-origin:50% 50%;transition:opacity ${FLAT_MS}ms ease;will-change:transform}
-.bl-mark::before{content:"";position:absolute;inset:0;background:var(--cream);clip-path:var(--hex)}
 .bl-mark img{position:relative;display:block;width:100%;height:100%}
 .bl.is-flat .bl-mark{opacity:1}
 .bl-gloss{position:absolute;inset:0;clip-path:var(--hex);background:linear-gradient(115deg,rgba(255,255,255,0) 32%,rgba(255,255,255,.5) 48%,rgba(255,255,255,0) 62%) 0 0/300% 100% no-repeat;background-position:110% 0;opacity:0}
