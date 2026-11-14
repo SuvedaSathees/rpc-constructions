@@ -571,6 +571,51 @@ export function getProductFeatures(p: Product): FeatureItem[] {
     ];
   }
 
+  if (p.slug === "fosroc-conplast-sp430-es2") {
+    return [
+      { icon: WATER_ICON, title: "High Water Reduction (up to 25%)" },
+      { icon: SHIELD_ICON, title: "SNF Condensate Technology" },
+      { icon: CRACK_ICON, title: "High Early & Ultimate Strength" },
+      { icon: CLOCK_ICON, title: "Extended Setting Control" },
+    ];
+  }
+
+  if (p.slug === "fosroc-moulding-oil") {
+    return [
+      { icon: SHIELD_ICON, title: "Effortless Formwork Striking" },
+      { icon: WRENCH_ICON, title: "Smooth Blemish-Free Finish" },
+      { icon: CLOCK_ICON, title: "Extended Shuttering Life" },
+      { icon: WATER_ICON, title: "Ready-to-Use Formulation" },
+    ];
+  }
+
+  if (p.slug === "cci-novaplast-8200") {
+    return [
+      { icon: WATER_ICON, title: "High Water Reduction (20-25%)" },
+      { icon: CRACK_ICON, title: "Rapid Early Strength Gain" },
+      { icon: CLOCK_ICON, title: "Enhanced Workability & Placement" },
+      { icon: SHIELD_ICON, title: "Superior Flow & Cohesion" },
+    ];
+  }
+
+  if (p.slug === "cci-novamix-2000") {
+    return [
+      { icon: WATER_ICON, title: "Significant Water Reduction" },
+      { icon: CLOCK_ICON, title: "Extended Slump Retention" },
+      { icon: SHIELD_ICON, title: "Consistent Mix Performance" },
+      { icon: WRENCH_ICON, title: "Enhanced Long-Distance Pumping" },
+    ];
+  }
+
+  if (p.slug === "cci-novamix-4000") {
+    return [
+      { icon: WATER_ICON, title: "High-Range Water Reduction (>25%)" },
+      { icon: CLOCK_ICON, title: "Superior Slump Life (2+ Hours)" },
+      { icon: CRACK_ICON, title: "High Durability & Low Permeability" },
+      { icon: SHIELD_ICON, title: "High-Grade Concrete (M40 - M80)" },
+    ];
+  }
+
   if (p.slug === "berger-hs-epoxy-tile-grout") {
 
     return [
@@ -1315,6 +1360,61 @@ export function getKeyBenefits(p: Product): string[] {
       "Reduces or eliminates steam curing requirements in precast concrete element manufacturing",
       "Improves surface texture, sharp edge definition, and reduces surface blemishes",
       "Supplied in 250 kg industrial drums conforming to IS 9103 and ASTM C494 Type F",
+    ];
+  }
+
+  if (p.slug === "fosroc-conplast-sp430-es2") {
+    return [
+      "High performance superplasticizer based on modified sulphonated naphthalene formaldehyde (SNF) condensates",
+      "Achieves substantial water reduction (up to 25%) to dramatically increase early and ultimate compressive strength",
+      "Significantly improves rheology and pumpability for congested reinforcement and tall vertical pours",
+      "Provides controlled workability retention without excessive delay in demoulding and formwork cycles",
+      "Minimizes concrete permeability, surface honeycombing, and drying shrinkage cracking",
+      "Supplied in 250 kg industrial drums conforming to IS 9103, BS 5075, and ASTM C494 Type F & G",
+    ];
+  }
+
+  if (p.slug === "fosroc-moulding-oil") {
+    return [
+      "Ready-to-use chemical mould release agent formulated for clean, non-staining striking of formwork",
+      "Prevents damage to precast concrete edges, corners, and surface profiles during demoulding",
+      "Leaves fair-faced, architectural concrete surfaces free from blowholes, oil stains, and discoloration",
+      "Significantly extends the usable lifespan of steel, timber, plywood, and fiberglass moulds",
+      "Easy application by brush, roller, or low-pressure spray with economical coverage rate (20-40 m²/L)",
+      "Supplied in 220 kg / 250 kg industrial drums for precast manufacturing and high-volume site operations",
+    ];
+  }
+
+  if (p.slug === "cci-novaplast-8200") {
+    return [
+      "High performance superplasticising admixture for concrete and mortar, substantially reducing water demand",
+      "Improves plastic concrete workability, ease of placement, and compaction without segregation or bleeding",
+      "Promotes accelerated hydration to achieve higher early compressive strength for fast project scheduling",
+      "Increases concrete density and impermeability, providing excellent resistance to water ingress and aggressive salts",
+      "Fully compatible with Ordinary Portland Cement, blended cements (PPC/PSC), and pozzolanic micro-silica",
+      "Supplied in 230 kg industrial drums conforming to IS 9103 and ASTM C494 Type F",
+    ];
+  }
+
+  if (p.slug === "cci-novamix-2000") {
+    return [
+      "High performance concrete admixture engineered for significant water reduction and extended slump retention",
+      "Delivers consistent workability during extended transit times in hot ambient temperatures",
+      "Improves concrete flowability and cohesive rheology, preventing aggregate settlement and honeycombing",
+      "Optimizes cement paste efficiency, allowing balanced mix designs with reduced carbon footprint",
+      "Ensures predictable setting characteristics and smooth pump placement through multi-stage delivery lines",
+      "Supplied in 230 kg industrial drums conforming to IS 9103 and ASTM C494 Type G",
+    ];
+  }
+
+  if (p.slug === "cci-novamix-4000") {
+    return [
+      "Advanced high-performance concrete admixture engineered for extreme water reduction and sustained slump retention",
+      "Formulated specifically for high-grade infrastructural projects, massive raft pours, and bridge decks",
+      "Maintains high workability for over 2 hours without compromising 1-day and 28-day mechanical strengths",
+      "Drastically reduces capillary porosity, providing superior protection against sulfate attacks and carbonation",
+      "Produces robust, self-levelling concrete requiring minimal consolidation energy",
+      "Supplied in 230 kg industrial drums conforming to IS 9103 and ASTM C494 Type G",
     ];
   }
 
@@ -2226,6 +2326,61 @@ export function getTypicalProperties(p: Product): SpecProperty[] {
       { label: "pH Value", value: "7.0 - 8.5" },
       { label: "Chloride Content", value: "Nil (IS 456)" },
       { label: "Recommended Dosage", value: "0.7 - 1.8 L per 100 kg cement" },
+    ];
+  }
+
+  if (p.slug === "fosroc-conplast-sp430-es2") {
+    return [
+      { label: "Polymer Base", value: "Sulphonated Naphthalene Formaldehyde (SNF)" },
+      { label: "Appearance", value: "Dark brown liquid" },
+      { label: "Specific Gravity", value: "1.20 - 1.25 @ 27°C" },
+      { label: "pH Value", value: "7.0 - 8.5" },
+      { label: "Chloride Content", value: "Nil (IS 456 / BS 5075)" },
+      { label: "Recommended Dosage", value: "0.5 - 1.5 L per 100 kg cement" },
+    ];
+  }
+
+  if (p.slug === "fosroc-moulding-oil") {
+    return [
+      { label: "Form", value: "Liquid oil blend" },
+      { label: "Appearance", value: "Clear to pale amber liquid" },
+      { label: "Specific Gravity", value: "0.83 - 0.88 @ 27°C" },
+      { label: "Flash Point", value: "> 60°C" },
+      { label: "Application Method", value: "Brush, roller, or conventional spray" },
+      { label: "Theoretical Coverage", value: "20 - 40 m² per liter" },
+    ];
+  }
+
+  if (p.slug === "cci-novaplast-8200") {
+    return [
+      { label: "Chemical Base", value: "Modified Synthetic Polymer Admixture" },
+      { label: "Appearance", value: "Dark brown free-flowing liquid" },
+      { label: "Specific Gravity", value: "1.18 - 1.22 @ 27°C" },
+      { label: "pH Value", value: "6.5 - 8.5" },
+      { label: "Chloride Content", value: "< 0.1% (Chloride free per IS 456)" },
+      { label: "Recommended Dosage", value: "0.5 - 1.5% by weight of cement" },
+    ];
+  }
+
+  if (p.slug === "cci-novamix-2000") {
+    return [
+      { label: "Chemical Base", value: "Advanced Polymeric Dispersant" },
+      { label: "Appearance", value: "Brown liquid" },
+      { label: "Specific Gravity", value: "1.15 - 1.20 @ 27°C" },
+      { label: "pH Value", value: "6.5 - 8.0" },
+      { label: "Chloride Content", value: "Chloride free (IS 456 compliant)" },
+      { label: "Recommended Dosage", value: "0.4 - 1.2% by weight of cement" },
+    ];
+  }
+
+  if (p.slug === "cci-novamix-4000") {
+    return [
+      { label: "Chemical Base", value: "Next-Gen High-Range Polymeric Complex" },
+      { label: "Appearance", value: "Dark amber / brown liquid" },
+      { label: "Specific Gravity", value: "1.16 - 1.22 @ 27°C" },
+      { label: "pH Value", value: "6.0 - 8.0" },
+      { label: "Chloride Content", value: "Nil (IS 456 compliant)" },
+      { label: "Recommended Dosage", value: "0.5 - 1.4% by weight of cement" },
     ];
   }
 

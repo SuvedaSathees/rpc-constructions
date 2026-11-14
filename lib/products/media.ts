@@ -601,6 +601,32 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     backImage: "myk-arment-armix-form-fr-2-back.png",
     description: "Water-dilutable concentrate mould release agent providing clean strike and extended life for steel, plywood, and plastic formwork.",
   },
+  "fosroc-conplast-sp430-es2": {
+    image: "fosroc-conplast-sp430-es2.png",
+    backImage: "fosroc-conplast-sp430-es2-back.png",
+    description: "High performance superplasticizer based on SNF polymer technology engineered for water reduction, improved workability, and high early strength.",
+    pdf: "TDS-Conplast-SP430-India3.pdf",
+  },
+  "fosroc-moulding-oil": {
+    image: "fosroc-moulding-oil.png",
+    backImage: "fosroc-moulding-oil-back.png",
+    description: "Ready-to-use form-release agent formulated for moulds and formwork to achieve effortless striking and an architectural, blemish-free concrete finish.",
+  },
+  "cci-novaplast-8200": {
+    image: "cci-novaplast-8200.png",
+    backImage: "cci-novaplast-8200-back.png",
+    description: "High performance superplasticising admixture for concrete and mortar, substantially reducing water demand while enhancing workability and strength development.",
+  },
+  "cci-novamix-2000": {
+    image: "cci-novamix-2000.png",
+    backImage: "cci-novamix-2000-back.png",
+    description: "High performance concrete admixture engineered for significant water reduction, extended slump retention, and uniform concrete durability.",
+  },
+  "cci-novamix-4000": {
+    image: "cci-novamix-4000.png",
+    backImage: "cci-novamix-4000-back.png",
+    description: "Advanced high-performance concrete admixture delivering superior water reduction, long slump life, and elevated early compressive strength.",
+  },
 };
 
 export const mediaOf = (slug: string): ProductMedia => PRODUCT_MEDIA[slug] ?? {};
