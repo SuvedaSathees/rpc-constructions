@@ -109,6 +109,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "fosroc-conplast-sp430": {
     image: "fosroc-conplast-sp430.png",
+    backImage: "fosroc-conplast-sp430-back.png",
     description: "Chloride-free superplasticizing admixture based on selected sulphonated naphthalene polymers. Provides substantial water reduction and high early and ultimate strengths.",
     pdf: "TDS-Conplast-SP430-India3.pdf",
   },
@@ -148,10 +149,19 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     pdf: "TDS-Conbextra-GP2-India7.pdf",
   },
   "fosroc-conplast-sp439": {
+    image: "fosroc-conplast-sp439.png",
+    backImage: "fosroc-conplast-sp439-back.png",
     description: "High performance superplasticizer for precast and ready-mix concrete requiring rapid workability retention and high early strength.",
     pdf: "TDS-Conplast-SP439-India2 (1).pdf",
   },
+  "fosroc-conplast-sp430-g": {
+    image: "fosroc-conplast-sp430-g.png",
+    backImage: "fosroc-conplast-sp430-g-back.png",
+    description: "Chloride-free superplasticizing admixture based on selected sulphonated naphthalene polymers formulated for enhanced pumpability and high early strength.",
+  },
   "fosroc-conplast-sp430-g8": {
+    image: "fosroc-conplast-sp430-g8.png",
+    backImage: "fosroc-conplast-sp430-g8-back.png",
     description: "High performance superplasticizing admixture designed to provide significant water reduction and prolonged workability retention.",
     pdf: "TDS-Conplast-SP430-G8-India3.pdf",
   },
@@ -161,12 +171,19 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     description: "High performance PCE-based superplasticizer for ready-mix concrete requiring exceptional slump retention and high durability.",
     pdf: "TDS-Auramix-400-India3.pdf",
   },
+  "fosroc-auramix-350": {
+    image: "fosroc-auramix-350.png",
+    backImage: "fosroc-auramix-350-back.png",
+    description: "High performance polycarboxylate ether based superplasticizer specifically designed to provide high water reduction and excellent slump retention in harsh climates.",
+  },
   "fosroc-auramix-300-plus": {
     image: "fosroc-auramix-300-plus.png",
     description: "Next-generation polycarboxylate ether superplasticizer for high performance concrete with low water-binder ratio and rapid strength gain.",
     pdf: "TDS-Auramix-300-Plus-India4.pdf",
   },
   "fosroc-auramix-300": {
+    image: "fosroc-auramix-300.png",
+    backImage: "fosroc-auramix-300-back.png",
     description: "Versatile PCE superplasticizer for high grade ready-mix concrete offering high workability and extended slump retention.",
     pdf: "TDS-Auramix-300-India3.pdf",
   },
