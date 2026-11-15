@@ -259,18 +259,23 @@ function aboutRoutes(root: HTMLElement): Off {
   const dest = box.dataset.dest ?? "";
   const map = box.querySelector<HTMLIFrameElement>("[data-map]");
   const open = box.querySelector<HTMLAnchorElement>("[data-open]");
+  const mapLink = box.querySelector<HTMLAnchorElement>("[data-maplink]");
   const towns = Array.from(box.querySelectorAll<HTMLButtonElement>("[data-town]"));
   const lists = Array.from(box.querySelectorAll<HTMLElement>("[data-from-town]"));
   const enc = encodeURIComponent;
   const route = (b: HTMLElement) => {
     const place = b.dataset.place ?? "";
+    // each town's routes end at that town's own office
+    const to = b.closest<HTMLElement>("[data-from-town]")?.dataset.to || dest;
     // the starting places are links now, so the one in view is marked as current, not pressed
     box.querySelectorAll<HTMLElement>("[data-place]").forEach((x) => (x === b ? x.setAttribute("aria-current", "true") : x.removeAttribute("aria-current")));
     if (map) {
-      map.src = `https://maps.google.com/maps?saddr=${enc(place)}&daddr=${enc(dest)}&output=embed`;
+      map.src = `https://maps.google.com/maps?saddr=${enc(place)}&daddr=${enc(to)}&output=embed`;
       map.title = `Road route from ${b.dataset.label ?? place} to our office`;
     }
-    if (open) open.href = `https://www.google.com/maps/dir/?api=1&origin=${enc(place)}&destination=${enc(dest)}&travelmode=driving`;
+    const href = `https://www.google.com/maps/dir/?api=1&origin=${enc(place)}&destination=${enc(to)}&travelmode=driving`;
+    if (open) open.href = href;
+    if (mapLink) mapLink.href = href;
   };
   const onClick = (e: Event) => {
     const t = e.target as Element;
@@ -284,7 +289,14 @@ function aboutRoutes(root: HTMLElement): Off {
       return;
     }
     const r = t.closest<HTMLElement>("[data-place]");
-    if (r && box.contains(r)) route(r);
+    if (r && box.contains(r)) {
+      // picking a place only draws its route on the map here. Google Maps opens
+      // from the map itself or from the link under the list, so the choosing and
+      // the leaving are two separate moves.
+      const m = e as MouseEvent;
+      if (m.button === 0 && !m.metaKey && !m.ctrlKey && !m.shiftKey && !m.altKey) e.preventDefault();
+      route(r);
+    }
   };
   box.addEventListener("click", onClick);
   return () => box.removeEventListener("click", onClick);
@@ -366,6 +378,35 @@ function beforeAfter(root: HTMLElement): Off {
   };
   root.addEventListener("input", onInput);
   return () => root.removeEventListener("input", onInput);
+}
+
+/**
+ * The services page opened at one service: that card is marked and brought into
+ * view. The page's own `:target` rule only fires on a fresh load, so a service
+ * reached from a home card or the footer would otherwise arrive unmarked, and
+ * the arrival scroll can overshoot it.
+ */
+function pickedService(root: HTMLElement, env: PageEnv): Off {
+  const cards = Array.from(root.querySelectorAll<HTMLElement>(".sv-card"));
+  if (!cards.length) return () => {};
+  const apply = () => {
+    const id = decodeURIComponent(location.hash.slice(1));
+    const card = id ? cards.find((c) => c.id === id) : undefined;
+    cards.forEach((c) => c.classList.toggle("is-picked", c === card));
+    if (!card) return;
+    const margin = parseFloat(getComputedStyle(card).scrollMarginTop) || 0;
+    const y = card.getBoundingClientRect().top + window.scrollY - margin;
+    if (env.scrollTo) env.scrollTo(y);
+    else window.scrollTo({ top: y, behavior: "smooth" });
+  };
+  window.addEventListener("hashchange", apply);
+  // the arrival scroll lands after the page settles, so let it finish first
+  const t = window.setTimeout(apply, 80);
+  return () => {
+    window.removeEventListener("hashchange", apply);
+    window.clearTimeout(t);
+    cards.forEach((c) => c.classList.remove("is-picked"));
+  };
 }
 
 /** the About page's values: pick a name (click, hover or the arrow keys) to show it large beside the list */
@@ -459,7 +500,7 @@ function headFade(root: HTMLElement): Off {
 export function mountPageBehaviour(kind: PageKind, root: HTMLElement, env: PageEnv = {}): Off {
   const offs: Off[] = [];
   if (kind === "projects") offs.push(projects(root, env));
-  if (kind === "services") offs.push(beforeAfter(root));
+  if (kind === "services") offs.push(beforeAfter(root), pickedService(root, env));
   if (kind === "about") offs.push(valuesPick(root));
   if (kind === "contact") offs.push(mountContactForm(root), openNow(root));
   if (kind === "contact") offs.push(aboutRoutes(root));

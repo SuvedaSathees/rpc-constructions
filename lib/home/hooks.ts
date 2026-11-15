@@ -127,7 +127,7 @@ function projects(d: HookData) {
   <div class="hm-wrap">
     <div class="hk-pgrid" data-stack>
       <div class="hk-pinfo">
-        <div>${mark("04", "Projects")}<h2 class="hm-h2" id="hk-proj-h" data-rv>From homes to factories, kept&nbsp;dry.</h2></div>
+        <div>${mark("04", "Projects")}<h2 class="hm-h2" id="hk-proj-h" data-rv>From libraries to wind&nbsp;farms.</h2></div>
         <div aria-live="polite">${info}</div>
         <div class="hk-pctl">
           <button type="button" class="hk-arr" data-sprev aria-label="Previous project">${chev("l")}</button>
@@ -216,13 +216,15 @@ export function hooksMarkup(home: HomeData, d: HookData) {
       id: "waterproofing",
       below: true,
       tilesHref: "/waterproofing",
+      // each tile opens the waterproofing page at its own place on the house,
+      // so the drawing arrives with that place lit and its methods under it
       tiles: [
-        { title: "Terrace & roof", line: "PU, torch-on and liquid membranes" },
-        { title: "Bathroom & toilet", line: "Two cementitious coats, pond-tested" },
-        { title: "Water tank & sump", line: "Crystalline inside, membrane outside" },
-        { title: "Basement & foundation", line: "HDPE sheet and waterstops at the joints" },
-        { title: "Balcony & utility areas", line: "Sealed falls, skirting and drain mouths" },
-        { title: "Concrete cracks & leaks", line: "Injection grouting, traced to the source" },
+        { title: "Terrace & roof", line: "PU, torch-on and liquid membranes", href: "/waterproofing#a-terrace" },
+        { title: "Bathroom & toilet", line: "Two cementitious coats, pond-tested", href: "/waterproofing#a-bathroom" },
+        { title: "Water tank & sump", line: "Crystalline inside, membrane outside", href: "/waterproofing#a-tank" },
+        { title: "Basement & foundation", line: "HDPE sheet and waterstops at the joints", href: "/waterproofing#a-basement" },
+        { title: "Balcony & utility areas", line: "Sealed falls, skirting and drain mouths", href: "/waterproofing#a-balcony" },
+        { title: "Concrete cracks & leaks", line: "Injection grouting, traced to the source", href: "/waterproofing#a-cracks" },
       ],
     }),
     projects(d),

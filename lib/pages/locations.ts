@@ -87,7 +87,7 @@ function branchCard(b: Branch, c: ContactInfo, t: Town) {
     `<li>${ic.phone}<a class="lc-tel" href="${tel(phone)}">${esc(phone)}</a></li>`,
     `<li>${ic.clock}<span>${esc(c.hours)}</span></li>`,
   ];
-  const maps = b.mapQuery ? `<a class="pg-link lc-cardlink" href="${esc(mapsLink(b.mapQuery))}" target="_blank" rel="noopener noreferrer">Open in Google Maps${arrow}</a>` : "";
+  const maps = b.mapUrl || b.mapQuery ? `<a class="pg-link lc-cardlink" href="${esc(b.mapUrl ?? mapsLink(b.mapQuery!))}" target="_blank" rel="noopener noreferrer">Open in Google Maps${arrow}</a>` : "";
   return `<aside class="lc-branch" aria-label="RPC Constructions in ${esc(t.city)}">
   <p class="lc-role">${esc(b.role)}</p>
   <p class="lc-bname">RPC Constructions, ${esc(t.city)}</p>

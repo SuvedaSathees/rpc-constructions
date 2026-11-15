@@ -76,8 +76,31 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  // on a change of page: the home page, and any page reached with the back or forward
-  // button, opens where it was left; anything else opens at the top (or at its #anchor).
+  // a link to the page you are already on takes you back to the top of it: the
+  // address does not change, so nothing else would happen. Home in the footer,
+  // at the very bottom of the home page, is the one that needs this most.
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = (e.target as Element | null)?.closest?.("a[href]") as HTMLAnchorElement | null;
+      if (!a || a.target === "_blank" || a.hasAttribute("download")) return;
+      const to = new URL(a.href, window.location.href);
+      if (to.origin !== window.location.origin) return;
+      if (to.hash || to.pathname !== window.location.pathname || to.search !== window.location.search) return;
+      if (window.scrollY < 2) return;
+      e.preventDefault();
+      if (lenis) lenis.scrollTo(0, { duration: 1.1 });
+      else window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+    // the router's own handler sits on the React root, so this one listens on
+    // the way down to get there first
+    document.addEventListener("click", onClick, true);
+    return () => document.removeEventListener("click", onClick, true);
+  }, [lenis]);
+
+  // on a change of page: a page reached with the back or forward button opens
+  // where it was left; every page followed by a link opens at the top (or at its
+  // #anchor), the home page included.
   // The first load is left alone: it opens at the top, or at its #anchor.
   useEffect(() => {
     if (handled.current === null) {
@@ -94,7 +117,7 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
       // a link to a place on the page goes there
       if (lenis) requestAnimationFrame(() => lenis.scrollTo(hash, { immediate: true }));
     } else {
-      const y = saved !== undefined && (pathname === "/" || pop) ? saved : 0;
+      const y = saved !== undefined && pop ? saved : 0;
       // the new page's height first, so the position is not cut short by the old page's
       lenis?.resize();
       lenis?.scrollTo(y, { immediate: true, force: true });

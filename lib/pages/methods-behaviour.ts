@@ -30,7 +30,22 @@ function placeMap(root: HTMLElement, env: PageEnv): Off {
   const parts = Array.from(map.querySelectorAll<SVGGElement>(".wpx-part"));
   const panels = Array.from(map.querySelectorAll<HTMLElement>(".wpx-panel"));
 
-  const select = (key: string, focus = false) => {
+  // the methods for a place sit under the drawing, so a tap on its name brings
+  // them up: without this the panel changes where the reader cannot see it
+  const reveal = (key: string) => {
+    const panel = panels.find((p) => p.id === `wpx-p-${key}`);
+    const row = map.querySelector<HTMLElement>(".wpx-tabs");
+    if (!panel || !row) return;
+    const top = panel.getBoundingClientRect().top;
+    if (top >= 96 && top <= window.innerHeight * 0.5) return;
+    // the row of names comes to rest near the top, with the methods under it, so
+    // the next place is still one click away
+    const y = row.getBoundingClientRect().top + window.scrollY - 88;
+    if (env.scrollTo) env.scrollTo(y);
+    else window.scrollTo({ top: y, behavior: "smooth" });
+  };
+
+  const select = (key: string, focus = false, show = false) => {
     if (!keys.includes(key)) return;
     tabs.forEach((t) => {
       const on = t.dataset.place === key;
@@ -49,11 +64,12 @@ function placeMap(root: HTMLElement, env: PageEnv): Off {
       const t = tab.getBoundingClientRect();
       row.scrollTo({ left: row.scrollLeft + (t.left - r.left) - (r.width - t.width) / 2, behavior: "smooth" });
     }
+    if (show) reveal(key);
   };
 
   const onClick = (e: Event) => {
     const b = (e.target as Element).closest<HTMLElement>("[data-place]");
-    if (b && map.contains(b)) select(b.dataset.place!);
+    if (b && map.contains(b)) select(b.dataset.place!, false, true);
   };
   const onKey = (e: KeyboardEvent) => {
     const i = tabs.indexOf(e.target as HTMLButtonElement);
@@ -62,7 +78,7 @@ function placeMap(root: HTMLElement, env: PageEnv): Off {
     const to = e.key === "ArrowRight" ? (i + 1) % n : e.key === "ArrowLeft" ? (i - 1 + n) % n : e.key === "Home" ? 0 : e.key === "End" ? n - 1 : -1;
     if (to < 0) return;
     e.preventDefault();
-    select(keys[to]!, true);
+    select(keys[to]!, true, true);
   };
   map.addEventListener("click", onClick);
   map.addEventListener("keydown", onKey);

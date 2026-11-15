@@ -530,6 +530,18 @@ function mountViewer(root: HTMLElement, on: On, env?: PageEnv) {
       open(card.id, "overview", btn);
     }
   });
+
+  // A product named in the address opens that product's own details, so a card
+  // followed from the home page or anywhere else lands on the product itself
+  // rather than on its row in the list. open() ignores anything that is not a
+  // product in the catalogue, so brands, jobs and #find fall through untouched.
+  const openFromHash = () => {
+    const slug = decodeURIComponent(location.hash.slice(1));
+    if (!slug || slug === "find" || slug.startsWith("brand-") || slug.startsWith("job-")) return;
+    open(slug, "overview", document.getElementById(slug) ?? undefined);
+  };
+  on(window, "hashchange", openFromHash);
+  openFromHash();
 }
 
 type On = (t: EventTarget, type: string, fn: (e: Event) => void, o?: AddEventListenerOptions) => void;

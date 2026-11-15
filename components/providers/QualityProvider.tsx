@@ -21,7 +21,11 @@ if (typeof window !== "undefined") {
       .join(" ");
     if (
       str.includes("Attempted to synchronously unmount a root while React was already rendering") ||
-      str.includes("container that has already been passed to createRoot")
+      str.includes("container that has already been passed to createRoot") ||
+      // the two scripts in app/layout.tsx are written into the document and run on
+      // the first load, before the page is drawn; React points out that a script
+      // element would not run on a client render, which is not what they are for
+      str.includes("Encountered a script tag while rendering React component")
     ) {
       return;
     }

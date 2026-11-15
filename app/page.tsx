@@ -68,6 +68,15 @@ function brandSlide() {
   return [...listed, ...otherBrands(listed.map((l) => l.name)).map((name) => ({ name, color: "" }))];
 }
 
+/* each before-and-after card opens the service that fixes what it shows, rather
+   than the drawing of the house, so the card and its service page agree */
+const SERVICE_OF: Readonly<Record<string, string>> = {
+  terrace: "terrace-waterproofing",
+  ceiling: "crack-and-leakage-treatment",
+  bathroom: "bathroom-waterproofing",
+  walls: "external-wall-waterproofing",
+};
+
 /** what the hooks need, gathered here on the server */
 const hookData: HookData = {
   shelf: BEST_SELLERS.flatMap(([group, slugs]) => {
@@ -75,7 +84,7 @@ const hookData: HookData = {
     const [lead, ...rest] = ps;
     return lead ? [{ group, lead: { name: lead.name, slug: lead.slug, cat: lead.category, pic: picOf(lead.slug) }, more: rest.map((p) => p.name) }] : [];
   }),
-  signs: steps.map((x) => ({ place: x.place, see: x.title, fix: x.apply, href: x.link.href, ...STILLS[x.zone]! })),
+  signs: steps.map((x) => ({ place: x.place, see: x.title, fix: x.apply, href: SERVICE_OF[x.zone] ? `/services#${SERVICE_OF[x.zone]}` : x.link.href, ...STILLS[x.zone]! })),
   projects: projects.slice(0, 3).map((p) => ({ slug: p.slug, name: p.name, location: p.location, type: p.type, image: p.image, summary: p.summary })),
   brands: brandSlide(),
 };

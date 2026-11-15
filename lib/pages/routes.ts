@@ -12,10 +12,13 @@ import { arrow, esc } from "./kit";
  * and Google Maps shows the road route to our Erode office. The
  * starting places are public landmarks; the routes and times are Google's.
  */
-const ROUTES: readonly { town: string; from: readonly (readonly [label: string, place: string])[] }[] = [
-  { town: "Erode", from: [["From the central bus stand", "Erode Central Bus Terminus, Erode"], ["From the railway station", "Erode Junction Railway Station, Erode"], ["From Perundurai", "Perundurai Bus Stand, Perundurai"], ["From Bhavani", "Bhavani Bus Stand, Bhavani"]] },
-  { town: "Coimbatore", from: [["From Gandhipuram bus stand", "Gandhipuram Central Bus Stand, Coimbatore"], ["From the railway station", "Coimbatore Junction Railway Station"], ["From the airport", "Coimbatore International Airport"], ["From Ukkadam bus stand", "Ukkadam Bus Stand, Coimbatore"]] },
-  { town: "Krishnagiri", from: [["From the new bus stand", "Krishnagiri New Bus Stand, Krishnagiri"], ["From the old bus stand", "Krishnagiri Old Bus Stand, Krishnagiri"], ["From the railway station", "Krishnagiri Railway Station, Krishnagiri"]] },
+const ROUTES: readonly { town: string; to?: string; from: readonly (readonly [label: string, place: string])[] }[] = [
+  // `to` is where that town's routes end, as the pin's own coordinates. The
+  // address alone is not enough: Google reads "N.R. Mahal Backside" out of the
+  // Erode address and ends the route at the marriage hall next door.
+  { town: "Erode", to: "11.3039407,77.7241194", from: [["From the central bus stand", "Erode Central Bus Terminus, Erode"], ["From the railway station", "Erode Junction Railway Station, Erode"], ["From Perundurai", "Perundurai Bus Stand, Perundurai"], ["From Bhavani", "Bhavani Bus Stand, Bhavani"]] },
+  { town: "Coimbatore", to: "11.0899832,77.1022949", from: [["From Gandhipuram bus stand", "Gandhipuram Central Bus Stand, Coimbatore"], ["From the railway station", "Coimbatore Junction Railway Station"], ["From the airport", "Coimbatore International Airport"], ["From Ukkadam bus stand", "Ukkadam Bus Stand, Coimbatore"]] },
+  { town: "Krishnagiri", to: "12.532702,78.241626", from: [["From the new bus stand", "Krishnagiri New Bus Stand, Krishnagiri"], ["From the old bus stand", "Krishnagiri Old Bus Stand, Krishnagiri"], ["From the railway station", "Krishnagiri Railway Station, Krishnagiri"], ["From Hosur", "Hosur Bus Stand, Hosur"]] },
 ];
 
 const embedRoute = (from: string, to: string) => `https://maps.google.com/maps?saddr=${encodeURIComponent(from)}&daddr=${encodeURIComponent(to)}&output=embed`;
@@ -25,6 +28,8 @@ export function routesMarkup(dest: string, regions: readonly string[]) {
   const towns = ROUTES.filter((r) => regions.includes(r.town));
   const first = towns[0]!;
   const [fl, fp] = first.from[0]!;
+  const toOf = (t: (typeof ROUTES)[number]) => t.to ?? dest;
+  const fd = toOf(first);
   const pin = `<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.5s4.8-4.3 4.8-8a4.8 4.8 0 0 0-9.6 0c0 3.7 4.8 8 4.8 8z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6.5" r="1.7" fill="currentColor"/></svg>`;
   const short = (l: string) => { const x = l.replace(/^From (the )?/, ""); return x.charAt(0).toUpperCase() + x.slice(1); };
   return `<div class="ab-go" data-routes data-dest="${esc(dest)}">
@@ -35,18 +40,20 @@ export function routesMarkup(dest: string, regions: readonly string[]) {
         .join("")}</div>
       ${towns
         .map(
-          (t, i) => `<ul class="ab-go-from" data-from-town="${esc(t.town)}"${i === 0 ? "" : " hidden"}>${t.from
+          (t, i) => `<ul class="ab-go-from" data-from-town="${esc(t.town)}" data-to="${esc(toOf(t))}"${i === 0 ? "" : " hidden"}>${t.from
             .map(
               ([label, place], j) =>
-                `<li><a class="ab-go-route" href="${esc(openRoute(place, dest))}" target="_blank" rel="noopener noreferrer" data-place="${esc(place)}" data-label="${esc(`${label.replace(/^From /, "")}, ${t.town}`)}"${i === 0 && j === 0 ? ' aria-current="true"' : ""}>${pin}<span><b>${esc(short(label))}</b><small>${esc(place)}</small></span></a></li>`,
+                `<li><a class="ab-go-route" href="${esc(openRoute(place, toOf(t)))}" target="_blank" rel="noopener noreferrer" data-place="${esc(place)}" data-label="${esc(`${label.replace(/^From /, "")}, ${t.town}`)}"${i === 0 && j === 0 ? ' aria-current="true"' : ""}>${pin}<span><b>${esc(short(label))}</b><small>${esc(place)}</small></span></a></li>`,
             )
             .join("")}</ul>`,
         )
         .join("")}
-      <a class="ab-go-open" href="${esc(openRoute(fp, dest))}" target="_blank" rel="noopener noreferrer" data-open>Open this route in Google Maps${arrow}</a>
+      <a class="ab-go-open" href="${esc(openRoute(fp, fd))}" target="_blank" rel="noopener noreferrer" data-open>Open this route in Google Maps${arrow}</a>
     </div>
     <div class="ab-go-map">
-      <iframe title="Road route from ${esc(`${fl.replace(/^From /, "")}, ${first.town}`)} to our office" src="${esc(embedRoute(fp, dest))}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-map></iframe>
+      <iframe title="Road route from ${esc(`${fl.replace(/^From /, "")}, ${first.town}`)} to our office" src="${esc(embedRoute(fp, fd))}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-map></iframe>
+      <!-- the drawing of the route is a link to the route itself, so a tap on the map opens it in Google Maps -->
+      <a class="ab-go-maplink" href="${esc(openRoute(fp, fd))}" target="_blank" rel="noopener noreferrer" data-maplink><span>Open in Google Maps</span></a>
     </div>
   </div>`;
 }
@@ -56,10 +63,10 @@ export const ROUTES_CSS = `
 .ab-go{--fs-s:var(--fs-body);display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.3fr);gap:0;margin-top:clamp(1rem,2.2vh,1.6rem);overflow:hidden;border-radius:18px;background:var(--card,#f5f0e6);box-shadow:inset 0 0 0 1px var(--line)}
 .ab-go-side{display:flex;flex-direction:column;gap:.9rem;padding:clamp(1.1rem,2vw,1.5rem)}
 .ab-go-k{margin:0;font-size:var(--fs-body);font-weight:600;color:var(--accent)}
-.ab-go-h{margin:0;font-size:var(--fs-body);font-weight:600;line-height:1.25;letter-spacing:-.01em;color:var(--ink)}
+.ab-go-h{margin:0;font-size:clamp(1.1rem,.95rem + .5vw,1.4rem);font-weight:700;line-height:1.25;letter-spacing:-.015em;color:var(--ink)}
 /* the towns share one line, each taking an equal part of it, so they never fall to a second row */
 .ab-go-towns{display:flex;flex-wrap:nowrap;gap:.4rem}
-.ab-go-town{flex:1 1 0;min-width:0;height:2.1rem;padding:0 .6rem;border:0;border-radius:999px;background:rgba(18,34,59,.06);font:inherit;font-size:clamp(.72rem,.82vw,.86rem);font-weight:600;line-height:1;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;cursor:pointer;transition:background-color .2s,color .2s}
+.ab-go-town{flex:1 1 0;min-width:0;height:2.5rem;padding:0 .7rem;border:0;border-radius:999px;background:rgba(18,34,59,.06);font:inherit;font-size:clamp(.82rem,.66rem + .45vw,.95rem);font-weight:600;line-height:1;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;cursor:pointer;transition:background-color .2s,color .2s}
 .ab-go-town:hover{background:rgba(18,34,59,.1)}
 .ab-go-town[aria-selected=true]{background:var(--navy);color:#f5f0e6}
 .ab-go-town:focus-visible,.ab-go-route:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
@@ -69,7 +76,7 @@ export const ROUTES_CSS = `
 .ab-go-route{display:flex;align-items:flex-start;gap:.55rem;width:100%;height:100%;padding:.5rem .75rem;border:0;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font:inherit;text-align:left;cursor:pointer;transition:box-shadow .2s,background-color .2s}
 .ab-go-route svg{flex:none;width:1rem;height:1rem;margin-top:.1rem;color:var(--accent)}
 .ab-go-route span{display:flex;flex-direction:column;min-width:0}
-.ab-go-route b{font-size:var(--fs-s);font-weight:600;color:var(--ink)}
+.ab-go-route b{font-size:calc(var(--fs-s) * 1.08);font-weight:600;color:var(--ink)}
 .ab-go-route small{font-size:var(--fs-s);color:var(--mute);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ab-go-route:hover{box-shadow:inset 0 0 0 1.5px var(--navy)}
 .ab-go-route[aria-current=true]{background:var(--navy);box-shadow:none}
@@ -80,6 +87,10 @@ export const ROUTES_CSS = `
 .ab-go-open .pg-ar{width:.9rem;height:.9rem}
 .ab-go-map{position:relative;min-height:21rem;background:#d9d0bf}
 .ab-go-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ab-go-maplink{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-end;justify-content:flex-end;padding:.9rem;text-decoration:none}
+.ab-go-maplink span{padding:.42rem .8rem;border-radius:999px;background:rgba(7,20,44,.88);color:#fff;font-size:.82rem;font-weight:600;box-shadow:0 6px 18px -6px rgba(0,0,0,.5);opacity:0;transform:translateY(4px);transition:opacity .2s,transform .2s}
+.ab-go-maplink:hover span,.ab-go-maplink:focus-visible span{opacity:1;transform:none}
+.ab-go-maplink:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
 @media (max-width:899px){.ab-go{grid-template-columns:minmax(0,1fr)}.ab-go-map{min-height:20rem}}
 
 `;

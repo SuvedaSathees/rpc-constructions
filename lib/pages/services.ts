@@ -208,7 +208,12 @@ export const SERVICES_CSS = `
 .sv-blist{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.8rem,1.3vw,1.1rem)}
 .sv-card{display:flex;flex-direction:column;padding:1.4rem 1.4rem 0;border-radius:18px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line);scroll-margin-top:calc(var(--nav-bar,80px) + 1rem);transition:box-shadow .3s,transform .3s}
 .sv-card:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1px rgba(18,34,59,.28),0 24px 44px -34px rgba(18,34,59,.55)}
-.sv-card:target{box-shadow:inset 0 0 0 2px var(--accent),0 0 0 6px rgba(39,86,160,.1)}
+.sv-card:target,.sv-card.is-picked{box-shadow:inset 0 0 0 2px var(--accent),0 0 0 6px rgba(39,86,160,.12)}
+/* opened from the home page or the footer: the ring arrives wide and settles, so
+   the reader sees which service the link was for */
+.sv-card.is-picked{animation:sv-pick 1.5s ease-out 1}
+@keyframes sv-pick{0%{box-shadow:inset 0 0 0 2px var(--accent),0 0 0 16px rgba(39,86,160,.26)}100%{box-shadow:inset 0 0 0 2px var(--accent),0 0 0 6px rgba(39,86,160,.12)}}
+@media (prefers-reduced-motion:reduce){.sv-card.is-picked{animation:none}}
 .sv-icon{display:grid;place-items:center;width:2.9rem;height:2.9rem;border-radius:14px;background:var(--navy);color:#f5f0e6}
 .sv-icon .sv-wi{display:contents}
 .sv-icon svg{width:1.4rem;height:1.4rem}

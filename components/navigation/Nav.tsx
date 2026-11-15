@@ -61,16 +61,16 @@ const NAV_CSS = `
   .rn-end{display:flex;justify-content:flex-end}
   .rn-logo{height:auto;min-height:48px}
   .rn-link{height:38px;padding:0 7px;font-size:.9rem}
-  .rn-cta{gap:8px;height:46px;padding:0 5px 0 16px}
-  .rn-ctai{width:36px;height:36px}
+  .rn-cta{gap:8px;height:48px;padding:0 5px 0 18px;font-size:.9rem}
+  .rn-ctai{width:32px;height:32px}
 }
 /* from 1280px there is room to let it breathe again */
 @media (min-width:1280px){
   .rn-bar{height:52px;padding:0 5px}
   .rn-logo{height:auto;min-height:52px}
   .rn-link{height:42px;padding:0 11px;font-size:var(--fs-body)}
-  .rn-cta{gap:12px;height:52px;padding:0 6px 0 22px}
-  .rn-ctai{width:40px;height:40px}
+  .rn-cta{gap:10px;height:52px;padding:0 6px 0 22px}
+  .rn-ctai{width:36px;height:36px}
 }
 @media (min-width:1440px){.rn-link{padding:0 15px}}
 @media (max-width:1023px){.rn-mini{margin-top:6px}}

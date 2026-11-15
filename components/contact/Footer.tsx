@@ -20,7 +20,7 @@ const slug = (t: string) => t.toLowerCase().replace(/&/g, "and").replace(/[^a-z0
 export function Footer() {
   const toTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
   const tel = `tel:${contact.phone.replace(/[^0-9+]/g, "")}`;
-  const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.mapQuery)}`;
+  const maps = contact.mapUrl;
   const focus = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-water-2";
   const head = "mb-3 text-body font-semibold text-water-2";
   const link = `-my-2 inline-block py-2 rounded text-body md:text-body text-white/72 transition-colors hover:text-white ${focus}`;
@@ -78,9 +78,9 @@ export function Footer() {
               </ul>
             </nav>
 
-            {/* waterproofing services: not on a phone */}
+            {/* the services themselves, each opening its own card: not on a phone */}
             <div className="hidden md:block">
-              <p className={head}>Waterproofing</p>
+              <p className={head}>Services</p>
               <ul className="flex flex-col items-start gap-2">
                 {SERVICE_CATEGORIES.map((s) => (
                   <li key={s.title}>
@@ -103,7 +103,16 @@ export function Footer() {
                 </li>
                 {/* a phone keeps only the number to call; the rest is on the contact page */}
                 <li className="hidden md:block">
-                  <a href={`mailto:${contact.email}`} className={`-my-2 flex w-fit items-center gap-2 rounded py-2 transition-colors hover:text-white ${focus}`}>
+                  {/* Gmail's own compose window, so the address works on a machine with no
+                      mail app set up, where a plain mailto: link appears to do nothing.
+                      Gmail falls back to its sign-in page for anyone not signed in. */}
+                  <a
+                    href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(contact.email)}&su=${encodeURIComponent("Waterproofing enquiry")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Email ${contact.email}`}
+                    className={`-my-2 flex w-fit items-center gap-2 rounded py-2 transition-colors hover:text-white ${focus}`}
+                  >
                     <Mail size={15} aria-hidden className="shrink-0 text-water-2" /> <span className="min-w-0 break-all">{contact.email}</span>
                   </a>
                 </li>

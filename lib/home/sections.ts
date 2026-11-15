@@ -74,8 +74,9 @@ export interface HomeOptions {
   below?: boolean;
   /** where the service tiles lead; by default each one opens the services page at its own service */
   tilesHref?: string;
-  /** the tiles beside the core service; by default the rest of the services */
-  tiles?: readonly { title: string; line: string }[];
+  /** the tiles beside the core service; by default the rest of the services.
+   *  A tile may carry its own href, for a page that opens at one place on it. */
+  tiles?: readonly { title: string; line: string; href?: string }[];
   /** the section's headline, when the block is not the run of services */
   title?: string;
 }
@@ -164,7 +165,7 @@ export function servicesMarkup(d: HomeData, _o: HomeOptions) {
   if (!lead) return "";
   const check = `<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.4 6.6 11.4 12.6 4.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   const tileItems =
-    _o.tiles?.map((t) => ({ title: t.title, line: t.line, href: _o.tilesHref ?? "/services" })) ??
+    _o.tiles?.map((t) => ({ title: t.title, line: t.line, href: t.href ?? _o.tilesHref ?? "/services" })) ??
     rest.map((s) => ({ title: s.title, line: s.line ?? s.short ?? s.scale, href: _o.tilesHref ?? `/services#${serviceSlug(s.title)}` }));
   const tiles = tileItems
     .map(
@@ -283,8 +284,8 @@ export function rootedAboutMarkup(d: HomeData, o: HomeOptions = {}) {
   <div class="hm-wrap hm-agrid">
     <div class="hm-acopy">
       ${mark(o.n ?? "03", "About RPC")}
-      <h2 class="hm-statement" id="about-title" data-rv>Waterproofing contractors in Erode since&nbsp;2012.</h2>
-      <p class="hm-lead" data-rv>RPC Constructions keeps buildings dry with terrace, bathroom, sump and basement waterproofing, leak repair and construction chemicals, for homes, offices and factories in Erode, Coimbatore and Krishnagiri.</p>
+      <h2 class="hm-statement" id="about-title" data-rv>Erode's waterproofing contractors since&nbsp;2012.</h2>
+      <p class="hm-lead" data-rv>RPC Constructions waterproofs terraces, bathrooms, sumps and basements, traces and repairs leaks, and supplies the construction chemicals the work takes — for homes, offices and factories across Erode, Coimbatore and Krishnagiri.</p>
       <ul class="hm-values">${values}</ul>
       <a class="hm-btn hm-btn--ink" href="/about" data-internal data-rv>About RPC Constructions${arrow}</a>
     </div>

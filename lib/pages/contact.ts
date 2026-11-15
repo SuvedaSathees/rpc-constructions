@@ -6,7 +6,7 @@
  * the kind of project, where the site is, and a message), sent by email or on
  * WhatsApp. The form sends through FormSubmit, as before (contact-form.ts).
  */
-import { arrow, esc, mapsLink, mark, tel, words, type ContactInfo } from "./kit";
+import { arrow, esc, gmail, mapsLink, mark, tel, words, type ContactInfo } from "./kit";
 import { routesMarkup, ROUTES_CSS } from "./routes";
 
 export interface ContactPageData {
@@ -96,8 +96,8 @@ export function contactPageMarkup(d: ContactPageData) {
   const tiles = `<ul class="ct-tiles" data-rv>
         <li><a class="ct-tile ct-tile--call" href="${tel(c.phone)}">${icon("call", " ct-ico--call")}<span class="ct-tk">Call an engineer</span><span class="ct-tv">${esc(c.phone)}</span><span class="ct-open" data-hours data-days="${o.d0}-${o.d1}" data-from="${o.from}" data-to="${o.to}"><i aria-hidden="true"></i><span data-open-text>Open ${hoursText}</span></span>${go}</a></li>
         <li><a class="ct-tile ct-tile--wa" href="${esc(c.whatsapp)}" target="_blank" rel="noopener noreferrer">${icon("whatsapp", " ct-ico--wa")}<span class="ct-tk">WhatsApp</span><span class="ct-tv">Chat with an engineer</span><span class="ct-tn">Send a photo of the leak</span>${go}</a></li>
-        <li><a class="ct-tile" href="mailto:${esc(c.email)}">${icon("email")}<span class="ct-tk">Email</span><span class="ct-tv ct-tv--mail">${mail}</span><span class="ct-tn">Drawings and documents</span>${go}</a></li>
-        <li><a class="ct-tile" href="${esc(mapsLink(c.mapQuery))}" target="_blank" rel="noopener noreferrer">${icon("visit")}<span class="ct-tk">Office</span><span class="ct-tv">${esc(street)}</span><span class="ct-tn">${esc(hoursText)}</span>${go}</a></li>
+        <li><a class="ct-tile" href="${esc(gmail(c.email))}" target="_blank" rel="noopener noreferrer">${icon("email")}<span class="ct-tk">Email</span><span class="ct-tv ct-tv--mail">${mail}</span><span class="ct-tn">Drawings and documents</span>${go}</a></li>
+        <li><a class="ct-tile" href="${esc(c.mapUrl ?? mapsLink(c.mapQuery))}" target="_blank" rel="noopener noreferrer">${icon("visit")}<span class="ct-tk">Office</span><span class="ct-tv">${esc(street)}</span><span class="ct-tn">${esc(hoursText)}</span>${go}</a></li>
       </ul>
       <p class="ct-alt" data-rv>More numbers: ${(c.morePhones ?? []).map((n) => `<a href="${tel(n)}">${esc(n)}</a>`).join(", ")}</p>`;
   return `<section class="pg-dark ct-page" aria-labelledby="ct-title">

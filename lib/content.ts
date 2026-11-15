@@ -44,7 +44,9 @@ export const contact = {
   ],
   whatsapp: "https://wa.me/919942354602",
   mapQuery: "No. 26, Bharathi Palayam, 2nd Street, Kurikaran Palayam, N.R. Mahal Backside, Erode, Tamil Nadu 638002",
-  geo: { lat: 11.341, lng: 77.7172 },
+  /** the office's own pin on Google Maps: opened in place of a search on the address above */
+  mapUrl: "https://maps.app.goo.gl/xJrRGn47Z5qeuYH68",
+  geo: { lat: 11.3039407, lng: 77.7241194 },
   regions: ["Erode", "Coimbatore", "Krishnagiri"],
 } as const;
 
@@ -75,6 +77,7 @@ export const branches: readonly Branch[] = [
     line: "The office you can walk into: enquiries, site inspections and the quotes for every job we run.",
     address: contact.address,
     mapQuery: contact.mapQuery,
+    mapUrl: contact.mapUrl,
     phone: contact.phone,
   },
   {
@@ -140,7 +143,7 @@ export const projects: Project[] = [
     year: "2023",
     status: "Completed",
     image: "/images/projects/covers/kalaignar-centenary-library-madurai.webp",
-    summary: "A world-class 6-storey public library for the Tamil Nadu PWD, housing over 3.3 lakh volumes across modern reading halls, a digital library, children's discovery zone, and an auditorium.",
+    summary: "A six-storey public library for the Tamil Nadu PWD, holding more than 3.3 lakh volumes across its reading halls, a digital library, a children's discovery zone and an auditorium.",
     clientType: "Tamil Nadu PWD",
     waterproofing: "Crystalline basement waterproofing · PU terrace membrane · expansion joint sealing · pond-tested roof gardens",
     structuralSystem: "RCC framed structure with post-tensioned slabs and central atrium",

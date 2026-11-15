@@ -101,11 +101,27 @@ function sceneSvg() {
 </svg>`;
 }
 
+/** where the water ends up, in two or three words, under each method's name */
+const NOTE: Record<Layer | "none", string> = {
+  none: "Comes through",
+  coat: "Stays on top",
+  sheet: "Stays on top",
+  outer: "Stopped outside",
+  crystal: "Blocked inside",
+  integral: "Lets less in",
+  inject: "Crack sealed",
+  joint: "Joint sealed",
+};
+const note = (k: string) => {
+  const layer = k === "none" ? "none" : RAIN[k]?.layer;
+  return layer ? `<small><i aria-hidden="true"></i>${esc(NOTE[layer])}</small>` : "";
+};
+
 export function rainMarkup() {
   const chips = METHOD_GROUPS.map(
     (g) =>
       `<div class="rt-group rt-group--${g.key}"><p class="rt-gh"><i class="rt-sw" aria-hidden="true"></i>${esc(g.label)}</p><div class="rt-opts">${METHODS.filter((m) => m.group === g.key && RAIN[m.key])
-        .map((m) => `<button type="button" class="rt-chip" data-rain="${m.key}" aria-pressed="false"><i class="rt-r" aria-hidden="true"></i><span>${esc(m.short)}</span></button>`)
+        .map((m) => `<button type="button" class="rt-chip" data-rain="${m.key}" aria-pressed="false"><span>${esc(m.short)}${note(m.key)}</span></button>`)
         .join("")}</div></div>`,
   ).join("");
   const tag = (cls: string, text: string) => `<span class="rt-lb ${cls}">${esc(text)}</span>`;
@@ -131,11 +147,11 @@ export function rainMarkup() {
           <button type="button" class="rt-again" data-rain-again><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5"/></svg>Drop again</button>
         </div>
       </div>
-      <p class="rt-step" aria-hidden="true"><b>Pick a method</b><span>Swipe for more</span></p>
       <div class="rt-pick" role="group" aria-label="Choose a method">
-        <div class="rt-group rt-group--none"><p class="rt-gh"><i class="rt-sw" aria-hidden="true"></i>Start with</p><div class="rt-opts"><button type="button" class="rt-chip" data-rain="none" aria-pressed="true"><i class="rt-r" aria-hidden="true"></i><span>No waterproofing</span></button></div></div>
+        <div class="rt-group rt-group--none"><p class="rt-gh"><i class="rt-sw" aria-hidden="true"></i>Start with</p><div class="rt-opts"><button type="button" class="rt-chip" data-rain="none" aria-pressed="true"><span>No waterproofing${note("none")}</span></button></div></div>
         ${chips}
       </div>
+      <p class="rt-step"><b>Pick a method</b> and the same drop runs again, through that one<span class="rt-swipe"> — swipe sideways for more</span></p>
     </div>
   </div>
 </section>`;
@@ -144,7 +160,10 @@ export function rainMarkup() {
 export const RAIN_CSS = `
 /* the rain test: one screen. The heading; the drawing of one drop's journey beside the words; the methods in one band under them */
 .rt-sec{scroll-margin-top:var(--nav-bar,80px)}
-.rt-step{display:none}
+.rt-step{margin:.6rem 0 0;font-size:.82rem;line-height:1.4;color:var(--mute)}
+.rt-step b{font-weight:600;color:var(--ink2)}
+.rt-swipe{display:none}
+@media (max-width:599px){.rt-swipe{display:inline}}
 /* the last section on the page: 70px of sand before the footer (which rises 32px over it) */
 .rt-sec{padding-bottom:calc(70px + 32px) !important}
 .rt{display:flex;flex-direction:column;gap:clamp(.9rem,2vh,1.3rem)}
@@ -221,24 +240,36 @@ rect.ly,.ly circle{fill:var(--k)}
 .rt-again svg{width:1.1rem;height:1.1rem}
 .rt:not(.is-live) .rt-again{display:none}
 
-/* the methods: each kind a small card with its colour, the methods in it as rows with a round marker */
-.rt-pick{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:.5rem}
-.rt-pick .rt-chip{white-space:nowrap}
-.rt:not(.is-live) .rt-pick{display:none}
-.rt-group{--k:#2756a0;padding:.55rem .55rem .5rem;border-radius:12px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line)}
+/* the methods: one even grid of small cards, each showing the cut it makes.
+   The kinds are kept in the markup for their colour and for the narrow
+   layouts, but on a wide screen the cards stand on their own. */
+/* twelve methods divide evenly, so the rows always come out square; the bare
+   slab is the thing they are all compared against, and takes the line above */
+.rt-pick{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));align-items:stretch;align-content:start;gap:.5rem}
+.rt-group--none .rt-chip{grid-column:1 / -1;flex-direction:row;align-items:center;justify-content:flex-start;gap:.6rem;min-height:0;padding:.52rem .8rem}
+.rt-group--none .rt-chip span{flex-direction:row;align-items:center;gap:.6rem}
+.rt-group--none .rt-chip small{margin-left:.1rem}
+.rt-group,.rt-opts,.rt-group--coat .rt-opts{display:contents}
+.rt-gh{display:none}
+.rt-pick .rt-chip{white-space:normal}
+/* the methods are drawn on the server, so they are there from the first paint */
+.rt-group{--k:#2756a0}
 .rt-group--sheet{--k:#a35f10}.rt-group--concrete{--k:#1f7a4f}.rt-group--joint{--k:#6a4c9c}.rt-group--none{--k:#a2452c}
-.rt-gh{display:flex;align-items:center;gap:.45rem;margin:0 0 .2rem;padding:0 .35rem;font-size:var(--fs-body);font-weight:600;color:var(--ink)}
-.rt-sw{width:.7rem;height:.7rem;border-radius:3px;background:var(--k)}
-.rt-opts{display:grid;grid-template-columns:minmax(0,1fr);gap:.15rem}
-.rt-group--coat .rt-opts{grid-template-columns:repeat(3,max-content)}
-.rt-chip{display:flex;align-items:center;gap:.4rem;min-height:2rem;padding:.25rem .4rem;border:0;border-radius:8px;background:none;font:inherit;font-size:var(--fs-body);font-weight:500;line-height:1.25;color:var(--ink2);text-align:left;cursor:pointer;transition:background-color .2s,color .2s}
-.rt-chip span{min-width:0}
+.rt-gh,.rt-sw{display:none}
+.rt-opts{display:contents}
+.rt-chip{display:flex;flex-direction:column;align-items:stretch;justify-content:center;gap:.3rem;min-height:3.6rem;padding:.58rem .7rem .62rem;border:0;border-radius:13px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font:inherit;font-size:.88rem;font-weight:600;line-height:1.25;color:var(--ink);text-align:left;text-wrap:balance;overflow-wrap:normal;-webkit-hyphens:none;hyphens:none;cursor:pointer;transition:background-color .2s,color .2s,box-shadow .2s,transform .2s}
+.rt-chip span{display:flex;flex-direction:column;gap:.1rem;min-width:0;padding:0 .18rem}
+/* one small line under the name: a dot in the kind's colour, and where the water stops */
+.rt-chip small{display:flex;align-items:center;gap:.34rem;font-size:.72rem;font-weight:500;letter-spacing:.005em;color:var(--mute)}
+.rt-chip small i{flex:none;width:5px;height:5px;border-radius:50%;background:var(--k)}
+.rt-chip[aria-pressed=true] small{color:rgba(245,240,230,.8)}
+.rt-chip[aria-pressed=true] small i{background:rgba(245,240,230,.9)}
 .rt-r{flex:none;display:grid;place-items:center;width:1rem;height:1rem;border-radius:50%;box-shadow:inset 0 0 0 1.5px rgba(18,34,59,.3);transition:box-shadow .2s}
 .rt-r::after{content:"";width:.42rem;height:.42rem;border-radius:50%;background:#fff;transform:scale(0);transition:transform .2s}
-.rt-chip:hover{background:rgba(18,34,59,.05);color:var(--ink)}
+.rt-chip:hover{box-shadow:inset 0 0 0 1.6px var(--k);transform:translateY(-1px)}
 .rt-chip:hover .rt-r{box-shadow:inset 0 0 0 1.5px var(--k)}
 .rt-chip:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
-.rt-chip[aria-pressed=true]{background:var(--k);color:#fff;font-weight:600}
+.rt-chip[aria-pressed=true]{background:var(--k);color:#fff;font-weight:600;box-shadow:none;transform:none}
 .rt-chip[aria-pressed=true] .rt-r{box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.85)}
 .rt-chip[aria-pressed=true] .rt-r::after{transform:scale(1)}
 
@@ -246,11 +277,11 @@ rect.ly,.ly circle{fill:var(--k)}
   .rt-sec{display:flex;align-items:center;min-height:calc(100svh - var(--nav-bar,80px));padding-block:clamp(1.2rem,3vh,2.4rem)}
   .rt-sec > .pg-wrap{width:100%}
 }
-@media (max-width:1500px) and (min-width:600px){
-  .rt-pick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));justify-content:stretch}
-  .rt-pick .rt-chip{white-space:normal}
-  .rt-group--coat{grid-column:span 2}
-  .rt-group--coat .rt-opts{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:1279px) and (min-width:900px){
+  .rt-pick{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media (max-width:899px) and (min-width:600px){
+  .rt-pick{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 @media (max-width:1023px){
   .rt-head{grid-template-columns:minmax(0,1fr)}

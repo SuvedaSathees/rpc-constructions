@@ -68,7 +68,7 @@ export function Wordmark({ className = "", size = "md", tile = false, iso = fals
         <text x="0" y="19" fill="currentColor" style={{ ...display, fontWeight: 700, fontSize: 22, letterSpacing: 2.2 }}>
           RPC
         </text>
-        <text x="0.5" y="35.5" fill="currentColor" fillOpacity={0.78} style={{ ...sans, fontWeight: 600, fontSize: 10.6, letterSpacing: 3.1 }}>
+        <text x="0.5" y="35.5" fill="currentColor" fillOpacity={0.78} style={{ ...sans, fontWeight: 600, fontSize: 10.6, letterSpacing: 2.2 }}>
           CONSTRUCTIONS
         </text>
         {iso ? (

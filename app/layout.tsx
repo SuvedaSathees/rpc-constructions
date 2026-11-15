@@ -120,7 +120,7 @@ const organizationLd = {
   },
   geo: { "@type": "GeoCoordinates", latitude: contact.geo.lat, longitude: contact.geo.lng },
   areaServed: contact.regions.map((r) => ({ "@type": "City", name: r })),
-  hasMap: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.mapQuery)}`,
+  hasMap: contact.mapUrl,
   knowsAbout: [
     "Building construction",
     "Turnkey house construction",
@@ -183,13 +183,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           narrower than the desktop layout), so phones keep the layout built for them, and
           touch screens already 1280px wide or more are left exactly as they are.
         */}
+        {/*
+          Both of these have to run before the page is drawn, which is why they are
+          written into the document here. React warns in development that a script
+          element is not run on a client render; that is true and harmless, because
+          the work is done once, on the first load, where this markup is HTML. The
+          warning itself is filtered in QualityProvider.
+        */}
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "try{var m=document.querySelector('meta[name=\"viewport\"]');" +
-              "if(m&&matchMedia('(pointer:coarse)').matches" +
-              "&&Math.min(screen.width,screen.height)>=768&&innerWidth<1280){" +
-              "m.setAttribute('content','width=1280')}}catch(e){}",
+              "try{var set=function(){" +
+              "if(!matchMedia('(pointer:coarse)').matches)return;" +
+              "if(Math.min(screen.width,screen.height)<768||innerWidth>=1280)return;" +
+              "var m=document.querySelector('meta[name=\"viewport\"]');" +
+              "if(!m){m=document.createElement('meta');m.setAttribute('name','viewport');document.head.appendChild(m)}" +
+              "m.setAttribute('content','width=1280')};" +
+              "set();document.addEventListener('DOMContentLoaded',set)}catch(e){}",
           }}
         />
         {/* a refresh opens the page at the top, not where it was left (moving between pages: see SmoothScroll) */}

@@ -23,6 +23,8 @@ export interface ContactInfo {
   hours: string;
   whatsapp: string;
   mapQuery: string;
+  /** the office's own pin on Google Maps, opened in place of a search on mapQuery */
+  mapUrl?: string;
   regions: readonly string[];
   morePhones?: readonly string[];
 }
@@ -41,6 +43,9 @@ export const words = (html: string) =>
     .map((w, i) => `<span class="pg-w"><span style="--wi:${i}">${w}</span></span>`)
     .join(" ");
 export const mapsLink = (q: string) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+/** Gmail's own compose window: a plain mailto: does nothing on a machine with no mail app set up */
+export const gmail = (to: string, subject = "Waterproofing enquiry") =>
+  `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodeURIComponent(subject)}`;
 /** "Erode, Coimbatore and Krishnagiri" */
 export const listing = (xs: readonly string[]) => (xs.length < 2 ? xs.join("") : `${xs.slice(0, -1).join(", ")} and ${xs[xs.length - 1]}`);
 
