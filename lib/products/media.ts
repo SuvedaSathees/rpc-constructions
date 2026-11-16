@@ -79,7 +79,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     backImage: "fosroc-brushbond-grey-back.png",
     video: "fosroc-brushbond-grey.mp4",
     description: "Acrylic polymer modified elastomeric waterproofing membrane coating for concrete and masonry surfaces. Provides a seamless, durable waterproof barrier for water tanks, reservoirs, swimming pools, basements, toilets and wet areas.",
-    pdf: "TDS-Brushbond-India5.pdf",
+    pdf: "RPC_Forsoc_Brushbond_TDS.pdf",
   },
   "fosroc-brushbond-rfx-grey": {
     image: "fosroc-brushbond-rfx-grey.png",
@@ -152,7 +152,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     image: "fosroc-conplast-sp439.png",
     backImage: "fosroc-conplast-sp439-back.png",
     description: "High performance superplasticizer for precast and ready-mix concrete requiring rapid workability retention and high early strength.",
-    pdf: "TDS-Conplast-SP439-India2 (1).pdf",
+    pdf: "rpc-fosroc-conplast-sp439-tds.pdf",
   },
   "fosroc-conplast-sp430-g": {
     image: "fosroc-conplast-sp430-g.png",
@@ -164,13 +164,13 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     image: "fosroc-conplast-sp430-g8.png",
     backImage: "fosroc-conplast-sp430-g8-back.png",
     description: "High performance superplasticizing admixture designed to provide significant water reduction and prolonged workability retention.",
-    pdf: "TDS-Conplast-SP430-G8-India3.pdf",
+    pdf: "rpc-fosroc-conplast-sp430-g8-tds.pdf",
   },
   "fosroc-auramix-400": {
     image: "fosroc-auramix-400.png",
     backImage: "fosroc-auramix-400-back.png",
     description: "High performance PCE-based superplasticizer for ready-mix concrete requiring exceptional slump retention and high durability.",
-    pdf: "TDS-Auramix-400-India3.pdf",
+    pdf: "rpc-fosroc-auramix-400-tds.pdf",
   },
   "fosroc-auramix-350": {
     image: "fosroc-auramix-350.png",
@@ -180,7 +180,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "fosroc-auramix-300-plus": {
     image: "fosroc-auramix-300-plus.png",
     description: "Next-generation polycarboxylate ether superplasticizer for high performance concrete with low water-binder ratio and rapid strength gain.",
-    pdf: "RPC_Fosroc_Auramix-300_TDS.pdf",
+    pdf: "rpc-fosroc-auramix-300-plus-tds.pdf",
   },
   "fosroc-auramix-300": {
     image: "fosroc-auramix-300.png",
@@ -236,7 +236,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "fosroc-reebol-emulsion-xtra": {
     image: "fosroc-reebol-emulsion-xtra.png",
     description: "Water-dilutable shutter release agent emulsion providing clean, stain-free striking of all types of formwork and moulds.",
-    pdf: "TDS-Reebol-Emulsion-Xtra-India3.pdf",
+    pdf: "RPC Fosroc Reebol Emulsion Xtra TDS.pdf",
   },
   "fosroc-conplast-crystalline": {
     image: "fosroc-conplast-crystalline.png",
@@ -612,7 +612,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     image: "fosroc-conplast-sp430-es2.png",
     backImage: "fosroc-conplast-sp430-es2-back.png",
     description: "High performance superplasticizer based on SNF polymer technology engineered for water reduction, improved workability, and high early strength.",
-    pdf: "rpc-fosroc-conplast-sp430-tds.pdf",
+    pdf: "rpc-fosroc-conplast-sp430-es2-tds.pdf",
   },
   "fosroc-moulding-oil": {
     image: "fosroc-moulding-oil.png",
