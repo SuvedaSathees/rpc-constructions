@@ -61,6 +61,33 @@ const LAYERS_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" 
 
 
 export function getProductFeatures(p: Product): FeatureItem[] {
+  if (p.slug === "fosroc-cebex-112") {
+    return [
+      { icon: WATER_ICON, title: "Improved Moisture Retention" },
+      { icon: CRACK_ICON, title: "Minimises Drying Shrinkage" },
+      { icon: WRENCH_ICON, title: "Enhanced Bond & Workability" },
+      { icon: SHIELD_ICON, title: "High Cohesion in Mortars" },
+    ];
+  }
+
+  if (p.slug === "fosroc-nitobond-sbr-latex") {
+    return [
+      { icon: SHIELD_ICON, title: "Superior Adhesion & Tensile" },
+      { icon: CRACK_ICON, title: "Reduced Shrinkage Cracking" },
+      { icon: WATER_ICON, title: "High Water & Weather Resistance" },
+      { icon: WRENCH_ICON, title: "Versatile Bonding & Repair" },
+    ];
+  }
+
+  if (p.slug === "fosroc-lokfix-s") {
+    return [
+      { icon: SHIELD_ICON, title: "High Strength (≥70 MPa at 7d)" },
+      { icon: CLOCK_ICON, title: "Rapid Strength & Setting (30-45m)" },
+      { icon: WRENCH_ICON, title: "Vibration & Corrosion Resistant" },
+      { icon: WATER_ICON, title: "Underwater & Overhead Anchoring" },
+    ];
+  }
+
 
   if (p.slug === "penetron-penetron-admix") {
 
@@ -772,6 +799,39 @@ export function getProductFeatures(p: Product): FeatureItem[] {
 
 
 export function getKeyBenefits(p: Product): string[] {
+  if (p.slug === "fosroc-cebex-112") {
+    return [
+      "High performance plasticiser for cement mortars and renders providing superior cohesiveness",
+      "Significantly improves moisture retention and bond strength across masonry elements",
+      "Minimises drying shrinkage cracks and plaster crazing in internal and external finishes",
+      "Delivers creamy, buttery trowel workability reducing placement effort and rebound loss",
+      "Recommended dosage: 0.5% - 1.0% by weight of cement (mixed with gauging water)",
+      "Supplied in 20 L pails and 200 kg industrial drums for civil and plastering works",
+    ];
+  }
+
+  if (p.slug === "fosroc-nitobond-sbr-latex") {
+    return [
+      "High performance styrene butadiene rubber (SBR) latex emulsion for mortars and concrete",
+      "Provides outstanding adhesion to concrete, masonry, brick, stone, and steel substrates",
+      "Substantially improves flexural and tensile strengths while reducing water permeability",
+      "Enhances durability and frost resistance in external renders and waterproof screeds",
+      "Dosage: Typically 1 part Nitobond SBR Latex to 2-3 parts water depending on application",
+      "Supplied in 20 L jerrycans conforming to international bonding and repair standards",
+    ];
+  }
+
+  if (p.slug === "fosroc-lokfix-s") {
+    return [
+      "High-strength, two-component polyester resin anchor grout for high-load anchoring",
+      "Rapid strength gain enabling fast commissioning of plant, equipment, and structural bolts",
+      "Exceptional vibration and dynamic shock resistance in heavy industrial machinery installations",
+      "Corrosion resistant and non-expansive formulation safe for prestressed and reinforced concrete",
+      "Can be placed underwater and in overhead / horizontal holes without slumping",
+      "Supplied in 500 ml (1 kg) twin packs (Part A Base + Part B Filler)",
+    ];
+  }
+
 
   if (p.slug === "penetron-penetron-admix") {
 
@@ -1673,6 +1733,39 @@ export function getApplications(p: Product): AppItem[] {
 
 
 export function getTypicalProperties(p: Product): SpecProperty[] {
+  if (p.slug === "fosroc-cebex-112") {
+    return [
+      { label: "Form", value: "Liquid mortar plasticiser" },
+      { label: "Function", value: "Workability & shrinkage control" },
+      { label: "Dosage", value: "0.5% - 1.0% by weight of cement" },
+      { label: "Mixing", value: "Add to gauging water before cement" },
+      { label: "Packaging", value: "20 L pail / 200 kg drum" },
+      { label: "Storage", value: "Cool, dry place away from frost" },
+    ];
+  }
+
+  if (p.slug === "fosroc-nitobond-sbr-latex") {
+    return [
+      { label: "Polymer Base", value: "Styrene Butadiene Rubber (SBR) Latex" },
+      { label: "Appearance", value: "Milky white liquid" },
+      { label: "Dilution Ratio", value: "1 part latex to 2-3 parts water" },
+      { label: "Specific Gravity", value: "~1.01 - 1.03 @ 27°C" },
+      { label: "Packaging", value: "20 L Jerrycan" },
+      { label: "Shelf Life", value: "12 months in unopened container" },
+    ];
+  }
+
+  if (p.slug === "fosroc-lokfix-s") {
+    return [
+      { label: "Resin Chemistry", value: "Two-component polyester resin" },
+      { label: "Compressive Strength", value: "≥ 70 MPa (at 7 days)" },
+      { label: "Bond Strength", value: "≥ 14 MPa" },
+      { label: "Setting Time", value: "30 - 45 min @ 25°C" },
+      { label: "Service Temperature", value: "-30°C to +80°C" },
+      { label: "Pack Size", value: "500 ml (1 kg) Twin Pack" },
+    ];
+  }
+
 
   if (p.slug === "penetron-penetron-admix") {
 

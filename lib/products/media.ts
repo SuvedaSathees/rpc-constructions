@@ -129,6 +129,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "fosroc-cebex-112": {
     image: "fosroc-cebex-112.png",
+    backImage: "fosroc-cebex-112-back.png",
     video: "fosroc-cebex-112.mp4",
     description: "Plasticising and expanding admixture for cementitious grouts to improve fluidity, reduce water-cement ratio, and compensate for plastic settlement.",
     pdf: "TDS-Cebex-112-200326.pdf",
@@ -447,6 +448,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "fosroc-lokfix-s": {
     image: "fosroc-lokfix-s.png",
+    backImage: "fosroc-lokfix-s-back.png",
     description: "High strength polyester resin anchor grout for anchoring bolts, rebars, and dowels into concrete and masonry.",
     pdf: "RPC_Fosroc_Lokfix-SFS_TDS.pdf",
   },
