@@ -536,6 +536,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     image: "penetron-penetron-admix.png",
     backImage: "penetron-penetron-admix-back.png",
     description: "Penetron Admix is a crystalline waterproofing admixture for concrete, which reacts with moisture to form insoluble crystals, reducing water permeability and protecting concrete for a longer life.",
+    pdf: "RPC_Penetron_Penetron-Admix_TDS.pdf",
   },
   "ardex-endura-bronze-star": {
     image: "ardex-endura-bronze-star.png",
