@@ -516,6 +516,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     image: "dr-fixit-pidiproof-lw.png",
     backImage: "dr-fixit-pidiproof-lw-back.png",
     description: "Integral liquid waterproofing compound for concrete and mortar that reduces water permeability, enhances workability, and controls shrinkage cracking.",
+    pdf: "RPC_Dr-Fixit_Pidiproof-LW-Plus_TDS.pdf",
   },
   "stp-limited-tarfelt-lm": {
     image: "stp-limited-tarfelt-lm.png",
