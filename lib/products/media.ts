@@ -486,16 +486,19 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     image: "asian-paints-smartcare-cemboost-200.png",
     backImage: "asian-paints-smartcare-cemboost-200-back.png",
     description: "Integral liquid waterproofing compound for cementitious mixes that reduces water penetration through the capillary network in mortars and concrete.",
+    pdf: "RPC Asian Paints SmartCare Cemboost 200 TDS.pdf",
   },
   "asian-paints-smartcare-vitalia-neo": {
     image: "asian-paints-smartcare-vitalia-neo.png",
     backImage: "asian-paints-smartcare-vitalia-neo-back.png",
     description: "Integral waterproofing liquid designed for cementitious mixes to reduce water penetration, enhance workability, and prevent efflorescence.",
+    pdf: "RPC_AsianPaints_SmartCare_Vitalia_NEO_TDS.pdf",
   },
   "asian-paints-smartcare-hypershot-af-100": {
     image: "asian-paints-smartcare-hypershot-af-100.png",
     backImage: "asian-paints-smartcare-hypershot-af-100-back.png",
     description: "Alkali-free liquid shotcrete accelerator and industrial chemical admixture for rapid setting and early structural strength in sprayed concrete.",
+    pdf: "RPC_AsianPaints_SmartCare_Hypershot_AF_100_TDS.pdf",
   },
   "asian-paints-maximopast-px-100": {
     image: "asian-paints-maximopast-px-100.png",
