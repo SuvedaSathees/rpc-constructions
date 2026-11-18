@@ -409,40 +409,47 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     backImage: "renacon-renaplast-ready-mix-plaster-back.png",
     video: "renacon-renaplast-ready-mix-plaster.mp4",
     description: "High-quality, factory-prepared cement-based ready mix plaster formulated with graded sand and performance additives for interior and exterior masonry plastering.",
+    pdf: "RPC_Renacon_Renaplast-RMP_TDS.pdf",
   },
   "renacon-renabond-aac-joint-mortar-superior": {
     image: "renacon-renabond-aac-joint-mortar-superior.png",
     backImage: "renacon-renabond-aac-joint-mortar-superior-back.png",
     video: "renacon-renabond-aac-joint-mortar-superior.mp4",
     description: "Factory-prepared, polymer-modified thin-bed mortar specially formulated for high bond strength, fast workability, and durable joints in AAC block masonry.",
+    pdf: "RPC_Renacon_Renabond-AAC-Joint-Mortar_TDS.pdf",
   },
-"renacon-aac-block-3-inch": {
+  "renacon-aac-block-3-inch": {
     image: "renacon-aac-block-3-inch.png",
     backImage: "renacon-aac-block-3-inch-back.png",
     video: "renacon-aac-block-3-inch.mp4",
     description: "High-precision autoclaved aerated concrete (AAC) block (3 inch thick) for lightweight, fire-resistant, and thermally insulated partition walls.",
+    pdf: "RPC_Renacon_AAC-Blocks_TDS.pdf",
   },
   "renacon-aac-block-4-inch": {
     image: "renacon-aac-block-4-inch.png",
     backImage: "renacon-aac-block-4-inch-back.png",
     video: "renacon-aac-block-4-inch.mp4",
     description: "High-precision autoclaved aerated concrete (AAC) block (4 inch thick) for internal non-load bearing walls, shaft enclosures, and partition masonry.",
+    pdf: "RPC_Renacon_AAC-Blocks_TDS.pdf",
   },
   "renacon-aac-block-6-inch": {
     image: "renacon-aac-block-6-inch.png",
     backImage: "renacon-aac-block-6-inch-back.png",
     video: "renacon-aac-block-6-inch.mp4",
     description: "High-precision autoclaved aerated concrete (AAC) block (6 inch thick) providing structural masonry strength, sound insulation, and thermal efficiency for exterior and interior walls.",
+    pdf: "RPC_Renacon_AAC-Blocks_TDS.pdf",
   },
   "renacon-aac-block-8-inch": {
     image: "renacon-aac-block-8-inch.png",
     backImage: "renacon-aac-block-8-inch-back.png",
     video: "renacon-aac-block-8-inch.mp4",
     description: "High-precision autoclaved aerated concrete (AAC) block (8 inch thick) designed for external perimeter walls, load-bearing infill masonry, and maximum acoustic and thermal performance.",
+    pdf: "RPC_Renacon_AAC-Blocks_TDS.pdf",
   },
   "renacon-aac-block-9-inch": {
     image: "renacon-aac-block-9-inch.png",
     description: "Heavy-duty autoclaved aerated concrete (AAC) block (9 inch thick) engineered for robust external walls, industrial envelopes, and maximum energy-saving masonry.",
+    pdf: "RPC_Renacon_AAC-Blocks_TDS.pdf",
   },
 "fosroc-brushbond-roofguard-white": {
     image: "fosroc-brushbond-roofguard-white.png",
