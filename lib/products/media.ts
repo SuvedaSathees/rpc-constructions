@@ -144,7 +144,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "fosroc-conplast-sd110": {
     image: "fosroc-conplast-sd110.png",
     description: "Specialized admixture for semi-dry concrete mixes used in manufacture of concrete blocks, paving stones, and precast units to improve density and finish.",
-    pdf: "TDS-Conplast-SD110-India4.pdf",
+    pdf: "RPC_Fosroc_Conplast-SD110_TDS.pdf",
   },
   "fosroc-conbextra-gp2": {
     image: "fosroc-conbextra-gp2.png",
@@ -322,6 +322,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "fosroc-nitobond-pc40": {
     image: "fosroc-nitobond-pc40.png",
     description: "Thixotropic epoxy adhesive designed for bonding precast concrete segments, external reinforcement plates, and general structural bonding.",
+    pdf: "RPC_Fosroc_Nitobond-PC_TDS.pdf",
   },
   "fosroc-rendroc-sp40": {
     image: "fosroc-rendroc-sp40.png",
