@@ -610,11 +610,13 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     image: "myk-arment-aquaarm-proof-wp10.png",
     backImage: "myk-arment-aquaarm-proof-wp10-back.png",
     description: "High-performance integral waterproofing liquid for cementitious systems conforming to IS 2645:2008. Reduces water-cement ratio, improves workability, minimizes capillary porosity, and enhances concrete durability.",
+    pdf: "RPC_AquaArm_Proof-WP-10_TDS.pdf",
   },
   "myk-arment-armix-ellecrete-p-101": {
     image: "myk-arment-armix-ellecrete-p-101.png",
     backImage: "myk-arment-armix-ellecrete-p-101-back.png",
     description: "Normal water-reducing plasticizer and set retarder improving pumpability, workability, and surface finish of ready-mixed concrete.",
+    pdf: "RPC_Armix_ElleCrete-P101_TDS.pdf",
   },
   "myk-arment-armix-ae": {
     image: "myk-arment-armix-ae.png",
@@ -625,26 +627,31 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     image: "myk-arment-armix-emmecrete-sp-111.png",
     backImage: "myk-arment-armix-emmecrete-sp-111-back.png",
     description: "Sulphonated naphthalene formaldehyde (SNF) superplasticizer delivering high early strength, high workability, and rapid turnaround in precast concrete.",
+    pdf: "RPC_Armix_EmmeCrete-SP111_TDS.pdf",
   },
   "myk-arment-armix-hyyecrete-sp-200": {
     image: "myk-arment-armix-hyyecrete-sp-200.png",
     backImage: "myk-arment-armix-hyyecrete-sp-200-back.png",
     description: "High-performance polycarboxylate ether (PCE) superplasticizer for self-compacting, high-grade, and heavily reinforced concrete structures.",
+    pdf: "RPC_Armix_HyyeCrete-SP200_TDS.pdf",
   },
   "myk-arment-armix-cure-wb": {
     image: "myk-arment-armix-cure-wb.png",
     backImage: "myk-arment-armix-cure-wb-back.png",
     description: "Water-based wax/resin emulsion membrane curing compound preventing moisture loss during early hydration in concrete slabs and pavements.",
+    pdf: "RPC_Armix_Cure-WB-Clear_TDS.pdf",
   },
   "myk-arment-armix-form-fr-1": {
     image: "myk-arment-armix-form-fr-1.png",
     backImage: "myk-arment-armix-form-fr-1-back.png",
     description: "Solvent-based chemical mould release agent formulated to deliver smooth, stain-free architectural concrete and easy formwork release.",
+    pdf: "RPC_Armix_Form-FR1_TDS.pdf",
   },
   "myk-arment-armix-form-fr-2": {
     image: "myk-arment-armix-form-fr-2.png",
     backImage: "myk-arment-armix-form-fr-2-back.png",
     description: "Water-dilutable concentrate mould release agent providing clean strike and extended life for steel, plywood, and plastic formwork.",
+    pdf: "RPC_Armix_Form-FR2_TDS.pdf",
   },
   "fosroc-conplast-sp430-es2": {
     image: "fosroc-conplast-sp430-es2.png",
