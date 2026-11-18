@@ -668,21 +668,25 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     image: "cci-novaplast-8200.png",
     backImage: "cci-novaplast-8200-back.png",
     description: "High performance superplasticising admixture for concrete and mortar, substantially reducing water demand while enhancing workability and strength development.",
+    pdf: "RPC_Chemtech_Novaplast-8200_TDS.pdf",
   },
   "cci-novamix-2000": {
     image: "cci-novamix-2000.png",
     backImage: "cci-novamix-2000-back.png",
     description: "High performance concrete admixture engineered for significant water reduction, extended slump retention, and uniform concrete durability.",
+    pdf: "RPC_Chemtech_Novamix-2000_TDS.pdf",
   },
   "cci-novamix-4000": {
     image: "cci-novamix-4000.png",
     backImage: "cci-novamix-4000-back.png",
     description: "Advanced high-performance concrete admixture delivering superior water reduction, long slump life, and elevated early compressive strength.",
+    pdf: "RPC_CCI_Novamix-4000_TDS.pdf",
   },
   "cci-novacast-pv50": {
     image: "cci-novacast-pv50.png",
     backImage: "cci-novacast-pv50-back.png",
     description: "High-performance precast concrete admixture engineered for accelerated early strength gain, rapid demoulding, and crisp surface finish.",
+    pdf: "RPC_CCI_Novacast-PV-50_TDS.pdf",
   },
   "cci-novatech-aea": {
     image: "cci-novatech-aea.png",
@@ -698,11 +702,13 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     image: "cci-neo-bond-sbr.png",
     backImage: "cci-neo-bond-sbr-back.png",
     description: "High performance SBR latex bonding agent and polymer modifier for waterproof screeds, structural repair mortars, and high-adhesion slurry coats.",
+    pdf: "RPC_CCI_Neobond-SBR_TDS.pdf",
   },
   "cci-neotop-2": {
     image: "cci-neotop-2.png",
     backImage: "cci-neotop-2-back.png",
     description: "Specialized construction application chemical system formulated for durable protective topping, wear resistance, and structural integrity.",
+    pdf: "RPC_CCI_Neotop-2_TDS.pdf",
   },
 };
 
