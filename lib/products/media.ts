@@ -522,16 +522,19 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     image: "stp-limited-tarfelt-lm.png",
     backImage: "stp-limited-tarfelt-lm-back.png",
     description: "Ready-to-use liquid bituminous membrane forming a seamless, flexible waterproof barrier with excellent crack-bridging ability and high adhesion.",
+    pdf: "RPC_STP_TarFelt-LM_TDS.pdf",
   },
   "stp-limited-shalisbr-latex": {
     image: "stp-limited-shalisbr-latex.png",
     backImage: "stp-limited-shalisbr-latex-back.png",
     description: "Styrene-butadiene rubber (SBR) latex bonding agent and waterproofing admixture improving adhesion, flexibility, water resistance, and durability of repair mortars, plasters, and concrete.",
+    pdf: "rpc-stp-shalisbr-latex-tds.pdf",
   },
   "stp-limited-shalitex-primer": {
     image: "stp-limited-shalitex-primer.png",
     backImage: "stp-limited-shalitex-primer-back.png",
     description: "Solvent-based penetrating bituminous primer conforming to IS 3384 (Part 1), sealing pores on concrete and masonry before waterproofing membrane application.",
+    pdf: "rpc-stp-shalitex-primer-tds.pdf",
   },
   "penetron-penetron-admix": {
     image: "penetron-penetron-admix.png",
