@@ -562,6 +562,33 @@ export function getProductFeatures(p: Product): FeatureItem[] {
     ];
   }
 
+  if (p.slug === "fosroc-auramix-300-plus") {
+    return [
+      { icon: CLOCK_ICON, title: "Long Workability Retention (≥4 hrs)" },
+      { icon: WATER_ICON, title: "Reduced Water Demand" },
+      { icon: LAYERS_ICON, title: "Excellent Rheology & Flow" },
+      { icon: CRACK_ICON, title: "High Strength Development" },
+    ];
+  }
+
+  if (p.slug === "fosroc-reebol-emulsion-xtra") {
+    return [
+      { icon: SHIELD_ICON, title: "High Acrylic Bond Strength" },
+      { icon: WATER_ICON, title: "Enhanced Water Resistance" },
+      { icon: CRACK_ICON, title: "Reduces Drying Shrinkage" },
+      { icon: WRENCH_ICON, title: "Multi-Purpose Concrete Bonding" },
+    ];
+  }
+
+  if (p.slug === "fosroc-reebol-standard") {
+    return [
+      { icon: WRENCH_ICON, title: "Quick & Clean Stripping" },
+      { icon: SHIELD_ICON, title: "Protects Steel from Corrosion" },
+      { icon: LAYERS_ICON, title: "Minimizes Surface Blemishes" },
+      { icon: CLOCK_ICON, title: "High Coverage (Up to 60 m²/L)" },
+    ];
+  }
+
   if (p.slug === "fosroc-auramix-350") {
     return [
       { icon: WATER_ICON, title: "Extreme Water Reduction (>30%)" },
@@ -1421,6 +1448,39 @@ export function getKeyBenefits(p: Product): string[] {
       "Significantly improves early and 28-day compressive strengths with reduced permeability",
       "Provides superior cohesion, eliminating bleeding and segregation in high-slump and pumped mixes",
       "Supplied in 250 kg industrial drums conforming to IS 9103 and ASTM C494 Type F & G",
+    ];
+  }
+
+  if (p.slug === "fosroc-auramix-300-plus") {
+    return [
+      "High performance superplasticizer for concrete providing long workability retention with excellent rheology",
+      "Enables concrete placement requiring 4 hours or more workability retention in hot weather and mass pours",
+      "Substantially reduces water demand while boosting early and ultimate compressive strength",
+      "Delivers cohesive, free-flowing, self-leveling concrete with zero segregation and bleeding",
+      "Ideal for mass concreting, raft foundations, heavily reinforced sections, and high performance concrete",
+      "Supplied in 200 kg and 250 kg heavy-duty industrial drums",
+    ];
+  }
+
+  if (p.slug === "fosroc-reebol-emulsion-xtra") {
+    return [
+      "High performance acrylic bonding agent which improves adhesion and enhances durability of cementitious mixes",
+      "Significantly reduces shrinkage and minimizes hairline crack formation in repairs and toppings",
+      "Improves water resistance and impermeability in mortars and concrete slurries",
+      "Ideal for bonding new to old concrete, repair mortars, and general-purpose construction applications",
+      "Suitable for tile and stone fixing with enhanced mechanical bond strength",
+      "Supplied in 200 L industrial blue drums for large-scale structural projects",
+    ];
+  }
+
+  if (p.slug === "fosroc-reebol-standard") {
+    return [
+      "High performance emulsified mould release agent providing quick, clean and easy stripping of moulds and formwork",
+      "Minimizes surface blemishes, staining, and formwork cleaning effort after striking",
+      "Protects steel formwork and shutters against rust and atmospheric corrosion",
+      "Versatile formulation suitable for wood, steel, and plastic formwork in concrete and mortar casting",
+      "High coverage efficiency: approximately 35–40 m²/litre on wood and up to 60 m²/litre on steel",
+      "Supplied in 200 L drums, 20 L pails, and 5 L containers",
     ];
   }
 
@@ -2475,6 +2535,38 @@ export function getTypicalProperties(p: Product): SpecProperty[] {
       { label: "pH Value", value: "Min 6.0" },
       { label: "Chloride Content", value: "Nil (IS 456 / BS 5075)" },
       { label: "Recommended Dosage", value: "0.5 - 1.5 L per 100 kg cement" },
+    ];
+  }
+
+  if (p.slug === "fosroc-auramix-300-plus") {
+    return [
+      { label: "Product Class", value: "High Performance Concrete Admixture" },
+      { label: "Polymer Base", value: "Advanced Polycarboxylate Ether (PCE)" },
+      { label: "Slump Retention", value: "4 hours or more" },
+      { label: "Applications", value: "Mass concreting, raft foundations, free-flow concrete" },
+      { label: "Packaging", value: "200 kg / 250 kg drums" },
+      { label: "Storage", value: "Store in cool, dry place; protect from frost" },
+    ];
+  }
+
+  if (p.slug === "fosroc-reebol-emulsion-xtra") {
+    return [
+      { label: "Primary Function", value: "Bonding agent for cementitious mixes" },
+      { label: "Polymer Base", value: "High performance acrylic copolymer" },
+      { label: "Packaging", value: "200 L drum" },
+      { label: "Applications", value: "Bonding new to old concrete, repair mortars, tile fixing" },
+      { label: "Storage", value: "Store in cool, dry place; protect from frost" },
+    ];
+  }
+
+  if (p.slug === "fosroc-reebol-standard") {
+    return [
+      { label: "Primary Function", value: "Emulsified mould release agent for formworks" },
+      { label: "Formwork Compatibility", value: "Wood, steel, and plastic moulds" },
+      { label: "Coverage (Wood)", value: "35 - 40 m²/litre" },
+      { label: "Coverage (Steel)", value: "Up to 60 m²/litre" },
+      { label: "Packaging", value: "200 L drum, 20 L, 5 L" },
+      { label: "Shelf Life", value: "Minimum 6 months in unopened containers" },
     ];
   }
 

@@ -182,6 +182,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "fosroc-auramix-300-plus": {
     image: "fosroc-auramix-300-plus.png",
+    backImage: "fosroc-auramix-300-plus-back.png",
     description: "Next-generation polycarboxylate ether superplasticizer for high performance concrete with low water-binder ratio and rapid strength gain.",
     pdf: "rpc-fosroc-auramix-300-plus-tds.pdf",
   },
@@ -238,6 +239,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "fosroc-reebol-emulsion-xtra": {
     image: "fosroc-reebol-emulsion-xtra.png",
+    backImage: "fosroc-reebol-emulsion-xtra-back.png",
     description: "Water-dilutable shutter release agent emulsion providing clean, stain-free striking of all types of formwork and moulds.",
     pdf: "RPC Fosroc Reebol Emulsion Xtra TDS.pdf",
   },
@@ -483,8 +485,9 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     image: "fosroc-auramix-200-20.png",
     description: "High-performance water reducing admixture based on sulphonated naphthalene formaldehyde (SNF) for concrete and mortar.",
   },
-"fosroc-reebol-standard": {
+  "fosroc-reebol-standard": {
     image: "fosroc-reebol-standard.png",
+    backImage: "fosroc-reebol-standard-back.png",
     description: "Ready-to-use chemical mould release agent for concrete. Forms a thin, uniform film on formwork surfaces to ensure easy and clean de-moulding.",
   },
 
