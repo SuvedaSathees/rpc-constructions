@@ -140,16 +140,19 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "fosroc-conplast-nc": {
     image: "fosroc-conplast-nc.png",
+    video: "fosroc-conplast-nc.mp4",
     description: "Chloride-free accelerating admixture formulated to accelerate setting time and promote rapid early strength development of concrete.",
     pdf: "rpc-fosroc-conplast-nc-tds.pdf",
   },
   "fosroc-conplast-sd110": {
     image: "fosroc-conplast-sd110.png",
+    video: "fosroc-conplast-sd110.mp4",
     description: "Specialized admixture for semi-dry concrete mixes used in manufacture of concrete blocks, paving stones, and precast units to improve density and finish.",
     pdf: "RPC_Fosroc_Conplast-SD110_TDS.pdf",
   },
   "fosroc-conbextra-gp2": {
     image: "fosroc-conbextra-gp2.png",
+    video: "fosroc-conbextra-gp2.mp4",
     description: "High-strength, non-shrink, free-flowing cementitious grout for precision grouting of heavy machinery bases, stanchion plates, anchor bolts, and precast elements.",
     pdf: "RPC_Fosroc_Conbextra_GP2_TDS.pdf",
   },
@@ -223,6 +226,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "fosroc-nitobond-sbr": {
     image: "fosroc-nitobond-sbr.png",
     backImage: "fosroc-nitobond-sbr-back.png",
+    video: "fosroc-nitobond-sbr.mp4",
     description: "Modified SBR polymer bonding aid and mortar additive to improve adhesion, tensile strength, and water resistance of cementitious mixes.",
     pdf: "RPC_Fosroc_Nitobond-SBR_TDS.pdf",
   },
@@ -333,6 +337,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "fosroc-nitobond-pc40": {
     image: "fosroc-nitobond-pc40.png",
+    video: "fosroc-nitobond-pc40.mp4",
     description: "Thixotropic epoxy adhesive designed for bonding precast concrete segments, external reinforcement plates, and general structural bonding.",
     pdf: "RPC_Fosroc_Nitobond-PC_TDS.pdf",
   },
@@ -484,6 +489,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "fosroc-lokfix-s": {
     image: "fosroc-lokfix-s.png",
     backImage: "fosroc-lokfix-s-back.png",
+    video: "fosroc-lokfix-s.mp4",
     description: "High strength polyester resin anchor grout for anchoring bolts, rebars, and dowels into concrete and masonry.",
     pdf: "RPC_Fosroc_Lokfix-SFS_TDS.pdf",
   },
