@@ -154,35 +154,41 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "fosroc-conplast-sp439": {
     image: "fosroc-conplast-sp439.png",
     backImage: "fosroc-conplast-sp439-back.png",
+    video: "fosroc-conplast-sp439.mp4",
     description: "High performance superplasticizer for precast and ready-mix concrete requiring rapid workability retention and high early strength.",
     pdf: "rpc-fosroc-conplast-sp439-tds.pdf",
   },
   "fosroc-conplast-sp430-g": {
     image: "fosroc-conplast-sp430-g.png",
     backImage: "fosroc-conplast-sp430-g-back.png",
+    video: "fosroc-conplast-sp430-g.mp4",
     description: "Chloride-free superplasticizing admixture based on selected sulphonated naphthalene polymers formulated for enhanced pumpability and high early strength.",
     pdf: "rpc-fosroc-conplast-sp430-tds.pdf",
   },
   "fosroc-conplast-sp430-g8": {
     image: "fosroc-conplast-sp430-g8.png",
     backImage: "fosroc-conplast-sp430-g8-back.png",
+    video: "fosroc-conplast-sp430-g8.mp4",
     description: "High performance superplasticizing admixture designed to provide significant water reduction and prolonged workability retention.",
     pdf: "rpc-fosroc-conplast-sp430-g8-tds.pdf",
   },
   "fosroc-auramix-400": {
     image: "fosroc-auramix-400.png",
     backImage: "fosroc-auramix-400-back.png",
+    video: "fosroc-auramix-400.mp4",
     description: "High performance PCE-based superplasticizer for ready-mix concrete requiring exceptional slump retention and high durability.",
     pdf: "rpc-fosroc-auramix-400-tds.pdf",
   },
   "fosroc-auramix-350": {
     image: "fosroc-auramix-350.png",
     backImage: "fosroc-auramix-350-back.png",
+    video: "fosroc-auramix-350.mp4",
     description: "High performance polycarboxylate ether based superplasticizer specifically designed to provide high water reduction and excellent slump retention in harsh climates.",
   },
   "fosroc-auramix-300-plus": {
     image: "fosroc-auramix-300-plus.png",
     backImage: "fosroc-auramix-300-plus-back.png",
+    video: "fosroc-auramix-300-plus.mp4",
     description: "Next-generation polycarboxylate ether superplasticizer for high performance concrete with low water-binder ratio and rapid strength gain.",
     pdf: "rpc-fosroc-auramix-300-plus-tds.pdf",
   },
@@ -240,6 +246,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "fosroc-reebol-emulsion-xtra": {
     image: "fosroc-reebol-emulsion-xtra.png",
     backImage: "fosroc-reebol-emulsion-xtra-back.png",
+    video: "fosroc-reebol-emulsion-xtra.mp4",
     description: "Water-dilutable shutter release agent emulsion providing clean, stain-free striking of all types of formwork and moulds.",
     pdf: "RPC Fosroc Reebol Emulsion Xtra TDS.pdf",
   },
@@ -484,11 +491,13 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "fosroc-auramix-200-20": {
     image: "fosroc-auramix-200-20.png",
+    video: "fosroc-auramix-200-20.mp4",
     description: "High-performance water reducing admixture based on sulphonated naphthalene formaldehyde (SNF) for concrete and mortar.",
   },
   "fosroc-reebol-standard": {
     image: "fosroc-reebol-standard.png",
     backImage: "fosroc-reebol-standard-back.png",
+    video: "fosroc-reebol-standard.mp4",
     description: "Ready-to-use chemical mould release agent for concrete. Forms a thin, uniform film on formwork surfaces to ensure easy and clean de-moulding.",
   },
 
@@ -682,12 +691,14 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "fosroc-conplast-sp430-es2": {
     image: "fosroc-conplast-sp430-es2.png",
     backImage: "fosroc-conplast-sp430-es2-back.png",
+    video: "fosroc-conplast-sp430-es2.mp4",
     description: "High performance superplasticizer based on SNF polymer technology engineered for water reduction, improved workability, and high early strength.",
     pdf: "rpc-fosroc-conplast-sp430-es2-tds.pdf",
   },
   "fosroc-moulding-oil": {
     image: "fosroc-moulding-oil.png",
     backImage: "fosroc-moulding-oil-back.png",
+    video: "fosroc-moulding-oil.mp4",
     description: "Ready-to-use form-release agent formulated for moulds and formwork to achieve effortless striking and an architectural, blemish-free concrete finish.",
   },
   "cci-novaplast-8200": {
