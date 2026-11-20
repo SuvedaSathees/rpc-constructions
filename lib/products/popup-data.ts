@@ -61,6 +61,33 @@ const LAYERS_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" 
 
 
 export function getProductFeatures(p: Product): FeatureItem[] {
+  if (p.slug === "fosroc-cebex-112") {
+    return [
+      { icon: WATER_ICON, title: "Improved Moisture Retention" },
+      { icon: CRACK_ICON, title: "Minimises Drying Shrinkage" },
+      { icon: WRENCH_ICON, title: "Enhanced Bond & Workability" },
+      { icon: SHIELD_ICON, title: "High Cohesion in Mortars" },
+    ];
+  }
+
+  if (p.slug === "fosroc-nitobond-sbr-latex") {
+    return [
+      { icon: SHIELD_ICON, title: "Superior Adhesion & Tensile" },
+      { icon: CRACK_ICON, title: "Reduced Shrinkage Cracking" },
+      { icon: WATER_ICON, title: "High Water & Weather Resistance" },
+      { icon: WRENCH_ICON, title: "Versatile Bonding & Repair" },
+    ];
+  }
+
+  if (p.slug === "fosroc-lokfix-s") {
+    return [
+      { icon: SHIELD_ICON, title: "High Strength (≥70 MPa at 7d)" },
+      { icon: CLOCK_ICON, title: "Rapid Strength & Setting (30-45m)" },
+      { icon: WRENCH_ICON, title: "Vibration & Corrosion Resistant" },
+      { icon: WATER_ICON, title: "Underwater & Overhead Anchoring" },
+    ];
+  }
+
 
   if (p.slug === "penetron-penetron-admix") {
 
@@ -535,6 +562,33 @@ export function getProductFeatures(p: Product): FeatureItem[] {
     ];
   }
 
+  if (p.slug === "fosroc-auramix-300-plus") {
+    return [
+      { icon: CLOCK_ICON, title: "Long Workability Retention (≥4 hrs)" },
+      { icon: WATER_ICON, title: "Reduced Water Demand" },
+      { icon: LAYERS_ICON, title: "Excellent Rheology & Flow" },
+      { icon: CRACK_ICON, title: "High Strength Development" },
+    ];
+  }
+
+  if (p.slug === "fosroc-reebol-emulsion-xtra") {
+    return [
+      { icon: SHIELD_ICON, title: "High Acrylic Bond Strength" },
+      { icon: WATER_ICON, title: "Enhanced Water Resistance" },
+      { icon: CRACK_ICON, title: "Reduces Drying Shrinkage" },
+      { icon: WRENCH_ICON, title: "Multi-Purpose Concrete Bonding" },
+    ];
+  }
+
+  if (p.slug === "fosroc-reebol-standard") {
+    return [
+      { icon: WRENCH_ICON, title: "Quick & Clean Stripping" },
+      { icon: SHIELD_ICON, title: "Protects Steel from Corrosion" },
+      { icon: LAYERS_ICON, title: "Minimizes Surface Blemishes" },
+      { icon: CLOCK_ICON, title: "High Coverage (Up to 60 m²/L)" },
+    ];
+  }
+
   if (p.slug === "fosroc-auramix-350") {
     return [
       { icon: WATER_ICON, title: "Extreme Water Reduction (>30%)" },
@@ -772,6 +826,39 @@ export function getProductFeatures(p: Product): FeatureItem[] {
 
 
 export function getKeyBenefits(p: Product): string[] {
+  if (p.slug === "fosroc-cebex-112") {
+    return [
+      "High performance plasticiser for cement mortars and renders providing superior cohesiveness",
+      "Significantly improves moisture retention and bond strength across masonry elements",
+      "Minimises drying shrinkage cracks and plaster crazing in internal and external finishes",
+      "Delivers creamy, buttery trowel workability reducing placement effort and rebound loss",
+      "Recommended dosage: 0.5% - 1.0% by weight of cement (mixed with gauging water)",
+      "Supplied in 20 L pails and 200 kg industrial drums for civil and plastering works",
+    ];
+  }
+
+  if (p.slug === "fosroc-nitobond-sbr-latex") {
+    return [
+      "High performance styrene butadiene rubber (SBR) latex emulsion for mortars and concrete",
+      "Provides outstanding adhesion to concrete, masonry, brick, stone, and steel substrates",
+      "Substantially improves flexural and tensile strengths while reducing water permeability",
+      "Enhances durability and frost resistance in external renders and waterproof screeds",
+      "Dosage: Typically 1 part Nitobond SBR Latex to 2-3 parts water depending on application",
+      "Supplied in 20 L jerrycans conforming to international bonding and repair standards",
+    ];
+  }
+
+  if (p.slug === "fosroc-lokfix-s") {
+    return [
+      "High-strength, two-component polyester resin anchor grout for high-load anchoring",
+      "Rapid strength gain enabling fast commissioning of plant, equipment, and structural bolts",
+      "Exceptional vibration and dynamic shock resistance in heavy industrial machinery installations",
+      "Corrosion resistant and non-expansive formulation safe for prestressed and reinforced concrete",
+      "Can be placed underwater and in overhead / horizontal holes without slumping",
+      "Supplied in 500 ml (1 kg) twin packs (Part A Base + Part B Filler)",
+    ];
+  }
+
 
   if (p.slug === "penetron-penetron-admix") {
 
@@ -1364,6 +1451,39 @@ export function getKeyBenefits(p: Product): string[] {
     ];
   }
 
+  if (p.slug === "fosroc-auramix-300-plus") {
+    return [
+      "High performance superplasticizer for concrete providing long workability retention with excellent rheology",
+      "Enables concrete placement requiring 4 hours or more workability retention in hot weather and mass pours",
+      "Substantially reduces water demand while boosting early and ultimate compressive strength",
+      "Delivers cohesive, free-flowing, self-leveling concrete with zero segregation and bleeding",
+      "Ideal for mass concreting, raft foundations, heavily reinforced sections, and high performance concrete",
+      "Supplied in 200 kg and 250 kg heavy-duty industrial drums",
+    ];
+  }
+
+  if (p.slug === "fosroc-reebol-emulsion-xtra") {
+    return [
+      "High performance acrylic bonding agent which improves adhesion and enhances durability of cementitious mixes",
+      "Significantly reduces shrinkage and minimizes hairline crack formation in repairs and toppings",
+      "Improves water resistance and impermeability in mortars and concrete slurries",
+      "Ideal for bonding new to old concrete, repair mortars, and general-purpose construction applications",
+      "Suitable for tile and stone fixing with enhanced mechanical bond strength",
+      "Supplied in 200 L industrial blue drums for large-scale structural projects",
+    ];
+  }
+
+  if (p.slug === "fosroc-reebol-standard") {
+    return [
+      "High performance emulsified mould release agent providing quick, clean and easy stripping of moulds and formwork",
+      "Minimizes surface blemishes, staining, and formwork cleaning effort after striking",
+      "Protects steel formwork and shutters against rust and atmospheric corrosion",
+      "Versatile formulation suitable for wood, steel, and plastic formwork in concrete and mortar casting",
+      "High coverage efficiency: approximately 35–40 m²/litre on wood and up to 60 m²/litre on steel",
+      "Supplied in 200 L drums, 20 L pails, and 5 L containers",
+    ];
+  }
+
   if (p.slug === "fosroc-auramix-350") {
     return [
       "Next-generation PCE superplasticizer specifically engineered for long slump retention in hot weather conditions",
@@ -1673,6 +1793,39 @@ export function getApplications(p: Product): AppItem[] {
 
 
 export function getTypicalProperties(p: Product): SpecProperty[] {
+  if (p.slug === "fosroc-cebex-112") {
+    return [
+      { label: "Form", value: "Liquid mortar plasticiser" },
+      { label: "Function", value: "Workability & shrinkage control" },
+      { label: "Dosage", value: "0.5% - 1.0% by weight of cement" },
+      { label: "Mixing", value: "Add to gauging water before cement" },
+      { label: "Packaging", value: "20 L pail / 200 kg drum" },
+      { label: "Storage", value: "Cool, dry place away from frost" },
+    ];
+  }
+
+  if (p.slug === "fosroc-nitobond-sbr-latex") {
+    return [
+      { label: "Polymer Base", value: "Styrene Butadiene Rubber (SBR) Latex" },
+      { label: "Appearance", value: "Milky white liquid" },
+      { label: "Dilution Ratio", value: "1 part latex to 2-3 parts water" },
+      { label: "Specific Gravity", value: "~1.01 - 1.03 @ 27°C" },
+      { label: "Packaging", value: "20 L Jerrycan" },
+      { label: "Shelf Life", value: "12 months in unopened container" },
+    ];
+  }
+
+  if (p.slug === "fosroc-lokfix-s") {
+    return [
+      { label: "Resin Chemistry", value: "Two-component polyester resin" },
+      { label: "Compressive Strength", value: "≥ 70 MPa (at 7 days)" },
+      { label: "Bond Strength", value: "≥ 14 MPa" },
+      { label: "Setting Time", value: "30 - 45 min @ 25°C" },
+      { label: "Service Temperature", value: "-30°C to +80°C" },
+      { label: "Pack Size", value: "500 ml (1 kg) Twin Pack" },
+    ];
+  }
+
 
   if (p.slug === "penetron-penetron-admix") {
 
@@ -2382,6 +2535,38 @@ export function getTypicalProperties(p: Product): SpecProperty[] {
       { label: "pH Value", value: "Min 6.0" },
       { label: "Chloride Content", value: "Nil (IS 456 / BS 5075)" },
       { label: "Recommended Dosage", value: "0.5 - 1.5 L per 100 kg cement" },
+    ];
+  }
+
+  if (p.slug === "fosroc-auramix-300-plus") {
+    return [
+      { label: "Product Class", value: "High Performance Concrete Admixture" },
+      { label: "Polymer Base", value: "Advanced Polycarboxylate Ether (PCE)" },
+      { label: "Slump Retention", value: "4 hours or more" },
+      { label: "Applications", value: "Mass concreting, raft foundations, free-flow concrete" },
+      { label: "Packaging", value: "200 kg / 250 kg drums" },
+      { label: "Storage", value: "Store in cool, dry place; protect from frost" },
+    ];
+  }
+
+  if (p.slug === "fosroc-reebol-emulsion-xtra") {
+    return [
+      { label: "Primary Function", value: "Bonding agent for cementitious mixes" },
+      { label: "Polymer Base", value: "High performance acrylic copolymer" },
+      { label: "Packaging", value: "200 L drum" },
+      { label: "Applications", value: "Bonding new to old concrete, repair mortars, tile fixing" },
+      { label: "Storage", value: "Store in cool, dry place; protect from frost" },
+    ];
+  }
+
+  if (p.slug === "fosroc-reebol-standard") {
+    return [
+      { label: "Primary Function", value: "Emulsified mould release agent for formworks" },
+      { label: "Formwork Compatibility", value: "Wood, steel, and plastic moulds" },
+      { label: "Coverage (Wood)", value: "35 - 40 m²/litre" },
+      { label: "Coverage (Steel)", value: "Up to 60 m²/litre" },
+      { label: "Packaging", value: "200 L drum, 20 L, 5 L" },
+      { label: "Shelf Life", value: "Minimum 6 months in unopened containers" },
     ];
   }
 
