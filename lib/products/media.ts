@@ -88,6 +88,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "fosroc-brushbond-rfx-grey": {
     image: "fosroc-brushbond-rfx-grey.png",
+    video: "fosroc-brushbond-rfx-grey.mp4",
     description: "High performance elastomeric cementitious waterproof coating. Used for waterproofing and protecting exposed reinforced concrete structures against water ingress, acid gases, and chloride attack. Ideal for bathrooms, balconies, water tanks, basements, and wet areas.",
     pdf: "RPC_Fosroc_Brushbond_RFX_TDS_Draft_0.1.pdf",
   },
@@ -115,6 +116,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "fosroc-conplast-sp430": {
     image: "fosroc-conplast-sp430.png",
     backImage: "fosroc-conplast-sp430-back.png",
+    video: "fosroc-conplast-sp430.mp4",
     description: "Chloride-free superplasticizing admixture based on selected sulphonated naphthalene polymers. Provides substantial water reduction and high early and ultimate strengths.",
     pdf: "rpc-fosroc-conplast-sp430-tds.pdf",
   },
@@ -202,6 +204,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "fosroc-auramix-300": {
     image: "fosroc-auramix-300.png",
     backImage: "fosroc-auramix-300-back.png",
+    video: "fosroc-auramix-300.mp4",
     description: "Versatile PCE superplasticizer for high grade ready-mix concrete offering high workability and extended slump retention.",
     pdf: "rpc-fosroc-auramix-300-tds.pdf",
   },
