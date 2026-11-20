@@ -473,6 +473,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "renacon-aac-block-9-inch": {
     image: "renacon-aac-block-9-inch.png",
+    video: "renacon-aac-block-9-inch.mp4",
     description: "Heavy-duty autoclaved aerated concrete (AAC) block (9 inch thick) engineered for robust external walls, industrial envelopes, and maximum energy-saving masonry.",
     pdf: "RPC_Renacon_AAC-Blocks_TDS.pdf",
   },
