@@ -46,6 +46,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "berger-hs-epoxy-tile-grout": {
     image: "berger-hs-epoxy-tile-grout.png",
     backImage: "berger-hs-epoxy-tile-grout-back.png",
+    video: "berger-hs-epoxy-tile-grout.mp4",
     description: "High-performance three-component epoxy tile joint filler offering stain resistance, chemical resistance, and 100% waterproof hygienic finish.",
     pdf: "RPC_Berger_HS-Epoxy-Tile-Grout-3P_TDS.pdf",
   },
@@ -202,6 +203,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
   "fosroc-auracast-102": {
     image: "fosroc-auracast-102.png",
+    video: "fosroc-auracast-102.mp4",
     description: "High performance polycarboxylate ether based admixture specially formulated for precast concrete applications.",
     pdf: "RPC_Fosroc_Auracast-102_TDS.pdf",
   },
@@ -491,6 +493,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   },
 "fosroc-auramix-200-41": {
     image: "fosroc-auramix-200-41.png",
+    video: "fosroc-auramix-200-41.mp4",
     description: "High-performance water reducing admixture based on sulphonated naphthalene formaldehyde (SNF) for concrete and mortar.",
     pdf: "rpc-fosroc-auramix-200-41-tds-skeleton.pdf",
   },
@@ -512,12 +515,14 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "asian-paints-smartcare-cemboost-200": {
     image: "asian-paints-smartcare-cemboost-200.png",
     backImage: "asian-paints-smartcare-cemboost-200-back.png",
+    video: "asian-paints-smartcare-cemboost-200.mp4",
     description: "Integral liquid waterproofing compound for cementitious mixes that reduces water penetration through the capillary network in mortars and concrete.",
     pdf: "RPC Asian Paints SmartCare Cemboost 200 TDS.pdf",
   },
   "asian-paints-smartcare-vitalia-neo": {
     image: "asian-paints-smartcare-vitalia-neo.png",
     backImage: "asian-paints-smartcare-vitalia-neo-back.png",
+    video: "asian-paints-smartcare-vitalia-neo.mp4",
     description: "Integral waterproofing liquid designed for cementitious mixes to reduce water penetration, enhance workability, and prevent efflorescence.",
     pdf: "RPC_AsianPaints_SmartCare_Vitalia_NEO_TDS.pdf",
   },
