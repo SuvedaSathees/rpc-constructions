@@ -47,6 +47,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     image: "berger-hs-epoxy-tile-grout.png",
     backImage: "berger-hs-epoxy-tile-grout-back.png",
     description: "High-performance three-component epoxy tile joint filler offering stain resistance, chemical resistance, and 100% waterproof hygienic finish.",
+    pdf: "RPC_Berger_HS-Epoxy-Tile-Grout-3P_TDS.pdf",
   },
 
   "sika-rustop": {
@@ -134,7 +135,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     backImage: "fosroc-cebex-112-back.png",
     video: "fosroc-cebex-112.mp4",
     description: "Plasticising and expanding admixture for cementitious grouts to improve fluidity, reduce water-cement ratio, and compensate for plastic settlement.",
-    pdf: "TDS-Cebex-112-200326.pdf",
+    pdf: "RPC Fosroc Cebex 112 TDS.pdf",
   },
   "fosroc-conplast-nc": {
     image: "fosroc-conplast-nc.png",
@@ -163,7 +164,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     backImage: "fosroc-conplast-sp430-g-back.png",
     video: "fosroc-conplast-sp430-g.mp4",
     description: "Chloride-free superplasticizing admixture based on selected sulphonated naphthalene polymers formulated for enhanced pumpability and high early strength.",
-    pdf: "rpc-fosroc-conplast-sp430-tds.pdf",
+    pdf: "rpc-fosroc-conplast-sp430-g-tds.pdf",
   },
   "fosroc-conplast-sp430-g8": {
     image: "fosroc-conplast-sp430-g8.png",
@@ -184,6 +185,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     backImage: "fosroc-auramix-350-back.png",
     video: "fosroc-auramix-350.mp4",
     description: "High performance polycarboxylate ether based superplasticizer specifically designed to provide high water reduction and excellent slump retention in harsh climates.",
+    pdf: "rpc-fosroc-auramix-350-tds-partial.pdf",
   },
   "fosroc-auramix-300-plus": {
     image: "fosroc-auramix-300-plus.png",
@@ -196,7 +198,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     image: "fosroc-auramix-300.png",
     backImage: "fosroc-auramix-300-back.png",
     description: "Versatile PCE superplasticizer for high grade ready-mix concrete offering high workability and extended slump retention.",
-    pdf: "RPC_Fosroc_Auramix-300_TDS.pdf",
+    pdf: "rpc-fosroc-auramix-300-tds.pdf",
   },
   "fosroc-auracast-102": {
     image: "fosroc-auracast-102.png",
@@ -304,6 +306,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     backImage: "sika-emaco-s346-back.png",
     video: "sika-emaco-s346.mp4",
     description: "High-strength, shrinkage-compensated, flowable micro-concrete and precision structural repair mortar for restoration of large-volume concrete elements.",
+    pdf: "rpc-sika-emaco-s-346-tds.pdf",
   },
   "sika-mbrace-adh-2200-part-a": {
     image: "sika-mbrace-adh-2200-part-a.png",
@@ -343,6 +346,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     backImage: "fosroc-nitocote-cm210-white-back.png",
     video: "fosroc-nitocote-cm210-white.mp4",
     description: "Two-component polymer-modified elastomeric cementitious waterproof coating for concrete and masonry surfaces.",
+    pdf: "rpc-fosroc-nitocote-cm210-white-tds.pdf",
   },
   "fosroc-rendroc-cs-white": {
     image: "fosroc-rendroc-cs-white.png",
@@ -488,17 +492,20 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
 "fosroc-auramix-200-41": {
     image: "fosroc-auramix-200-41.png",
     description: "High-performance water reducing admixture based on sulphonated naphthalene formaldehyde (SNF) for concrete and mortar.",
+    pdf: "rpc-fosroc-auramix-200-41-tds-skeleton.pdf",
   },
   "fosroc-auramix-200-20": {
     image: "fosroc-auramix-200-20.png",
     video: "fosroc-auramix-200-20.mp4",
     description: "High-performance water reducing admixture based on sulphonated naphthalene formaldehyde (SNF) for concrete and mortar.",
+    pdf: "rpc-fosroc-auramix-200-20-tds-skeleton.pdf",
   },
   "fosroc-reebol-standard": {
     image: "fosroc-reebol-standard.png",
     backImage: "fosroc-reebol-standard-back.png",
     video: "fosroc-reebol-standard.mp4",
     description: "Ready-to-use chemical mould release agent for concrete. Forms a thin, uniform film on formwork surfaces to ensure easy and clean de-moulding.",
+    pdf: "rpc-fosroc-reebol-standard-tds-partial.pdf",
   },
 
   /* ---- 28 added products from Asian Paints, Dr. Fixit, STP, Penetron, ARDEX ENDURA, MYK Arment ---- */
@@ -524,16 +531,19 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     image: "asian-paints-maximopast-px-100.png",
     backImage: "asian-paints-maximopast-px-100-back.png",
     description: "High-range water-reducing concrete superplasticizer (PCE polymer additive) delivering high workability, reduced water demand, and increased compressive strength.",
+    pdf: "RPC_Asian-Paints_MaximoPlast-PX-100_TDS.pdf",
   },
   "asian-paints-maximopast-px-200": {
     image: "asian-paints-maximopast-px-200.png",
     backImage: "asian-paints-maximopast-px-200-back.png",
     description: "High-performance PCE concrete admixture providing extended slump retention, high water reduction, and rapid early strength development for high-grade mixes.",
+    pdf: "RPC_Asian-Paints_MaximoPlast-PX-200_TDS.pdf",
   },
   "asian-paints-maximopast-px-300": {
     image: "asian-paints-maximopast-px-300.png",
     backImage: "asian-paints-maximopast-px-300-back.png",
     description: "Advanced polycarboxylate ether (PCE) hyperplasticizer for ultra-high strength, self-compacting concrete (SCC), and mass infrastructure.",
+    pdf: "RPC_Asian-Paints_MaximoPlast-PX-300_TDS.pdf",
   },
   "dr-fixit-pidiproof-lw": {
     image: "dr-fixit-pidiproof-lw.png",
@@ -652,6 +662,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     backImage: "myk-arment-armix-ae-back.png",
     video: "myk-arment-armix-ae.mp4",
     description: "Synthetic air-entraining concrete admixture providing controlled air voids to enhance durability and freeze-thaw resistance in pavements and dams.",
+    pdf: "rpc-myk-arment-armix-ae-tds-skeleton.pdf",
   },
   "myk-arment-armix-emmecrete-sp-111": {
     image: "myk-arment-armix-emmecrete-sp-111.png",
@@ -700,6 +711,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     backImage: "fosroc-moulding-oil-back.png",
     video: "fosroc-moulding-oil.mp4",
     description: "Ready-to-use form-release agent formulated for moulds and formwork to achieve effortless striking and an architectural, blemish-free concrete finish.",
+    pdf: "rpc-fosroc-moulding-oil-tds-partial.pdf",
   },
   "cci-novaplast-8200": {
     image: "cci-novaplast-8200.png",
@@ -734,6 +746,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     backImage: "cci-novatech-aea-back.png",
     video: "cci-novatech-aea.mp4",
     description: "Air entraining admixture introducing micro-air bubbles to dramatically enhance freeze-thaw durability, cohesion, and pumpability in concrete.",
+    pdf: "rpc-cci-novatech-aea-tds-skeleton.pdf",
   },
   "cci-novacure-wb": {
     image: "cci-novacure-wb.png",
