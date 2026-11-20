@@ -61,6 +61,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "sika-rust-off-100": {
     image: "sika-rust-off-100.png",
     backImage: "sika-rust-off-100-back.png",
+    video: "sika-rust-off-100.mp4",
     description: "Single-component chemical rust remover and passivator for cleaning rusted steel reinforcement and metal surfaces prior to repair.",
     pdf: "rpc-sika-rustoff-100-tds.pdf",
   },
@@ -535,24 +536,28 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
   "asian-paints-smartcare-hypershot-af-100": {
     image: "asian-paints-smartcare-hypershot-af-100.png",
     backImage: "asian-paints-smartcare-hypershot-af-100-back.png",
+    video: "asian-paints-smartcare-hypershot-af-100.mp4",
     description: "Alkali-free liquid shotcrete accelerator and industrial chemical admixture for rapid setting and early structural strength in sprayed concrete.",
     pdf: "RPC_AsianPaints_SmartCare_Hypershot_AF_100_TDS.pdf",
   },
   "asian-paints-maximopast-px-100": {
     image: "asian-paints-maximopast-px-100.png",
     backImage: "asian-paints-maximopast-px-100-back.png",
+    video: "asian-paints-maximopast-px-100.mp4",
     description: "High-range water-reducing concrete superplasticizer (PCE polymer additive) delivering high workability, reduced water demand, and increased compressive strength.",
     pdf: "RPC_Asian-Paints_MaximoPlast-PX-100_TDS.pdf",
   },
   "asian-paints-maximopast-px-200": {
     image: "asian-paints-maximopast-px-200.png",
     backImage: "asian-paints-maximopast-px-200-back.png",
+    video: "asian-paints-maximopast-px-200.mp4",
     description: "High-performance PCE concrete admixture providing extended slump retention, high water reduction, and rapid early strength development for high-grade mixes.",
     pdf: "RPC_Asian-Paints_MaximoPlast-PX-200_TDS.pdf",
   },
   "asian-paints-maximopast-px-300": {
     image: "asian-paints-maximopast-px-300.png",
     backImage: "asian-paints-maximopast-px-300-back.png",
+    video: "asian-paints-maximopast-px-300.mp4",
     description: "Advanced polycarboxylate ether (PCE) hyperplasticizer for ultra-high strength, self-compacting concrete (SCC), and mass infrastructure.",
     pdf: "RPC_Asian-Paints_MaximoPlast-PX-300_TDS.pdf",
   },
