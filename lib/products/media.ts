@@ -77,20 +77,20 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     backImage: "fosroc-nitobond-ep-back.png",
     video: "fosroc-nitobond-ep.mp4",
     description: "Epoxy resin concrete bonding agent for bonding fresh wet cementitious materials to existing cementitious surfaces. Suitable for horizontal surfaces, or vertical surfaces where mortar or concrete can be supported by formwork. Its long open life makes it ideal for use with formwork or where additional steel reinforcement has to be fitted.",
-    pdf: "RPC_Fosroc_Nitobond_EP_TDS_Draft_0.1.pdf",
+    pdf: "RPC_Fosroc_Nitobond_EP_TDS.pdf",
   },
   "fosroc-brushbond-grey": {
     image: "fosroc-brushbond-grey.png",
     backImage: "fosroc-brushbond-grey-back.png",
     video: "fosroc-brushbond-grey.mp4",
     description: "Acrylic polymer modified elastomeric waterproofing membrane coating for concrete and masonry surfaces. Provides a seamless, durable waterproof barrier for water tanks, reservoirs, swimming pools, basements, toilets and wet areas.",
-    pdf: "RPC_Forsoc_Brushbond_TDS.pdf",
+    pdf: "RPC_Fosroc_Brushbond_TDS.pdf",
   },
   "fosroc-brushbond-rfx-grey": {
     image: "fosroc-brushbond-rfx-grey.png",
     video: "fosroc-brushbond-rfx-grey.mp4",
     description: "High performance elastomeric cementitious waterproof coating. Used for waterproofing and protecting exposed reinforced concrete structures against water ingress, acid gases, and chloride attack. Ideal for bathrooms, balconies, water tanks, basements, and wet areas.",
-    pdf: "RPC_Fosroc_Brushbond_RFX_TDS_Draft_0.1.pdf",
+    pdf: "RPC_Fosroc_Brushbond_RFX_TDS.pdf",
   },
   "fosroc-reebaklens-rr": {
     image: "fosroc-reebaklens-rr.png",
@@ -192,7 +192,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     backImage: "fosroc-auramix-350-back.png",
     video: "fosroc-auramix-350.mp4",
     description: "High performance polycarboxylate ether based superplasticizer specifically designed to provide high water reduction and excellent slump retention in harsh climates.",
-    pdf: "rpc-fosroc-auramix-350-tds-partial.pdf",
+    pdf: "rpc-fosroc-auramix-350-tds.pdf",
   },
   "fosroc-auramix-300-plus": {
     image: "fosroc-auramix-300-plus.png",
@@ -506,20 +506,20 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     image: "fosroc-auramix-200-41.png",
     video: "fosroc-auramix-200-41.mp4",
     description: "High-performance water reducing admixture based on sulphonated naphthalene formaldehyde (SNF) for concrete and mortar.",
-    pdf: "rpc-fosroc-auramix-200-41-tds-skeleton.pdf",
+    pdf: "rpc-fosroc-auramix-200-41-info.pdf",
   },
   "fosroc-auramix-200-20": {
     image: "fosroc-auramix-200-20.png",
     video: "fosroc-auramix-200-20.mp4",
     description: "High-performance water reducing admixture based on sulphonated naphthalene formaldehyde (SNF) for concrete and mortar.",
-    pdf: "rpc-fosroc-auramix-200-20-tds-skeleton.pdf",
+    pdf: "rpc-fosroc-auramix-200-20-info.pdf",
   },
   "fosroc-reebol-standard": {
     image: "fosroc-reebol-standard.png",
     backImage: "fosroc-reebol-standard-back.png",
     video: "fosroc-reebol-standard.mp4",
     description: "Ready-to-use chemical mould release agent for concrete. Forms a thin, uniform film on formwork surfaces to ensure easy and clean de-moulding.",
-    pdf: "rpc-fosroc-reebol-standard-tds-partial.pdf",
+    pdf: "rpc-fosroc-reebol-standard-tds.pdf",
   },
 
   /* ---- 28 added products from Asian Paints, Dr. Fixit, STP, Penetron, ARDEX ENDURA, MYK Arment ---- */
@@ -682,7 +682,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     backImage: "myk-arment-armix-ae-back.png",
     video: "myk-arment-armix-ae.mp4",
     description: "Synthetic air-entraining concrete admixture providing controlled air voids to enhance durability and freeze-thaw resistance in pavements and dams.",
-    pdf: "rpc-myk-arment-armix-ae-tds-skeleton.pdf",
+    pdf: "rpc-myk-arment-armix-ae-tds.pdf",
   },
   "myk-arment-armix-emmecrete-sp-111": {
     image: "myk-arment-armix-emmecrete-sp-111.png",
@@ -731,7 +731,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     backImage: "fosroc-moulding-oil-back.png",
     video: "fosroc-moulding-oil.mp4",
     description: "Ready-to-use form-release agent formulated for moulds and formwork to achieve effortless striking and an architectural, blemish-free concrete finish.",
-    pdf: "rpc-fosroc-moulding-oil-tds-partial.pdf",
+    pdf: "rpc-fosroc-moulding-oil-info.pdf",
   },
   "cci-novaplast-8200": {
     image: "cci-novaplast-8200.png",
@@ -766,7 +766,7 @@ export const PRODUCT_MEDIA: Readonly<Record<string, ProductMedia>> = {
     backImage: "cci-novatech-aea-back.png",
     video: "cci-novatech-aea.mp4",
     description: "Air entraining admixture introducing micro-air bubbles to dramatically enhance freeze-thaw durability, cohesion, and pumpability in concrete.",
-    pdf: "rpc-cci-novatech-aea-tds-skeleton.pdf",
+    pdf: "rpc-cci-novatech-aea-info.pdf",
   },
   "cci-novacure-wb": {
     image: "cci-novacure-wb.png",

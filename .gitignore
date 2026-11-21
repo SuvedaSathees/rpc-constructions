@@ -10,3 +10,5 @@ next-env.d.ts
 # secrets (the Leak Doctor's Gemini key and the like)
 .env
 .env*.local
+.vercel
+.env*
