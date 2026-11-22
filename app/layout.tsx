@@ -107,7 +107,7 @@ const organizationLd = {
   image: `${siteUrl}/images/og-rpc.png`,
   description,
   foundingDate: "2012",
-  email: contact.email,
+  ...(contact.email ? { email: contact.email } : {}),
   telephone: contact.phone.replace(/\s/g, ""),
   priceRange: "₹₹",
   address: {

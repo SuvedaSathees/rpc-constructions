@@ -13,6 +13,7 @@
  */
 
 import type { Product } from "./types";
+import { TDS_FACTS } from "./tds-facts";
 
 
 
@@ -60,7 +61,11 @@ const LAYERS_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" 
 
 
 
+const ICONS: Record<string, string> = { WATER: WATER_ICON, SHIELD: SHIELD_ICON, CRACK: CRACK_ICON, CLOCK: CLOCK_ICON, WRENCH: WRENCH_ICON, LAYERS: LAYERS_ICON };
 export function getProductFeatures(p: Product): FeatureItem[] {
+  const t = TDS_FACTS[p.slug];
+  if (t) return t.f.map(([i, title]) => ({ icon: ICONS[i] || SHIELD_ICON, title }));
+
   if (p.slug === "fosroc-cebex-112") {
     return [
       { icon: WATER_ICON, title: "Improved Moisture Retention" },
@@ -826,6 +831,9 @@ export function getProductFeatures(p: Product): FeatureItem[] {
 
 
 export function getKeyBenefits(p: Product): string[] {
+  const t = TDS_FACTS[p.slug];
+  if (t) return t.b;
+
   if (p.slug === "fosroc-cebex-112") {
     return [
       "High performance plasticiser for cement mortars and renders providing superior cohesiveness",
@@ -1775,24 +1783,18 @@ export function getKeyBenefits(p: Product): string[] {
 
 
 export function getApplications(p: Product): AppItem[] {
-
-  return [
-
-    { name: "Basements", image: "/images/rain/basement-after.webp" },
-
-    { name: "Water Tanks", image: "/images/rain/tank-after.webp" },
-
-    { name: "Roofs & Terraces", image: "/images/waterproofing/waterproofing-real-terrace.jpg" },
-
-    { name: "Bathrooms", image: "/images/rain/bath-after.webp" },
-
-  ];
+  const t = TDS_FACTS[p.slug];
+  if (t) return t.a.map(([name, image]) => ({ name, image }));
+  return [];
 
 }
 
 
 
 export function getTypicalProperties(p: Product): SpecProperty[] {
+  const t = TDS_FACTS[p.slug];
+  if (t) return t.p.map(([label, value]) => ({ label, value }));
+
   if (p.slug === "fosroc-cebex-112") {
     return [
       { label: "Form", value: "Liquid mortar plasticiser" },

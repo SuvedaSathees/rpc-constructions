@@ -155,7 +155,7 @@ export function ctaBand(c: ContactInfo, t: { title: string; steps?: readonly Cta
         </div>
       </div>
       ${steps.length ? `<ol class="pg-ctasteps" aria-label="What happens next">${steps.map(([h, p], i) => `<li><span class="pg-ctan" aria-hidden="true">${i + 1}</span><div><p class="pg-ctast">${esc(h)}</p><p class="pg-ctasd">${esc(p)}</p></div></li>`).join("")}</ol>` : ""}
-      ${reach ? `<p class="pg-ctaline"><a class="pg-ctatel" href="${tel(c.phone)}">${esc(c.phone)}</a><a href="mailto:${esc(c.email)}">${esc(c.email)}</a><span>${esc(c.hours)}</span></p>` : ""}
+      ${reach ? `<p class="pg-ctaline"><a class="pg-ctatel" href="${tel(c.phone)}">${esc(c.phone)}</a>${c.email ? `<a href="mailto:${esc(c.email)}">${esc(c.email)}</a>` : ""}<span>${esc(c.hours)}</span></p>` : ""}
     </div>
   </div>
 </section>`;

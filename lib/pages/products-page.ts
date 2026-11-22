@@ -159,6 +159,9 @@ function mountViewer(root: HTMLElement, on: On, env?: PageEnv) {
     panes.forEach((p) => {
       p.hidden = p.dataset.pvPane !== tabKey;
     });
+    // Load the data sheet only when its tab is opened
+    const tf = pv.querySelector<HTMLIFrameElement>("[data-pv-tds-frame]");
+    if (tf && tabKey === "tds" && tf.dataset.src && !tf.getAttribute("src")) tf.src = tf.dataset.src;
     const video = pv.querySelector<HTMLElement>("[data-pv-video-player]");
     if (tabKey !== "video") {
       video?.querySelector("video")?.pause();
@@ -331,10 +334,21 @@ function mountViewer(root: HTMLElement, on: On, env?: PageEnv) {
       appsEl.innerHTML = item.applications
         .map(
           (a: any) =>
-            `<div class="pv-app-card"><img class="pv-app-img" src="${a.image}" alt="${a.name}" loading="lazy"><span class="pv-app-label">${a.name}</span></div>`,
+            a.image
+              ? `<div class="pv-app-card"><img class="pv-app-img" src="${a.image}" alt="${a.name}" loading="lazy"><span class="pv-app-label">${a.name}</span></div>`
+              : `<div class="pv-app-card pv-app-card--txt"><span class="pv-app-label">${a.name}</span></div>`,
         )
         .join("");
     }
+    // Hide any section the data sheet gives nothing for
+    const hideIfEmpty = (el: HTMLElement | null, n: number) => {
+      const box = el?.closest<HTMLElement>(".pv-col-apps, .pv-col-props, .pv-benefits-wrap") || el;
+      box?.toggleAttribute("hidden", n === 0);
+    };
+    hideIfEmpty(featBox, item.features?.length || 0);
+    hideIfEmpty(benefitsEl, item.benefits?.length || 0);
+    hideIfEmpty(appsEl, item.applications?.length || 0);
+    hideIfEmpty(pv.querySelector<HTMLElement>("[data-pv-specs]"), item.properties?.length || 0);
 
     const specsTable = pv.querySelector<HTMLElement>("[data-pv-specs]");
     if (specsTable && Array.isArray(item.properties)) {
@@ -398,7 +412,7 @@ function mountViewer(root: HTMLElement, on: On, env?: PageEnv) {
         tdsDownload.href = item.pdf;
         tdsDownload.setAttribute("download", item.pdfName || `${item.slug}-tds.pdf`);
       }
-      if (tdsFrame) tdsFrame.src = item.pdf;
+      if (tdsFrame) { tdsFrame.dataset.src = item.pdf; tdsFrame.removeAttribute("src"); }
       if (tdsBox) tdsBox.hidden = false;
       if (tdsEmpty) tdsEmpty.hidden = true;
     } else {
@@ -426,6 +440,7 @@ function mountViewer(root: HTMLElement, on: On, env?: PageEnv) {
     document.body.style.overflow = "hidden";
     if (!pv.open) pv.showModal();
     pv.scrollTop = 0;
+    try { history.replaceState(history.state, "", "#" + slug); } catch {}
   };
 
   // Interactions inside modal
@@ -497,7 +512,8 @@ function mountViewer(root: HTMLElement, on: On, env?: PageEnv) {
       document.body.style.overflow = "";
       pv.querySelector<HTMLElement>("[data-pv-video-player]")?.replaceChildren();
       const frame = pv.querySelector<HTMLIFrameElement>("[data-pv-tds-frame]");
-      if (frame) frame.src = "";
+      if (frame) frame.removeAttribute("src");
+      try { if (location.hash) history.replaceState(history.state, "", location.pathname + location.search); } catch {}
       from?.focus();
     });
   }

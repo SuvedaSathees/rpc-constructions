@@ -42,7 +42,7 @@ function form(d: ContactPageData) {
   const c = d.contact;
   const field = (label: string, control: string, cls: string) => `<label class="ct-field ${cls}"><span>${label}</span>${control}</label>`;
   const types = d.types.map((t) => `<option value="${esc(t)}">${esc(TYPE_LABEL[t] ?? t)}</option>`).join("");
-  return `<form class="ct-form" data-enquiry data-endpoint="https://formsubmit.co/ajax/${esc(c.email)}" data-whatsapp="${esc(c.whatsapp)}">
+  return `<form class="ct-form" data-enquiry ${c.email ? `data-endpoint="https://formsubmit.co/ajax/${esc(c.email)}" ` : ""}data-whatsapp="${esc(c.whatsapp)}">
   <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="ct-trap" aria-hidden="true">
   <div class="ct-row">
     ${field("Name *", `<input required name="name" autocomplete="name" placeholder="Your name">`, "ct-f")}
@@ -96,7 +96,7 @@ export function contactPageMarkup(d: ContactPageData) {
   const tiles = `<ul class="ct-tiles" data-rv>
         <li><a class="ct-tile ct-tile--call" href="${tel(c.phone)}">${icon("call", " ct-ico--call")}<span class="ct-tk">Call an engineer</span><span class="ct-tv">${esc(c.phone)}</span><span class="ct-open" data-hours data-days="${o.d0}-${o.d1}" data-from="${o.from}" data-to="${o.to}"><i aria-hidden="true"></i><span data-open-text>Open ${hoursText}</span></span>${go}</a></li>
         <li><a class="ct-tile ct-tile--wa" href="${esc(c.whatsapp)}" target="_blank" rel="noopener noreferrer">${icon("whatsapp", " ct-ico--wa")}<span class="ct-tk">WhatsApp</span><span class="ct-tv">Chat with an engineer</span><span class="ct-tn">Send a photo of the leak</span>${go}</a></li>
-        <li><a class="ct-tile" href="${esc(gmail(c.email))}" target="_blank" rel="noopener noreferrer">${icon("email")}<span class="ct-tk">Email</span><span class="ct-tv ct-tv--mail">${mail}</span><span class="ct-tn">Drawings and documents</span>${go}</a></li>
+        ${c.email ? `<li><a class="ct-tile" href="${esc(gmail(c.email))}" target="_blank" rel="noopener noreferrer">${icon("email")}<span class="ct-tk">Email</span><span class="ct-tv ct-tv--mail">${mail}</span><span class="ct-tn">Drawings and documents</span>${go}</a></li>` : `<li><a class="ct-tile" href="${esc(c.whatsapp)}" target="_blank" rel="noopener noreferrer">${icon("email")}<span class="ct-tk">Drawings</span><span class="ct-tv">Send them on WhatsApp</span><span class="ct-tn">Drawings and documents</span>${go}</a></li>`}
         <li><a class="ct-tile" href="${esc(c.mapUrl ?? mapsLink(c.mapQuery))}" target="_blank" rel="noopener noreferrer">${icon("visit")}<span class="ct-tk">Office</span><span class="ct-tv">${esc(street)}</span><span class="ct-tn">${esc(hoursText)}</span>${go}</a></li>
       </ul>
       <p class="ct-alt" data-rv>More numbers: ${(c.morePhones ?? []).map((n) => `<a href="${tel(n)}">${esc(n)}</a>`).join(", ")}</p>`;

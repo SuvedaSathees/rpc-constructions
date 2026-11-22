@@ -290,7 +290,7 @@ export function rootedAboutMarkup(d: HomeData, o: HomeOptions = {}) {
       <a class="hm-btn hm-btn--ink" href="/about" data-internal data-rv>About RPC Constructions${arrow}</a>
     </div>
     <figure class="hm-afig" data-rv>
-      <div class="hm-aph">${frame("Photo: the RPC team at work")}</div>
+      <div class="hm-aph"><img src="/images/projects/avinashi-corporate-centre-coimbatore.jpg" alt="Avinashi Corporate Centre, Coimbatore — a building RPC waterproofed" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block"></div>
     </figure>
   </div>
 </section>`;

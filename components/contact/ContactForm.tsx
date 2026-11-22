@@ -66,6 +66,13 @@ export function ContactForm() {
     const f = new FormData(el);
     if (f.get("_honey")) return; // bot
     setName(String(f.get("name") ?? "").split(" ")[0] ?? "");
+    if (!contact.email) {
+      // no inbox yet: hand the enquiry to WhatsApp
+      window.open(`${contact.whatsapp}?text=${encodeURIComponent(summary(f))}`, "_blank", "noopener,noreferrer");
+      setStatus("sent");
+      el.reset();
+      return;
+    }
     setStatus("sending");
     try {
       const res = await fetch(ENDPOINT, {

@@ -115,7 +115,9 @@ export function FinalCTA() {
               {[
                 { icon: Phone, label: "Call", value: contact.phone, href: `tel:${contact.phone.replace(/[^0-9+]/g, "")}` },
                 { icon: MessageCircle, label: "WhatsApp", value: "Chat with us", href: contact.whatsapp },
-                { icon: Mail, label: "Email", value: contact.email, href: `mailto:${contact.email}` },
+                contact.email
+                  ? { icon: Mail, label: "Email", value: contact.email, href: `mailto:${contact.email}` }
+                  : { icon: Mail, label: "Drawings", value: "On WhatsApp", href: contact.whatsapp },
                 { icon: MapPin, label: "Visit", value: "Kurikaran Palayam, Erode", href: contact.mapUrl },
               ].map(({ icon: Icon, label, value, href }) => (
                 <li key={label}>

@@ -12,3 +12,4 @@ next-env.d.ts
 .env*.local
 .vercel
 .env*
+rpc-constructions.vercel.app-audit

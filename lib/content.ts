@@ -30,7 +30,9 @@ export const nav = [
 ] as const;
 
 export const contact = {
-  email: "contact@rpcconstructions.com",
+  /** No inbox of our own yet: leave empty and the site sends enquiries on WhatsApp.
+      Put the address here once it receives mail and the email links come back. */
+  email: "" as string,
   phone: "+91 99423 54602",
   /** the other numbers on the visiting card */
   morePhones: ["+91 83003 55703", "+91 96291 16811", "+91 90428 54602"],
@@ -84,7 +86,7 @@ export const branches: readonly Branch[] = [
     city: "Coimbatore",
     role: "Branch",
     line: "Waterproofing and construction across the city and the towns around it, from houses to office buildings.",
-    mapUrl: "https://maps.app.goo.gl/J1bBfJD9XhzePRch8",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=11.0899832,77.1022949",
   },
   {
     city: "Krishnagiri",
@@ -563,9 +565,9 @@ export const engagementModels = [
 ] as const;
 
 export const departments = [
-  { name: "New projects & tenders", email: "projects@rpcconstructions.com", phone: "+91 99423 54602" },
-  { name: "Vendors & suppliers", email: "purchase@rpcconstructions.com", phone: "+91 99423 54602" },
-  { name: "Careers", email: "careers@rpcconstructions.com", phone: "+91 99423 54602" },
+  { name: "New projects & tenders", phone: "+91 99423 54602" },
+  { name: "Vendors & suppliers", phone: "+91 99423 54602" },
+  { name: "Careers", phone: "+91 99423 54602" },
 ] as const;
 
 export const faqs = [

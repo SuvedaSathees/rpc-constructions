@@ -59,7 +59,8 @@ export function buildMarkup(d: BuildData) {
   <p class="mh-chip" aria-hidden="true"><span class="mh-chip-place">${esc(first.short)}</span>${count(0)}</p>
 </div>
 <div class="mh-body">
-  <h1 class="mh-sr">${esc(intro.title)} ${esc(intro.lede)}</h1>
+  <h1 class="mh-sr">Waterproofing contractors in Erode &amp; Coimbatore — ${esc(intro.title)}</h1>
+  <p class="mh-sr">${esc(intro.lede)}</p>
   <div class="mh-hook">
     <p class="mh-kicker">${esc(hook.kicker)}</p>
     <p class="mh-title">${esc(hook.title)}</p>

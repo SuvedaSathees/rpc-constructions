@@ -9,7 +9,7 @@ import { pageMeta } from "@/lib/site";
 export const metadata: Metadata = pageMeta({
   title: "Waterproofed Building Projects, Erode & Coimbatore",
   description:
-    "Apartments, villas, offices and factories by RPC Constructions in Erode, Coimbatore, Perundurai and Krishnagiri, with the waterproofing specified for each one.",
+    "Waterproofing and construction work by RPC Constructions — IIT Palakkad, HAL Tumkur, VinFast Thoothukudi and more — with the system used on each site.",
   path: "/projects",
 });
 

@@ -62,6 +62,7 @@ export function mountContactForm(root: HTMLElement): () => void {
     const f = new FormData(form);
     if (val(f, "_honey")) return; // a bot filled the hidden field
     if (alert) alert.hidden = true;
+    if (!form.dataset.endpoint) { onWhatsApp(); return; } // no inbox yet: send it on WhatsApp
     busy(true);
     try {
       const res = await fetch(form.dataset.endpoint!, {

@@ -30,7 +30,9 @@ const plus = `<svg class="pf-plus" viewBox="0 0 16 16" aria-hidden="true"><path 
 const tick = `<svg class="pf-tick" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.4 6.6 11.4 12.6 4.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
 /** what the search looks through */
-const searchText = (p: Product) => [p.brand, p.name, p.category, p.purpose, p.areas, ...p.packs.map((k) => `${k.size} ${k.listed}`)].join(" ").toLowerCase().replace(/\s+/g, " ");
+const ALIASES: Record<string, string> = { renderoc: "rendroc render oc", maximopast: "maximo past maximopaste", "550": "seal 550 sikatop", "551": "seal 551 sikatop", masterseal: "master seal", sikatop: "sika top" };
+const aliasText = (p: Product) => Object.entries(ALIASES).filter(([k]) => `${p.name} ${p.slug}`.toLowerCase().includes(k)).map(([, v]) => v).join(" ");
+const searchText = (p: Product) => [aliasText(p), p.brand, p.name, p.category, p.purpose, p.areas, ...p.packs.map((k) => `${k.size} ${k.listed}`)].join(" ").toLowerCase().replace(/\s+/g, " ");
 
 
 import { getProductFeatures, getKeyBenefits, getApplications, getTypicalProperties } from "../products/popup-data";
@@ -123,8 +125,8 @@ const VIEWER_HTML = `<dialog class="pv" data-pv data-lenis-prevent aria-labelled
         <div class="pv-col-desc">
           <h3 class="pv-section-title">Product Description</h3>
           <p class="pv-full-desc" data-pv-full-desc></p>
-          <h3 class="pv-section-title">Key Benefits</h3>
-          <ul class="pv-benefits-list" data-pv-benefits></ul>
+          <div class="pv-benefits-wrap"><h3 class="pv-section-title">Key Benefits</h3>
+          <ul class="pv-benefits-list" data-pv-benefits></ul></div>
         </div>
         <div class="pv-col-apps">
           <h3 class="pv-section-title">Applications</h3>
@@ -170,7 +172,7 @@ const VIEWER_HTML = `<dialog class="pv" data-pv data-lenis-prevent aria-labelled
           </div>
         </div>
         <div class="pv-tds-embed-wrap">
-          <iframe class="pv-tds-frame" data-pv-tds-frame src="" title="Technical Data Sheet"></iframe>
+          <iframe class="pv-tds-frame" data-pv-tds-frame title="Technical Data Sheet"></iframe>
         </div>
       </div>
       <div class="pv-tds-empty" data-pv-tds-empty hidden>
@@ -728,6 +730,8 @@ html.pv-open,body.pv-open{overflow:hidden !important}
 .pv-apps-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.65rem}
 .pv-app-card{display:flex;flex-direction:column;border-radius:8px;overflow:hidden;border:1px solid #e2e8f0;background:#f8fafc}
 .pv-app-img{width:100%;height:82px;object-fit:cover;display:block}
+[hidden]{display:none!important}
+.pv-app-card--txt{justify-content:center;min-height:82px}
 .pv-app-label{padding:.4rem .5rem;font-size:var(--fs-body,1rem);font-weight:600;color:#334155;text-align:center}
 
 .pv-specs-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:1.1rem}

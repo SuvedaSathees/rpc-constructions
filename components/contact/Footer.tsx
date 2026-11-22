@@ -102,7 +102,7 @@ export function Footer() {
                   </a>
                 </li>
                 {/* a phone keeps only the number to call; the rest is on the contact page */}
-                <li className="hidden md:block">
+                {contact.email && <li className="hidden md:block">
                   {/* Gmail's own compose window, so the address works on a machine with no
                       mail app set up, where a plain mailto: link appears to do nothing.
                       Gmail falls back to its sign-in page for anyone not signed in. */}
@@ -115,7 +115,7 @@ export function Footer() {
                   >
                     <Mail size={15} aria-hidden className="shrink-0 text-water-2" /> <span className="min-w-0 break-all">{contact.email}</span>
                   </a>
-                </li>
+                </li>}
                 <li className="hidden md:block">
                   <a href={maps} target="_blank" rel="noopener noreferrer" className={`-my-2 flex w-fit items-center gap-2 rounded py-2 transition-colors hover:text-white ${focus}`}>
                     <MapPin size={15} aria-hidden className="shrink-0 text-water-2" /> No. 26, Bharathi Palayam, Erode
