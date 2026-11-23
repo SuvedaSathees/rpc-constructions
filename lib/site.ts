@@ -3,8 +3,10 @@ import type { Metadata } from "next";
 /**
  * Production URL — used for canonical links, the sitemap and structured data.
  * Set NEXT_PUBLIC_SITE_URL in the hosting environment if the domain differs.
+ * The fallback must be the live domain: share cards and canonicals are built
+ * from it, so a stale value sends every portal to the old host.
  */
-export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://rpc-constructions.vercel.app").replace(/\/$/, "");
+export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.rpcconstructionsolutions.in").replace(/\/$/, "");
 
 const BRAND = "RPC Constructions";
 const DEFAULT_IMAGE = { url: "/images/og-rpc.png", width: 1200, height: 630, alt: "RPC Constructions: waterproofing and construction in Erode, Coimbatore and across Tamil Nadu" };
